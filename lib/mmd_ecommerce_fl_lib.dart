@@ -7,7 +7,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-class MmdEcommerceFlLib {
+class MmdECommerceFlLib {
   static const MethodChannel _channel =
       const MethodChannel('mmd_ecommerce_fl_lib');
 
