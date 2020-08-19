@@ -1,0 +1,8 @@
+query PageBySlug($name: String!){
+    pageBySlug(slug: $name){
+        id
+        title
+        slug
+        content
+    }
+}

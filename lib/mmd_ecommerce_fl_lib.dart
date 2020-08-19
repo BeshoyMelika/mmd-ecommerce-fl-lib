@@ -3,16 +3,16 @@
 // To add platforms, run `flutter create -t plugin --platforms <platforms> .` under the same
 // directory. You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
-import 'dart:async';
-
-import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:mmd_ecommerce_fl_lib/graphql_config.dart';
 
 class MmdECommerceFlLib {
-  static const MethodChannel _channel =
-      const MethodChannel('mmd_ecommerce_fl_lib');
+  static ValueNotifier<GraphQLClient> client(String baseUrl) {
+    return getClient(baseUrl + "/graphql");
+  }
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  static void setupBackendApi(String graphBaseUrl) {
+    print("URL:" + graphBaseUrl + "/graphql");
   }
 }

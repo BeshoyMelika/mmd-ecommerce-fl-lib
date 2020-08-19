@@ -1,0 +1,12 @@
+{
+  "name": "Schema",
+  "schemaPath": "general.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default": {
+        "url": "http://nestle.moselaymdserver.com/graphql",
+        "introspect": true
+      }
+    }
+  }
+}

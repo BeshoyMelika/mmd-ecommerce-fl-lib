@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ffb4d6d-aaf8-4715-a883-511be2dcf9fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/general.schema.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/graphql/page_by_slug.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/graphql/sign_in.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/graphql_config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmd_ecommerce_fl_lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mmd_ecommerce_fl_lib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mmd_ecommerce_fl_lib_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mmd_ecommerce_fl_lib.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mmd_ecommerce_fl_lib.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +43,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="C:/flutter/bin/cache/dart-sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\lib" />
+      <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib" />
+      <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\example" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,29 +68,41 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="618" y="356" key="#com.intellij.ide.util.TreeDirectoryChooserDialog" timestamp="1597845864427">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="618" y="356" key="#com.intellij.ide.util.TreeDirectoryChooserDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597845864427" />
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1597845564913">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597845564913" />
     <state x="548" y="166" key="FileChooserDialogImpl" timestamp="1597745287923">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597745287923" />
-    <state width="1476" height="207" key="GridCell.Tab.0.bottom" timestamp="1597746539288">
+    <state width="1491" height="328" key="GridCell.Tab.0.bottom" timestamp="1597847933036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1476" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597746539288" />
-    <state width="1476" height="207" key="GridCell.Tab.0.center" timestamp="1597746539288">
+    <state width="1491" height="328" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597847933036" />
+    <state width="1491" height="328" key="GridCell.Tab.0.center" timestamp="1597847933036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1476" height="207" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597746539288" />
-    <state width="1476" height="207" key="GridCell.Tab.0.left" timestamp="1597746539288">
+    <state width="1491" height="328" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597847933036" />
+    <state width="1491" height="328" key="GridCell.Tab.0.left" timestamp="1597847933036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1476" height="207" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597746539288" />
-    <state width="1476" height="207" key="GridCell.Tab.0.right" timestamp="1597746539288">
+    <state width="1491" height="328" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597847933036" />
+    <state width="1491" height="328" key="GridCell.Tab.0.right" timestamp="1597847933036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1476" height="207" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597746539288" />
+    <state width="1491" height="328" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597847933036" />
     <state x="277" y="54" key="SettingsEditor" timestamp="1597745338156">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597745338156" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1597844488493">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597844488493" />
   </component>
 </project>
