@@ -5,9 +5,7 @@
 
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
 
-
 class MmdECommerceFlLib {
-
   static void submitBaseUrl(String baseUrl) {
     BaseApiManager.setUrl(baseUrl);
   }

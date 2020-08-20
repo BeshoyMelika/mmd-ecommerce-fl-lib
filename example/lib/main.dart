@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/auth_api_manager.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/general_api_manager.dart';
-import 'package:mmd_ecommerce_fl_lib/graphql_api.dart';
-import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce_fl_lib.dart';
+import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 void main() {
   runApp(MyApp());

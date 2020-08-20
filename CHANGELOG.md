@@ -3,3 +3,6 @@
 
 ## [0.0.2] - 0.0.2
 * Added brands api.
+
+## [0.0.3] - 0.0.3
+* Edit the way of imports.
