@@ -1,7 +1,6 @@
 name: mmd_ecommerce_fl_lib
 description: It is a backend library using GraphQl to facilitate connection to our different e-commerce backend endpoints.
 version: 0.0.1
-author: Beshoy Melika<beshoymelika@gmail.com> Mina Samir<MenaSamerCap@gmail.com>
 homepage: https://github.com/BeshoyMelika/mmd-ecommerce-fl-lib
 
 environment:
@@ -18,15 +17,16 @@ dependencies:
   path_provider: ^1.5.1
   graphql_flutter: ^3.1.0
   analyzer: ^0.39.2+1
+  artemis: ^2.1.4
+  json_annotation: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  artemis: ^2.1.4
   build_runner: ^1.10.1
+  build_resolvers: ^1.3.10
 
-dependency_overrides:
-  build_resolvers: '1.3.10'
+# dependency_overrides:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

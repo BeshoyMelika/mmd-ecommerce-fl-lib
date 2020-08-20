@@ -23,7 +23,7 @@ packages:
     source: hosted
     version: "1.6.0"
   artemis:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: artemis
       url: "https://pub.dartlang.org"
@@ -65,7 +65,7 @@ packages:
     source: hosted
     version: "2.1.4"
   build_resolvers:
-    dependency: "direct overridden"
+    dependency: "direct dev"
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
@@ -367,7 +367,7 @@ packages:
     source: hosted
     version: "0.6.2"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       url: "https://pub.dartlang.org"
