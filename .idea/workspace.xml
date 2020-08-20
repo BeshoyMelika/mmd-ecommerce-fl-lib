@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ffb4d6d-aaf8-4715-a883-511be2dcf9fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/apis/auth_api_manager.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/apis/base_api_manager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/graphql_config.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mmd_ecommerce_fl_lib.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mmd_ecommerce_fl_lib.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

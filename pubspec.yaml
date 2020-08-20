@@ -1,8 +1,8 @@
 name: mmd_ecommerce_fl_lib
-description: A new Flutter plugin.
+description: It is a backend library using GraphQl to facilitate connection to our different e-commerce backend endpoints.
 version: 0.0.1
-author:
-homepage:
+author: Beshoy Melika<beshoymelika@gmail.com> Mina Samir<MenaSamerCap@gmail.com>
+homepage: https://github.com/BeshoyMelika/mmd-ecommerce-fl-lib
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
