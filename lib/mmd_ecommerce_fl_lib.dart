@@ -11,4 +11,8 @@ class MmdECommerceFlLib {
   static ValueNotifier<GraphQLClient> client(String baseUrl) {
     return getClient(baseUrl + "/graphql");
   }
+
+  static GraphQLClient graphQlClient(String baseUrl) {
+    return getGraphQLClient(baseUrl + "/graphql");
+  }
 }

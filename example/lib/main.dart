@@ -11,12 +11,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GraphQLProvider(
-        client: MmdECommerceFlLib.client("http://egfoods.moselaymdserver.com"),
-        //client: MmdECommerceFlLib.client("http://nestle.moselaymdserver.com"),
-        child: MaterialApp(
-          home: MyHomePage(),
-        ));
+    return MaterialApp(
+      home: MyHomePage(),
+    );
   }
 }
 
@@ -28,36 +25,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var isLoading = false;
+  QueryResult result;
+
+  @override
+  void initState() {
+    print("init state");
+    Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('GraphQl Demo'),
         ),
-        body: Center(
-          child: Mutation(
-              options: MutationOptions(
-                  documentNode: SignInQuery().document,
-                  /*variables: SignInArguments(
-                          email: 'test@mail.com', password: '123456789')
-                      .toJson(),*/
-                  onCompleted: (dynamic resultData) {
-                    print(resultData);
-                  }),
-              builder: (RunMutation runMutation, QueryResult queryResult) {
-                if (queryResult.loading) {
-                  return CircularProgressIndicator();
-                } else {
-                  return RaisedButton(
-                    child: Text("Login"),
-                    onPressed: () {
-                      runMutation(getEgFreshCredentials().toJson());
-                      //runMutation(getNestleCredentials().toJson());
-                    },
-                  );
-                }
-              }),
-        ));
+        body: Center(child: isLoading ? getLoadingView() : getNormalView()));
   }
 
   SignInArguments getNestleCredentials() {
@@ -66,5 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   SignInArguments getEgFreshCredentials() {
     return SignInArguments(email: 'test@mail.com', password: '123456789');
+  }
+
+  callApi() async {
+    setState(() {
+      isLoading = true;
+    });
+    var client =
+        MmdECommerceFlLib.graphQlClient("http://egfoods.moselaymdserver.com");
+    var result = await client.mutate(MutationOptions(
+        documentNode: SignInQuery().document,
+        variables: getEgFreshCredentials().toJson()));
+    setState(() {
+      isLoading = false;
+      this.result = result;
+    });
+  }
+
+  Widget getLoadingView() {
+    return CircularProgressIndicator();
+  }
+
+  Widget getNormalView() {
+    print(result?.data);
+    return Text((result == null) ? "Result Null" : "Result Printed");
   }
 }

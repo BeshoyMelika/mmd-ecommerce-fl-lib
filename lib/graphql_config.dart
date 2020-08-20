@@ -9,3 +9,10 @@ ValueNotifier<GraphQLClient> getClient(String url) {
     ),
   );
 }
+
+GraphQLClient getGraphQLClient(String url) {
+  return GraphQLClient(
+    cache: InMemoryCache(),
+    link: HttpLink(uri: url),
+  );
+}
