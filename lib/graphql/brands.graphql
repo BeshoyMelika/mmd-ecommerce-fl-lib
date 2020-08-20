@@ -1,0 +1,6 @@
+query Brands{
+    brands{
+        id
+        name
+    }
+}

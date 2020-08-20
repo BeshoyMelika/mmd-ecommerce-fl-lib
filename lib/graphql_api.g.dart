@@ -71,3 +71,26 @@ Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
       'email': instance.email,
       'password': instance.password,
     };
+
+Brands _$BrandsFromJson(Map<String, dynamic> json) {
+  return Brands()
+    ..brands = (json['brands'] as List)
+        ?.map(
+            (e) => e == null ? null : Brand.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$BrandsToJson(Brands instance) => <String, dynamic>{
+      'brands': instance.brands?.map((e) => e?.toJson())?.toList(),
+    };
+
+Brand _$BrandFromJson(Map<String, dynamic> json) {
+  return Brand()
+    ..id = json['id'] as String
+    ..name = json['name'] as String;
+}
+
+Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };

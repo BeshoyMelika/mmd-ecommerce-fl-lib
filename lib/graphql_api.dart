@@ -217,3 +217,73 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
   @override
   SignIn parse(Map<String, dynamic> json) => SignIn.fromJson(json);
 }
+
+@JsonSerializable(explicitToJson: true)
+class Brands with EquatableMixin {
+  Brands();
+
+  factory Brands.fromJson(Map<String, dynamic> json) => _$BrandsFromJson(json);
+
+  List<Brand> brands;
+
+  @override
+  List<Object> get props => [brands];
+  Map<String, dynamic> toJson() => _$BrandsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Brand with EquatableMixin {
+  Brand();
+
+  factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
+
+  String id;
+
+  String name;
+
+  @override
+  List<Object> get props => [id, name];
+  Map<String, dynamic> toJson() => _$BrandToJson(this);
+}
+
+class BrandsQuery extends GraphQLQuery<Brands, JsonSerializable> {
+  BrandsQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'Brands'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'brands'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Brands';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Brands parse(Map<String, dynamic> json) => Brands.fromJson(json);
+}
