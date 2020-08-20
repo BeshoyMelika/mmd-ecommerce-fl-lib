@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/auth_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/general_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce_fl_lib.dart';
 
@@ -33,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     print("init state");
-    Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
+    //Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
+    Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
     super.initState();
   }
 
@@ -70,5 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return Text("Result Success \n${auth?.access_token}");
     }
+  }
+
+  callBrandsApi() {
+    GeneralApiManager.brandsApi((List<Brand> brands) {
+      print("=========================================");
+      print("Success Brand API");
+      print(brands);
+    }, () {});
   }
 }
