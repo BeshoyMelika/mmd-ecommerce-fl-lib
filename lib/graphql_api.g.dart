@@ -6,45 +6,6 @@ part of 'graphql_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PageBySlug _$PageBySlugFromJson(Map<String, dynamic> json) {
-  return PageBySlug()
-    ..pageBySlug = json['pageBySlug'] == null
-        ? null
-        : Page.fromJson(json['pageBySlug'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$PageBySlugToJson(PageBySlug instance) =>
-    <String, dynamic>{
-      'pageBySlug': instance.pageBySlug?.toJson(),
-    };
-
-Page _$PageFromJson(Map<String, dynamic> json) {
-  return Page()
-    ..id = json['id'] as String
-    ..title = json['title'] as String
-    ..slug = json['slug'] as String
-    ..content = json['content'] as String;
-}
-
-Map<String, dynamic> _$PageToJson(Page instance) => <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'slug': instance.slug,
-      'content': instance.content,
-    };
-
-PageBySlugArguments _$PageBySlugArgumentsFromJson(Map<String, dynamic> json) {
-  return PageBySlugArguments(
-    name: json['name'] as String,
-  );
-}
-
-Map<String, dynamic> _$PageBySlugArgumentsToJson(
-        PageBySlugArguments instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
-
 SignIn _$SignInFromJson(Map<String, dynamic> json) {
   return SignIn()
     ..login = json['login'] == null
@@ -83,4 +44,30 @@ Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
+    };
+
+Attributes _$AttributesFromJson(Map<String, dynamic> json) {
+  return Attributes()
+    ..attributes = (json['attributes'] as List)
+        ?.map((e) =>
+            e == null ? null : Attribute.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
+    <String, dynamic>{
+      'attributes': instance.attributes?.map((e) => e?.toJson())?.toList(),
+    };
+
+Attribute _$AttributeFromJson(Map<String, dynamic> json) {
+  return Attribute()
+    ..id = json['id'] as String
+    ..name = json['name'] as String
+    ..options = (json['options'] as List)?.map((e) => e as String)?.toList();
+}
+
+Map<String, dynamic> _$AttributeToJson(Attribute instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'options': instance.options,
     };

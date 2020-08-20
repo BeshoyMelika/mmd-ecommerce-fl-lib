@@ -7,121 +7,6 @@ import 'package:gql/ast.dart';
 part 'graphql_api.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PageBySlug with EquatableMixin {
-  PageBySlug();
-
-  factory PageBySlug.fromJson(Map<String, dynamic> json) =>
-      _$PageBySlugFromJson(json);
-
-  Page pageBySlug;
-
-  @override
-  List<Object> get props => [pageBySlug];
-  Map<String, dynamic> toJson() => _$PageBySlugToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Page with EquatableMixin {
-  Page();
-
-  factory Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
-
-  String id;
-
-  String title;
-
-  String slug;
-
-  String content;
-
-  @override
-  List<Object> get props => [id, title, slug, content];
-  Map<String, dynamic> toJson() => _$PageToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class PageBySlugArguments extends JsonSerializable with EquatableMixin {
-  PageBySlugArguments({this.name});
-
-  factory PageBySlugArguments.fromJson(Map<String, dynamic> json) =>
-      _$PageBySlugArgumentsFromJson(json);
-
-  final String name;
-
-  @override
-  List<Object> get props => [name];
-  Map<String, dynamic> toJson() => _$PageBySlugArgumentsToJson(this);
-}
-
-class PageBySlugQuery extends GraphQLQuery<PageBySlug, PageBySlugArguments> {
-  PageBySlugQuery({this.variables});
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.query,
-        name: NameNode(value: 'PageBySlug'),
-        variableDefinitions: [
-          VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'name')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
-              defaultValue: DefaultValueNode(value: null),
-              directives: [])
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'pageBySlug'),
-              alias: null,
-              arguments: [
-                ArgumentNode(
-                    name: NameNode(value: 'slug'),
-                    value: VariableNode(name: NameNode(value: 'name')))
-              ],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'title'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'slug'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'content'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
-              ]))
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'PageBySlug';
-
-  @override
-  final PageBySlugArguments variables;
-
-  @override
-  List<Object> get props => [document, operationName, variables];
-  @override
-  PageBySlug parse(Map<String, dynamic> json) => PageBySlug.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
 class SignIn with EquatableMixin {
   SignIn();
 
@@ -251,4 +136,84 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
   List<Object> get props => [document, operationName, variables];
   @override
   SignIn parse(Map<String, dynamic> json) => SignIn.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Attributes with EquatableMixin {
+  Attributes();
+
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
+
+  List<Attribute> attributes;
+
+  @override
+  List<Object> get props => [attributes];
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Attribute with EquatableMixin {
+  Attribute();
+
+  factory Attribute.fromJson(Map<String, dynamic> json) =>
+      _$AttributeFromJson(json);
+
+  String id;
+
+  String name;
+
+  List<String> options;
+
+  @override
+  List<Object> get props => [id, name, options];
+  Map<String, dynamic> toJson() => _$AttributeToJson(this);
+}
+
+class AttributesQuery extends GraphQLQuery<Attributes, JsonSerializable> {
+  AttributesQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'Attributes'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'attributes'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'options'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Attributes';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Attributes parse(Map<String, dynamic> json) => Attributes.fromJson(json);
 }

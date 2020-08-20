@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GraphQLProvider(
-        client: MmdECommerceFlLib.client("http://nestle.moselaymdserver.com"),
+        client: MmdECommerceFlLib.client("http://egfoods.moselaymdserver.com"),
+        //client: MmdECommerceFlLib.client("http://nestle.moselaymdserver.com"),
         child: MaterialApp(
           home: MyHomePage(),
         ));
@@ -37,16 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Mutation(
               options: MutationOptions(
                   documentNode: SignInQuery().document,
-                  variables: SignInArguments(
-                          email: 'mina1@mina1.com', password: '123456789aa')
-                      .toJson(),
+                  /*variables: SignInArguments(
+                          email: 'test@mail.com', password: '123456789')
+                      .toJson(),*/
                   onCompleted: (dynamic resultData) {
                     print(resultData);
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (ctx) {
-                    //       return Text("Completed");
-                    //     });
                   }),
               builder: (RunMutation runMutation, QueryResult queryResult) {
                 if (queryResult.loading) {
@@ -55,17 +51,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   return RaisedButton(
                     child: Text("Login"),
                     onPressed: () {
-                      runMutation(SignInArguments(
-                              email: 'mina1@mina1.com', password: '123456789aa')
-                          .toJson());
-                      runMutation({
-                        'email': 'mina1@mina1.com',
-                        'password': '123456789aa'
-                      });
+                      runMutation(getEgFreshCredentials().toJson());
+                      //runMutation(getNestleCredentials().toJson());
                     },
                   );
                 }
               }),
         ));
+  }
+
+  SignInArguments getNestleCredentials() {
+    return SignInArguments(email: 'mina1@mina1.com', password: '123456789aa');
+  }
+
+  SignInArguments getEgFreshCredentials() {
+    return SignInArguments(email: 'test@mail.com', password: '123456789');
   }
 }

@@ -1,0 +1,7 @@
+query Attributes{
+    attributes{
+        id
+        name
+        options
+    }
+}
