@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/auth_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce_fl_lib.dart';
 
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    MmdECommerceFlLib.submitBaseUrl("http://egfoods.moselaymdserver.com");
     return MaterialApp(
       home: MyHomePage(),
     );
@@ -26,7 +27,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  QueryResult result;
+  AuthPayload auth;
+  var isError = false;
 
   @override
   void initState() {
@@ -44,26 +46,17 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(child: isLoading ? getLoadingView() : getNormalView()));
   }
 
-  SignInArguments getNestleCredentials() {
-    return SignInArguments(email: 'mina1@mina1.com', password: '123456789aa');
-  }
-
-  SignInArguments getEgFreshCredentials() {
-    return SignInArguments(email: 'test@mail.com', password: '123456789');
-  }
-
   callApi() async {
     setState(() {
       isLoading = true;
     });
-    var client =
-        MmdECommerceFlLib.graphQlClient("http://egfoods.moselaymdserver.com");
-    var result = await client.mutate(MutationOptions(
-        documentNode: SignInQuery().document,
-        variables: getEgFreshCredentials().toJson()));
-    setState(() {
-      isLoading = false;
-      this.result = result;
+    AuthApiManager.loginApi('test@mail.com', '123456789', (AuthPayload auth) {
+      setState(() {
+        this.isLoading = false;
+        this.auth = auth;
+      });
+    }, () {
+      this.isError = true;
     });
   }
 
@@ -72,7 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget getNormalView() {
-    print(result?.data);
-    return Text((result == null) ? "Result Null" : "Result Printed");
+    if (isError) {
+      return Text("Result Error");
+    } else {
+      return Text("Result Success \n${auth?.access_token}");
+    }
   }
 }
