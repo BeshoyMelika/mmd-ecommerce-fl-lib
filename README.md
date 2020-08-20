@@ -5,6 +5,6 @@ e-commerce backend endpoints.
 
 ## Resources
 
-We used this article as a guide for GraphQl integration and dart code generation
+We used this article as a guide for GraphQl integration and dart code generation.
 Also, the link includes a way to have a fake GraphQl to test with it
-[link](https://medium.com/@v.ditsyak/ultimate-toolchain-to-work-with-graphql-in-flutter-13aef79c6484),
+[link](https://medium.com/@v.ditsyak/ultimate-toolchain-to-work-with-graphql-in-flutter-13aef79c6484).
