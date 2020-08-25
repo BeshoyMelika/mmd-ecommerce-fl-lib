@@ -1,10 +1,14 @@
-after you finished your edits
-step 1 
-    push all changes in github
+After you finished your edits
 
-step 2 
-   to push your package in pub.dev
-check all is well
+# Step 0
+    --> update lib version in pubspec.yaml
+
+# Step 1
+    --> push all changes to github
+
+# Step 2 to push your package in pub.dev
+    --> check all is well
     flutter pub publish --dry-run
-check all is well
-   to publish run flutter pub publish
+
+# Step 3 upload to pub.dev
+    --> run flutter pub publish
