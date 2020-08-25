@@ -31,8 +31,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     print("init state");
-    //Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
-    Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
+    // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
+    // Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
+    Future.delayed(Duration(microseconds: 0))
+        .then((value) => callRegisterApi());
     super.initState();
   }
 
@@ -77,5 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
       print("Success Brand API");
       print(brands);
     }, () {});
+  }
+
+  callRegisterApi() {
+    AuthApiManager.registerApi("amr1", "amr1@amr1.com", "123456", (User user) {
+      print("=========================================");
+      print("user email : " + user.email + "name :" + user.name);
+      print("Success Brand API");
+    }, (QueryResult x) {
+      print("error");
+    });
   }
 }

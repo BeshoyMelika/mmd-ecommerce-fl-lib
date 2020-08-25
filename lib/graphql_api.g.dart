@@ -6,6 +6,43 @@ part of 'graphql_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+SignUp _$SignUpFromJson(Map<String, dynamic> json) {
+  return SignUp()
+    ..register = json['register'] == null
+        ? null
+        : User.fromJson(json['register'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$SignUpToJson(SignUp instance) => <String, dynamic>{
+      'register': instance.register?.toJson(),
+    };
+
+User _$UserFromJson(Map<String, dynamic> json) {
+  return User()
+    ..name = json['name'] as String
+    ..email = json['email'] as String;
+}
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'name': instance.name,
+      'email': instance.email,
+    };
+
+SignUpArguments _$SignUpArgumentsFromJson(Map<String, dynamic> json) {
+  return SignUpArguments(
+    name: json['name'] as String,
+    email: json['email'] as String,
+    password: json['password'] as String,
+  );
+}
+
+Map<String, dynamic> _$SignUpArgumentsToJson(SignUpArguments instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'email': instance.email,
+      'password': instance.password,
+    };
+
 Attributes _$AttributesFromJson(Map<String, dynamic> json) {
   return Attributes()
     ..attributes = (json['attributes'] as List)
