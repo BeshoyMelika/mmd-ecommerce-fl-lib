@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
+import 'package:mmd_ecommerce_fl_lib_example/main_second.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,9 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     print("init state");
     // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
-    // Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
-    Future.delayed(Duration(microseconds: 0))
-        .then((value) => callRegisterApi());
+    //Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
+    //Future.delayed(Duration(microseconds: 0)).then((value) => callRegisterApi());
     super.initState();
   }
 
@@ -69,7 +69,20 @@ class _MyHomePageState extends State<MyHomePage> {
     if (isError) {
       return Text("Result Error");
     } else {
-      return Text("Result Success \n${auth?.access_token}");
+      return Column(
+        children: [
+          Text("Result Success \n${auth?.access_token}"),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainSecond()),
+              );
+            },
+            child: Text("Open Main Second"),
+          )
+        ],
+      );
     }
   }
 
