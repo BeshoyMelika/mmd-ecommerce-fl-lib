@@ -6,3 +6,6 @@
 
 ## [0.0.3] - 0.0.3
 * Edit the way of imports.
+
+## [0.0.4] - 0.0.4
+* Added register api.
