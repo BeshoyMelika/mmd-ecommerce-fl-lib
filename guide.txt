@@ -1,4 +1,4 @@
-after you finshed your edits
+after you finished your edits
 step 1 
     push all changes in github
 
