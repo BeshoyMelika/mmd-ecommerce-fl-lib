@@ -2,6 +2,7 @@ After you finished your edits
 
 # Step 0
     --> update lib version in pubspec.yaml
+    --> update lib version in CHANGELOG.md
 
 # Step 1
     --> push all changes to github
