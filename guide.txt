@@ -1,0 +1,10 @@
+after you finshed your edits
+step 1 
+    push all changes in github
+
+step 2 
+   to push your package in pub.dev
+check all is well
+    flutter pub publish --dry-run
+check all is well
+   to publish run flutter pub publish
