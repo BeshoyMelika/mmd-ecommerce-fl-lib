@@ -1,6 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
-import 'package:mmd_ecommerce_fl_lib/graphql_api.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/general/graphql_api.dart';
 
 class GeneralApiManager extends BaseApiManager {
   static Future<void> brandsApi(Function success, Function fail) async {

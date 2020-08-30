@@ -10,8 +10,11 @@ targets:
         options:
           schema_mapping:
             - schema: general.schema.graphql
-              queries_glob: lib/graphql/*.graphql
-              output: lib/graphql_api.dart
+              queries_glob: lib/graphql/general/*.graphql
+              output: lib/generatedql/general/graphql_api.dart
             - schema: general.schema.graphql
               queries_glob: lib/graphql/auth/*.graphql
               output: lib/generatedql/auth/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/user/*.graphql
+              output: lib/generatedql/user/graphql_api.dart

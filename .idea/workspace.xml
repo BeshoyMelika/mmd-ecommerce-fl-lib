@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ffb4d6d-aaf8-4715-a883-511be2dcf9fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/graphql/refresh_token.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general.schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/general.schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideToUpdateAPIs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/guideToUpdateAPIs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/apis/auth_api_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apis/auth_api_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/graphql/sign_in.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/auth/sign_in.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/graphql/sign_up.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/auth/sign_up.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main_second.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main_second.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apis/general_api_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apis/general_api_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/graphql/attributes.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/general/attributes.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/graphql/brands.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/general/brands.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/graphql/refresh_token.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/user/refresh_token.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/graphql_api.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/graphql_api.g.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/mmd_ecommerce.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mmd_ecommerce.dart" afterDir="false" />
@@ -52,6 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\lib\graphql\user" />
+      <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\lib\graphql\general" />
       <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\lib\graphql\auth" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -84,10 +85,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597845564913" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598816405299">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598817944785">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598816405299" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598817944785" />
     <state x="763" y="173" key="#xdebugger.evaluate" timestamp="1597956438820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -100,22 +101,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598368933661" />
-    <state width="1491" height="255" key="GridCell.Tab.0.bottom" timestamp="1598816813863">
+    <state width="1491" height="255" key="GridCell.Tab.0.bottom" timestamp="1598818930573">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="255" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598816813863" />
-    <state width="1491" height="255" key="GridCell.Tab.0.center" timestamp="1598816813862">
+    <state width="1491" height="255" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598818930573" />
+    <state width="1491" height="255" key="GridCell.Tab.0.center" timestamp="1598818930573">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="255" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598816813862" />
-    <state width="1491" height="255" key="GridCell.Tab.0.left" timestamp="1598816813862">
+    <state width="1491" height="255" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598818930573" />
+    <state width="1491" height="255" key="GridCell.Tab.0.left" timestamp="1598818930572">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="255" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598816813862" />
-    <state width="1491" height="255" key="GridCell.Tab.0.right" timestamp="1598816813862">
+    <state width="1491" height="255" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598818930572" />
+    <state width="1491" height="255" key="GridCell.Tab.0.right" timestamp="1598818930573">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="255" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598816813862" />
+    <state width="1491" height="255" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1598818930573" />
     <state x="277" y="54" key="SettingsEditor" timestamp="1597745338156">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
