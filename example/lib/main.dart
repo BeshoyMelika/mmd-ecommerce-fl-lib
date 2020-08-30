@@ -73,10 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Text("Result Success \n${auth?.access_token}"),
           RaisedButton(
+            color: Colors.amber,
+            onPressed: () {
+              callLoginApi();
+            },
+            child: Text("Test login"),
+          ),
+          RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MainSecond()),
+                MaterialPageRoute(builder: (context) => MainSecond(auth.refresh_token)),
               );
             },
             child: Text("Open Main Second"),
@@ -99,6 +106,18 @@ class _MyHomePageState extends State<MyHomePage> {
       print("=========================================");
       print("user email : " + user.email + "name :" + user.name);
       print("Success Brand API");
+    }, (QueryResult x) {
+      print("error");
+    });
+  }
+
+  callLoginApi() {
+    AuthApiManager.loginApi("test@mail.com", "123456789",
+        (AuthPayload authPayload) {
+      auth = authPayload;
+      print("=========================================");
+      print("Success Login");
+      print("Access Token: ${authPayload.access_token}");
     }, (QueryResult x) {
       print("error");
     });
