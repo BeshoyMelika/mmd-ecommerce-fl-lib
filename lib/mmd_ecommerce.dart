@@ -5,9 +5,10 @@ export 'package:graphql_flutter/graphql_flutter.dart';
 export './apis/auth_api_manager.dart';
 export './apis/general_api_manager.dart';
 export './apis/user_api_manager.dart';
+export './common_models/common_models.dart';
 export './generatedql/auth/graphql_api.dart';
 export './generatedql/general/graphql_api.dart';
-export './generatedql/user/graphql_api.dart' hide AuthPayload;
+export './generatedql/user/graphql_api.dart' hide AuthPayload, User;
 export './mmd_ecommerce.dart';
 export './mmd_ecommerce_fl_lib.dart';
 

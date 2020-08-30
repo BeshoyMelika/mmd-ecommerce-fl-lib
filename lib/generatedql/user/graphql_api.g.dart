@@ -46,3 +46,53 @@ Map<String, dynamic> _$RefreshTokenArgumentsToJson(
     <String, dynamic>{
       'token': instance.token,
     };
+
+Profile _$ProfileFromJson(Map<String, dynamic> json) {
+  return Profile()
+    ..profile = json['profile'] == null
+        ? null
+        : User.fromJson(json['profile'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
+      'profile': instance.profile?.toJson(),
+    };
+
+User _$UserFromJson(Map<String, dynamic> json) {
+  return User()
+    ..id = json['id'] as String
+    ..name = json['name'] as String
+    ..email = json['email'] as String
+    ..mobile = json['mobile'] as String;
+}
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
+      'mobile': instance.mobile,
+    };
+
+UpdateProfile _$UpdateProfileFromJson(Map<String, dynamic> json) {
+  return UpdateProfile()..updateProfile = json['updateProfile'] as bool;
+}
+
+Map<String, dynamic> _$UpdateProfileToJson(UpdateProfile instance) =>
+    <String, dynamic>{
+      'updateProfile': instance.updateProfile,
+    };
+
+UpdateProfileArguments _$UpdateProfileArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return UpdateProfileArguments(
+    name: json['name'] as String,
+    mobile: json['mobile'] as String,
+  );
+}
+
+Map<String, dynamic> _$UpdateProfileArgumentsToJson(
+        UpdateProfileArguments instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'mobile': instance.mobile,
+    };

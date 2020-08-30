@@ -83,11 +83,42 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MainSecond(auth.refresh_token)),
+                MaterialPageRoute(
+                    builder: (context) => MainSecond(auth.refresh_token)),
               );
             },
             child: Text("Open Main Second"),
-          )
+          ),
+          RaisedButton(
+            color: Colors.brown,
+            onPressed: () {
+              callUpdateProfileApi();
+            },
+            child: Text(
+              "update Profile",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          RaisedButton(
+            color: Colors.redAccent,
+            onPressed: () {
+              callMyProfileApi();
+            },
+            child: Text(
+              "get profile",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          RaisedButton(
+            color: Colors.green,
+            onPressed: () {
+              callRegisterApi();
+            },
+            child: Text(
+              "Register User",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       );
     }
@@ -102,10 +133,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   callRegisterApi() {
-    AuthApiManager.registerApi("amr1", "amr1@amr1.com", "123456", (User user) {
+    AuthApiManager.registerApi("mmd10", "mmd10@mmd.com", "123456",
+        (UserRegister user) {
       print("=========================================");
-      print("user email : " + user.email + "name :" + user.name);
-      print("Success Brand API");
+      print("user email : " + user.user.email + "name :" + user.user.name);
+      print("Success register API");
     }, (QueryResult x) {
       print("error");
     });
@@ -120,6 +152,28 @@ class _MyHomePageState extends State<MyHomePage> {
       print("Access Token: ${authPayload.access_token}");
     }, (QueryResult x) {
       print("error");
+    });
+  }
+
+  callUpdateProfileApi() {
+    UserApiManager.updateProfile("fasfos", "015", (bool isUpdated) {
+      print("=========================================");
+      print("Success update profile $isUpdated");
+    }, (QueryResult error) {
+      print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+      print("Fail update profile");
+    });
+  }
+
+  callMyProfileApi() {
+    UserApiManager.myProfile((UserMyProfile user) {
+      print("=========================================");
+      print("Success get my profile");
+      print(user.user.id);
+      print(user.user.name);
+    }, (QueryResult error) {
+      print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+      print("Fail get my profile");
     });
   }
 }
