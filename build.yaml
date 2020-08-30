@@ -12,3 +12,6 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/*.graphql
               output: lib/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/auth/*.graphql
+              output: lib/generatedql/auth/graphql_api.dart

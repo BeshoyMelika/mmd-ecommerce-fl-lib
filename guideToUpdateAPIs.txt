@@ -6,9 +6,10 @@ Our GraphQl needs code generation and update schema to work perfectly.
     --> click the play icon to update the schema you will find new file generated called general.schema.json
     --> rename general.schema.json to general.schema.graphql (delete the old one if exist)
 
-# Step 2 add your query, mutation and handle cases you want.
+# Step 2
+    --> add your query, mutation and handle cases you want.
+    --> update build.yaml file according to your added queries and mutations to generate code successfully
 
 # Step 3 class generation
     --> run this command ""flutter pub run build_runner build"" to generate need classes
 
-    
