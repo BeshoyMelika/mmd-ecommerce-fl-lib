@@ -10,3 +10,7 @@ class MmdECommerceFlLib {
     BaseApiManager.setUrl(baseUrl);
   }
 }
+
+
+// Todo --> manage token session with the library ..
+// Todo --> auto refresh token with the library ..
