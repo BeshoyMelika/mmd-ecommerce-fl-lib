@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/main_second.dart';
 
+import 'APIs.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -29,12 +31,14 @@ class _MyHomePageState extends State<MyHomePage> {
   AuthPayload auth;
   var isError = false;
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController codeController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   void initState() {
     print("init state");
     // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
-    //Future.delayed(Duration(microseconds: 0)).then((value) => callBrandsApi());
-    //Future.delayed(Duration(microseconds: 0)).then((value) => callRegisterApi());
     super.initState();
   }
 
@@ -89,6 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Open Main Second"),
           ),
+          TextField(
+            controller: emailController,
+            decoration: InputDecoration(hintText: "email"),
+          ),
+          TextField(
+            controller: codeController,
+            decoration: InputDecoration(hintText: "code"),
+          ),
+          TextField(
+            controller: passwordController,
+            decoration: InputDecoration(hintText: "password"),
+          ),
           RaisedButton(
             color: Colors.brown,
             onPressed: () {
@@ -119,28 +135,35 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(color: Colors.white),
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: Colors.black,
+                onPressed: () {
+                  callForgetPasswordApi(emailController.text);
+                },
+                child: Text(
+                  "Forgot Pass",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.black,
+                onPressed: () {
+                  callResetPasswordApi(emailController.text,
+                      passwordController.text, codeController.text);
+                },
+                child: Text(
+                  "Reset Pass",
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          )
         ],
       );
     }
-  }
-
-  callBrandsApi() {
-    GeneralApiManager.brandsApi((List<Brand> brands) {
-      print("=========================================");
-      print("Success Brand API");
-      print(brands);
-    }, () {});
-  }
-
-  callRegisterApi() {
-    AuthApiManager.registerApi("mmd10", "mmd10@mmd.com", "123456",
-        (UserRegister user) {
-      print("=========================================");
-      print("user email : " + user.user.email + "name :" + user.user.name);
-      print("Success register API");
-    }, (QueryResult x) {
-      print("error");
-    });
   }
 
   callLoginApi() {
@@ -152,28 +175,6 @@ class _MyHomePageState extends State<MyHomePage> {
       print("Access Token: ${authPayload.access_token}");
     }, (QueryResult x) {
       print("error");
-    });
-  }
-
-  callUpdateProfileApi() {
-    UserApiManager.updateProfile("fasfos", "015", (bool isUpdated) {
-      print("=========================================");
-      print("Success update profile $isUpdated");
-    }, (QueryResult error) {
-      print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-      print("Fail update profile");
-    });
-  }
-
-  callMyProfileApi() {
-    UserApiManager.myProfile((UserMyProfile user) {
-      print("=========================================");
-      print("Success get my profile");
-      print(user.user.id);
-      print(user.user.name);
-    }, (QueryResult error) {
-      print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-      print("Fail get my profile");
     });
   }
 }

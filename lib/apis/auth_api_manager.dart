@@ -28,4 +28,30 @@ class AuthApiManager extends BaseApiManager {
       success(UserRegister(SignUp.fromJson(result.data).register));
     }
   }
+
+  static Future<void> forgetPasswordApi(
+      String email, Function success, Function fail) async {
+    var result = await BaseApiManager.client().mutate(MutationOptions(
+        documentNode: ForgetPasswordQuery().document,
+        variables: ForgetPasswordArguments(email: email).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(ForgetPassword.fromJson(result.data).forgetPassword);
+    }
+  }
+
+  static Future<void> resetPasswordApi(String email, String newPassword,
+      String codeOrToken, Function success, Function fail) async {
+    var result = await BaseApiManager.client().mutate(MutationOptions(
+        documentNode: ResetPasswordQuery().document,
+        variables: ResetPasswordArguments(
+                email: email, newPassword: newPassword, token: codeOrToken)
+            .toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(ResetPassword.fromJson(result.data).resetPassword);
+    }
+  }
 }

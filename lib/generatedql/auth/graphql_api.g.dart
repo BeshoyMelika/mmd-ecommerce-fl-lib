@@ -86,3 +86,51 @@ Map<String, dynamic> _$SignUpArgumentsToJson(SignUpArguments instance) =>
       'email': instance.email,
       'password': instance.password,
     };
+
+ForgetPassword _$ForgetPasswordFromJson(Map<String, dynamic> json) {
+  return ForgetPassword()..forgetPassword = json['forgetPassword'] as bool;
+}
+
+Map<String, dynamic> _$ForgetPasswordToJson(ForgetPassword instance) =>
+    <String, dynamic>{
+      'forgetPassword': instance.forgetPassword,
+    };
+
+ForgetPasswordArguments _$ForgetPasswordArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ForgetPasswordArguments(
+    email: json['email'] as String,
+  );
+}
+
+Map<String, dynamic> _$ForgetPasswordArgumentsToJson(
+        ForgetPasswordArguments instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+    };
+
+ResetPassword _$ResetPasswordFromJson(Map<String, dynamic> json) {
+  return ResetPassword()..resetPassword = json['resetPassword'] as bool;
+}
+
+Map<String, dynamic> _$ResetPasswordToJson(ResetPassword instance) =>
+    <String, dynamic>{
+      'resetPassword': instance.resetPassword,
+    };
+
+ResetPasswordArguments _$ResetPasswordArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ResetPasswordArguments(
+    email: json['email'] as String,
+    newPassword: json['newPassword'] as String,
+    token: json['token'] as String,
+  );
+}
+
+Map<String, dynamic> _$ResetPasswordArgumentsToJson(
+        ResetPasswordArguments instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'newPassword': instance.newPassword,
+      'token': instance.token,
+    };
