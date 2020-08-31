@@ -55,10 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       isLoading = true;
     });
-    AuthApiManager.loginApi('test@mail.com', '123456789', (AuthPayload auth) {
+    AuthApiManager.loginApi('test@mail.com', '123456789',
+        (AuthPayloadLogin auth) {
       setState(() {
         this.isLoading = false;
-        this.auth = auth;
+        this.auth = auth.authPayload;
       });
     }, () {
       this.isError = true;
@@ -168,11 +169,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   callLoginApi() {
     AuthApiManager.loginApi("test@mail.com", "123456789",
-        (AuthPayload authPayload) {
-      auth = authPayload;
+        (AuthPayloadLogin authPayload) {
+      auth = authPayload.authPayload;
       print("=========================================");
       print("Success Login");
-      print("Access Token: ${authPayload.access_token}");
+      print("Access Token: ${authPayload.authPayload.access_token}");
     }, (QueryResult x) {
       print("error");
     });

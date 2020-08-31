@@ -13,3 +13,15 @@ class UserRegister {
 
   UserRegister(this.user);
 }
+
+class AuthPayloadLogin {
+  final A.AuthPayload authPayload;
+
+  AuthPayloadLogin(this.authPayload);
+}
+
+class AuthPayloadRefreshToken {
+  final U.AuthPayload authPayload;
+
+  AuthPayloadRefreshToken(this.authPayload);
+}

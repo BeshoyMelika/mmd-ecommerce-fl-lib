@@ -12,7 +12,7 @@ class AuthApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(SignIn.fromJson(result.data).login);
+      success(AuthPayloadLogin(SignIn.fromJson(result.data).login));
     }
   }
 

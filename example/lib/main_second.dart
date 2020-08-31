@@ -15,8 +15,8 @@ class _MainSecondState extends State<MainSecond> {
   @override
   void initState() {
     print("init state");
-    /*Future.delayed(Duration(microseconds: 0))
-        .then((value) => callRefreshTokenApi(widget.refreshToken));*/
+    Future.delayed(Duration(microseconds: 0))
+        .then((value) => callRefreshTokenApi(widget.refreshToken));
     super.initState();
   }
 

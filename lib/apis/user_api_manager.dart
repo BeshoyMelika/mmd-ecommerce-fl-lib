@@ -12,7 +12,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(RefreshToken.fromJson(result.data).refreshToken);
+      success(AuthPayloadRefreshToken(RefreshToken.fromJson(result.data).refreshToken));
     }
   }
 
