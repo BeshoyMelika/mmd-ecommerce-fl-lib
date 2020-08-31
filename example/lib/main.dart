@@ -78,13 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Text("Result Success \n${auth?.access_token}"),
           RaisedButton(
-            color: Colors.amber,
-            onPressed: () {
-              callLoginApi();
-            },
-            child: Text("Test login"),
-          ),
-          RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -94,17 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Open Main Second"),
           ),
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(hintText: "email"),
-          ),
-          TextField(
-            controller: codeController,
-            decoration: InputDecoration(hintText: "code"),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(hintText: "password"),
+          RaisedButton(
+            color: Colors.amber,
+            onPressed: () {
+              callLoginApi();
+            },
+            child: Text("Test login"),
           ),
           RaisedButton(
             color: Colors.brown,
@@ -125,6 +113,18 @@ class _MyHomePageState extends State<MyHomePage> {
               "get profile",
               style: TextStyle(color: Colors.white),
             ),
+          ),
+          TextField(
+            controller: emailController,
+            decoration: InputDecoration(hintText: "email"),
+          ),
+          TextField(
+            controller: codeController,
+            decoration: InputDecoration(hintText: "code"),
+          ),
+          TextField(
+            controller: passwordController,
+            decoration: InputDecoration(hintText: "password"),
           ),
           RaisedButton(
             color: Colors.green,
@@ -171,6 +171,9 @@ class _MyHomePageState extends State<MyHomePage> {
     AuthApiManager.loginApi("test@mail.com", "123456789",
         (AuthPayloadLogin authPayload) {
       auth = authPayload.authPayload;
+      MmdECommerceFlLib.submitTokeAndTokenType(
+          authPayload.authPayload.access_token,
+          authPayload.authPayload.token_type);
       print("=========================================");
       print("Success Login");
       print("Access Token: ${authPayload.authPayload.access_token}");

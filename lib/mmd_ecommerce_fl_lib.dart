@@ -9,8 +9,14 @@ class MmdECommerceFlLib {
   static void submitBaseUrl(String baseUrl) {
     BaseApiManager.setUrl(baseUrl);
   }
+
+  static void submitTokeAndTokenType(String token, String tokenType) {
+    BaseApiManager.setToken(token);
+    BaseApiManager.setTokenType(tokenType);
+    BaseApiManager.refreshClient();
+  }
 }
 
-
+// Todo --> language headers ..
 // Todo --> manage token session with the library ..
 // Todo --> auto refresh token with the library ..
