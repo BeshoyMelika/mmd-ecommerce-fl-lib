@@ -12,3 +12,7 @@
 
 ## [0.0.5] - 0.0.5
 * Enhanced graphql client.
+
+## [0.0.6] - 0.0.6
+* More enhancement for graphql client, Added Forget, Rest password APIs.
+* Added Update, Get Profile APIs. Separated APIs in directories ...
