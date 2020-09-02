@@ -19,8 +19,8 @@ callRegisterApi() {
   });
 }
 
-callUpdateProfileApi() {
-  UserApiManager.updateProfile("fasfos", "015", (bool isUpdated) {
+callUpdateProfileApi(String name, String mobile) {
+  UserApiManager.updateProfile(name, mobile, (bool isUpdated) {
     print("=========================================");
     print("Success update profile $isUpdated");
   }, (QueryResult error) {
@@ -35,6 +35,7 @@ callMyProfileApi() {
     print("Success get my profile");
     print(user.user.id);
     print(user.user.name);
+    print(user.user.mobile);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail get my profile");

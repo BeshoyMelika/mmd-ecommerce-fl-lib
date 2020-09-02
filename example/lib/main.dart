@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           RaisedButton(
             color: Colors.brown,
             onPressed: () {
-              callUpdateProfileApi();
+              callUpdateProfileApi(emailController.text, codeController.text);
             },
             child: Text(
               "update Profile",
