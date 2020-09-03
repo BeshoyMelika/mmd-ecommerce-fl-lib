@@ -1,4 +1,4 @@
-mutation AddToCart($productId:Int!,$quantity:Int!){
+mutation AddToCart($productId:ID!,$quantity:Int!){
   addToCart(items:{
     product_id:$productId
     quantity:$quantity

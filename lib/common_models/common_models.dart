@@ -1,5 +1,8 @@
 import 'package:mmd_ecommerce_fl_lib/generatedql/auth/graphql_api.dart' as A;
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart' as U;
+import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart'
+    as P;
+import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart' as C;
 
 /// this class to solve conflicts between the same model names of the graphql api
 class UserMyProfile {
@@ -24,4 +27,15 @@ class AuthPayloadRefreshToken {
   final U.AuthPayload authPayload;
 
   AuthPayloadRefreshToken(this.authPayload);
+}
+
+class MediaCard {
+  final C.Media media;
+
+  MediaCard(this.media);
+}
+
+class MediaProduct {
+  final P.Media media;
+  MediaProduct(this.media);
 }

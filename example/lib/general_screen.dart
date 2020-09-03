@@ -48,6 +48,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            RaisedButton(
+              color: Colors.blueGrey,
+              onPressed: () async {
+                await getCard();
+              },
+              child: Text(
+                "get Card Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

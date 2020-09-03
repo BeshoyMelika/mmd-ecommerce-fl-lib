@@ -27,7 +27,7 @@ class AddToCartArguments extends JsonSerializable with EquatableMixin {
   factory AddToCartArguments.fromJson(Map<String, dynamic> json) =>
       _$AddToCartArgumentsFromJson(json);
 
-  final int productId;
+  final String productId;
 
   final int quantity;
 
@@ -47,8 +47,7 @@ class AddToCartQuery extends GraphQLQuery<AddToCart, AddToCartArguments> {
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'productId')),
-              type:
-                  NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
@@ -92,4 +91,244 @@ class AddToCartQuery extends GraphQLQuery<AddToCart, AddToCartArguments> {
   List<Object> get props => [document, operationName, variables];
   @override
   AddToCart parse(Map<String, dynamic> json) => AddToCart.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class GetCart with EquatableMixin {
+  GetCart();
+
+  factory GetCart.fromJson(Map<String, dynamic> json) =>
+      _$GetCartFromJson(json);
+
+  Cart cart;
+
+  @override
+  List<Object> get props => [cart];
+  Map<String, dynamic> toJson() => _$GetCartToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Cart with EquatableMixin {
+  Cart();
+
+  factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
+
+  String total;
+
+  List<CartItem> items;
+
+  @override
+  List<Object> get props => [total, items];
+  Map<String, dynamic> toJson() => _$CartToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CartItem with EquatableMixin {
+  CartItem();
+
+  factory CartItem.fromJson(Map<String, dynamic> json) =>
+      _$CartItemFromJson(json);
+
+  bool available;
+
+  int quantity;
+
+  Product product;
+
+  @override
+  List<Object> get props => [available, quantity, product];
+  Map<String, dynamic> toJson() => _$CartItemToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Product with EquatableMixin {
+  Product();
+
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
+
+  String id;
+
+  String price;
+
+  bool available;
+
+  ProductData details;
+
+  @override
+  List<Object> get props => [id, price, available, details];
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ProductData with EquatableMixin {
+  ProductData();
+
+  factory ProductData.fromJson(Map<String, dynamic> json) =>
+      _$ProductDataFromJson(json);
+
+  String name;
+
+  Media cover;
+
+  Unit unit;
+
+  @override
+  List<Object> get props => [name, cover, unit];
+  Map<String, dynamic> toJson() => _$ProductDataToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Media with EquatableMixin {
+  Media();
+
+  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
+
+  String url;
+
+  @override
+  List<Object> get props => [url];
+  Map<String, dynamic> toJson() => _$MediaToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Unit with EquatableMixin {
+  Unit();
+
+  factory Unit.fromJson(Map<String, dynamic> json) => _$UnitFromJson(json);
+
+  String id;
+
+  String name;
+
+  @override
+  List<Object> get props => [id, name];
+  Map<String, dynamic> toJson() => _$UnitToJson(this);
+}
+
+class GetCartQuery extends GraphQLQuery<GetCart, JsonSerializable> {
+  GetCartQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'GetCart'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'cart'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'total'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'items'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'available'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'quantity'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'product'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: SelectionSetNode(selections: [
+                            FieldNode(
+                                name: NameNode(value: 'id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'price'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'available'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'details'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: SelectionSetNode(selections: [
+                                  FieldNode(
+                                      name: NameNode(value: 'name'),
+                                      alias: null,
+                                      arguments: [],
+                                      directives: [],
+                                      selectionSet: null),
+                                  FieldNode(
+                                      name: NameNode(value: 'cover'),
+                                      alias: null,
+                                      arguments: [],
+                                      directives: [],
+                                      selectionSet:
+                                          SelectionSetNode(selections: [
+                                        FieldNode(
+                                            name: NameNode(value: 'url'),
+                                            alias: null,
+                                            arguments: [],
+                                            directives: [],
+                                            selectionSet: null)
+                                      ])),
+                                  FieldNode(
+                                      name: NameNode(value: 'unit'),
+                                      alias: null,
+                                      arguments: [],
+                                      directives: [],
+                                      selectionSet:
+                                          SelectionSetNode(selections: [
+                                        FieldNode(
+                                            name: NameNode(value: 'id'),
+                                            alias: null,
+                                            arguments: [],
+                                            directives: [],
+                                            selectionSet: null),
+                                        FieldNode(
+                                            name: NameNode(value: 'name'),
+                                            alias: null,
+                                            arguments: [],
+                                            directives: [],
+                                            selectionSet: null)
+                                      ]))
+                                ]))
+                          ]))
+                    ]))
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'GetCart';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  GetCart parse(Map<String, dynamic> json) => GetCart.fromJson(json);
 }
