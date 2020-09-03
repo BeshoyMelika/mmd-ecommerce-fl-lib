@@ -1,0 +1,22 @@
+mutation CreateAddress($first_name: String!,
+    $last_name: String!,
+    $area_id: ID!,
+    $info: String!,
+    $additional_info: String!,
+    $mobile: String!,
+    $lat: String!,
+    $lng: String!,
+   ){
+
+    createAddress(input:{
+        first_name:$first_name
+        last_name:$last_name
+        area_id:$area_id
+        info:$info
+        additional_info:$additional_info
+        mobile:$mobile
+        lat:$lat
+        lng:$lng
+        })
+
+}
