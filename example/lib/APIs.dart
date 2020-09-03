@@ -140,3 +140,14 @@ sliderApi() async {
     print(error.exception);
   });
 }
+
+addToCard() async {
+  await CartApiManager.addToCArt(1, 2, (bool success) {
+    print("=========================================");
+    print("Success addTocard api  $success");
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail addTocard api");
+    print(error.exception);
+  });
+}

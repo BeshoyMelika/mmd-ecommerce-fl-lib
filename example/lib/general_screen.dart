@@ -28,6 +28,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            RaisedButton(
+              color: Colors.blue,
+              onPressed: () async {
+                await addToCard();
+              },
+              child: Text(
+                "Add To Cart",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

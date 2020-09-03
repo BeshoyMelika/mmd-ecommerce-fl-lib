@@ -21,3 +21,6 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/address/*.graphql
               output: lib/generatedql/address/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/cart/*.graphql
+              output: lib/generatedql/cart/graphql_api.dart
