@@ -20,18 +20,18 @@ Map<String, dynamic> _$RefreshTokenToJson(RefreshToken instance) =>
 
 AuthPayload _$AuthPayloadFromJson(Map<String, dynamic> json) {
   return AuthPayload()
-    ..access_token = json['access_token'] as String
-    ..refresh_token = json['refresh_token'] as String
-    ..expires_in = json['expires_in'] as int
-    ..token_type = json['token_type'] as String;
+    ..accessToken = json['access_token'] as String
+    ..refreshToken = json['refresh_token'] as String
+    ..expiresIn = json['expires_in'] as int
+    ..tokenType = json['token_type'] as String;
 }
 
 Map<String, dynamic> _$AuthPayloadToJson(AuthPayload instance) =>
     <String, dynamic>{
-      'access_token': instance.access_token,
-      'refresh_token': instance.refresh_token,
-      'expires_in': instance.expires_in,
-      'token_type': instance.token_type,
+      'access_token': instance.accessToken,
+      'refresh_token': instance.refreshToken,
+      'expires_in': instance.expiresIn,
+      'token_type': instance.tokenType,
     };
 
 RefreshTokenArguments _$RefreshTokenArgumentsFromJson(

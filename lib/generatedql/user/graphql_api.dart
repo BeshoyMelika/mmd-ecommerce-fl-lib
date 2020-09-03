@@ -27,17 +27,16 @@ class AuthPayload with EquatableMixin {
   factory AuthPayload.fromJson(Map<String, dynamic> json) =>
       _$AuthPayloadFromJson(json);
 
-  String access_token;
+  String accessToken;
 
-  String refresh_token;
+  String refreshToken;
 
-  int expires_in;
+  int expiresIn;
 
-  String token_type;
+  String tokenType;
 
   @override
-  List<Object> get props =>
-      [access_token, refresh_token, expires_in, token_type];
+  List<Object> get props => [accessToken, refreshToken, expiresIn, tokenType];
   Map<String, dynamic> toJson() => _$AuthPayloadToJson(this);
 }
 

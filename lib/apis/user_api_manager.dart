@@ -55,11 +55,11 @@ class UserApiManager extends BaseApiManager {
     var result = await BaseApiManager.authClient().mutate(MutationOptions(
         documentNode: CreateAddressQuery().document,
         variables: CreateAddressArguments(
-                first_name: firstName,
-                last_name: lastName,
-                area_id: areaId,
+                firstName: firstName,
+                lastName: lastName,
+                areaId: areaId,
                 info: info,
-                additional_info: additionalInfo,
+                additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
                 lng: lng)
@@ -87,11 +87,11 @@ class UserApiManager extends BaseApiManager {
         documentNode: UpdateAddressQuery().document,
         variables: UpdateAddressArguments(
                 id: id,
-                first_name: firstName,
-                last_name: lastName,
-                area_id: areaId,
+                firstName: firstName,
+                lastName: lastName,
+                areaId: areaId,
                 info: info,
-                additional_info: additionalInfo,
+                additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
                 lng: lng)

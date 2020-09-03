@@ -23,11 +23,11 @@ class CreateAddress with EquatableMixin {
 @JsonSerializable(explicitToJson: true)
 class CreateAddressArguments extends JsonSerializable with EquatableMixin {
   CreateAddressArguments(
-      {this.first_name,
-      this.last_name,
-      this.area_id,
+      {this.firstName,
+      this.lastName,
+      this.areaId,
       this.info,
-      this.additional_info,
+      this.additionalInfo,
       this.mobile,
       this.lat,
       this.lng});
@@ -35,15 +35,15 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
   factory CreateAddressArguments.fromJson(Map<String, dynamic> json) =>
       _$CreateAddressArgumentsFromJson(json);
 
-  final String first_name;
+  final String firstName;
 
-  final String last_name;
+  final String lastName;
 
-  final String area_id;
+  final String areaId;
 
   final String info;
 
-  final String additional_info;
+  final String additionalInfo;
 
   final String mobile;
 
@@ -53,7 +53,7 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
 
   @override
   List<Object> get props =>
-      [first_name, last_name, area_id, info, additional_info, mobile, lat, lng];
+      [firstName, lastName, areaId, info, additionalInfo, mobile, lat, lng];
   Map<String, dynamic> toJson() => _$CreateAddressArgumentsToJson(this);
 }
 
@@ -68,19 +68,19 @@ class CreateAddressQuery
         name: NameNode(value: 'CreateAddress'),
         variableDefinitions: [
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'first_name')),
+              variable: VariableNode(name: NameNode(value: 'firstName')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'last_name')),
+              variable: VariableNode(name: NameNode(value: 'lastName')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'area_id')),
+              variable: VariableNode(name: NameNode(value: 'areaId')),
               type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
@@ -91,7 +91,7 @@ class CreateAddressQuery
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'additional_info')),
+              variable: VariableNode(name: NameNode(value: 'additionalInfo')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
@@ -126,23 +126,22 @@ class CreateAddressQuery
                     value: ObjectValueNode(fields: [
                       ObjectFieldNode(
                           name: NameNode(value: 'first_name'),
-                          value: VariableNode(
-                              name: NameNode(value: 'first_name'))),
+                          value:
+                              VariableNode(name: NameNode(value: 'firstName'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'last_name'),
                           value:
-                              VariableNode(name: NameNode(value: 'last_name'))),
+                              VariableNode(name: NameNode(value: 'lastName'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'area_id'),
-                          value:
-                              VariableNode(name: NameNode(value: 'area_id'))),
+                          value: VariableNode(name: NameNode(value: 'areaId'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'info'),
                           value: VariableNode(name: NameNode(value: 'info'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'additional_info'),
                           value: VariableNode(
-                              name: NameNode(value: 'additional_info'))),
+                              name: NameNode(value: 'additionalInfo'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'mobile'),
                           value: VariableNode(name: NameNode(value: 'mobile'))),
@@ -320,15 +319,15 @@ class UserAddress with EquatableMixin {
 
   String id;
 
-  String first_name;
+  String firstName;
 
-  String last_name;
+  String lastName;
 
   Area area;
 
   String info;
 
-  String additional_info;
+  String additionalInfo;
 
   String mobile;
 
@@ -337,17 +336,8 @@ class UserAddress with EquatableMixin {
   String lng;
 
   @override
-  List<Object> get props => [
-        id,
-        first_name,
-        last_name,
-        area,
-        info,
-        additional_info,
-        mobile,
-        lat,
-        lng
-      ];
+  List<Object> get props =>
+      [id, firstName, lastName, area, info, additionalInfo, mobile, lat, lng];
   Map<String, dynamic> toJson() => _$UserAddressToJson(this);
 }
 
@@ -604,11 +594,11 @@ class UpdateAddress with EquatableMixin {
 class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
   UpdateAddressArguments(
       {this.id,
-      this.first_name,
-      this.last_name,
-      this.area_id,
+      this.firstName,
+      this.lastName,
+      this.areaId,
       this.info,
-      this.additional_info,
+      this.additionalInfo,
       this.mobile,
       this.lat,
       this.lng});
@@ -618,15 +608,15 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
 
   final String id;
 
-  final String first_name;
+  final String firstName;
 
-  final String last_name;
+  final String lastName;
 
-  final String area_id;
+  final String areaId;
 
   final String info;
 
-  final String additional_info;
+  final String additionalInfo;
 
   final String mobile;
 
@@ -635,17 +625,8 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
   final String lng;
 
   @override
-  List<Object> get props => [
-        id,
-        first_name,
-        last_name,
-        area_id,
-        info,
-        additional_info,
-        mobile,
-        lat,
-        lng
-      ];
+  List<Object> get props =>
+      [id, firstName, lastName, areaId, info, additionalInfo, mobile, lat, lng];
   Map<String, dynamic> toJson() => _$UpdateAddressArgumentsToJson(this);
 }
 
@@ -665,19 +646,19 @@ class UpdateAddressQuery
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'first_name')),
+              variable: VariableNode(name: NameNode(value: 'firstName')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'last_name')),
+              variable: VariableNode(name: NameNode(value: 'lastName')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'area_id')),
+              variable: VariableNode(name: NameNode(value: 'areaId')),
               type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
@@ -688,7 +669,7 @@ class UpdateAddressQuery
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'additional_info')),
+              variable: VariableNode(name: NameNode(value: 'additionalInfo')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
@@ -726,23 +707,22 @@ class UpdateAddressQuery
                     value: ObjectValueNode(fields: [
                       ObjectFieldNode(
                           name: NameNode(value: 'first_name'),
-                          value: VariableNode(
-                              name: NameNode(value: 'first_name'))),
+                          value:
+                              VariableNode(name: NameNode(value: 'firstName'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'last_name'),
                           value:
-                              VariableNode(name: NameNode(value: 'last_name'))),
+                              VariableNode(name: NameNode(value: 'lastName'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'area_id'),
-                          value:
-                              VariableNode(name: NameNode(value: 'area_id'))),
+                          value: VariableNode(name: NameNode(value: 'areaId'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'info'),
                           value: VariableNode(name: NameNode(value: 'info'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'additional_info'),
                           value: VariableNode(
-                              name: NameNode(value: 'additional_info'))),
+                              name: NameNode(value: 'additionalInfo'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'mobile'),
                           value: VariableNode(name: NameNode(value: 'mobile'))),

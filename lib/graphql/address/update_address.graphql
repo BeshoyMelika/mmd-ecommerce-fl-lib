@@ -1,20 +1,20 @@
 mutation UpdateAddress($id:ID!,
-    $first_name: String!,
-    $last_name: String!,
-    $area_id: ID!,
+    $firstName: String!,
+    $lastName: String!,
+    $areaId: ID!,
     $info: String!,
-    $additional_info: String!,
+    $additionalInfo: String!,
     $mobile: String!,
     $lat: String!,
     $lng: String!,
    ){
 
     updateAddress(id:$id,input:{
-        first_name:$first_name
-        last_name:$last_name
-        area_id:$area_id
+        first_name:$firstName
+        last_name:$lastName
+        area_id:$areaId
         info:$info
-        additional_info:$additional_info
+        additional_info:$additionalInfo
         mobile:$mobile
         lat:$lat
         lng:$lng

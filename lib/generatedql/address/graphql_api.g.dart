@@ -18,11 +18,11 @@ Map<String, dynamic> _$CreateAddressToJson(CreateAddress instance) =>
 CreateAddressArguments _$CreateAddressArgumentsFromJson(
     Map<String, dynamic> json) {
   return CreateAddressArguments(
-    first_name: json['first_name'] as String,
-    last_name: json['last_name'] as String,
-    area_id: json['area_id'] as String,
+    firstName: json['firstName'] as String,
+    lastName: json['lastName'] as String,
+    areaId: json['areaId'] as String,
     info: json['info'] as String,
-    additional_info: json['additional_info'] as String,
+    additionalInfo: json['additionalInfo'] as String,
     mobile: json['mobile'] as String,
     lat: json['lat'] as String,
     lng: json['lng'] as String,
@@ -32,11 +32,11 @@ CreateAddressArguments _$CreateAddressArgumentsFromJson(
 Map<String, dynamic> _$CreateAddressArgumentsToJson(
         CreateAddressArguments instance) =>
     <String, dynamic>{
-      'first_name': instance.first_name,
-      'last_name': instance.last_name,
-      'area_id': instance.area_id,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'areaId': instance.areaId,
       'info': instance.info,
-      'additional_info': instance.additional_info,
+      'additionalInfo': instance.additionalInfo,
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
@@ -122,13 +122,13 @@ Map<String, dynamic> _$PaginatorInfoToJson(PaginatorInfo instance) =>
 UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
   return UserAddress()
     ..id = json['id'] as String
-    ..first_name = json['first_name'] as String
-    ..last_name = json['last_name'] as String
+    ..firstName = json['first_name'] as String
+    ..lastName = json['last_name'] as String
     ..area = json['area'] == null
         ? null
         : Area.fromJson(json['area'] as Map<String, dynamic>)
     ..info = json['info'] as String
-    ..additional_info = json['additional_info'] as String
+    ..additionalInfo = json['additional_info'] as String
     ..mobile = json['mobile'] as String
     ..lat = json['lat'] as String
     ..lng = json['lng'] as String;
@@ -137,11 +137,11 @@ UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserAddressToJson(UserAddress instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'first_name': instance.first_name,
-      'last_name': instance.last_name,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
       'area': instance.area?.toJson(),
       'info': instance.info,
-      'additional_info': instance.additional_info,
+      'additional_info': instance.additionalInfo,
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
@@ -196,11 +196,11 @@ UpdateAddressArguments _$UpdateAddressArgumentsFromJson(
     Map<String, dynamic> json) {
   return UpdateAddressArguments(
     id: json['id'] as String,
-    first_name: json['first_name'] as String,
-    last_name: json['last_name'] as String,
-    area_id: json['area_id'] as String,
+    firstName: json['firstName'] as String,
+    lastName: json['lastName'] as String,
+    areaId: json['areaId'] as String,
     info: json['info'] as String,
-    additional_info: json['additional_info'] as String,
+    additionalInfo: json['additionalInfo'] as String,
     mobile: json['mobile'] as String,
     lat: json['lat'] as String,
     lng: json['lng'] as String,
@@ -211,11 +211,11 @@ Map<String, dynamic> _$UpdateAddressArgumentsToJson(
         UpdateAddressArguments instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'first_name': instance.first_name,
-      'last_name': instance.last_name,
-      'area_id': instance.area_id,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'areaId': instance.areaId,
       'info': instance.info,
-      'additional_info': instance.additional_info,
+      'additionalInfo': instance.additionalInfo,
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,

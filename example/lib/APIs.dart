@@ -70,9 +70,9 @@ callRefreshTokenApi(String refreshToken) {
       (AuthPayloadRefreshToken authPayload) {
     print("=========================================");
     print("Success Refresh Token");
-    print(authPayload.authPayload.access_token);
+    print(authPayload.authPayload.accessToken);
     print("\n ========================================= \n");
-    print(authPayload.authPayload.refresh_token);
+    print(authPayload.authPayload.refreshToken);
     print("\n ========================================= \n");
   }, () {
     print("\n ========================================= \n");

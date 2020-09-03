@@ -1,6 +1,6 @@
 name: mmd_ecommerce_fl_lib
 description: It is a backend library using GraphQl to facilitate connection to our different e-commerce backend endpoints.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/BeshoyMelika/mmd-ecommerce-fl-lib
 
 environment:
