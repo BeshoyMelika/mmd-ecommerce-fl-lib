@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
-import 'package:mmd_ecommerce_fl_lib_example/address_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/main_second.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/main_second.dart';
 
-import 'APIs.dart';
-import 'general_screen.dart';
+import 'apis/auth_apis.dart';
+import 'apis/user_apis.dart';
 
 void main() {
   runApp(MyApp());

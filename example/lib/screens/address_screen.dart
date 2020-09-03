@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mmd_ecommerce_fl_lib_example/APIs.dart';
+import 'package:mmd_ecommerce_fl_lib_example/apis/address_apis.dart';
 
 class AddressScreen extends StatefulWidget {
   @override
