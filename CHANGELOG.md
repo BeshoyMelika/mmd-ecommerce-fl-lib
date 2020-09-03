@@ -16,3 +16,8 @@
 ## [0.0.6] - 0.0.6
 * More enhancement for graphql client, Added Forget, Rest password APIs.
 * Added Update, Get Profile APIs. Separated APIs in directories ...
+
+## [0.0.7] - 0.0.7
+* Added Add To Cart, get Cart API,
+* Added Create,delete,update,Get address API,
+* Added Categories API,
