@@ -1,0 +1,9 @@
+query Categories{
+  categories {
+    id
+    name
+    cover {
+      url
+    }
+  }
+}

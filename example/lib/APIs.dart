@@ -151,3 +151,16 @@ addToCard() async {
     print(error.exception);
   });
 }
+
+categoriesApi() async {
+  await GeneralApiManager.getAllCategoriesApi((List<Category> list) {
+    print("=========================================");
+    print("Success sliders api ");
+    print(list.length);
+    print(list[0].name);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail sliders api");
+    print(error.exception);
+  });
+}
