@@ -4,6 +4,7 @@ import 'package:mmd_ecommerce_fl_lib_example/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/main_second.dart';
 
 import 'APIs.dart';
+import 'general_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -89,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text("Open Main Second"),
           ),
           RaisedButton(
+            color: Colors.amber,
             onPressed: () {
               Navigator.push(
                 context,
@@ -96,6 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             child: Text("Open Address Scren"),
+          ),
+          RaisedButton(
+            color: Colors.blueAccent,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GeneralScreen()),
+              );
+            },
+            child: Text("Open General Scren"),
           ),
           RaisedButton(
             color: Colors.amber,
@@ -181,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await AuthApiManager.loginApi("test@mail.com", "123456789",
         (AuthPayloadLogin authPayload) async {
       auth = authPayload.authPayload;
-      await MmdECommerceFlLib.submitTokeAndTokenType(
+      MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.authPayload.access_token,
           authPayload.authPayload.token_type);
       print("=========================================");

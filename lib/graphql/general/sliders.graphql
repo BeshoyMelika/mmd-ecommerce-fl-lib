@@ -1,0 +1,11 @@
+query Sliders{
+  sliders {
+    id
+    title
+    description
+    link
+    cover{
+      url
+    }
+  }
+}

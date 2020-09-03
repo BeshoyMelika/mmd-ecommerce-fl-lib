@@ -127,3 +127,16 @@ deleteAddress() async {
     print(error.exception);
   });
 }
+
+sliderApi() async {
+  await GeneralApiManager.sliders((List<Slider> list) {
+    print("=========================================");
+    print("Success sliders api ");
+    print(list.length);
+    print(list[0].title);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail sliders api");
+    print(error.exception);
+  });
+}
