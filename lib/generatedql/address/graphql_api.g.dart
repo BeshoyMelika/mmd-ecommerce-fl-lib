@@ -26,6 +26,7 @@ CreateAddressArguments _$CreateAddressArgumentsFromJson(
     mobile: json['mobile'] as String,
     lat: json['lat'] as String,
     lng: json['lng'] as String,
+    isDefault: json['isDefault'] as bool,
   );
 }
 
@@ -40,6 +41,7 @@ Map<String, dynamic> _$CreateAddressArgumentsToJson(
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
+      'isDefault': instance.isDefault,
     };
 
 DeleteAddress _$DeleteAddressFromJson(Map<String, dynamic> json) {
@@ -122,13 +124,13 @@ Map<String, dynamic> _$PaginatorInfoToJson(PaginatorInfo instance) =>
 UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
   return UserAddress()
     ..id = json['id'] as String
-    ..firstName = json['first_name'] as String
-    ..lastName = json['last_name'] as String
+    ..first_name = json['first_name'] as String
+    ..last_name = json['last_name'] as String
     ..area = json['area'] == null
         ? null
         : Area.fromJson(json['area'] as Map<String, dynamic>)
     ..info = json['info'] as String
-    ..additionalInfo = json['additional_info'] as String
+    ..additional_info = json['additional_info'] as String
     ..mobile = json['mobile'] as String
     ..lat = json['lat'] as String
     ..lng = json['lng'] as String;
@@ -137,11 +139,11 @@ UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserAddressToJson(UserAddress instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'first_name': instance.firstName,
-      'last_name': instance.lastName,
+      'first_name': instance.first_name,
+      'last_name': instance.last_name,
       'area': instance.area?.toJson(),
       'info': instance.info,
-      'additional_info': instance.additionalInfo,
+      'additional_info': instance.additional_info,
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,

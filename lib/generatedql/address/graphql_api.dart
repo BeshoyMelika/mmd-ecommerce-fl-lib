@@ -30,7 +30,8 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
       this.additionalInfo,
       this.mobile,
       this.lat,
-      this.lng});
+      this.lng,
+      this.isDefault});
 
   factory CreateAddressArguments.fromJson(Map<String, dynamic> json) =>
       _$CreateAddressArgumentsFromJson(json);
@@ -51,9 +52,20 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
 
   final String lng;
 
+  final bool isDefault;
+
   @override
-  List<Object> get props =>
-      [firstName, lastName, areaId, info, additionalInfo, mobile, lat, lng];
+  List<Object> get props => [
+        firstName,
+        lastName,
+        areaId,
+        info,
+        additionalInfo,
+        mobile,
+        lat,
+        lng,
+        isDefault
+      ];
   Map<String, dynamic> toJson() => _$CreateAddressArgumentsToJson(this);
 }
 
@@ -93,25 +105,31 @@ class CreateAddressQuery
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'additionalInfo')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'mobile')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lat')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lng')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'isDefault')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
@@ -150,7 +168,11 @@ class CreateAddressQuery
                           value: VariableNode(name: NameNode(value: 'lat'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'lng'),
-                          value: VariableNode(name: NameNode(value: 'lng')))
+                          value: VariableNode(name: NameNode(value: 'lng'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'default'),
+                          value:
+                              VariableNode(name: NameNode(value: 'isDefault')))
                     ]))
               ],
               directives: [],
@@ -319,15 +341,15 @@ class UserAddress with EquatableMixin {
 
   String id;
 
-  String firstName;
+  String first_name;
 
-  String lastName;
+  String last_name;
 
   Area area;
 
   String info;
 
-  String additionalInfo;
+  String additional_info;
 
   String mobile;
 
@@ -336,8 +358,17 @@ class UserAddress with EquatableMixin {
   String lng;
 
   @override
-  List<Object> get props =>
-      [id, firstName, lastName, area, info, additionalInfo, mobile, lat, lng];
+  List<Object> get props => [
+        id,
+        first_name,
+        last_name,
+        area,
+        info,
+        additional_info,
+        mobile,
+        lat,
+        lng
+      ];
   Map<String, dynamic> toJson() => _$UserAddressToJson(this);
 }
 

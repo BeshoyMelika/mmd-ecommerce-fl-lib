@@ -1,5 +1,3 @@
 mutation DeleteAddress($id:ID!){
     deleteAddress(id:$id)
-
-
 }

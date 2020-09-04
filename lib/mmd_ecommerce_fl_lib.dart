@@ -24,6 +24,6 @@ class MmdECommerceFlLib {
 
 // Todo --> manage token session with the library ..
 // Todo --> auto refresh token with the library ..
-// Todo --> add default to address API
 // Todo --> handel error form api
+// Todo --> use fragments for paging info ..
 // Todo --> add http logger ..
