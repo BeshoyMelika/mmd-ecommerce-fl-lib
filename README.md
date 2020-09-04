@@ -1,7 +1,8 @@
 # mmd_ecommerce_fl_lib
 
 It is a backend library using GraphQl to facilitate connection to our different
-e-commerce backend endpoints. 
+e-commerce backend endpoints.
+[pub.dev](https://pub.dev/packages/mmd_ecommerce_fl_lib) 
 
 ## Resources
 
