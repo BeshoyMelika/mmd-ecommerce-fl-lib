@@ -2,6 +2,11 @@ const graphql = "graphql";
 const authorization = "Authorization";
 const acceptLanguage = "Accept-language";
 
+const validation = "validation";
+const authentication = "authentication";
+const reason = "reason";
+const category = "category";
+
 
 class Languages {
 

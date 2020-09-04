@@ -18,6 +18,7 @@ callMyProfileApi() {
     print(user.user.name);
     print(user.user.mobile);
   }, (QueryResult error) {
+    print(ApiErrorHelper.handle(error));
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail get my profile");
   });
