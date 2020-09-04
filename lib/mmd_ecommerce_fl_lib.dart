@@ -1,24 +1,29 @@
-// You have generated a new plugin project without
-// specifying the `--platforms` flag. A plugin project supports no platforms is generated.
-// To add platforms, run `flutter create -t plugin --platforms <platforms> .` under the same
-// directory. You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
-
+import 'package:mmd_ecommerce_fl_lib/apis/api_keys.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
 
 class MmdECommerceFlLib {
+
+  /// to add the base url
   static void submitBaseUrl(String baseUrl) {
     BaseApiManager.setUrl(baseUrl);
   }
 
+  /// to submit token and token type to have the ability to change it at any time
   static void submitTokeAndTokenType(String token, String tokenType) {
     BaseApiManager.setToken(token);
     BaseApiManager.setTokenType(tokenType);
+    BaseApiManager.authenticateClient();
+  }
+
+  /// to submit the language to the API
+  static void submitLanguage(Languages lang) {
+    BaseApiManager.setLanguage(lang.value);
     BaseApiManager.refreshClient();
   }
 }
 
-// Todo --> language headers ..
 // Todo --> manage token session with the library ..
 // Todo --> auto refresh token with the library ..
 // Todo --> add default to address API
 // Todo --> handel error form api
+// Todo --> add http logger ..

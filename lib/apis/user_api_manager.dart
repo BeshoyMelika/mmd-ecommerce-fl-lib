@@ -7,7 +7,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
 class UserApiManager extends BaseApiManager {
   static Future<void> refreshTokenApi(
       String token, Function success, Function fail) async {
-    var result = await BaseApiManager.client().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: RefreshTokenQuery().document,
         variables: RefreshTokenArguments(token: token).toJson()));
     if (result.hasException) {
@@ -20,7 +20,7 @@ class UserApiManager extends BaseApiManager {
 
   static Future<void> updateProfile(
       String name, String mobile, Function success, Function fail) async {
-    var result = await BaseApiManager.authClient().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateProfileQuery().document,
         variables:
             UpdateProfileArguments(name: name, mobile: mobile).toJson()));
@@ -32,7 +32,7 @@ class UserApiManager extends BaseApiManager {
   }
 
   static Future<void> myProfile(Function success, Function fail) async {
-    var result = await BaseApiManager.authClient()
+    var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: ProfileQuery().document));
     if (result.hasException) {
       fail(result);
@@ -52,7 +52,7 @@ class UserApiManager extends BaseApiManager {
       String lng,
       Function success,
       Function fail) async {
-    var result = await BaseApiManager.authClient().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: CreateAddressQuery().document,
         variables: CreateAddressArguments(
                 firstName: firstName,
@@ -83,7 +83,7 @@ class UserApiManager extends BaseApiManager {
       String lng,
       Function success,
       Function fail) async {
-    var result = await BaseApiManager.authClient().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateAddressQuery().document,
         variables: UpdateAddressArguments(
                 id: id,
@@ -105,7 +105,7 @@ class UserApiManager extends BaseApiManager {
 
   static Future<void> deletaAddress(
       String id, Function success, Function fail) async {
-    var result = await BaseApiManager.authClient().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: DeleteAddressQuery().document,
         variables: DeleteAddressArguments(id: id).toJson()));
     if (result.hasException) {
@@ -117,7 +117,7 @@ class UserApiManager extends BaseApiManager {
 
   static Future<void> getAllAddress(
       int first, int page, Function success, Function fail) async {
-    var result = await BaseApiManager.authClient().mutate(MutationOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: GetAllAddressQuery().document,
         variables: GetAllAddressArguments(first: first, page: page).toJson()));
     if (result.hasException) {

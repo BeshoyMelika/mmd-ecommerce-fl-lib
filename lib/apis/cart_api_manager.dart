@@ -5,7 +5,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart';
 class CartApiManager extends BaseApiManager {
   static Future<void> addToCart(
       String productId, int quantity, Function success, Function fail) async {
-    var result = await BaseApiManager.authClient().query(QueryOptions(
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: AddToCartQuery().document,
         variables: AddToCartArguments(productId: productId, quantity: quantity)
             .toJson()));
@@ -17,7 +17,7 @@ class CartApiManager extends BaseApiManager {
   }
 
   static Future<void> getCart(Function success, Function fail) async {
-    var result = await BaseApiManager.authClient()
+    var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: GetCartQuery().document));
     if (result.hasException) {
       fail(result);
