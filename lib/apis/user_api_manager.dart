@@ -32,8 +32,9 @@ class UserApiManager extends BaseApiManager {
   }
 
   static Future<void> myProfile(Function success, Function fail) async {
-    var result = await BaseApiManager.mainClient()
-        .query(QueryOptions(documentNode: ProfileQuery().document));
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: ProfileQuery().document,
+        fetchPolicy: FetchPolicy.noCache));
     if (result.hasException) {
       fail(result);
     } else {
