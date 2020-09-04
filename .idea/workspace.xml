@@ -42,7 +42,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/graphql/auth" />
-    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -122,10 +122,10 @@
     </state>
     <state width="1491" height="361" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1599182620747" />
     <state width="1238" height="179" key="GridCell.Tab.0.right/0.23.1280.723@0.23.1280.723" timestamp="1599133535067" />
-    <state x="231" y="25" key="SettingsEditor" timestamp="1599075923704">
-      <screen x="0" y="23" width="1280" height="724" />
+    <state x="277" y="54" key="SettingsEditor" timestamp="1599184443192">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="54" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1597745338156" />
+    <state x="277" y="54" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1599184443192" />
     <state x="231" y="25" key="SettingsEditor/0.23.1280.724@0.23.1280.724" timestamp="1599075923704" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597945643036">
       <screen x="0" y="0" width="1536" height="824" />
