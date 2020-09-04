@@ -21,3 +21,8 @@
 * Added add to cart, get cart APIs.
 * Added create, delete, update, get address APIs.
 * Added categories API,
+
+## [0.0.8] - 0.0.8
+* Supported passing language with headers.
+* Enhanced library documentation.
+* Fixed cache profile issue, and default address flag.

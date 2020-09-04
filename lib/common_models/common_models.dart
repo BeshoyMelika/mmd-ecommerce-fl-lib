@@ -37,5 +37,6 @@ class MediaCard {
 
 class MediaProduct {
   final P.Media media;
+
   MediaProduct(this.media);
 }

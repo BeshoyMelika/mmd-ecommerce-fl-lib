@@ -80,13 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return Column(
         children: [
-          Text("Result Success \n${auth?.accessToken}"),
+          Text("Result Success \n${auth?.access_token}"),
           RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MainSecond(auth.refreshToken)),
+                    builder: (context) => MainSecond(auth.refresh_token)),
               );
             },
             child: Text("Open Main Second"),
@@ -196,11 +196,11 @@ class _MyHomePageState extends State<MyHomePage> {
         (AuthPayloadLogin authPayload) async {
       auth = authPayload.authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
-          authPayload.authPayload.accessToken,
-          authPayload.authPayload.tokenType);
+          authPayload.authPayload.access_token,
+          authPayload.authPayload.token_type);
       print("=========================================");
       print("Success Login");
-      print("Access Token: ${authPayload.authPayload.accessToken}");
+      print("Access Token: ${authPayload.authPayload.access_token}");
     }, (QueryResult x) {
       print("error");
     });
