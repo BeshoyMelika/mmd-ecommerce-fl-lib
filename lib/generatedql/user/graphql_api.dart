@@ -7,93 +7,6 @@ import 'package:gql/ast.dart';
 part 'graphql_api.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Profile with EquatableMixin {
-  Profile();
-
-  factory Profile.fromJson(Map<String, dynamic> json) =>
-      _$ProfileFromJson(json);
-
-  User profile;
-
-  @override
-  List<Object> get props => [profile];
-  Map<String, dynamic> toJson() => _$ProfileToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class User with EquatableMixin {
-  User();
-
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  String id;
-
-  String name;
-
-  String email;
-
-  String mobile;
-
-  @override
-  List<Object> get props => [id, name, email, mobile];
-  Map<String, dynamic> toJson() => _$UserToJson(this);
-}
-
-class ProfileQuery extends GraphQLQuery<Profile, JsonSerializable> {
-  ProfileQuery();
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.query,
-        name: NameNode(value: 'Profile'),
-        variableDefinitions: [],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'profile'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'name'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'email'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'mobile'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
-              ]))
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'Profile';
-
-  @override
-  List<Object> get props => [document, operationName];
-  @override
-  Profile parse(Map<String, dynamic> json) => Profile.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
 class RefreshToken with EquatableMixin {
   RefreshToken();
 
@@ -209,6 +122,93 @@ class RefreshTokenQuery
   List<Object> get props => [document, operationName, variables];
   @override
   RefreshToken parse(Map<String, dynamic> json) => RefreshToken.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Profile with EquatableMixin {
+  Profile();
+
+  factory Profile.fromJson(Map<String, dynamic> json) =>
+      _$ProfileFromJson(json);
+
+  User profile;
+
+  @override
+  List<Object> get props => [profile];
+  Map<String, dynamic> toJson() => _$ProfileToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class User with EquatableMixin {
+  User();
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  String id;
+
+  String name;
+
+  String email;
+
+  String mobile;
+
+  @override
+  List<Object> get props => [id, name, email, mobile];
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+}
+
+class ProfileQuery extends GraphQLQuery<Profile, JsonSerializable> {
+  ProfileQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'Profile'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'profile'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'email'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'mobile'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Profile';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Profile parse(Map<String, dynamic> json) => Profile.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
