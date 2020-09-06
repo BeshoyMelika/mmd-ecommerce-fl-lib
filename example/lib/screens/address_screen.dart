@@ -29,6 +29,16 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
+              color: Colors.transparent,
+              onPressed: () async {
+                await getAreaByIdAsset("2");
+              },
+              child: Text(
+                "Get Area By ID",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
               color: Colors.blue,
               onPressed: () async {
                 await getAllAddress();

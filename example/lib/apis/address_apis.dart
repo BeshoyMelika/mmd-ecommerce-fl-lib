@@ -60,3 +60,16 @@ getCitiesAsset() async {
     print(error.exception);
   });
 }
+
+getAreaByIdAsset(String cityId) async {
+  await UserApiManager.getAreaById(cityId, (List<Area> list) {
+    print("=========================================");
+    print("Success get all Area  api ");
+    print(list.length);
+    // print(list[0].name);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail get all Area api");
+    print(error.exception);
+  });
+}
