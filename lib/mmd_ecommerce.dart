@@ -13,7 +13,7 @@ export './generatedql/products/graphql_api.dart' hide Media;
 export './generatedql/cart/graphql_api.dart' hide Media;
 export './generatedql/user/graphql_api.dart' hide AuthPayload, User;
 export './generatedql/address/graphql_api.dart' hide City, Area;
-export './generatedql//address_asset/graphql_api.dart';
+export './generatedql/address_asset/graphql_api.dart';
 export './mmd_ecommerce.dart';
 export './mmd_ecommerce_fl_lib.dart';
 export './apis/api_keys.dart';
@@ -21,4 +21,3 @@ export './apis/api_keys.dart';
 /// we hide the AuthPayload from "./generatedql/user/graphql_api.dart"
 /// because we use the same name with "./generatedql/auth/graphql_api.dart"
 /// guide link --> https://stackoverflow.com/a/22496742/2172590
-/// we add "//" when export ./generatedql//address_asset/graphql_api.dart to solve problen when area and city in example
