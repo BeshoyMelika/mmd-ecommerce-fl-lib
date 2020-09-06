@@ -81,35 +81,39 @@ class _MyHomePageState extends State<MyHomePage> {
       return Column(
         children: [
           Text("Result Success \n${auth?.access_token}"),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MainSecond(auth.refresh_token)),
-              );
-            },
-            child: Text("Open Main Second"),
-          ),
-          RaisedButton(
-            color: Colors.amber,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddressScreen()),
-              );
-            },
-            child: Text("Open Address Scren"),
-          ),
-          RaisedButton(
-            color: Colors.blueAccent,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => GeneralScreen()),
-              );
-            },
-            child: Text("Open General Scren"),
+          Row(
+            children: [
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MainSecond(auth.refresh_token)),
+                  );
+                },
+                child: Text("Open Main Second"),
+              ),
+              RaisedButton(
+                color: Colors.amber,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddressScreen()),
+                  );
+                },
+                child: Text("Open Address Scren"),
+              ),
+              RaisedButton(
+                color: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GeneralScreen()),
+                  );
+                },
+                child: Text("Open General Scren"),
+              ),
+            ],
           ),
           RaisedButton(
             color: Colors.amber,
@@ -157,6 +161,16 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text(
               "Register User",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          RaisedButton(
+            color: Colors.green,
+            onPressed: () {
+              logout();
+            },
+            child: Text(
+              "Logout",
               style: TextStyle(color: Colors.white),
             ),
           ),
