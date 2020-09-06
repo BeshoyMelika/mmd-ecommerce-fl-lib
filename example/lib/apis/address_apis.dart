@@ -16,7 +16,7 @@ getAllAddress() async {
 
 createAddress() async {
   await UserApiManager.createAddress("beshoy", "melika", "1", "test info",
-      "addition info test", "012", "30.4", "27.3", (bool success) {
+      "addition info test", "012", "30.4", "27.3",false, (bool success) {
     print("=========================================");
     print("Success Create Address api $success");
   }, (QueryResult error) {
@@ -28,7 +28,7 @@ createAddress() async {
 
 updateAddress() async {
   await UserApiManager.updateAddress("8", "beshoy", "melika", "1", "test info",
-      "addition info test", "012", "30.4", "27.3", (bool success) {
+      "addition info test", "012", "30.4", "27.3",false, (bool success) {
     print("=========================================");
     print("Success Update Address api $success");
   }, (QueryResult error) {

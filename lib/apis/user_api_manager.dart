@@ -51,6 +51,7 @@ class UserApiManager extends BaseApiManager {
       String mobile,
       String lat,
       String lng,
+      bool isDefault,
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
@@ -63,7 +64,8 @@ class UserApiManager extends BaseApiManager {
                 additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
-                lng: lng)
+                lng: lng,
+                isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
       fail(result);
@@ -82,6 +84,7 @@ class UserApiManager extends BaseApiManager {
       String mobile,
       String lat,
       String lng,
+      bool isDefault,
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
@@ -95,7 +98,8 @@ class UserApiManager extends BaseApiManager {
                 additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
-                lng: lng)
+                lng: lng,
+                isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
       fail(result);

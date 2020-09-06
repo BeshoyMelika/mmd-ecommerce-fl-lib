@@ -6,7 +6,8 @@ mutation UpdateAddress($id:ID!,
     $additionalInfo: String!,
     $mobile: String!,
     $lat: String!,
-    $lng: String!,){
+    $lng: String!,
+    $isDefault:Boolean!){
     updateAddress(id:$id,input:{
         first_name:$firstName
         last_name:$lastName
@@ -16,6 +17,7 @@ mutation UpdateAddress($id:ID!,
         mobile:$mobile
         lat:$lat
         lng:$lng
+        isDefault:$isDefault
     })
 
 }

@@ -133,7 +133,8 @@ UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
     ..additional_info = json['additional_info'] as String
     ..mobile = json['mobile'] as String
     ..lat = json['lat'] as String
-    ..lng = json['lng'] as String;
+    ..lng = json['lng'] as String
+    ..isDefault = json['isDefault'] as bool;
 }
 
 Map<String, dynamic> _$UserAddressToJson(UserAddress instance) =>
@@ -147,6 +148,7 @@ Map<String, dynamic> _$UserAddressToJson(UserAddress instance) =>
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
+      'isDefault': instance.isDefault,
     };
 
 Area _$AreaFromJson(Map<String, dynamic> json) {
@@ -206,6 +208,7 @@ UpdateAddressArguments _$UpdateAddressArgumentsFromJson(
     mobile: json['mobile'] as String,
     lat: json['lat'] as String,
     lng: json['lng'] as String,
+    isDefault: json['isDefault'] as bool,
   );
 }
 
@@ -221,4 +224,5 @@ Map<String, dynamic> _$UpdateAddressArgumentsToJson(
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
+      'isDefault': instance.isDefault,
     };
