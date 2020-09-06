@@ -3,6 +3,8 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart' as U;
 import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart'
     as P;
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart' as C;
+import 'package:mmd_ecommerce_fl_lib/generatedql/cartegoies/graphql_api.dart'
+    as CT;
 
 /// this class to solve conflicts between the same model names of the graphql api
 class UserMyProfile {
@@ -39,4 +41,16 @@ class MediaProduct {
   final P.Media media;
 
   MediaProduct(this.media);
+}
+
+class MediaCategory {
+  final CT.Media media;
+
+  MediaCategory(this.media);
+}
+
+class CategoryModel {
+  final CT.Category category;
+
+  CategoryModel(this.category);
 }

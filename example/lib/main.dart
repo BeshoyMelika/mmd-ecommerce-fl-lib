@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MmdECommerceFlLib.submitBaseUrl("http://egfoods.moselaymdserver.com");
+    MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
