@@ -134,3 +134,11 @@ Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
       'email': instance.email,
       'password': instance.password,
     };
+
+Logout _$LogoutFromJson(Map<String, dynamic> json) {
+  return Logout()..logout = json['logout'] as bool;
+}
+
+Map<String, dynamic> _$LogoutToJson(Logout instance) => <String, dynamic>{
+      'logout': instance.logout,
+    };
