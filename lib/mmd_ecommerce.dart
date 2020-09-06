@@ -21,3 +21,4 @@ export './apis/api_keys.dart';
 /// we hide the AuthPayload from "./generatedql/user/graphql_api.dart"
 /// because we use the same name with "./generatedql/auth/graphql_api.dart"
 /// guide link --> https://stackoverflow.com/a/22496742/2172590
+/// we add "//" when export ./generatedql//address_asset/graphql_api.dart to solve problen when area and city in example
