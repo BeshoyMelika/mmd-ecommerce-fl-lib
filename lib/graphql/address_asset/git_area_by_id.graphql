@@ -1,0 +1,6 @@
+query AreaByID($cityId: ID!){
+  areas(city_id: $cityId) {
+    id
+    name
+  }
+}
