@@ -28,5 +28,5 @@ targets:
               queries_glob: lib/graphql/products/*.graphql
               output: lib/generatedql/products/graphql_api.dart
             - schema: general.schema.graphql
-              queries_glob: lib/graphql/address/address_asset/*.graphql
-              output: lib/generatedql/address/address_asset/graphql_api.dart
+              queries_glob: lib/graphql/address_asset/*.graphql
+              output: lib/generatedql/address_asset/graphql_api.dart

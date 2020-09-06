@@ -1,4 +1,3 @@
-import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getAllAddress() async {
@@ -7,7 +6,7 @@ getAllAddress() async {
     print("=========================================");
     print("Success get my Address");
     print(addressPaginator.data.length);
-    print(addressPaginator.data[0].id);
+    print(addressPaginator.data[0].area.city.name);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail get my Address");
@@ -45,6 +44,19 @@ deleteAddress() async {
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail Delete Address api");
+    print(error.exception);
+  });
+}
+
+getCitiesAsset() async {
+  await UserApiManager.getAllCities((List<City> list) {
+    print("=========================================");
+    print("Success get all cities  api ");
+    print(list.length);
+    print(list[0].name);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail get all cities api");
     print(error.exception);
   });
 }

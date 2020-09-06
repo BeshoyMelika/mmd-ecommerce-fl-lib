@@ -1,7 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
-import 'package:mmd_ecommerce_fl_lib/generatedql/address/address_asset/graphql_api.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/address_asset/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
 
