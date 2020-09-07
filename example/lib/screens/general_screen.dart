@@ -110,6 +110,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await shippingFeesApi();
+              },
+              child: Text(
+                "get shipping fees Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

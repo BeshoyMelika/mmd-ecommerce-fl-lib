@@ -514,12 +514,12 @@ class ShippingFeesQuery
                     value: ObjectValueNode(fields: [
                       ObjectFieldNode(
                           name: NameNode(value: 'address_id'),
-                          value: VariableNode(
-                              name: NameNode(value: 'address_id'))),
+                          value:
+                              VariableNode(name: NameNode(value: 'addressId'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'voucher_id'),
                           value:
-                              VariableNode(name: NameNode(value: 'voucher_id')))
+                              VariableNode(name: NameNode(value: 'voucherId')))
                     ]))
               ],
               directives: [],

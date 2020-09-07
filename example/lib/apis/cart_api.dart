@@ -11,3 +11,15 @@ getVoucherByCode() async {
     print(error.exception);
   });
 }
+
+shippingFeesApi() async {
+  await CartApiManager.shippingFeesApi("2", "2", (String shippingFees) {
+    print("=========================================");
+    print("Success shipping fees api");
+    print(shippingFees);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail shipping fees api");
+    print(error.exception);
+  });
+}
