@@ -252,6 +252,48 @@ class ResetPasswordQuery
 }
 
 @JsonSerializable(explicitToJson: true)
+class Logout with EquatableMixin {
+  Logout();
+
+  factory Logout.fromJson(Map<String, dynamic> json) => _$LogoutFromJson(json);
+
+  bool logout;
+
+  @override
+  List<Object> get props => [logout];
+  Map<String, dynamic> toJson() => _$LogoutToJson(this);
+}
+
+class LogoutQuery extends GraphQLQuery<Logout, JsonSerializable> {
+  LogoutQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'Logout'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'logout'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Logout';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Logout parse(Map<String, dynamic> json) => Logout.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class ForgetPassword with EquatableMixin {
   ForgetPassword();
 
@@ -454,46 +496,4 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
   List<Object> get props => [document, operationName, variables];
   @override
   SignIn parse(Map<String, dynamic> json) => SignIn.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Logout with EquatableMixin {
-  Logout();
-
-  factory Logout.fromJson(Map<String, dynamic> json) => _$LogoutFromJson(json);
-
-  bool logout;
-
-  @override
-  List<Object> get props => [logout];
-  Map<String, dynamic> toJson() => _$LogoutToJson(this);
-}
-
-class LogoutQuery extends GraphQLQuery<Logout, JsonSerializable> {
-  LogoutQuery();
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.mutation,
-        name: NameNode(value: 'Logout'),
-        variableDefinitions: [],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'logout'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null)
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'Logout';
-
-  @override
-  List<Object> get props => [document, operationName];
-  @override
-  Logout parse(Map<String, dynamic> json) => Logout.fromJson(json);
 }

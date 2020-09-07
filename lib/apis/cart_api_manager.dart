@@ -26,4 +26,16 @@ class CartApiManager extends BaseApiManager {
       success(GetCart.fromJson(result.data).cart);
     }
   }
+
+  static Future<void> getVoucherByCode(
+      String code, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: GetVoucherByCodeQuery().document,
+        variables: GetVoucherByCodeArguments(code: code).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(GetVoucherByCode.fromJson(result.data).getVoucherByCode);
+    }
+  }
 }
