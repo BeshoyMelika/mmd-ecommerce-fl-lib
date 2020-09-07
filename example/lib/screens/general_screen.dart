@@ -100,6 +100,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await relatedProductByIdApi();
+              },
+              child: Text(
+                "get related product Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

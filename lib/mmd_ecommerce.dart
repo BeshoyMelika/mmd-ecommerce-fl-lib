@@ -10,9 +10,11 @@ export './apis/product_api_manager.dart';
 export './common_models/common_models.dart';
 export './generatedql/auth/graphql_api.dart';
 export './generatedql/general/graphql_api.dart' hide Media;
-export './generatedql/products/graphql_api.dart' hide Media, Category;
+export './generatedql/products/graphql_api.dart' hide Media, Category, Product;
 export './generatedql/cart/graphql_api.dart'
     hide Media, ProductData, Product, Unit;
+export './generatedql/related_product/graphql_api.dart'
+    hide Media, Category, ProductData, Unit;
 export './generatedql/user/graphql_api.dart' hide AuthPayload, User;
 export './generatedql/address/graphql_api.dart' hide PaginatorInfo;
 export './generatedql/cartegoies/graphql_api.dart';

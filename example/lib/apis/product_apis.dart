@@ -53,3 +53,16 @@ productByNameApi() async {
     print(error.exception);
   });
 }
+
+relatedProductByIdApi() async {
+  await ProductApiManager.getRelatedProductByIdApi("1", (List<Product> item) {
+    print("=========================================");
+    print("Success related product api ");
+    print(item.length);
+    print(item[0].details.category.id);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail related product api");
+    print(error.exception);
+  });
+}

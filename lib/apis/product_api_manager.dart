@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 class ProductApiManager extends BaseApiManager {
@@ -39,6 +40,18 @@ class ProductApiManager extends BaseApiManager {
       fail(result);
     } else {
       success(Products.fromJson(result.data).products);
+    }
+  }
+
+  static Future<void> getRelatedProductByIdApi(
+      String id, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: RelatedProductsQuery().document,
+        variables: RelatedProductsArguments(id: id).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(RelatedProducts.fromJson(result.data).relatedProducts);
     }
   }
 }
