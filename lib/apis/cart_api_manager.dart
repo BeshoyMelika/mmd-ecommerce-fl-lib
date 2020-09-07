@@ -38,4 +38,18 @@ class CartApiManager extends BaseApiManager {
       success(GetVoucherByCode.fromJson(result.data).getVoucherByCode);
     }
   }
+
+  static Future<void> shippingFeesApi(String addressId, String voucherId,
+      Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: ShippingFeesQuery().document,
+        variables:
+            ShippingFeesArguments(addressId: addressId, voucherId: voucherId)
+                .toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(ShippingFees.fromJson(result.data).shippingFees);
+    }
+  }
 }

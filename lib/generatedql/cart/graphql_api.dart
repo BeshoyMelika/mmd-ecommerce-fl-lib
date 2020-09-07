@@ -450,3 +450,91 @@ class GetCartQuery extends GraphQLQuery<GetCart, JsonSerializable> {
   @override
   GetCart parse(Map<String, dynamic> json) => GetCart.fromJson(json);
 }
+
+@JsonSerializable(explicitToJson: true)
+class ShippingFees with EquatableMixin {
+  ShippingFees();
+
+  factory ShippingFees.fromJson(Map<String, dynamic> json) =>
+      _$ShippingFeesFromJson(json);
+
+  String shippingFees;
+
+  @override
+  List<Object> get props => [shippingFees];
+  Map<String, dynamic> toJson() => _$ShippingFeesToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ShippingFeesArguments extends JsonSerializable with EquatableMixin {
+  ShippingFeesArguments({this.addressId, this.voucherId});
+
+  factory ShippingFeesArguments.fromJson(Map<String, dynamic> json) =>
+      _$ShippingFeesArgumentsFromJson(json);
+
+  final String addressId;
+
+  final String voucherId;
+
+  @override
+  List<Object> get props => [addressId, voucherId];
+  Map<String, dynamic> toJson() => _$ShippingFeesArgumentsToJson(this);
+}
+
+class ShippingFeesQuery
+    extends GraphQLQuery<ShippingFees, ShippingFeesArguments> {
+  ShippingFeesQuery({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'ShippingFees'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'addressId')),
+              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'voucherId')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'shippingFees'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'input'),
+                    value: ObjectValueNode(fields: [
+                      ObjectFieldNode(
+                          name: NameNode(value: 'address_id'),
+                          value: VariableNode(
+                              name: NameNode(value: 'address_id'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'voucher_id'),
+                          value:
+                              VariableNode(name: NameNode(value: 'voucher_id')))
+                    ]))
+              ],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'ShippingFees';
+
+  @override
+  final ShippingFeesArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  ShippingFees parse(Map<String, dynamic> json) => ShippingFees.fromJson(json);
+}

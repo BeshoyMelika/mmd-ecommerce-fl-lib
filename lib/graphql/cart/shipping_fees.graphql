@@ -1,0 +1,3 @@
+query ShippingFees($addressId: ID!, $voucherId: ID) {
+  shippingFees(input: { address_id: $address_id, voucher_id: $voucher_id })
+}

@@ -160,3 +160,27 @@ Map<String, dynamic> _$UnitToJson(Unit instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
     };
+
+ShippingFees _$ShippingFeesFromJson(Map<String, dynamic> json) {
+  return ShippingFees()..shippingFees = json['shippingFees'] as String;
+}
+
+Map<String, dynamic> _$ShippingFeesToJson(ShippingFees instance) =>
+    <String, dynamic>{
+      'shippingFees': instance.shippingFees,
+    };
+
+ShippingFeesArguments _$ShippingFeesArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ShippingFeesArguments(
+    addressId: json['addressId'] as String,
+    voucherId: json['voucherId'] as String,
+  );
+}
+
+Map<String, dynamic> _$ShippingFeesArgumentsToJson(
+        ShippingFeesArguments instance) =>
+    <String, dynamic>{
+      'addressId': instance.addressId,
+      'voucherId': instance.voucherId,
+    };
