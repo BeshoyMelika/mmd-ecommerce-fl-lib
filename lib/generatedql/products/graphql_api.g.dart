@@ -138,6 +138,7 @@ ProductsArguments _$ProductsArgumentsFromJson(Map<String, dynamic> json) {
     first: json['first'] as int,
     page: json['page'] as int,
     productsId: json['productsId'] as String,
+    catId: (json['catId'] as List)?.map((e) => e as String)?.toList(),
     name: json['name'] as String,
   );
 }
@@ -147,5 +148,6 @@ Map<String, dynamic> _$ProductsArgumentsToJson(ProductsArguments instance) =>
       'first': instance.first,
       'page': instance.page,
       'productsId': instance.productsId,
+      'catId': instance.catId,
       'name': instance.name,
     };

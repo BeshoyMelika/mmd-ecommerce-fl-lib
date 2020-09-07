@@ -16,19 +16,19 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  // static Future<void> getProductByCategoryIdApi(
-  //     int first, int page, categoryId, Function success, Function fail) async {
-  //   var result = await BaseApiManager.mainClient().query(QueryOptions(
-  //       documentNode: ProductsQuery().document,
-  //       variables:
-  //           ProductsArguments(first: first, page: page, categoryId: categoryId)
-  //               .toJson()));
-  //   if (result.hasException) {
-  //     fail(result);
-  //   } else {
-  //     success(Products.fromJson(result.data).products);
-  //   }
-  // }
+  static Future<void> getProductByCategoryIdApi(int first, int page,
+      String categoryId, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: ProductsQuery().document,
+        variables:
+            ProductsArguments(first: first, page: page, catId: [categoryId])
+                .toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(Products.fromJson(result.data).products);
+    }
+  }
 
   static Future<void> getProductByNameApi(
       int first, int page, String name, Function success, Function fail) async {

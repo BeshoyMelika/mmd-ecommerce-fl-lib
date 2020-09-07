@@ -2,13 +2,13 @@ query Products(
     $first: Int!,
     $page: Int!,
     $productsId: ID,
-    # $categoryId: ID,
+    $catId:  [ID],
     $name: String,
    ){
   products(first: $first, page: $page, filter: {
     name: $name
     id:$productsId
-    # category:$categoryId
+    category:$catId
     }) {
     paginatorInfo {
       count

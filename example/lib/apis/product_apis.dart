@@ -26,19 +26,19 @@ productApi() async {
   });
 }
 
-// productByCategoryIdApi() async {
-//   await ProductApiManager.getProductByCategoryIdApi(10, 1, "1",
-//       (ProductPaginator item) {
-//     print("=========================================");
-//     print("Success sliders api ");
-//     print(item.data[0].details.category.id);
-//     print(item.data.length);
-//   }, (QueryResult error) {
-//     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-//     print("Fail sliders api");
-//     print(error.exception);
-//   });
-// }
+productByCategoryIdApi() async {
+  await ProductApiManager.getProductByCategoryIdApi(10, 1, "1",
+      (ProductPaginator item) {
+    print("=========================================");
+    print("Success sliders api ");
+    print(item.data[0].details.category.id);
+    print(item.data.length);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail sliders api");
+    print(error.exception);
+  });
+}
 
 productByNameApi() async {
   await ProductApiManager.getProductByNameApi(10, 1, "ad",

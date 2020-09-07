@@ -164,7 +164,8 @@ class Category with EquatableMixin {
 
 @JsonSerializable(explicitToJson: true)
 class ProductsArguments extends JsonSerializable with EquatableMixin {
-  ProductsArguments({this.first, this.page, this.productsId, this.name});
+  ProductsArguments(
+      {this.first, this.page, this.productsId, this.catId, this.name});
 
   factory ProductsArguments.fromJson(Map<String, dynamic> json) =>
       _$ProductsArgumentsFromJson(json);
@@ -175,10 +176,12 @@ class ProductsArguments extends JsonSerializable with EquatableMixin {
 
   final String productsId;
 
+  final List<String> catId;
+
   final String name;
 
   @override
-  List<Object> get props => [first, page, productsId, name];
+  List<Object> get props => [first, page, productsId, catId, name];
   Map<String, dynamic> toJson() => _$ProductsArgumentsToJson(this);
 }
 
@@ -210,6 +213,14 @@ class ProductsQuery extends GraphQLQuery<Products, ProductsArguments> {
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'catId')),
+              type: ListTypeNode(
+                  type: NamedTypeNode(
+                      name: NameNode(value: 'ID'), isNonNull: false),
+                  isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'name')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: false),
@@ -236,8 +247,11 @@ class ProductsQuery extends GraphQLQuery<Products, ProductsArguments> {
                           value: VariableNode(name: NameNode(value: 'name'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'id'),
-                          value:
-                              VariableNode(name: NameNode(value: 'productsId')))
+                          value: VariableNode(
+                              name: NameNode(value: 'productsId'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'category'),
+                          value: VariableNode(name: NameNode(value: 'catId')))
                     ]))
               ],
               directives: [],
