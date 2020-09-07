@@ -3,12 +3,12 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 categoriesApi() async {
   await GeneralApiManager.getAllCategoriesApi((List<Category> list) {
     print("=========================================");
-    print("Success sliders api ");
+    print("Success get all categories api ");
     print(list.length);
     print(list[0].name);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail sliders api");
+    print("Fail get all categories api");
     print(error.exception);
   });
 }
@@ -16,12 +16,12 @@ categoriesApi() async {
 productApi() async {
   await ProductApiManager.getAllProductApi(10, 1, (ProductPaginatorModel item) {
     print("=========================================");
-    print("Success sliders api ");
+    print("Success get all products api ");
     print(item.productPaginator.data[0].details.category.id);
     print(item.productPaginator.data.length);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail sliders api");
+    print("Fail get all products api");
     print(error.exception);
   });
 }
@@ -30,12 +30,12 @@ productByCategoryIdApi() async {
   await ProductApiManager.getProductByCategoryIdApi(10, 1, "1",
       (ProductPaginatorModel item) {
     print("=========================================");
-    print("Success sliders api ");
+    print("Success get products by categories id api ");
     print(item.productPaginator.data[0].details.category.id);
     print(item.productPaginator.data.length);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail sliders api");
+    print("Fail get products by categories id api");
     print(error.exception);
   });
 }
@@ -44,12 +44,12 @@ productByNameApi() async {
   await ProductApiManager.getProductByNameApi(10, 1, "ad",
       (ProductPaginatorModel item) {
     print("=========================================");
-    print("Success sliders api ");
+    print("Success get products by categories name api ");
     print(item.productPaginator.data.length);
     print(item.productPaginator.data[0].details.category.id);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail sliders api");
+    print("Fail get products by categories name api");
     print(error.exception);
   });
 }

@@ -24,10 +24,10 @@ sliderApi() async {
 addToCard() async {
   await CartApiManager.addToCart("2", 2, (bool success) {
     print("=========================================");
-    print("Success addTocard api  $success");
+    print("Success add to card api  $success");
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail addTocard api");
+    print("Fail add to card api");
     print(error.exception);
   });
 }
@@ -35,12 +35,12 @@ addToCard() async {
 getCard() async {
   await CartApiManager.getCart((Cart cart) {
     print("=========================================");
-    print("Success getCart api  $cart");
+    print("Success get cart api  $cart");
     print(cart.items.length);
     print(cart.total);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail getCart api");
+    print("Fail get cart api");
     print(error.exception);
   });
 }

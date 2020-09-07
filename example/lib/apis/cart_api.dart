@@ -7,7 +7,7 @@ getVoucherByCode() async {
     print(voucher.id);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail addTocard api");
+    print("Fail get voucher by code api");
     print(error.exception);
   });
 }
