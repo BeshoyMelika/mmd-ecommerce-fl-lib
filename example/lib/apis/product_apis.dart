@@ -40,6 +40,20 @@ productByCategoryIdApi() async {
   });
 }
 
+getProductDetailsApi() async {
+  await ProductApiManager.getProductDetailsApi("1",
+      (ProductPaginatorModel item) {
+    print("=========================================");
+    print("Success get products details api ");
+    print(item.productPaginator.data[0].details.category.id);
+    print(item.productPaginator.data.length);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail get products details api");
+    print(error.exception);
+  });
+}
+
 productByNameApi() async {
   await ProductApiManager.getProductByNameApi(10, 1, "ad",
       (ProductPaginatorModel item) {
