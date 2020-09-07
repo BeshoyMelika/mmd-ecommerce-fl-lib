@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib_example/APIs.dart';
+import 'package:mmd_ecommerce_fl_lib_example/apis/cart_api.dart';
 import 'package:mmd_ecommerce_fl_lib_example/apis/product_apis.dart';
 
 class GeneralScreen extends StatefulWidget {
@@ -56,6 +57,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
               },
               child: Text(
                 "get Card Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.blueGrey,
+              onPressed: () async {
+                await getVoucherByCode();
+              },
+              child: Text(
+                "get voucher by code",
                 style: TextStyle(color: Colors.white),
               ),
             ),
