@@ -5,6 +5,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart'
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart' as C;
 import 'package:mmd_ecommerce_fl_lib/generatedql/cartegoies/graphql_api.dart'
     as CT;
+import 'package:mmd_ecommerce_fl_lib/generatedql/ratings/graphql_api.dart' as R;
 
 /// this class to solve conflicts between the same model names of the graphql api
 class UserMyProfile {
@@ -53,4 +54,16 @@ class CategoryModel {
   final CT.Category category;
 
   CategoryModel(this.category);
+}
+
+class RatingPaginatorModel {
+  final R.RatingPaginator ratingPaginator;
+
+  RatingPaginatorModel(this.ratingPaginator);
+}
+
+class ProductPaginatorModel {
+  final P.ProductPaginator productPaginator;
+
+  ProductPaginatorModel(this.productPaginator);
 }

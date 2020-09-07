@@ -12,7 +12,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(Products.fromJson(result.data).products);
+      success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
   }
 
@@ -26,7 +26,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(Products.fromJson(result.data).products);
+      success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
   }
 
@@ -39,7 +39,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(Products.fromJson(result.data).products);
+      success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
   }
 
@@ -52,6 +52,20 @@ class ProductApiManager extends BaseApiManager {
       fail(result);
     } else {
       success(RelatedProducts.fromJson(result.data).relatedProducts);
+    }
+  }
+
+  static Future<void> getRatingsForProductApi(int first, int page,
+      String productsId, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: RatingsQuery().document,
+        variables:
+            RatingsArguments(first: first, page: page, productsId: productsId)
+                .toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(RatingPaginatorModel(Ratings.fromJson(result.data).ratings));
     }
   }
 }

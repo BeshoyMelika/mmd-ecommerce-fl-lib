@@ -14,11 +14,11 @@ categoriesApi() async {
 }
 
 productApi() async {
-  await ProductApiManager.getAllProductApi(10, 1, (ProductPaginator item) {
+  await ProductApiManager.getAllProductApi(10, 1, (ProductPaginatorModel item) {
     print("=========================================");
     print("Success sliders api ");
-    print(item.data[0].details.category.id);
-    print(item.data.length);
+    print(item.productPaginator.data[0].details.category.id);
+    print(item.productPaginator.data.length);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail sliders api");
@@ -28,11 +28,11 @@ productApi() async {
 
 productByCategoryIdApi() async {
   await ProductApiManager.getProductByCategoryIdApi(10, 1, "1",
-      (ProductPaginator item) {
+      (ProductPaginatorModel item) {
     print("=========================================");
     print("Success sliders api ");
-    print(item.data[0].details.category.id);
-    print(item.data.length);
+    print(item.productPaginator.data[0].details.category.id);
+    print(item.productPaginator.data.length);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail sliders api");
@@ -42,11 +42,11 @@ productByCategoryIdApi() async {
 
 productByNameApi() async {
   await ProductApiManager.getProductByNameApi(10, 1, "ad",
-      (ProductPaginator item) {
+      (ProductPaginatorModel item) {
     print("=========================================");
     print("Success sliders api ");
-    print(item.data.length);
-    print(item.data[0].details.category.id);
+    print(item.productPaginator.data.length);
+    print(item.productPaginator.data[0].details.category.id);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail sliders api");
@@ -63,6 +63,20 @@ relatedProductByIdApi() async {
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail related product api");
+    print(error.exception);
+  });
+}
+
+getRatingsForProductApi() async {
+  await ProductApiManager.getRatingsForProductApi(10, 1, "1",
+      (RatingPaginatorModel item) {
+    print("=========================================");
+    print("Success ratings api ");
+    print(item.ratingPaginator.data.length);
+    print(item?.ratingPaginator?.data[0]?.rating);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail ratings api");
     print(error.exception);
   });
 }
