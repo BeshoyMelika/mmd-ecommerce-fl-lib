@@ -6,6 +6,8 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart' as C;
 import 'package:mmd_ecommerce_fl_lib/generatedql/cartegoies/graphql_api.dart'
     as CT;
 import 'package:mmd_ecommerce_fl_lib/generatedql/ratings/graphql_api.dart' as R;
+import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart'
+    as RELATED;
 
 /// this class to solve conflicts between the same model names of the graphql api
 class UserMyProfile {
@@ -72,4 +74,10 @@ class ProductDetailsModel {
   final P.Product productDetails;
 
   ProductDetailsModel(this.productDetails);
+}
+
+class RelatedProductsModel {
+  final List<RELATED.Product> products;
+
+  RelatedProductsModel(this.products);
 }

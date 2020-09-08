@@ -67,11 +67,12 @@ productByNameApi() async {
 }
 
 relatedProductByIdApi() async {
-  await ProductApiManager.getRelatedProductByIdApi("1", (List<Product> item) {
+  await ProductApiManager.getRelatedProductByIdApi("1",
+      (RelatedProductsModel item) {
     print("=========================================");
     print("Success related product api ");
-    print(item.length);
-    print(item[0].details.category.id);
+    print(item.products.length);
+    print(item.products[0].details.category.id);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail related product api");

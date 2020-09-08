@@ -68,7 +68,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(RelatedProducts.fromJson(result.data).relatedProducts);
+      success(RelatedProductsModel(
+          RelatedProducts.fromJson(result.data).relatedProducts));
     }
   }
 
