@@ -1,6 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-
-import 'api_keys.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/base/api_keys.dart';
 
 class BaseApiManager {
   static String _url;

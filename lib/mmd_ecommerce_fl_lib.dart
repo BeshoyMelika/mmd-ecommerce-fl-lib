@@ -1,6 +1,5 @@
-import 'package:mmd_ecommerce_fl_lib/apis/api_keys.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
-import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
+import 'apis/base/api_keys.dart';
+import 'apis/base/base_api_manager.dart';
 
 class MmdECommerceFlLib {
   /// to add the base url
