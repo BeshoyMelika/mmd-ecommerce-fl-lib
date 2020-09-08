@@ -6,26 +6,45 @@ part of 'graphql_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ForgetPassword _$ForgetPasswordFromJson(Map<String, dynamic> json) {
-  return ForgetPassword()..forgetPassword = json['forgetPassword'] as bool;
+SignUp _$SignUpFromJson(Map<String, dynamic> json) {
+  return SignUp()
+    ..register = json['register'] == null
+        ? null
+        : User.fromJson(json['register'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$ForgetPasswordToJson(ForgetPassword instance) =>
-    <String, dynamic>{
-      'forgetPassword': instance.forgetPassword,
+Map<String, dynamic> _$SignUpToJson(SignUp instance) => <String, dynamic>{
+      'register': instance.register?.toJson(),
     };
 
-ForgetPasswordArguments _$ForgetPasswordArgumentsFromJson(
-    Map<String, dynamic> json) {
-  return ForgetPasswordArguments(
+User _$UserFromJson(Map<String, dynamic> json) {
+  return User()
+    ..id = json['id'] as String
+    ..name = json['name'] as String
+    ..email = json['email'] as String
+    ..mobile = json['mobile'] as String;
+}
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
+      'mobile': instance.mobile,
+    };
+
+SignUpArguments _$SignUpArgumentsFromJson(Map<String, dynamic> json) {
+  return SignUpArguments(
+    name: json['name'] as String,
     email: json['email'] as String,
+    password: json['password'] as String,
   );
 }
 
-Map<String, dynamic> _$ForgetPasswordArgumentsToJson(
-        ForgetPasswordArguments instance) =>
+Map<String, dynamic> _$SignUpArgumentsToJson(SignUpArguments instance) =>
     <String, dynamic>{
+      'name': instance.name,
       'email': instance.email,
+      'password': instance.password,
     };
 
 ResetPassword _$ResetPasswordFromJson(Map<String, dynamic> json) {
@@ -52,6 +71,28 @@ Map<String, dynamic> _$ResetPasswordArgumentsToJson(
       'email': instance.email,
       'newPassword': instance.newPassword,
       'token': instance.token,
+    };
+
+ForgetPassword _$ForgetPasswordFromJson(Map<String, dynamic> json) {
+  return ForgetPassword()..forgetPassword = json['forgetPassword'] as bool;
+}
+
+Map<String, dynamic> _$ForgetPasswordToJson(ForgetPassword instance) =>
+    <String, dynamic>{
+      'forgetPassword': instance.forgetPassword,
+    };
+
+ForgetPasswordArguments _$ForgetPasswordArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ForgetPasswordArguments(
+    email: json['email'] as String,
+  );
+}
+
+Map<String, dynamic> _$ForgetPasswordArgumentsToJson(
+        ForgetPasswordArguments instance) =>
+    <String, dynamic>{
+      'email': instance.email,
     };
 
 SignIn _$SignInFromJson(Map<String, dynamic> json) {
@@ -90,47 +131,6 @@ SignInArguments _$SignInArgumentsFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
     <String, dynamic>{
-      'email': instance.email,
-      'password': instance.password,
-    };
-
-SignUp _$SignUpFromJson(Map<String, dynamic> json) {
-  return SignUp()
-    ..register = json['register'] == null
-        ? null
-        : User.fromJson(json['register'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$SignUpToJson(SignUp instance) => <String, dynamic>{
-      'register': instance.register?.toJson(),
-    };
-
-User _$UserFromJson(Map<String, dynamic> json) {
-  return User()
-    ..id = json['id'] as String
-    ..name = json['name'] as String
-    ..email = json['email'] as String
-    ..mobile = json['mobile'] as String;
-}
-
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'mobile': instance.mobile,
-    };
-
-SignUpArguments _$SignUpArgumentsFromJson(Map<String, dynamic> json) {
-  return SignUpArguments(
-    name: json['name'] as String,
-    email: json['email'] as String,
-    password: json['password'] as String,
-  );
-}
-
-Map<String, dynamic> _$SignUpArgumentsToJson(SignUpArguments instance) =>
-    <String, dynamic>{
-      'name': instance.name,
       'email': instance.email,
       'password': instance.password,
     };
