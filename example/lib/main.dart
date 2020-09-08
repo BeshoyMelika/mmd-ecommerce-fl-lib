@@ -8,6 +8,10 @@ import 'apis/auth_apis.dart';
 import 'apis/user_apis.dart';
 
 void main() {
+  // todo enhance example by split all APIs that related to each other in one file
+  // todo style all buttons that call the same APIs category with the same style
+  // todo all APIs that in the same category will be in a separated screen.
+  // todo remove the base url from the main example. [May be not because the graphConfig file]
   runApp(MyApp());
 }
 
