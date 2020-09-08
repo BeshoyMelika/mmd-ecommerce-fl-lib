@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getAllAddress() async {
-  await AddressApiManager.getAllAddress(5, 1,
+  await AddressApiManager.addressesApi(5, 1,
       (UserAddressPaginator addressPaginator) {
     print("=========================================");
     print("Success get my Address");
@@ -14,7 +14,7 @@ getAllAddress() async {
 }
 
 createAddress() async {
-  await AddressApiManager.createAddress("beshoy", "melika", "1", "test info",
+  await AddressApiManager.createAddressApi("beshoy", "melika", "1", "test info",
       "addition info test", "012", "30.4", "27.3", (bool success) {
     print("=========================================");
     print("Success Create Address api $success");
@@ -26,7 +26,7 @@ createAddress() async {
 }
 
 updateAddress() async {
-  await AddressApiManager.updateAddress("8", "beshoy", "melika", "1",
+  await AddressApiManager.updateAddressApi("8", "beshoy", "melika", "1",
       "test info", "addition info test", "012", "30.4", "27.3", (bool success) {
     print("=========================================");
     print("Success Update Address api $success");
@@ -38,7 +38,7 @@ updateAddress() async {
 }
 
 deleteAddress() async {
-  await AddressApiManager.deletaAddress("8", (bool success) {
+  await AddressApiManager.deleteAddressApi("8", (bool success) {
     print("=========================================");
     print("Success Delete Address api $success");
   }, (QueryResult error) {
@@ -49,7 +49,7 @@ deleteAddress() async {
 }
 
 getCitiesAsset() async {
-  await AddressApiManager.getAllCities((List<City> list) {
+  await AddressApiManager.citiesApi((List<City> list) {
     print("=========================================");
     print("Success get all cities  api ");
     print(list.length);
@@ -62,7 +62,7 @@ getCitiesAsset() async {
 }
 
 getAreaByIdAsset(String cityId) async {
-  await AddressApiManager.getAreaById(cityId, (List<Area> list) {
+  await AddressApiManager.areaByIdApi(cityId, (List<Area> list) {
     print("=========================================");
     print("Success get all Area  api ");
     print(list.length);

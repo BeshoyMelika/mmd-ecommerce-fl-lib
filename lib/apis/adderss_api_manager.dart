@@ -5,7 +5,7 @@ import '../generatedql/address/graphql_api.dart';
 import './base_api_manager.dart';
 
 class AddressApiManager extends BaseApiManager {
-  static Future<void> createAddress(
+  static Future<void> createAddressApi(
       String firstName,
       String lastName,
       String areaId,
@@ -35,7 +35,7 @@ class AddressApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> updateAddress(
+  static Future<void> updateAddressApi(
       String id,
       String firstName,
       String lastName,
@@ -67,7 +67,7 @@ class AddressApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> deletaAddress(
+  static Future<void> deleteAddressApi(
       String id, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: DeleteAddressQuery().document,
@@ -79,7 +79,7 @@ class AddressApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getAllAddress(
+  static Future<void> addressesApi(
       int first, int page, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: GetAllAddressQuery().document,
@@ -91,7 +91,7 @@ class AddressApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getAllCities(Function success, Function fail) async {
+  static Future<void> citiesApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient()
         .mutate(MutationOptions(documentNode: CitiesQuery().document));
     if (result.hasException) {
@@ -101,7 +101,7 @@ class AddressApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getAreaById(
+  static Future<void> areaByIdApi(
       String cityId, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: AreaByIDQuery().document,
