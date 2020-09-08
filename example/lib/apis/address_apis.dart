@@ -49,7 +49,7 @@ deleteAddress() async {
 }
 
 getCitiesAsset() async {
-  await AddressAssetApiManager.getAllCities((List<City> list) {
+  await AddressApiManager.getAllCities((List<City> list) {
     print("=========================================");
     print("Success get all cities  api ");
     print(list.length);
@@ -62,7 +62,7 @@ getCitiesAsset() async {
 }
 
 getAreaByIdAsset(String cityId) async {
-  await AddressAssetApiManager.getAreaById(cityId, (List<Area> list) {
+  await AddressApiManager.getAreaById(cityId, (List<Area> list) {
     print("=========================================");
     print("Success get all Area  api ");
     print(list.length);
