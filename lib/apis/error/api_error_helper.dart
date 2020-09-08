@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/api_keys.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/error/api_error_model.dart';
 import 'package:mmd_ecommerce_fl_lib/extensions.dart';
 
 class ApiErrorHelper {
@@ -23,8 +24,8 @@ class ApiErrorHelper {
   static Map<String, dynamic> errorValidation(dynamic extension) =>
       extension[validation];
 
-  static Map<String, dynamic> errorAuthentication(dynamic extension) =>
-      extension[authentication];
+  static dynamic errorAuthentication(dynamic extension) =>
+      extension[guards];
 
   static String errorReason(dynamic extension) => extension[reason];
 
@@ -40,21 +41,22 @@ class ApiErrorHelper {
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  static String handle(QueryResult result) {
+  static ApiErrorModel handle(QueryResult result) {
     if (result.exception.clientException is NetworkException) {
-      return result.exception.clientException.message;
+      return ApiErrorModel(ApiErrorModel.NETWORK_EXCEPTION, result,
+          result.exception.clientException.message);
     } else {
       var error = mapToModel(result.exception.graphqlErrors[0].raw);
       var errorCat = errorCategory(error);
       if (isAuthenticationError(errorCat)) {
-        print("IsAuth true");
-        return authentication;
+        return ApiErrorModel(ApiErrorModel.AUTH_EXCEPTION, result,
+            errorAuthentication(error.extensions));
       } else if (isValidationError(errorCat)) {
-        print("IsValidation true");
-        return validation;
+        return ApiErrorModel(ApiErrorModel.VALIDATION_EXCEPTION, result,
+            errorValidation(error.extensions));
       } else {
-        print(errorReason(error.extensions));
-        return errorReason(error.extensions);
+        return ApiErrorModel(ApiErrorModel.MESSAGE_EXCEPTION, result,
+            errorReason(error.extensions));
       }
     }
   }

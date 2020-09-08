@@ -4,6 +4,7 @@ const acceptLanguage = "Accept-language";
 
 const validation = "validation";
 const authentication = "authentication";
+const guards = "guards";
 const reason = "reason";
 const category = "category";
 

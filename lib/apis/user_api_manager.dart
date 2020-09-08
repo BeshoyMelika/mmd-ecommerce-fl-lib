@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/error/api_error_helper.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
@@ -36,7 +37,7 @@ class UserApiManager extends BaseApiManager {
         documentNode: ProfileQuery().document,
         fetchPolicy: FetchPolicy.noCache));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(UserMyProfile(Profile.fromJson(result.data).profile));
     }
