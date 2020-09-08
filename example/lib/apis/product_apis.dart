@@ -41,12 +41,10 @@ productByCategoryIdApi() async {
 }
 
 getProductDetailsApi() async {
-  await ProductApiManager.getProductDetailsApi("1",
-      (ProductPaginatorModel item) {
+  await ProductApiManager.getProductDetailsApi("1", (ProductDetailsModel item) {
     print("=========================================");
     print("Success get products details api ");
-    print(item.productPaginator.data[0].details.category.id);
-    print(item.productPaginator.data.length);
+    print(item.productDetails.id);
   }, (QueryResult error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     print("Fail get products details api");

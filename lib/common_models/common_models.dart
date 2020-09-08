@@ -67,3 +67,9 @@ class ProductPaginatorModel {
 
   ProductPaginatorModel(this.productPaginator);
 }
+
+class ProductDetailsModel {
+  final P.Product productDetails;
+
+  ProductDetailsModel(this.productDetails);
+}

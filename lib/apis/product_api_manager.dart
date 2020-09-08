@@ -39,7 +39,11 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(result);
     } else {
-      success(ProductPaginatorModel(Products.fromJson(result.data).products));
+      success(ProductDetailsModel(
+          ProductPaginatorModel(Products.fromJson(result.data).products)
+              .productPaginator
+              .data
+              .first));
     }
   }
 
