@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getAllAddress() async {
-  await UserApiManager.getAllAddress(5, 1,
+  await AddressApiManager.getAllAddress(5, 1,
       (UserAddressPaginator addressPaginator) {
     print("=========================================");
     print("Success get my Address");
@@ -14,7 +14,7 @@ getAllAddress() async {
 }
 
 createAddress() async {
-  await UserApiManager.createAddress("beshoy", "melika", "1", "test info",
+  await AddressApiManager.createAddress("beshoy", "melika", "1", "test info",
       "addition info test", "012", "30.4", "27.3", (bool success) {
     print("=========================================");
     print("Success Create Address api $success");
@@ -26,8 +26,8 @@ createAddress() async {
 }
 
 updateAddress() async {
-  await UserApiManager.updateAddress("8", "beshoy", "melika", "1", "test info",
-      "addition info test", "012", "30.4", "27.3", (bool success) {
+  await AddressApiManager.updateAddress("8", "beshoy", "melika", "1",
+      "test info", "addition info test", "012", "30.4", "27.3", (bool success) {
     print("=========================================");
     print("Success Update Address api $success");
   }, (QueryResult error) {
@@ -38,7 +38,7 @@ updateAddress() async {
 }
 
 deleteAddress() async {
-  await UserApiManager.deletaAddress("8", (bool success) {
+  await AddressApiManager.deletaAddress("8", (bool success) {
     print("=========================================");
     print("Success Delete Address api $success");
   }, (QueryResult error) {
@@ -49,7 +49,7 @@ deleteAddress() async {
 }
 
 getCitiesAsset() async {
-  await UserApiManager.getAllCities((List<City> list) {
+  await AddressAssetApiManager.getAllCities((List<City> list) {
     print("=========================================");
     print("Success get all cities  api ");
     print(list.length);
@@ -62,7 +62,7 @@ getCitiesAsset() async {
 }
 
 getAreaByIdAsset(String cityId) async {
-  await UserApiManager.getAreaById(cityId, (List<Area> list) {
+  await AddressAssetApiManager.getAreaById(cityId, (List<Area> list) {
     print("=========================================");
     print("Success get all Area  api ");
     print(list.length);

@@ -6,6 +6,8 @@ export './apis/auth_api_manager.dart';
 export './apis/general_api_manager.dart';
 export './apis/user_api_manager.dart';
 export './apis/cart_api_manager.dart';
+export './apis/adderss_api_manager.dart';
+export './apis/adderss_asset_api_manager.dart';
 export './common_models/common_models.dart';
 export './generatedql/auth/graphql_api.dart';
 export './generatedql/general/graphql_api.dart' hide Media;
