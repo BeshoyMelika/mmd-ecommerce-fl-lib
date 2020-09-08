@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/lib/generatedql/user/graphql_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generatedql/user/graphql_api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generatedql/user/graphql_api.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generatedql/user/graphql_api.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apis/api_keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apis/api_keys.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

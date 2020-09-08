@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MmdECommerceFlLib.submitBaseUrl("http://egfoods.moselaymdserver.com");
+    MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  AuthPayload auth;
+  AuthPayloadLogin auth;
   var isError = false;
 
   TextEditingController emailController = TextEditingController();
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         (AuthPayloadLogin auth) {
       setState(() {
         this.isLoading = false;
-        this.auth = auth.authPayload;
+        this.auth = auth;
       });
     }, () {
       this.isError = true;
@@ -80,13 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return Column(
         children: [
-          Text("Result Success \n${auth?.access_token}"),
+          Text("Result Success \n${auth?.authPayload?.access_token}"),
           RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MainSecond(auth.refresh_token)),
+                    builder: (context) =>
+                        MainSecond(auth.authPayload.refresh_token)),
               );
             },
             child: Text("Open Main Second"),
@@ -194,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
   callLoginApi() async {
     await AuthApiManager.loginApi("test@mail.com", "123456789",
         (AuthPayloadLogin authPayload) async {
-      auth = authPayload.authPayload;
+      auth = authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.authPayload.access_token,
           authPayload.authPayload.token_type);

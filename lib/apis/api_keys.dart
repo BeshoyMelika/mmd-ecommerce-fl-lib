@@ -1,6 +1,6 @@
 const graphql = "graphql";
 const authorization = "Authorization";
-const acceptLanguage = "Accept-language";
+const acceptLanguage = "Accept-Language";
 
 
 class Languages {
