@@ -74,33 +74,47 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            RaisedButton(
-              color: Colors.deepPurpleAccent,
-              onPressed: () async {
-                await productByCategoryIdApi();
-              },
-              child: Text(
-                "get product by category id Api",
-                style: TextStyle(color: Colors.white),
-              ),
+            Row(
+              children: [
+                RaisedButton(
+                  color: Colors.deepPurpleAccent,
+                  onPressed: () async {
+                    await productByCategoryIdApi();
+                  },
+                  child: Text(
+                    "get product by category id Api",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                RaisedButton(
+                  color: Colors.deepPurpleAccent,
+                  onPressed: () async {
+                    await productByNameApi();
+                  },
+                  child: Text(
+                    "get product by name Api",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                RaisedButton(
+                  color: Colors.deepPurpleAccent,
+                  onPressed: () async {
+                    await productApi();
+                  },
+                  child: Text(
+                    "get product Api",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             RaisedButton(
               color: Colors.deepPurpleAccent,
               onPressed: () async {
-                await productByNameApi();
+                await newProductApi();
               },
               child: Text(
-                "get product by name Api",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            RaisedButton(
-              color: Colors.deepPurpleAccent,
-              onPressed: () async {
-                await productApi();
-              },
-              child: Text(
-                "get product Api",
+                "get new product Api",
                 style: TextStyle(color: Colors.white),
               ),
             ),

@@ -36,3 +36,6 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/ratings/*.graphql
               output: lib/generatedql/ratings/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/order_products/*.graphql
+              output: lib/generatedql/order_products/graphql_api.dart

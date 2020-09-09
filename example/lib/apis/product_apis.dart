@@ -40,6 +40,19 @@ productByCategoryIdApi() async {
   });
 }
 
+newProductApi() async {
+  await ProductApiManager.newProductApi(10, 1, (NewProductsModel item) {
+    print("=========================================");
+    print("Success get new products api ");
+    print(item.productPaginator.data[0].details.category.id);
+    print(item.productPaginator.data.length);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail get new products api ");
+    print(error.exception);
+  });
+}
+
 getProductDetailsApi() async {
   await ProductApiManager.getProductDetailsApi("1", (ProductDetailsModel item) {
     print("=========================================");

@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/order_products/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
@@ -84,6 +85,23 @@ class ProductApiManager extends BaseApiManager {
       fail(result);
     } else {
       success(RatingPaginatorModel(Ratings.fromJson(result.data).ratings));
+    }
+  }
+
+  static Future<void> newProductApi(
+      int first, int page, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: OrderProductsQuery().document,
+        variables: OrderProductsArguments(
+          first: first,
+          page: page,
+          orderType: "DESC",
+          fieldOfOrder: "ID",
+        ).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(NewProductsModel(OrderProducts.fromJson(result.data).products));
     }
   }
 }
