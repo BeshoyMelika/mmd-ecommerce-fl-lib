@@ -82,6 +82,8 @@ class Product with EquatableMixin {
 
   String id;
 
+  String averageRating;
+
   String price;
 
   bool available;
@@ -89,7 +91,7 @@ class Product with EquatableMixin {
   ProductData details;
 
   @override
-  List<Object> get props => [id, price, available, details];
+  List<Object> get props => [id, averageRating, price, available, details];
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
 
@@ -356,6 +358,12 @@ class OrderProductsQuery
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
                           name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'averageRating'),
                           alias: null,
                           arguments: [],
                           directives: [],

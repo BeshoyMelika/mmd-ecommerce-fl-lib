@@ -30,6 +30,7 @@ query OrderProducts(
     }
     data {
       id
+      averageRating
       price
       available
       details {
