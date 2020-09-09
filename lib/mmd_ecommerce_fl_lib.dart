@@ -1,8 +1,7 @@
-import 'package:mmd_ecommerce_fl_lib/apis/api_keys.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
+import 'apis/base/api_keys.dart';
+import 'apis/base/base_api_manager.dart';
 
 class MmdECommerceFlLib {
-
   /// to add the base url
   static void submitBaseUrl(String baseUrl) {
     BaseApiManager.setUrl(baseUrl);
@@ -24,6 +23,7 @@ class MmdECommerceFlLib {
 
 // Todo --> manage token session with the library ..
 // Todo --> auto refresh token with the library ..
-// Todo --> handel error form api
+// Todo --> handel error form api [finished half of work]
 // Todo --> use fragments for paging info ..
 // Todo --> add http logger ..
+// Todo --> connect library to directly get code from git hub ..
