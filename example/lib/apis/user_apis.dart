@@ -13,7 +13,7 @@ callUpdateProfileApi(String name, String mobile) {
 callMyProfileApi() {
   var token =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5IiwianRpIjoiMDU2MTM0NTc5MjU3MGUyMDRjNTI0NjZmYmY3OTVlNmFhNjJmZTJhZjdhNDg2MWE1MDQ3Y2JlZTBkY2U3ZWU2NDAzMjk5NDFjZDdiMzEwNWYiLCJpYXQiOjE1OTk1OTI1NDYsIm5iZiI6MTU5OTU5MjU0NiwiZXhwIjoxNjMxMTI4NTQ2LCJzdWIiOiI2Iiwic2NvcGVzIjpbIioiXX0.klDKrtTsMeNH4-4n-CG7cLJedCwYeeSqd7ZbZe6t0-V3ZHjznhidmLaH5wUBqT54ClixOO6qVLnSvckc_QNrci1UcZy6XJQ_aMxX2ytllLqhhMBp8zp3V_lMJmutDN6txhEWqmACwQFz_-mKzyilKznquQYo0WD2HtBLkPQOy4Uf90T0VMdL684TRG2h8bJqNXB6wQ-jEtE4P8ibCEXVIUckM5SGmMJbdWDOS6I3jsR0rrehuVuHD0CTApbTy-3VqlCl85tHcNhs8IA_B6MdDgrNNc3_wo0HmF9wINuG9Mmyx85kbpjoKmXj3TJSMT4usc9Hcn7MDLTEn_McDh5QgZeY9RIpqxvvbNhRK6mII7WGG6R9fNfnnGoEMmLqNXZKy5fnug7bxmSXbNEt5WXKICgV2EMXZ4voRSEcFmZOezi6pvzwp8vR2xbRMaqegIG_QGo98VIZe8l9r6or4R02tFGr1jwpa0p6F3ksn-pIAEjAvCJotusj5sNdmNC-sYPML4WKdZJFUOflqXzJ2lm6iCbuk6AQGKOd3-EL5W1G3xUJhGosw3is7lBs3Xtp1fQBWBzwwuxcaMixXDTnSTwAwfu3J-i-pRmDqOzuy2-1aqz04pSQ6fTA9NRMJvcT76HyAC-aWOFpew6uEhoMFJsfGBuo1Fcj430uHKqwc3Gsb0E";
-  MmdECommerceFlLib.submitTokeAndTokenType("token", "Bearer");
+  MmdECommerceFlLib.submitTokeAndTokenType("$token", "Bearer");
 
   UserApiManager.myProfile((UserMyProfile user) {
     print("=========================================");
