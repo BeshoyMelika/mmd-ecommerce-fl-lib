@@ -31,6 +31,8 @@ callRefreshTokenApi(String refreshToken) {
     print("Success Refresh Token");
     print(authPayload.authPayload.access_token);
     print("\n ========================================= \n");
+    print(authPayload.authPayload.device_token);
+    print("\n ========================================= \n");
     print(authPayload.authPayload.refresh_token);
     print("\n ========================================= \n");
   }, () {
