@@ -33,7 +33,7 @@ addToCard() async {
 }
 
 getCard() async {
-  await CartApiManager.getCartApi((Cart cart) {
+  await CartApiManager.cartDataApi((Cart cart) {
     print("=========================================");
     print("Success get cart api  $cart");
     print(cart.items.length);
