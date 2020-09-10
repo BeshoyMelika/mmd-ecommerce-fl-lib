@@ -1,5 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart';
 
 class CartApiManager extends BaseApiManager {

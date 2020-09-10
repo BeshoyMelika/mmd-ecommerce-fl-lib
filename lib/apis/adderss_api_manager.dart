@@ -1,8 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-
-import '../generatedql/address_asset/graphql_api.dart';
-import '../generatedql/address/graphql_api.dart';
-import './base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/address_asset/graphql_api.dart';
 
 class AddressApiManager extends BaseApiManager {
   static Future<void> createAddressApi(
