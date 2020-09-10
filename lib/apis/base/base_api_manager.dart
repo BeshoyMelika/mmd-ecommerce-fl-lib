@@ -5,12 +5,15 @@ import 'package:mmd_ecommerce_fl_lib/apis/logger/logger_client.dart';
 
 class BaseApiManager {
   static String _url;
+  static bool _isDebuggable;
   static String _tokenType;
   static String _token;
   static String _language;
   static GraphQLClient _mainClient;
 
   static void setUrl(String baseUrl) => _url = baseUrl + "/$graphql";
+
+  static void setDebuggable(bool debuggable) => _isDebuggable = debuggable;
 
   static void setLanguage(String lang) => _language = lang;
 
@@ -27,11 +30,7 @@ class BaseApiManager {
   }
 
   static void refreshClient() {
-    if (_token != null) {
-      authenticateClient();
-    } else {
-      createClient();
-    }
+    _token != null ? authenticateClient() : createClient();
   }
 
   static void createClient() {
@@ -58,6 +57,6 @@ class BaseApiManager {
   }
 
   static Client _getClient() {
-    return LoggerClient(Client());
+    return _isDebuggable ? LoggerClient(Client()) : Client();
   }
 }

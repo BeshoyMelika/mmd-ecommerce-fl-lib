@@ -19,11 +19,18 @@ class MmdECommerceFlLib {
     BaseApiManager.setLanguage(lang.value);
     BaseApiManager.refreshClient();
   }
+
+  /// to enable auto print requests and responses --> use it only with debug mode
+  /// you have to call [enableDebug] after [submitBaseUrl] directly
+  /// if you want to change the setting of debugging later.
+  /// you must call one of these [submitLanguage] or [submitTokeAndTokenType]
+  /// to reset the client ..
+  static void enableDebug(bool isDebuggable) {
+    BaseApiManager.setDebuggable(isDebuggable);
+  }
 }
 
 // Todo --> manage token session with the library ..
 // Todo --> auto refresh token with the library ..
-// Todo --> handel error form api [finished half of work]
 // Todo --> use fragments for paging info ..
-// Todo --> add http logger ..
 // Todo --> connect library to directly get code from git hub ..
