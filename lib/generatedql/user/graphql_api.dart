@@ -35,9 +35,11 @@ class AuthPayload with EquatableMixin {
 
   String token_type;
 
+  String device_token;
+
   @override
   List<Object> get props =>
-      [access_token, refresh_token, expires_in, token_type];
+      [access_token, refresh_token, expires_in, token_type, device_token];
   Map<String, dynamic> toJson() => _$AuthPayloadToJson(this);
 }
 
@@ -104,6 +106,12 @@ class RefreshTokenQuery
                     selectionSet: null),
                 FieldNode(
                     name: NameNode(value: 'token_type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'device_token'),
                     alias: null,
                     arguments: [],
                     directives: [],

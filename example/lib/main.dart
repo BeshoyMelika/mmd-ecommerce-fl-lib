@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       isLoading = true;
     });
-    AuthApiManager.loginApi('test@mail.com', '123456789',
+    AuthApiManager.loginApi('test@mail.com', '123456789', "123",
         (AuthPayloadLogin auth) {
       setState(() {
         this.isLoading = false;
@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   callLoginApi() async {
-    await AuthApiManager.loginApi("test@mail.com", "123456789",
+    await AuthApiManager.loginApi("test@mail.com", "123456789", "123",
         (AuthPayloadLogin authPayload) async {
       auth = authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
@@ -203,8 +203,10 @@ class _MyHomePageState extends State<MyHomePage> {
       print("=========================================");
       print("Success Login");
       print("Access Token: ${authPayload.authPayload.access_token}");
+      print("Access Token: ${authPayload.authPayload.device_token}");
     }, (QueryResult x) {
       print("error");
+      print(x.exception);
     });
   }
 }
