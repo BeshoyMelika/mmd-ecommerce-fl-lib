@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/dummy.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AndroidStudioProjects/Nestle-Android/.idea/sonarIssues.xml">
           <value>
             <set />
@@ -53,6 +58,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/lib/apis/api_error_handler.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lib/apis/api_error_helper.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lib/apis/api_keys.dart">
           <value>
             <set />
@@ -84,6 +99,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/lib/common_models/common_models.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lib/extensions.dart">
           <value>
             <set />
           </value>

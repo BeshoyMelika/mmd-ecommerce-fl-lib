@@ -11,14 +11,20 @@ callUpdateProfileApi(String name, String mobile) {
 }
 
 callMyProfileApi() {
+  var token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5IiwianRpIjoiZTFlMmZlZjE4Mjg1ZjA3MmFiOGYwOWQwMTAzZjEyMWZmNzNjNWQ2NzczMzM4YmUxNWFjYTI3MGUxNDgwYmI0OGZmZmRjZTE2NjcxOTZhMTYiLCJpYXQiOjE1OTk2ODgzNDcsIm5iZiI6MTU5OTY4ODM0NywiZXhwIjoxNjMxMjI0MzQ3LCJzdWIiOiI2Iiwic2NvcGVzIjpbIioiXX0.a-9qXWaRNSsSiB09sCZV9TkTmEgcvbLXpP5dqtrqUkD1mbY_KTT8v8-Id2QuWlG5gytZSwKydS0R6JnL2I1LIEIBmXgOWG7I8VgS--NL6-cMW6mQobJn0B92YHKJhjMRKwW5pnQ_doVmRrwhZuZ9XNAvXHIzBdGnVUYr6kp4wmRh4KU8F3D5ojrDAOL6xlbwc9RSPyoBllEuzzRBqZJ_snel2o18nN2NX3TCQHboIgZgPD5PoC2nQ883o-zfLPxhwkExewzg6-eaJlFX0BeZXjmHumVoFCyNGn0Bbw_M8dH6p9sS3Xf8-r0l6BNmG3UpwhBWrvV9xZCPZ0nVsT8sOfvnTD30ZQqqIkbJu25F99W6r2jvWpLJPrN-gaxG2afuskubdeaCC2rQ4jmPi0m8nA9zTHjJvfCQzkOU90R3fvGFo73GSR78QYAVbEF0pLmMXP4-R0GhNjYQaUqOlxwZFe4wlYLzRC3TIbImoCsVkitZWUuQzgNJAtj9nTEAzw_pUzeE_qnqeA670Ivbn6vpCB-JYcYk7qPpps7gYyMMFfswQYZS55Kp-SsY-1r0sUQkNsxYnSMzwFUQ6-glC4WlZ0qXmF6vvUX8YBfrYkl_eV5y4BmL_nBz1auiebORIO4xrSr99JYzBBOrjfF7t6pAur8PaYaBmBG22eVuYi7WBX0";
+  MmdECommerceFlLib.submitTokeAndTokenType("$token", "Bearer");
+
   UserApiManager.myProfile((UserMyProfile user) {
     print("=========================================");
     print("Success get my profile");
     print(user.user.id);
     print(user.user.name);
     print(user.user.mobile);
-  }, (QueryResult error) {
+  }, (ApiErrorModel error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print(error.errorCode);
+    print(error.errorMessage);
     print("Fail get my profile");
   });
 }
