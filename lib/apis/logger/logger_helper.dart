@@ -8,6 +8,8 @@ class LoggerHelper {
   static const loggerResponse = "================ Response ================";
   static const loggerUrl = "$loggerTag url $loggerSeparator";
   static const loggerHeaders = "$loggerTag headers $loggerSeparator";
+  static const loggerStatusCode = "$loggerTag statusCode $loggerSeparator";
+  static const loggerBody = "$loggerTag body $loggerSeparator";
 
   static void print2Lines() => print(loggerLine + "\n" + loggerLine);
 
@@ -15,6 +17,10 @@ class LoggerHelper {
 
   static void printHeaders(Map<String, String> headers) =>
       print("$loggerHeaders $headers");
+
+  static void printStatusCode(int code) => print("$loggerStatusCode $code");
+
+  static void printBody(String body) => print("$loggerBody $body");
 
   static void logRequest(dynamic url, Map<String, String> headers) {
     print2Lines();
@@ -24,11 +30,18 @@ class LoggerHelper {
     print2Lines();
   }
 
-  static void logStreamedResponse(StreamedResponse response) {
+  static void logResponse(Response response) {
     print2Lines();
     print(loggerResponse);
     printUrl(response.request.url);
     printHeaders(response.headers);
+    printStatusCode(response.statusCode);
+    printBody(response.body);
     print2Lines();
+  }
+
+  static void logStreamedResponse(StreamedResponse response) async {
+    var res = await Response.fromStream(response);
+    logResponse(res);
   }
 }

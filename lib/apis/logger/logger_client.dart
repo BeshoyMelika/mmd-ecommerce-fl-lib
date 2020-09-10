@@ -81,11 +81,42 @@ class LoggerClient implements Client {
   }
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
+  Future<StreamedResponse> send(BaseRequest request) async {
     LoggerHelper.logRequest(request.url, request.headers);
-    return _client.send(request).then((StreamedResponse response) {
-      LoggerHelper.logStreamedResponse(response);
-      return Future.value(response);
+    var response = await _client.send(request);
+    return await waitForLogger(response);
+  }
+
+  Future<StreamedResponse> waitForLogger(StreamedResponse response) async {
+    StreamedResponse streamRes;
+    StreamedResponse streamLog;
+    var bytes1 = List<int>();
+    var bytes2 = List<int>();
+
+    response.stream.asBroadcastStream().listen((List<int> event) {
+      // "STREAM START"
+      bytes1 = List<int>.from(event);
+      bytes2 = List<int>.from(event);
+      // "STREAM END"
+    }, onDone: () {
+      // "STREAM DONE"
+      streamRes = getCopyStreamed(bytes1, response);
+      streamLog = getCopyStreamed(bytes2, response);
     });
+
+    // "WAITING 2 SECONDS FOR LOGGER"
+    await Future.delayed(Duration(seconds: 2));
+    LoggerHelper.logStreamedResponse(streamLog);
+    return streamRes;
+  }
+
+  StreamedResponse getCopyStreamed(List<int> bytes, StreamedResponse oldRes) {
+    return StreamedResponse(ByteStream.fromBytes(bytes), oldRes.statusCode,
+        contentLength: oldRes.contentLength,
+        request: oldRes.request,
+        headers: oldRes.headers,
+        isRedirect: oldRes.isRedirect,
+        persistentConnection: oldRes.persistentConnection,
+        reasonPhrase: oldRes.reasonPhrase);
   }
 }
