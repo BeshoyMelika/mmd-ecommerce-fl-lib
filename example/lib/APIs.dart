@@ -9,7 +9,7 @@ callBrandsApi() {
 }
 
 sliderApi() async {
-  await GeneralApiManager.sliders((List<Slider> list) {
+  await GeneralApiManager.slidersApi((List<Slider> list) {
     print("=========================================");
     print("Success sliders api ");
     print(list.length);
@@ -22,7 +22,7 @@ sliderApi() async {
 }
 
 addToCard() async {
-  await CartApiManager.addToCart("2", 2, (bool success) {
+  await CartApiManager.addToCartApi("2", 2, (bool success) {
     print("=========================================");
     print("Success add to card api  $success");
   }, (QueryResult error) {
@@ -33,7 +33,7 @@ addToCard() async {
 }
 
 getCard() async {
-  await CartApiManager.getCart((Cart cart) {
+  await CartApiManager.getCartApi((Cart cart) {
     print("=========================================");
     print("Success get cart api  $cart");
     print(cart.items.length);

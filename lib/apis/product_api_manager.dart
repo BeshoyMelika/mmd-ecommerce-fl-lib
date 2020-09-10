@@ -5,7 +5,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dar
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 class ProductApiManager extends BaseApiManager {
-  static Future<void> getAllProductApi(
+  static Future<void> allProductApi(
       int first, int page, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProductsQuery().document,
@@ -17,7 +17,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getProductByCategoryIdApi(int first, int page,
+  static Future<void> productByCategoryIdApi(int first, int page,
       String categoryId, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProductsQuery().document,
@@ -31,7 +31,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getProductDetailsApi(
+  static Future<void> productDetailsApi(
       String productId, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProductsQuery().document,
@@ -48,7 +48,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getProductByNameApi(
+  static Future<void> productsByNameApi(
       int first, int page, String name, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProductsQuery().document,
@@ -61,7 +61,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getRelatedProductByIdApi(
+  static Future<void> relatedProductsByIdApi(
       String id, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: RelatedProductsQuery().document,
@@ -74,7 +74,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getRatingsForProductApi(int first, int page,
+  static Future<void> ratingsForProductApi(int first, int page,
       String productsId, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: RatingsQuery().document,

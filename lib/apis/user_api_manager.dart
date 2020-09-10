@@ -18,7 +18,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> updateProfile(
+  static Future<void> updateProfileApi(
       String name, String mobile, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateProfileQuery().document,
@@ -31,7 +31,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> myProfile(Function success, Function fail) async {
+  static Future<void> myProfileApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProfileQuery().document,
         fetchPolicy: FetchPolicy.noCache));
@@ -42,7 +42,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> createAddress(
+  static Future<void> createAddressApi(
       String firstName,
       String lastName,
       String areaId,
@@ -74,7 +74,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> updateAddress(
+  static Future<void> updateAddressApi(
       String id,
       String firstName,
       String lastName,
@@ -108,7 +108,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> deletaAddress(
+  static Future<void> deletaAddressApi(
       String id, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: DeleteAddressQuery().document,
@@ -120,7 +120,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getAllAddress(
+  static Future<void> allAddressApi(
       int first, int page, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: GetAllAddressQuery().document,

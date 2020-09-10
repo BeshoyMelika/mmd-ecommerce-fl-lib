@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 callUpdateProfileApi(String name, String mobile) {
-  UserApiManager.updateProfile(name, mobile, (bool isUpdated) {
+  UserApiManager.updateProfileApi(name, mobile, (bool isUpdated) {
     print("=========================================");
     print("Success update profile $isUpdated");
   }, (QueryResult error) {
@@ -11,7 +11,7 @@ callUpdateProfileApi(String name, String mobile) {
 }
 
 callMyProfileApi() {
-  UserApiManager.myProfile((UserMyProfile user) {
+  UserApiManager.myProfileApi((UserMyProfile user) {
     print("=========================================");
     print("Success get my profile");
     print(user.user.id);

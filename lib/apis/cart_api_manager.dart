@@ -3,7 +3,7 @@ import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart';
 
 class CartApiManager extends BaseApiManager {
-  static Future<void> addToCart(
+  static Future<void> addToCartApi(
       String productId, int quantity, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: AddToCartQuery().document,
@@ -16,7 +16,7 @@ class CartApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getCart(Function success, Function fail) async {
+  static Future<void> cartDataApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: GetCartQuery().document,
         fetchPolicy: FetchPolicy.noCache));
@@ -27,7 +27,7 @@ class CartApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getVoucherByCode(
+  static Future<void> voucherByCodeApi(
       String code, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: GetVoucherByCodeQuery().document,

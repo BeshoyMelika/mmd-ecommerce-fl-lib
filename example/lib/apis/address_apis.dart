@@ -2,7 +2,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getAllAddress() async {
-  await UserApiManager.getAllAddress(5, 1,
+  await UserApiManager.allAddressApi(5, 1,
       (UserAddressPaginator addressPaginator) {
     print("=========================================");
     print("Success get all Address");
@@ -15,7 +15,7 @@ getAllAddress() async {
 }
 
 createAddress() async {
-  await UserApiManager.createAddress("beshoy", "melika", "1", "test info",
+  await UserApiManager.createAddressApi("beshoy", "melika", "1", "test info",
       "addition info test", "012", "30.4", "27.3", false, (bool success) {
     print("=========================================");
     print("Success Create Address api $success");
@@ -27,8 +27,17 @@ createAddress() async {
 }
 
 updateAddress() async {
-  await UserApiManager.updateAddress("8", "beshoy", "melika", "1", "test info",
-      "addition info test", "012", "30.4", "27.3", false, (bool success) {
+  await UserApiManager.updateAddressApi(
+      "8",
+      "beshoy",
+      "melika",
+      "1",
+      "test info",
+      "addition info test",
+      "012",
+      "30.4",
+      "27.3",
+      false, (bool success) {
     print("=========================================");
     print("Success Update Address api $success");
   }, (QueryResult error) {
@@ -39,7 +48,7 @@ updateAddress() async {
 }
 
 deleteAddress() async {
-  await UserApiManager.deletaAddress("8", (bool success) {
+  await UserApiManager.deletaAddressApi("8", (bool success) {
     print("=========================================");
     print("Success Delete Address api $success");
   }, (QueryResult error) {

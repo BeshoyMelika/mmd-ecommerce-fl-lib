@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 categoriesApi() async {
-  await GeneralApiManager.getAllCategoriesApi((List<Category> list) {
+  await GeneralApiManager.allCategoriesApi((List<Category> list) {
     print("=========================================");
     print("Success get all categories api ");
     print(list.length);
@@ -14,7 +14,7 @@ categoriesApi() async {
 }
 
 productApi() async {
-  await ProductApiManager.getAllProductApi(10, 1, (ProductPaginatorModel item) {
+  await ProductApiManager.allProductApi(10, 1, (ProductPaginatorModel item) {
     print("=========================================");
     print("Success get all products api ");
     print(item.productPaginator.data[0].details.category.id);
@@ -27,7 +27,7 @@ productApi() async {
 }
 
 productByCategoryIdApi() async {
-  await ProductApiManager.getProductByCategoryIdApi(10, 1, "1",
+  await ProductApiManager.productByCategoryIdApi(10, 1, "1",
       (ProductPaginatorModel item) {
     print("=========================================");
     print("Success get products by categories id api ");
@@ -54,7 +54,7 @@ newProductApi() async {
 }
 
 getProductDetailsApi() async {
-  await ProductApiManager.getProductDetailsApi("1", (ProductDetailsModel item) {
+  await ProductApiManager.productDetailsApi("1", (ProductDetailsModel item) {
     print("=========================================");
     print("Success get products details api ");
     print(item.productDetails.id);
@@ -66,7 +66,7 @@ getProductDetailsApi() async {
 }
 
 productByNameApi() async {
-  await ProductApiManager.getProductByNameApi(10, 1, "ad",
+  await ProductApiManager.productsByNameApi(10, 1, "ad",
       (ProductPaginatorModel item) {
     print("=========================================");
     print("Success get products by categories name api ");
@@ -80,7 +80,7 @@ productByNameApi() async {
 }
 
 relatedProductByIdApi() async {
-  await ProductApiManager.getRelatedProductByIdApi("1",
+  await ProductApiManager.relatedProductsByIdApi("1",
       (RelatedProductsModel item) {
     print("=========================================");
     print("Success related product api ");
@@ -94,7 +94,7 @@ relatedProductByIdApi() async {
 }
 
 getRatingsForProductApi() async {
-  await ProductApiManager.getRatingsForProductApi(10, 1, "1",
+  await ProductApiManager.ratingsForProductApi(10, 1, "1",
       (RatingPaginatorModel item) {
     print("=========================================");
     print("Success ratings api ");
