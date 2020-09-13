@@ -2,6 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/orders/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
 
 class UserApiManager extends BaseApiManager {
@@ -129,6 +130,18 @@ class UserApiManager extends BaseApiManager {
       fail(result);
     } else {
       success(GetAllAddress.fromJson(result.data).addresses);
+    }
+  }
+
+  static Future<void> allOrdersApi(
+      int first, int page, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
+        documentNode: OrdersQuery().document,
+        variables: OrdersArguments(first: first, page: page).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(Orders.fromJson(result.data).orders);
     }
   }
 }

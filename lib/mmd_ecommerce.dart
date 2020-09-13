@@ -22,6 +22,7 @@ export './generatedql/user/graphql_api.dart' hide AuthPayload, User;
 export './generatedql/address/graphql_api.dart' hide PaginatorInfo;
 export './generatedql/ratings/graphql_api.dart' hide PaginatorInfo, User;
 export './generatedql/cartegoies/graphql_api.dart';
+export './generatedql/orders/graphql_api.dart' hide PaginatorInfo;
 export './mmd_ecommerce.dart';
 export './mmd_ecommerce_fl_lib.dart';
 export './apis/api_keys.dart';

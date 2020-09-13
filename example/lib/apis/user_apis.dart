@@ -39,3 +39,15 @@ callRefreshTokenApi(String refreshToken) {
     print("\n ========================================= \n");
   });
 }
+
+getAllOrdersApi() {
+  UserApiManager.allOrdersApi(20, 1, (OrderPaginator orders) {
+    print("=========================================");
+    print("Success get my profile");
+    print(orders.data.length);
+    print(orders.data[0].total);
+  }, (QueryResult error) {
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print("Fail get my orders");
+  });
+}
