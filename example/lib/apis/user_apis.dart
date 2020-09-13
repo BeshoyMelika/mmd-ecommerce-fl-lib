@@ -43,7 +43,7 @@ callRefreshTokenApi(String refreshToken) {
 getAllOrdersApi() {
   UserApiManager.allOrdersApi(20, 1, (OrderPaginator orders) {
     print("=========================================");
-    print("Success get my profile");
+    print("Success get my orders");
     print(orders.data.length);
     print(orders.data[0].total);
   }, (QueryResult error) {
