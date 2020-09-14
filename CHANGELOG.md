@@ -26,3 +26,10 @@
 * Supported passing language with headers.
 * Enhanced library documentation.
 * Fixed cache profile issue, and default address flag.
+
+## [0.0.9] - 0.0.9
+* Added library logger for HTTP.
+* Added API error handler.
+* Updated .gitignore file.
+* Changed the language key.
+* Enhanced addresses APIs.

@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
+    MmdECommerceFlLib.enableDebug(false);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
@@ -36,7 +37,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  AuthPayload auth;
+  AuthPayloadLogin auth;
   var isError = false;
 
   TextEditingController emailController = TextEditingController();
@@ -63,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       isLoading = true;
     });
-    AuthApiManager.loginApi('test@mail.com', '123456789',
+    AuthApiManager.loginApi('test@mail.com', '123456789', "123",
         (AuthPayloadLogin auth) {
       setState(() {
         this.isLoading = false;
-        this.auth = auth.authPayload;
+        this.auth = auth;
       });
     }, () {
       this.isError = true;
@@ -84,40 +85,37 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return Column(
         children: [
-          Text("Result Success \n${auth?.access_token}"),
-          Row(
-            children: [
-              RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MainSecond(auth.refresh_token)),
-                  );
-                },
-                child: Text("Open Main Second"),
-              ),
-              RaisedButton(
-                color: Colors.amber,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddressScreen()),
-                  );
-                },
-                child: Text("Open Address Scren"),
-              ),
-              RaisedButton(
-                color: Colors.blueAccent,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GeneralScreen()),
-                  );
-                },
-                child: Text("Open General Scren"),
-              ),
-            ],
+          Text("Result Success \n${auth?.authPayload?.access_token}"),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        MainSecond(auth.authPayload.refresh_token)),
+              );
+            },
+            child: Text("Open Main Second"),
+          ),
+          RaisedButton(
+            color: Colors.amber,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddressScreen()),
+              );
+            },
+            child: Text("Open Address Screen"),
+          ),
+          RaisedButton(
+            color: Colors.blueAccent,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GeneralScreen()),
+              );
+            },
+            child: Text("Open General Screen"),
           ),
           RaisedButton(
             color: Colors.amber,
@@ -210,21 +208,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   callLoginApi() async {
-    MmdECommerceFlLib.submitTokeAndTokenType(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5IiwianRpIjoiODM3YzQ3NTg0ZDA1YWU3NGE1ZTAwOWY4YzIyOGQxMmI5NGU4OGRjMzc5YzAzNTQ0YzE0NTg5MjczM2UwNzE4OGFlNjI0ZDE4NjZhNWZhYTciLCJpYXQiOjE2MDAwMzYwMzgsIm5iZiI6MTYwMDAzNjAzOCwiZXhwIjoxNjMxNTcyMDM4LCJzdWIiOiIxOSIsInNjb3BlcyI6WyIqIl19.MkMPDYuTFH3WgWrZn6RbHGvcy6r84aGBnb6lppyqG2Qtp8eQgIHCpPrUk87gwsNy87NCNhZSLTBnnB4FGpuiPmRw0q8Qj6Z0C1Obn-1q6TFAK_pjeaYJpc661OQcIOUDO4lJvwA_lzkuBVHmo1J5Eue67GqqOJuYgIMiudrYym3-JNaiEqw-OKXjLG2gAAQLNBgTFoXljBADAuXzbf3JL3UAIj-jpfAcAszDSL8scuFvgzxkep-AwEjOwurAGwShTx6XH-BvSZwAWtIDklc-8r6Ht3EotgMCTlclqSdFaQloyxBIBdM6DIpTbdPYtmpLQ4bEO4e9SoCYuyoZhGOsyFmUP4HKynewjCribHzPyjRjMBvxpYfSa2QYBD8GeDZUhDkGMWDaDvDZPXa9QfnUAUzM7liOsgtP7LqUN6gjZj1RIU3fN9hwZbgdXX_hhuVfAhzATEsX4xnTHYULY948gERRa-nd5bCm0DS-OQF9tDqGwXYzvk-yG1n08YB4uw3tT2cTOJ-veU0eZz8fw0Rzkpybz9jmkEeaqY18d96suNWVAeBAv8JPCl_8sE9gUDSARrGtrXdyF4yJ19P0WZHmBMGS_Gti3O5mcLldY_Rxgx4nmgLubAmD9ah2vr3r1y6TbFMvKetztkN2F16QLFa4j4PrY0e27sY20Dx6U2b8lDI",
-        "Bearer");
-    //   await AuthApiManager.loginApi("test@mail.com", "123456789",
-    //       (AuthPayloadLogin authPayload) async {
-    //     auth = authPayload.authPayload;
-    //     MmdECommerceFlLib.submitTokeAndTokenType(
-    //         authPayload.authPayload.access_token,
-    //         authPayload.authPayload.token_type);
-    //     print("=========================================");
-    //     print("Success Login");
-    //     print("Access Token: ${authPayload.authPayload.access_token}");
-    //   }, (QueryResult x) {
-    //     print("error");
-    //   });
-    // }
+    await AuthApiManager.loginApi("test@mail.com", "123456789", "123",
+        (AuthPayloadLogin authPayload) async {
+      auth = authPayload;
+      MmdECommerceFlLib.submitTokeAndTokenType(
+          authPayload.authPayload.access_token,
+          authPayload.authPayload.token_type);
+      print("=========================================");
+      print("Success Login");
+      print("Access Token: ${authPayload.authPayload.access_token}");
+      print("Access Token: ${authPayload.authPayload.device_token}");
+    }, (QueryResult x) {
+      print("error");
+      print(x.exception);
+    });
   }
 }

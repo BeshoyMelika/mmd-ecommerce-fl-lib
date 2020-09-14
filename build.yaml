@@ -28,8 +28,8 @@ targets:
               queries_glob: lib/graphql/products/*.graphql
               output: lib/generatedql/products/graphql_api.dart
             - schema: general.schema.graphql
-              queries_glob: lib/graphql/cartegoies/*.graphql
-              output: lib/generatedql/cartegoies/graphql_api.dart
+              queries_glob: lib/graphql/categories/*.graphql
+              output: lib/generatedql/categories/graphql_api.dart
             - schema: general.schema.graphql
               queries_glob: lib/graphql/related_product/*.graphql
               output: lib/generatedql/related_product/graphql_api.dart
@@ -42,3 +42,6 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/orders/*.graphql
               output: lib/generatedql/orders/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/address_asset/*.graphql
+              output: lib/generatedql/address_asset/graphql_api.dart

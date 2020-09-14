@@ -3,7 +3,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart' as U;
 import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart'
     as P;
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart' as C;
-import 'package:mmd_ecommerce_fl_lib/generatedql/cartegoies/graphql_api.dart'
+import 'package:mmd_ecommerce_fl_lib/generatedql/categories/graphql_api.dart'
     as CT;
 import 'package:mmd_ecommerce_fl_lib/generatedql/ratings/graphql_api.dart' as R;
 import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart'

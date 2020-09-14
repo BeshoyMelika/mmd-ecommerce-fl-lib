@@ -14,7 +14,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Genral"),
+        title: Text("General"),
       ),
       body: Center(
         child: Column(

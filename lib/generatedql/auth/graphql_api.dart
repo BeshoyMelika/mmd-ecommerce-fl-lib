@@ -394,15 +394,17 @@ class AuthPayload with EquatableMixin {
 
   String token_type;
 
+  String device_token;
+
   @override
   List<Object> get props =>
-      [access_token, refresh_token, expires_in, token_type];
+      [access_token, refresh_token, expires_in, token_type, device_token];
   Map<String, dynamic> toJson() => _$AuthPayloadToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SignInArguments extends JsonSerializable with EquatableMixin {
-  SignInArguments({this.email, this.password});
+  SignInArguments({this.email, this.password, this.deviceToken});
 
   factory SignInArguments.fromJson(Map<String, dynamic> json) =>
       _$SignInArgumentsFromJson(json);
@@ -411,8 +413,10 @@ class SignInArguments extends JsonSerializable with EquatableMixin {
 
   final String password;
 
+  final String deviceToken;
+
   @override
-  List<Object> get props => [email, password];
+  List<Object> get props => [email, password, deviceToken];
   Map<String, dynamic> toJson() => _$SignInArgumentsToJson(this);
 }
 
@@ -436,6 +440,12 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'deviceToken')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -453,7 +463,11 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
                       ObjectFieldNode(
                           name: NameNode(value: 'password'),
                           value:
-                              VariableNode(name: NameNode(value: 'password')))
+                              VariableNode(name: NameNode(value: 'password'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'device_token'),
+                          value: VariableNode(
+                              name: NameNode(value: 'deviceToken')))
                     ]))
               ],
               directives: [],
@@ -478,6 +492,12 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
                     selectionSet: null),
                 FieldNode(
                     name: NameNode(value: 'token_type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'device_token'),
                     alias: null,
                     arguments: [],
                     directives: [],

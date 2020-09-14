@@ -17,8 +17,10 @@ callMyProfileApi() {
     print(user.user.id);
     print(user.user.name);
     print(user.user.mobile);
-  }, (QueryResult error) {
+  }, (ApiErrorModel error) {
     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    print(error.errorCode);
+    print(error.errorMessage);
     print("Fail get my profile");
   });
 }
@@ -30,6 +32,8 @@ callRefreshTokenApi(String refreshToken) {
     print("=========================================");
     print("Success Refresh Token");
     print(authPayload.authPayload.access_token);
+    print("\n ========================================= \n");
+    print(authPayload.authPayload.device_token);
     print("\n ========================================= \n");
     print(authPayload.authPayload.refresh_token);
     print("\n ========================================= \n");

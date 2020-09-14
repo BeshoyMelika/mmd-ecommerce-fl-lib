@@ -1,5 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mmd_ecommerce_fl_lib/apis/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/order_products/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';

@@ -119,7 +119,8 @@ AuthPayload _$AuthPayloadFromJson(Map<String, dynamic> json) {
     ..access_token = json['access_token'] as String
     ..refresh_token = json['refresh_token'] as String
     ..expires_in = json['expires_in'] as int
-    ..token_type = json['token_type'] as String;
+    ..token_type = json['token_type'] as String
+    ..device_token = json['device_token'] as String;
 }
 
 Map<String, dynamic> _$AuthPayloadToJson(AuthPayload instance) =>
@@ -128,12 +129,14 @@ Map<String, dynamic> _$AuthPayloadToJson(AuthPayload instance) =>
       'refresh_token': instance.refresh_token,
       'expires_in': instance.expires_in,
       'token_type': instance.token_type,
+      'device_token': instance.device_token,
     };
 
 SignInArguments _$SignInArgumentsFromJson(Map<String, dynamic> json) {
   return SignInArguments(
     email: json['email'] as String,
     password: json['password'] as String,
+    deviceToken: json['deviceToken'] as String,
   );
 }
 
@@ -141,4 +144,5 @@ Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
+      'deviceToken': instance.deviceToken,
     };

@@ -19,6 +19,26 @@ class _AddressScreenState extends State<AddressScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RaisedButton(
+              color: Colors.deepPurple,
+              onPressed: () async {
+                await getCitiesAsset();
+              },
+              child: Text(
+                "Get Cities",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.transparent,
+              onPressed: () async {
+                await getAreaByIdAsset("2");
+              },
+              child: Text(
+                "Get Area By ID",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
               color: Colors.blue,
               onPressed: () async {
                 await getAllAddress();
@@ -54,7 +74,7 @@ class _AddressScreenState extends State<AddressScreen> {
                 await deleteAddress();
               },
               child: Text(
-                "Deleta Address",
+                "Delete Address",
                 style: TextStyle(color: Colors.white),
               ),
             ),
