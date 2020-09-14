@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ffb4d6d-aaf8-4715-a883-511be2dcf9fc" name="Default Changelist" comment="" />
+    <list default="true" id="7ffb4d6d-aaf8-4715-a883-511be2dcf9fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mmd-ecommerce-fl-lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mmd-ecommerce-fl-lib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/apis/user_apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/apis/user_apis.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/graphql/cartegoies/categories.graphql" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +65,12 @@
       <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib\lib\graphql" />
       <recent name="C:\Users\MenaS\FlutterProjects\mmd-ecommerce-fl-lib" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />

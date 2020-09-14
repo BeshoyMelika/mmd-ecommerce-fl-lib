@@ -12,16 +12,16 @@ callUpdateProfileApi(String name, String mobile) {
 
 callMyProfileApi() {
   UserApiManager.myProfileApi((UserMyProfile user) {
-    print("=========================================");
-    print("Success get my profile");
-    print(user.user.id);
-    print(user.user.name);
-    print(user.user.mobile);
+    // print("=========================================");
+    print("Success get my bb");
+    // print(user.user.id);
+    // print(user.user.name);
+    // print(user.user.mobile);
   }, (ApiErrorModel error) {
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print(error.errorCode);
-    print(error.errorMessage);
-    print("Fail get my profile");
+    // print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
+    // print(error.errorCode);
+    // print(error.errorMessage);
+    print("Fail get my bb");
   });
 }
 
@@ -32,8 +32,6 @@ callRefreshTokenApi(String refreshToken) {
     print("=========================================");
     print("Success Refresh Token");
     print(authPayload.authPayload.access_token);
-    print("\n ========================================= \n");
-    print(authPayload.authPayload.device_token);
     print("\n ========================================= \n");
     print(authPayload.authPayload.refresh_token);
     print("\n ========================================= \n");

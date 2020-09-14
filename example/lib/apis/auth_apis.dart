@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 callRegisterApi() {
-  AuthApiManager.registerApi("mmd10", "rovox40676@rika0525.com", "123456",
+  AuthApiManager.registerApi("mmd10", "rovox4067s@rika0525.com", "123456",
       (UserRegister user) {
     print("=========================================");
     print("user email : " + user.user.email + "name :" + user.user.name);

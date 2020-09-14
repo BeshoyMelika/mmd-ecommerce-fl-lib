@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
-    MmdECommerceFlLib.enableDebug(false);
+    MmdECommerceFlLib.enableDebug(true);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
@@ -124,25 +124,31 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Test login"),
           ),
-          RaisedButton(
-            color: Colors.brown,
-            onPressed: () {
-              callUpdateProfileApi(emailController.text, codeController.text);
-            },
-            child: Text(
-              "update Profile",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.redAccent,
-            onPressed: () {
-              callMyProfileApi();
-            },
-            child: Text(
-              "get profile",
-              style: TextStyle(color: Colors.white),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: Colors.brown,
+                onPressed: () {
+                  callUpdateProfileApi(
+                      emailController.text, codeController.text);
+                },
+                child: Text(
+                  "update Profile",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.redAccent,
+                onPressed: () {
+                  callMyProfileApi();
+                },
+                child: Text(
+                  "get profile",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
           TextField(
             controller: emailController,
@@ -156,25 +162,30 @@ class _MyHomePageState extends State<MyHomePage> {
             controller: passwordController,
             decoration: InputDecoration(hintText: "password"),
           ),
-          RaisedButton(
-            color: Colors.green,
-            onPressed: () {
-              callRegisterApi();
-            },
-            child: Text(
-              "Register User",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.green,
-            onPressed: () {
-              logout();
-            },
-            child: Text(
-              "Logout",
-              style: TextStyle(color: Colors.white),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: Colors.green,
+                onPressed: () {
+                  callRegisterApi();
+                },
+                child: Text(
+                  "Register User",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.green,
+                onPressed: () {
+                  logout();
+                },
+                child: Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -217,7 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
       print("=========================================");
       print("Success Login");
       print("Access Token: ${authPayload.authPayload.access_token}");
-      print("Access Token: ${authPayload.authPayload.device_token}");
     }, (QueryResult x) {
       print("error");
       print(x.exception);
