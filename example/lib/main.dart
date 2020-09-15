@@ -47,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    print("init state");
     // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
     super.initState();
   }
@@ -236,12 +235,6 @@ class _MyHomePageState extends State<MyHomePage> {
       MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.authPayload.access_token,
           authPayload.authPayload.token_type);
-      print("=========================================");
-      print("Success Login");
-      print("Access Token: ${authPayload.authPayload.access_token}");
-    }, (QueryResult x) {
-      print("error");
-      print(x.exception);
-    });
+    }, (QueryResult x) {});
   }
 }

@@ -1,25 +1,11 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getVoucherByCode() async {
-  await CartApiManager.voucherByCodeApi("2121", (Voucher voucher) {
-    print("=========================================");
-    print("Success get voucher by code api");
-    print(voucher.id);
-  }, (QueryResult error) {
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail get voucher by code api");
-    print(error.exception);
-  });
+  await CartApiManager.voucherByCodeApi(
+      "2121", (Voucher voucher) {}, (QueryResult error) {});
 }
 
 shippingFeesApi() async {
-  await CartApiManager.shippingFeesApi("2", "2", (String shippingFees) {
-    print("=========================================");
-    print("Success shipping fees api");
-    print(shippingFees);
-  }, (QueryResult error) {
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
-    print("Fail shipping fees api");
-    print(error.exception);
-  });
+  await CartApiManager.shippingFeesApi(
+      "2", "2", (String shippingFees) {}, (QueryResult error) {});
 }
