@@ -24,7 +24,7 @@ class GeneralApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> allCategoriesApi(Function success, Function fail) async {
+  static Future<void> categoriesApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: CategoriesQuery().document));
     if (result.hasException) {

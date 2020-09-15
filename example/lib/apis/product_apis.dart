@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 categoriesApi() async {
-  await GeneralApiManager.allCategoriesApi((List<Category> list) {
+  await GeneralApiManager.categoriesApi((List<Category> list) {
     print("=========================================");
     print("Success get all categories api ");
     print(list.length);
