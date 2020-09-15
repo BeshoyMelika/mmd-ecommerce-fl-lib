@@ -94,7 +94,7 @@ relatedProductByIdApi() async {
 }
 
 getRatingsForProductApi() async {
-  await ProductApiManager.ratingsForProductApi(10, 1, "1",
+  await ProductApiManager.reviewsForProductApi(10, 1, "1",
       (RatingPaginatorModel item) {
     print("=========================================");
     print("Success ratings api ");

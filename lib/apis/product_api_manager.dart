@@ -74,7 +74,7 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> ratingsForProductApi(int first, int page,
+  static Future<void> reviewsForProductApi(int first, int page,
       String productsId, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: RatingsQuery().document,
