@@ -14,7 +14,7 @@ categoriesApi() async {
 }
 
 productApi() async {
-  await ProductApiManager.allProductApi(10, 1, (ProductPaginatorModel item) {
+  await ProductApiManager.productsApi(10, 1, (ProductPaginatorModel item) {
     print("=========================================");
     print("Success get all products api ");
     print(item.productPaginator.data[0].details.category.id);

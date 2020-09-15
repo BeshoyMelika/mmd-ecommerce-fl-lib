@@ -5,7 +5,7 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dar
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 class ProductApiManager extends BaseApiManager {
-  static Future<void> allProductApi(
+  static Future<void> productsApi(
       int first, int page, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProductsQuery().document,
