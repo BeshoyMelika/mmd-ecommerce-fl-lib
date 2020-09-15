@@ -6,6 +6,7 @@ import 'package:mmd_ecommerce_fl_lib_example/screens/main_second.dart';
 
 import 'apis/auth_apis.dart';
 import 'apis/user_apis.dart';
+import 'screens/product_screen.dart';
 
 void main() {
   // todo enhance example by split all APIs that related to each other in one file
@@ -116,6 +117,16 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             child: Text("Open General Screen"),
+          ),
+          RaisedButton(
+            color: Colors.deepOrangeAccent,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductScreen()),
+              );
+            },
+            child: Text("Open Product Screen"),
           ),
           RaisedButton(
             color: Colors.amber,

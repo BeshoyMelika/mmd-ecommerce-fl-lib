@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mmd_ecommerce_fl_lib_example/APIs.dart';
-import 'package:mmd_ecommerce_fl_lib_example/apis/cart_api.dart';
-import 'package:mmd_ecommerce_fl_lib_example/apis/product_apis.dart';
-import 'package:mmd_ecommerce_fl_lib_example/apis/user_apis.dart';
 
-class GeneralScreen extends StatefulWidget {
+import 'package:mmd_ecommerce_fl_lib_example/apis/product_apis.dart';
+
+class ProductScreen extends StatefulWidget {
   @override
-  _GeneralScreenState createState() => _GeneralScreenState();
+  _ProductScreenState createState() => _ProductScreenState();
 }
 
-class _GeneralScreenState extends State<GeneralScreen> {
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("General"),
+        title: Text("Products"),
       ),
       body: Center(
         child: Column(
@@ -24,60 +22,80 @@ class _GeneralScreenState extends State<GeneralScreen> {
             RaisedButton(
               color: Colors.blue,
               onPressed: () async {
-                await sliderApi();
+                await categoriesApi();
               },
               child: Text(
-                "Get All Sliders",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            RaisedButton(
-              color: Colors.blue,
-              onPressed: () async {
-                await addToCard();
-              },
-              child: Text(
-                "Add To Cart",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () async {
-                await getCard();
-              },
-              child: Text(
-                "get Card Api",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () async {
-                await getVoucherByCode();
-              },
-              child: Text(
-                "get voucher by code",
+                "Categories Api",
                 style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
               color: Colors.deepPurpleAccent,
               onPressed: () async {
-                await shippingFeesApi();
+                await productByCategoryIdApi();
               },
               child: Text(
-                "get shipping fees Api",
+                "get product by category id Api",
                 style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
               color: Colors.deepPurpleAccent,
               onPressed: () async {
-                await getAllOrdersApi();
+                await productByNameApi();
               },
               child: Text(
-                "get orders Api",
+                "get product by name Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await productApi();
+              },
+              child: Text(
+                "get product Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await newProductApi();
+              },
+              child: Text(
+                "get new product Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await getProductDetailsApi();
+              },
+              child: Text(
+                "get product details Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await relatedProductByIdApi();
+              },
+              child: Text(
+                "get related product Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await getRatingsForProductApi();
+              },
+              child: Text(
+                "get ratings Api",
                 style: TextStyle(color: Colors.white),
               ),
             ),
