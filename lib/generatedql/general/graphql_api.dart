@@ -7,121 +7,6 @@ import 'package:gql/ast.dart';
 part 'graphql_api.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Sliders with EquatableMixin {
-  Sliders();
-
-  factory Sliders.fromJson(Map<String, dynamic> json) =>
-      _$SlidersFromJson(json);
-
-  List<Slider> sliders;
-
-  @override
-  List<Object> get props => [sliders];
-  Map<String, dynamic> toJson() => _$SlidersToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Slider with EquatableMixin {
-  Slider();
-
-  factory Slider.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
-
-  String id;
-
-  String title;
-
-  String description;
-
-  String link;
-
-  Media cover;
-
-  @override
-  List<Object> get props => [id, title, description, link, cover];
-  Map<String, dynamic> toJson() => _$SliderToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Media with EquatableMixin {
-  Media();
-
-  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
-
-  String url;
-
-  @override
-  List<Object> get props => [url];
-  Map<String, dynamic> toJson() => _$MediaToJson(this);
-}
-
-class SlidersQuery extends GraphQLQuery<Sliders, JsonSerializable> {
-  SlidersQuery();
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.query,
-        name: NameNode(value: 'Sliders'),
-        variableDefinitions: [],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'sliders'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'title'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'description'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'link'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'cover'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: SelectionSetNode(selections: [
-                      FieldNode(
-                          name: NameNode(value: 'url'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null)
-                    ]))
-              ]))
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'Sliders';
-
-  @override
-  List<Object> get props => [document, operationName];
-  @override
-  Sliders parse(Map<String, dynamic> json) => Sliders.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
 class Attributes with EquatableMixin {
   Attributes();
 
@@ -269,4 +154,119 @@ class BrandsQuery extends GraphQLQuery<Brands, JsonSerializable> {
   List<Object> get props => [document, operationName];
   @override
   Brands parse(Map<String, dynamic> json) => Brands.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Sliders with EquatableMixin {
+  Sliders();
+
+  factory Sliders.fromJson(Map<String, dynamic> json) =>
+      _$SlidersFromJson(json);
+
+  List<Slider> sliders;
+
+  @override
+  List<Object> get props => [sliders];
+  Map<String, dynamic> toJson() => _$SlidersToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Slider with EquatableMixin {
+  Slider();
+
+  factory Slider.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
+
+  String id;
+
+  String title;
+
+  String description;
+
+  String link;
+
+  Media cover;
+
+  @override
+  List<Object> get props => [id, title, description, link, cover];
+  Map<String, dynamic> toJson() => _$SliderToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Media with EquatableMixin {
+  Media();
+
+  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
+
+  String url;
+
+  @override
+  List<Object> get props => [url];
+  Map<String, dynamic> toJson() => _$MediaToJson(this);
+}
+
+class SlidersQuery extends GraphQLQuery<Sliders, JsonSerializable> {
+  SlidersQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'Sliders'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'sliders'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'title'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'description'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'link'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'cover'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ]))
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Sliders';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Sliders parse(Map<String, dynamic> json) => Sliders.fromJson(json);
 }

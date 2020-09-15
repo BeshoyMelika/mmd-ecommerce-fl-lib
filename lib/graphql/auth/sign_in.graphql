@@ -4,6 +4,5 @@ mutation SignIn($email: String!, $password: String!,$deviceToken:String!){
         refresh_token
         expires_in
         token_type
-        device_token
     }
 }

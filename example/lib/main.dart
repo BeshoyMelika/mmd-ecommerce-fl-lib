@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
-    MmdECommerceFlLib.enableDebug(false);
+    MmdECommerceFlLib.enableDebug(true);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
@@ -203,7 +203,6 @@ class _MyHomePageState extends State<MyHomePage> {
       print("=========================================");
       print("Success Login");
       print("Access Token: ${authPayload.authPayload.access_token}");
-      print("Access Token: ${authPayload.authPayload.device_token}");
     }, (QueryResult x) {
       print("error");
       print(x.exception);
