@@ -1,14 +1,8 @@
+#import "../fragments.graphql"
 query GetAllAddress($first: Int!, $page: Int!){
     addresses(first:$first,page:$page){
         paginatorInfo{
-            count
-            currentPage
-            firstItem
-            lastItem
-            hasMorePages
-            lastPage
-            perPage
-            total
+            ...Paging
         }
         data{
             id
