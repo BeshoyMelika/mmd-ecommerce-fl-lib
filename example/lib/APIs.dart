@@ -5,6 +5,6 @@ callBrandsApi() {
 }
 
 sliderApi() async {
-  await GeneralApiManager.slidersApi(
+  await GeneralApiManager.sliderApi(
       (List<Slider> list) {}, (QueryResult error) {});
 }

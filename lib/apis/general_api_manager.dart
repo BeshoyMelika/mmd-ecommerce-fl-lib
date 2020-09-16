@@ -14,13 +14,13 @@ class GeneralApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> slidersApi(Function success, Function fail) async {
+  static Future<void> sliderApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient()
-        .query(QueryOptions(documentNode: SlidersQuery().document));
+        .query(QueryOptions(documentNode: SliderQuery().document));
     if (result.hasException) {
       fail(result);
     } else {
-      success(Sliders.fromJson(result.data).sliders);
+      success(Slider.fromJson(result.data).sliders);
     }
   }
 
