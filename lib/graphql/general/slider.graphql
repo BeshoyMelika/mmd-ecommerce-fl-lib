@@ -1,4 +1,4 @@
-query Slider{
+query Sliders{
   sliders {
     id
     title

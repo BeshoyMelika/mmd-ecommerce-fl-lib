@@ -157,15 +157,37 @@ class BrandsQuery extends GraphQLQuery<Brands, JsonSerializable> {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Slider with EquatableMixin {
-  Slider();
+class Sliders with EquatableMixin {
+  Sliders();
 
-  factory Slider.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
+  factory Sliders.fromJson(Map<String, dynamic> json) =>
+      _$SlidersFromJson(json);
 
   List<Slider> sliders;
 
   @override
   List<Object> get props => [sliders];
+  Map<String, dynamic> toJson() => _$SlidersToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Slider with EquatableMixin {
+  Slider();
+
+  factory Slider.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
+
+  String id;
+
+  String title;
+
+  String description;
+
+  String link;
+
+  Media cover;
+
+  @override
+  List<Object> get props => [id, title, description, link, cover];
   Map<String, dynamic> toJson() => _$SliderToJson(this);
 }
 
@@ -182,14 +204,14 @@ class Media with EquatableMixin {
   Map<String, dynamic> toJson() => _$MediaToJson(this);
 }
 
-class SliderQuery extends GraphQLQuery<Slider, JsonSerializable> {
-  SliderQuery();
+class SlidersQuery extends GraphQLQuery<Sliders, JsonSerializable> {
+  SlidersQuery();
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'Slider'),
+        name: NameNode(value: 'Sliders'),
         variableDefinitions: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
@@ -241,10 +263,10 @@ class SliderQuery extends GraphQLQuery<Slider, JsonSerializable> {
   ]);
 
   @override
-  final String operationName = 'Slider';
+  final String operationName = 'Sliders';
 
   @override
   List<Object> get props => [document, operationName];
   @override
-  Slider parse(Map<String, dynamic> json) => Slider.fromJson(json);
+  Sliders parse(Map<String, dynamic> json) => Sliders.fromJson(json);
 }
