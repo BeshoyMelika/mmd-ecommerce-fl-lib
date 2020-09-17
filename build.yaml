@@ -8,6 +8,7 @@ targets:
     builders:
       artemis:
         options:
+          fragments_glob: lib/graphql/fragments.graphql
           schema_mapping:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/general/*.graphql
@@ -27,6 +28,21 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/products/*.graphql
               output: lib/generatedql/products/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/categories/*.graphql
+              output: lib/generatedql/categories/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/related_product/*.graphql
+              output: lib/generatedql/related_product/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/ratings/*.graphql
+              output: lib/generatedql/ratings/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/order_products/*.graphql
+              output: lib/generatedql/order_products/graphql_api.dart
+            - schema: general.schema.graphql
+              queries_glob: lib/graphql/orders/*.graphql
+              output: lib/generatedql/orders/graphql_api.dart
             - schema: general.schema.graphql
               queries_glob: lib/graphql/address_asset/*.graphql
               output: lib/generatedql/address_asset/graphql_api.dart

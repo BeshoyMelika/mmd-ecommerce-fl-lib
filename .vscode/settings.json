@@ -1,0 +1,20 @@
+{
+    "cSpell.enableFiletypes": [
+        "dart",
+        "graphql",
+        "ignore",
+        "json5",
+        "kotlin",
+        "kotlinscript",
+        "log",
+        "objective-c",
+        "objective-cpp",
+        "pip-requirements",
+        "powershell",
+        "search-result",
+        "shellscript",
+        "sql",
+        "swift",
+        "xml"
+    ]
+}

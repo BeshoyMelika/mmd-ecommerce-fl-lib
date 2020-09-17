@@ -27,6 +27,46 @@ Map<String, dynamic> _$AddToCartArgumentsToJson(AddToCartArguments instance) =>
       'quantity': instance.quantity,
     };
 
+GetVoucherByCode _$GetVoucherByCodeFromJson(Map<String, dynamic> json) {
+  return GetVoucherByCode()
+    ..getVoucherByCode = json['getVoucherByCode'] == null
+        ? null
+        : Voucher.fromJson(json['getVoucherByCode'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$GetVoucherByCodeToJson(GetVoucherByCode instance) =>
+    <String, dynamic>{
+      'getVoucherByCode': instance.getVoucherByCode?.toJson(),
+    };
+
+Voucher _$VoucherFromJson(Map<String, dynamic> json) {
+  return Voucher()
+    ..id = json['id'] as String
+    ..code = json['code'] as String
+    ..discount = json['discount'] as int
+    ..discount_type = json['discount_type'] as String;
+}
+
+Map<String, dynamic> _$VoucherToJson(Voucher instance) => <String, dynamic>{
+      'id': instance.id,
+      'code': instance.code,
+      'discount': instance.discount,
+      'discount_type': instance.discount_type,
+    };
+
+GetVoucherByCodeArguments _$GetVoucherByCodeArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return GetVoucherByCodeArguments(
+    code: json['code'] as String,
+  );
+}
+
+Map<String, dynamic> _$GetVoucherByCodeArgumentsToJson(
+        GetVoucherByCodeArguments instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+    };
+
 GetCart _$GetCartFromJson(Map<String, dynamic> json) {
   return GetCart()
     ..cart = json['cart'] == null
@@ -119,4 +159,28 @@ Unit _$UnitFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UnitToJson(Unit instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+    };
+
+ShippingFees _$ShippingFeesFromJson(Map<String, dynamic> json) {
+  return ShippingFees()..shippingFees = json['shippingFees'] as String;
+}
+
+Map<String, dynamic> _$ShippingFeesToJson(ShippingFees instance) =>
+    <String, dynamic>{
+      'shippingFees': instance.shippingFees,
+    };
+
+ShippingFeesArguments _$ShippingFeesArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ShippingFeesArguments(
+    addressId: json['addressId'] as String,
+    voucherId: json['voucherId'] as String,
+  );
+}
+
+Map<String, dynamic> _$ShippingFeesArgumentsToJson(
+        ShippingFeesArguments instance) =>
+    <String, dynamic>{
+      'addressId': instance.addressId,
+      'voucherId': instance.voucherId,
     };

@@ -1,0 +1,23 @@
+query Orders(
+    $first: Int!,
+    $page: Int!,
+   ){
+  orders(first: $first, page: $page) {
+    paginatorInfo {
+      count
+      currentPage
+      firstItem
+      lastItem
+      hasMorePages
+      lastPage
+      perPage
+      total
+    }
+    data {
+      id
+      total
+      payment_type
+    }
+  }
+}
+

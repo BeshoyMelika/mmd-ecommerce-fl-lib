@@ -4,11 +4,13 @@ import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/auth/graphql_api.dart';
 
 class AuthApiManager extends BaseApiManager {
-  static Future<void> loginApi(
-      String email, String password, Function success, Function fail) async {
+  static Future<void> loginApi(String email, String password,
+      String deviceToken, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: SignInQuery().document,
-        variables: SignInArguments(email: email, password: password).toJson()));
+        variables: SignInArguments(
+                email: email, password: password, deviceToken: deviceToken)
+            .toJson()));
     if (result.hasException) {
       fail(result);
     } else {
@@ -52,6 +54,16 @@ class AuthApiManager extends BaseApiManager {
       fail(result);
     } else {
       success(ResetPassword.fromJson(result.data).resetPassword);
+    }
+  }
+
+  static Future<void> logoutApi(Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient()
+        .mutate(MutationOptions(documentNode: LogoutQuery().document));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(Logout.fromJson(result.data).logout);
     }
   }
 }

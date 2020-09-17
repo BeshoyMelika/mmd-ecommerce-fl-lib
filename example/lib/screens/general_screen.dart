@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib_example/APIs.dart';
+import 'package:mmd_ecommerce_fl_lib_example/apis/cart_api.dart';
+import 'package:mmd_ecommerce_fl_lib_example/apis/user_apis.dart';
 
 class GeneralScreen extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Genral"),
+        title: Text("General"),
       ),
       body: Center(
         child: Column(
@@ -39,22 +41,42 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.blue,
-              onPressed: () async {
-                await categoriesApi();
-              },
-              child: Text(
-                "Categories Api",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            RaisedButton(
               color: Colors.blueGrey,
               onPressed: () async {
                 await getCard();
               },
               child: Text(
                 "get Card Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.blueGrey,
+              onPressed: () async {
+                await getVoucherByCode();
+              },
+              child: Text(
+                "get voucher by code",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await shippingFeesApi();
+              },
+              child: Text(
+                "get shipping fees Api",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepPurpleAccent,
+              onPressed: () async {
+                await getAllOrdersApi();
+              },
+              child: Text(
+                "get orders Api",
                 style: TextStyle(color: Colors.white),
               ),
             ),

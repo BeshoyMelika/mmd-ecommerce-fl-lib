@@ -2,11 +2,11 @@ mutation CreateAddress($firstName: String!,
     $lastName: String!,
     $areaId: ID!,
     $info: String!,
-    $additionalInfo: String,
-    $mobile: String,
-    $lat: String,
-    $lng: String,
-    $isDefault: Boolean){
+    $additionalInfo: String!,
+    $mobile: String!,
+    $lat: String!,
+    $lng: String!,
+    $isDefault: Boolean!){
     createAddress(input:{
         first_name:$firstName
         last_name:$lastName
@@ -16,7 +16,7 @@ mutation CreateAddress($firstName: String!,
         mobile:$mobile
         lat:$lat
         lng:$lng
-        default: $isDefault
+        isDefault: $isDefault
     })
 
 }

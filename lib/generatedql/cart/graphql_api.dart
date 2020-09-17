@@ -94,6 +94,124 @@ class AddToCartQuery extends GraphQLQuery<AddToCart, AddToCartArguments> {
 }
 
 @JsonSerializable(explicitToJson: true)
+class GetVoucherByCode with EquatableMixin {
+  GetVoucherByCode();
+
+  factory GetVoucherByCode.fromJson(Map<String, dynamic> json) =>
+      _$GetVoucherByCodeFromJson(json);
+
+  Voucher getVoucherByCode;
+
+  @override
+  List<Object> get props => [getVoucherByCode];
+  Map<String, dynamic> toJson() => _$GetVoucherByCodeToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Voucher with EquatableMixin {
+  Voucher();
+
+  factory Voucher.fromJson(Map<String, dynamic> json) =>
+      _$VoucherFromJson(json);
+
+  String id;
+
+  String code;
+
+  int discount;
+
+  String discount_type;
+
+  @override
+  List<Object> get props => [id, code, discount, discount_type];
+  Map<String, dynamic> toJson() => _$VoucherToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class GetVoucherByCodeArguments extends JsonSerializable with EquatableMixin {
+  GetVoucherByCodeArguments({this.code});
+
+  factory GetVoucherByCodeArguments.fromJson(Map<String, dynamic> json) =>
+      _$GetVoucherByCodeArgumentsFromJson(json);
+
+  final String code;
+
+  @override
+  List<Object> get props => [code];
+  Map<String, dynamic> toJson() => _$GetVoucherByCodeArgumentsToJson(this);
+}
+
+class GetVoucherByCodeQuery
+    extends GraphQLQuery<GetVoucherByCode, GetVoucherByCodeArguments> {
+  GetVoucherByCodeQuery({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'GetVoucherByCode'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'code')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'getVoucherByCode'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'code'),
+                    value: VariableNode(name: NameNode(value: 'code')))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'code'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'discount'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'discount_type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'GetVoucherByCode';
+
+  @override
+  final GetVoucherByCodeArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  GetVoucherByCode parse(Map<String, dynamic> json) =>
+      GetVoucherByCode.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class GetCart with EquatableMixin {
   GetCart();
 
@@ -331,4 +449,92 @@ class GetCartQuery extends GraphQLQuery<GetCart, JsonSerializable> {
   List<Object> get props => [document, operationName];
   @override
   GetCart parse(Map<String, dynamic> json) => GetCart.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ShippingFees with EquatableMixin {
+  ShippingFees();
+
+  factory ShippingFees.fromJson(Map<String, dynamic> json) =>
+      _$ShippingFeesFromJson(json);
+
+  String shippingFees;
+
+  @override
+  List<Object> get props => [shippingFees];
+  Map<String, dynamic> toJson() => _$ShippingFeesToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ShippingFeesArguments extends JsonSerializable with EquatableMixin {
+  ShippingFeesArguments({this.addressId, this.voucherId});
+
+  factory ShippingFeesArguments.fromJson(Map<String, dynamic> json) =>
+      _$ShippingFeesArgumentsFromJson(json);
+
+  final String addressId;
+
+  final String voucherId;
+
+  @override
+  List<Object> get props => [addressId, voucherId];
+  Map<String, dynamic> toJson() => _$ShippingFeesArgumentsToJson(this);
+}
+
+class ShippingFeesQuery
+    extends GraphQLQuery<ShippingFees, ShippingFeesArguments> {
+  ShippingFeesQuery({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'ShippingFees'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'addressId')),
+              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'voucherId')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'shippingFees'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'input'),
+                    value: ObjectValueNode(fields: [
+                      ObjectFieldNode(
+                          name: NameNode(value: 'address_id'),
+                          value:
+                              VariableNode(name: NameNode(value: 'addressId'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'voucher_id'),
+                          value:
+                              VariableNode(name: NameNode(value: 'voucherId')))
+                    ]))
+              ],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'ShippingFees';
+
+  @override
+  final ShippingFeesArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  ShippingFees parse(Map<String, dynamic> json) => ShippingFees.fromJson(json);
 }

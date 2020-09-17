@@ -1,0 +1,10 @@
+fragment Paging on  PaginatorInfo{
+    count
+    currentPage
+    firstItem
+    lastItem
+    hasMorePages
+    lastPage
+    perPage
+    total
+}

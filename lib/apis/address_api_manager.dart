@@ -13,6 +13,7 @@ class AddressApiManager extends BaseApiManager {
       String mobile,
       String lat,
       String lng,
+      bool isDefault,
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
@@ -25,7 +26,8 @@ class AddressApiManager extends BaseApiManager {
                 additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
-                lng: lng)
+                lng: lng,
+                isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
       fail(result);
@@ -44,6 +46,7 @@ class AddressApiManager extends BaseApiManager {
       String mobile,
       String lat,
       String lng,
+      bool isDefault,
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
@@ -57,7 +60,8 @@ class AddressApiManager extends BaseApiManager {
                 additionalInfo: additionalInfo,
                 mobile: mobile,
                 lat: lat,
-                lng: lng)
+                lng: lng,
+                isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
       fail(result);

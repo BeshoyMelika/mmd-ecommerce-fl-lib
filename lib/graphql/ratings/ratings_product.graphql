@@ -1,0 +1,27 @@
+query Ratings(
+    $first: Int!,
+    $page: Int!,
+    $productsId: ID!){
+  ratings(first: $first, page: $page,product_id: $productsId) {
+    paginatorInfo {
+      count
+      currentPage
+      firstItem
+      lastItem
+      hasMorePages
+      lastPage
+      perPage
+      total
+    }
+    data {
+      rating
+      review
+      user {
+        id
+        name
+        email
+        mobile
+      }
+    }
+  }
+}

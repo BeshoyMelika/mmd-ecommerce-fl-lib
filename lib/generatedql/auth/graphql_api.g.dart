@@ -73,6 +73,14 @@ Map<String, dynamic> _$ResetPasswordArgumentsToJson(
       'token': instance.token,
     };
 
+Logout _$LogoutFromJson(Map<String, dynamic> json) {
+  return Logout()..logout = json['logout'] as bool;
+}
+
+Map<String, dynamic> _$LogoutToJson(Logout instance) => <String, dynamic>{
+      'logout': instance.logout,
+    };
+
 ForgetPassword _$ForgetPasswordFromJson(Map<String, dynamic> json) {
   return ForgetPassword()..forgetPassword = json['forgetPassword'] as bool;
 }
@@ -126,6 +134,7 @@ SignInArguments _$SignInArgumentsFromJson(Map<String, dynamic> json) {
   return SignInArguments(
     email: json['email'] as String,
     password: json['password'] as String,
+    deviceToken: json['deviceToken'] as String,
   );
 }
 
@@ -133,4 +142,5 @@ Map<String, dynamic> _$SignInArgumentsToJson(SignInArguments instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
+      'deviceToken': instance.deviceToken,
     };

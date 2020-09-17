@@ -105,31 +105,31 @@ class CreateAddressQuery
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'additionalInfo')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'mobile')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lat')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lng')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'isDefault')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'Boolean'), isNonNull: false),
+                  name: NameNode(value: 'Boolean'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
@@ -170,7 +170,7 @@ class CreateAddressQuery
                           name: NameNode(value: 'lng'),
                           value: VariableNode(name: NameNode(value: 'lng'))),
                       ObjectFieldNode(
-                          name: NameNode(value: 'default'),
+                          name: NameNode(value: 'isDefault'),
                           value:
                               VariableNode(name: NameNode(value: 'isDefault')))
                     ]))
@@ -265,6 +265,17 @@ class DeleteAddressQuery
       DeleteAddress.fromJson(json);
 }
 
+mixin PagingMixin {
+  int count;
+  int currentPage;
+  int firstItem;
+  int lastItem;
+  bool hasMorePages;
+  int lastPage;
+  int perPage;
+  int total;
+}
+
 @JsonSerializable(explicitToJson: true)
 class GetAllAddress with EquatableMixin {
   GetAllAddress();
@@ -296,27 +307,11 @@ class UserAddressPaginator with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatorInfo with EquatableMixin {
+class PaginatorInfo with EquatableMixin, PagingMixin {
   PaginatorInfo();
 
   factory PaginatorInfo.fromJson(Map<String, dynamic> json) =>
       _$PaginatorInfoFromJson(json);
-
-  int count;
-
-  int currentPage;
-
-  int firstItem;
-
-  int lastItem;
-
-  bool hasMorePages;
-
-  int lastPage;
-
-  int perPage;
-
-  int total;
 
   @override
   List<Object> get props => [
@@ -357,6 +352,8 @@ class UserAddress with EquatableMixin {
 
   String lng;
 
+  bool isDefault;
+
   @override
   List<Object> get props => [
         id,
@@ -367,7 +364,8 @@ class UserAddress with EquatableMixin {
         additional_info,
         mobile,
         lat,
-        lng
+        lng,
+        isDefault
       ];
   Map<String, dynamic> toJson() => _$UserAddressToJson(this);
 }
@@ -460,54 +458,8 @@ class GetAllAddressQuery
                     arguments: [],
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
-                      FieldNode(
-                          name: NameNode(value: 'count'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'currentPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'firstItem'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'lastItem'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'hasMorePages'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'lastPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'perPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'total'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null)
+                      FragmentSpreadNode(
+                          name: NameNode(value: 'Paging'), directives: [])
                     ])),
                 FieldNode(
                     name: NameNode(value: 'data'),
@@ -588,9 +540,71 @@ class GetAllAddressQuery
                           alias: null,
                           arguments: [],
                           directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'isDefault'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
                           selectionSet: null)
                     ]))
               ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'Paging'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'PaginatorInfo'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'count'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'currentPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'firstItem'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'lastItem'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'hasMorePages'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'lastPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'perPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'total'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
         ]))
   ]);
 
@@ -632,7 +646,8 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
       this.additionalInfo,
       this.mobile,
       this.lat,
-      this.lng});
+      this.lng,
+      this.isDefault});
 
   factory UpdateAddressArguments.fromJson(Map<String, dynamic> json) =>
       _$UpdateAddressArgumentsFromJson(json);
@@ -655,9 +670,21 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
 
   final String lng;
 
+  final bool isDefault;
+
   @override
-  List<Object> get props =>
-      [id, firstName, lastName, areaId, info, additionalInfo, mobile, lat, lng];
+  List<Object> get props => [
+        id,
+        firstName,
+        lastName,
+        areaId,
+        info,
+        additionalInfo,
+        mobile,
+        lat,
+        lng,
+        isDefault
+      ];
   Map<String, dynamic> toJson() => _$UpdateAddressArgumentsToJson(this);
 }
 
@@ -722,6 +749,12 @@ class UpdateAddressQuery
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'isDefault')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -762,7 +795,11 @@ class UpdateAddressQuery
                           value: VariableNode(name: NameNode(value: 'lat'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'lng'),
-                          value: VariableNode(name: NameNode(value: 'lng')))
+                          value: VariableNode(name: NameNode(value: 'lng'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'isDefault'),
+                          value:
+                              VariableNode(name: NameNode(value: 'isDefault')))
                     ]))
               ],
               directives: [],

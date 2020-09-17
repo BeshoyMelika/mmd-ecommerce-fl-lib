@@ -252,6 +252,48 @@ class ResetPasswordQuery
 }
 
 @JsonSerializable(explicitToJson: true)
+class Logout with EquatableMixin {
+  Logout();
+
+  factory Logout.fromJson(Map<String, dynamic> json) => _$LogoutFromJson(json);
+
+  bool logout;
+
+  @override
+  List<Object> get props => [logout];
+  Map<String, dynamic> toJson() => _$LogoutToJson(this);
+}
+
+class LogoutQuery extends GraphQLQuery<Logout, JsonSerializable> {
+  LogoutQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'Logout'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'logout'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'Logout';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  Logout parse(Map<String, dynamic> json) => Logout.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class ForgetPassword with EquatableMixin {
   ForgetPassword();
 
@@ -360,7 +402,7 @@ class AuthPayload with EquatableMixin {
 
 @JsonSerializable(explicitToJson: true)
 class SignInArguments extends JsonSerializable with EquatableMixin {
-  SignInArguments({this.email, this.password});
+  SignInArguments({this.email, this.password, this.deviceToken});
 
   factory SignInArguments.fromJson(Map<String, dynamic> json) =>
       _$SignInArgumentsFromJson(json);
@@ -369,8 +411,10 @@ class SignInArguments extends JsonSerializable with EquatableMixin {
 
   final String password;
 
+  final String deviceToken;
+
   @override
-  List<Object> get props => [email, password];
+  List<Object> get props => [email, password, deviceToken];
   Map<String, dynamic> toJson() => _$SignInArgumentsToJson(this);
 }
 
@@ -394,6 +438,12 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'deviceToken')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -411,7 +461,11 @@ class SignInQuery extends GraphQLQuery<SignIn, SignInArguments> {
                       ObjectFieldNode(
                           name: NameNode(value: 'password'),
                           value:
-                              VariableNode(name: NameNode(value: 'password')))
+                              VariableNode(name: NameNode(value: 'password'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'device_token'),
+                          value: VariableNode(
+                              name: NameNode(value: 'deviceToken')))
                     ]))
               ],
               directives: [],
