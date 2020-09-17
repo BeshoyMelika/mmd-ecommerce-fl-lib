@@ -105,31 +105,31 @@ class CreateAddressQuery
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'additionalInfo')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'mobile')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lat')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'lng')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: false),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'isDefault')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'Boolean'), isNonNull: false),
+                  name: NameNode(value: 'Boolean'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
@@ -170,7 +170,7 @@ class CreateAddressQuery
                           name: NameNode(value: 'lng'),
                           value: VariableNode(name: NameNode(value: 'lng'))),
                       ObjectFieldNode(
-                          name: NameNode(value: 'default'),
+                          name: NameNode(value: 'isDefault'),
                           value:
                               VariableNode(name: NameNode(value: 'isDefault')))
                     ]))
@@ -352,6 +352,8 @@ class UserAddress with EquatableMixin {
 
   String lng;
 
+  bool isDefault;
+
   @override
   List<Object> get props => [
         id,
@@ -362,7 +364,8 @@ class UserAddress with EquatableMixin {
         additional_info,
         mobile,
         lat,
-        lng
+        lng,
+        isDefault
       ];
   Map<String, dynamic> toJson() => _$UserAddressToJson(this);
 }
@@ -537,6 +540,12 @@ class GetAllAddressQuery
                           alias: null,
                           arguments: [],
                           directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'isDefault'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
                           selectionSet: null)
                     ]))
               ]))
@@ -637,7 +646,8 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
       this.additionalInfo,
       this.mobile,
       this.lat,
-      this.lng});
+      this.lng,
+      this.isDefault});
 
   factory UpdateAddressArguments.fromJson(Map<String, dynamic> json) =>
       _$UpdateAddressArgumentsFromJson(json);
@@ -660,9 +670,21 @@ class UpdateAddressArguments extends JsonSerializable with EquatableMixin {
 
   final String lng;
 
+  final bool isDefault;
+
   @override
-  List<Object> get props =>
-      [id, firstName, lastName, areaId, info, additionalInfo, mobile, lat, lng];
+  List<Object> get props => [
+        id,
+        firstName,
+        lastName,
+        areaId,
+        info,
+        additionalInfo,
+        mobile,
+        lat,
+        lng,
+        isDefault
+      ];
   Map<String, dynamic> toJson() => _$UpdateAddressArgumentsToJson(this);
 }
 
@@ -727,6 +749,12 @@ class UpdateAddressQuery
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'isDefault')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -767,7 +795,11 @@ class UpdateAddressQuery
                           value: VariableNode(name: NameNode(value: 'lat'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'lng'),
-                          value: VariableNode(name: NameNode(value: 'lng')))
+                          value: VariableNode(name: NameNode(value: 'lng'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'isDefault'),
+                          value:
+                              VariableNode(name: NameNode(value: 'isDefault')))
                     ]))
               ],
               directives: [],

@@ -1,0 +1,25 @@
+query RelatedProducts($id:ID!){
+  relatedProducts(id:$id){
+      id
+      price
+      available
+      details {
+        name
+        sku
+        description
+        cover {
+          url
+        }
+        unit {
+          id
+          name
+        }
+        media {
+          url
+        }
+        category {
+          id
+        }
+      }
+  }
+}

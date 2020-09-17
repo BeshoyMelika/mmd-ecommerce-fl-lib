@@ -74,7 +74,7 @@ class _AddressScreenState extends State<AddressScreen> {
                 await deleteAddress();
               },
               child: Text(
-                "Deleta Address",
+                "Delete Address",
                 style: TextStyle(color: Colors.white),
               ),
             ),

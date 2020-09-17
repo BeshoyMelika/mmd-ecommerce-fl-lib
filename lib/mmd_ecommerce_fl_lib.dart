@@ -30,7 +30,7 @@ class MmdECommerceFlLib {
   }
 }
 
-// Todo --> manage token session with the library ..
-// Todo --> auto refresh token with the library ..
-// Todo --> use fragments for paging info ..
-// Todo --> connect library to directly get code from git hub ..
+// TODO --> manage token session with the library ..
+// TODO --> auto refresh token with the library ..
+// TODO --> use fragments for paging info ..
+// TODO --> connect library to directly get code from git hub ..

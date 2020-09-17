@@ -2,6 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/error/api_error_helper.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/orders/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
 
 class UserApiManager extends BaseApiManager {
@@ -18,7 +19,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> updateProfile(
+  static Future<void> updateProfileApi(
       String name, String mobile, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateProfileQuery().document,
@@ -31,7 +32,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> myProfile(Function success, Function fail) async {
+  static Future<void> myProfileApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProfileQuery().document,
         fetchPolicy: FetchPolicy.noCache));
@@ -39,6 +40,18 @@ class UserApiManager extends BaseApiManager {
       fail(ApiErrorHelper.handle(result));
     } else {
       success(UserMyProfile(Profile.fromJson(result.data).profile));
+    }
+  }
+
+  static Future<void> allOrdersApi(
+      int first, int page, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
+        documentNode: OrdersQuery().document,
+        variables: OrdersArguments(first: first, page: page).toJson()));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(Orders.fromJson(result.data).orders);
     }
   }
 }

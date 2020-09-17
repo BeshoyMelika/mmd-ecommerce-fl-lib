@@ -56,4 +56,14 @@ class AuthApiManager extends BaseApiManager {
       success(ResetPassword.fromJson(result.data).resetPassword);
     }
   }
+
+  static Future<void> logoutApi(Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient()
+        .mutate(MutationOptions(documentNode: LogoutQuery().document));
+    if (result.hasException) {
+      fail(result);
+    } else {
+      success(Logout.fromJson(result.data).logout);
+    }
+  }
 }

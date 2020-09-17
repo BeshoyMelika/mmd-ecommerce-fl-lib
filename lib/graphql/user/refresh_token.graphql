@@ -4,6 +4,5 @@ mutation RefreshToken($token: String!){
         refresh_token
         expires_in
         token_type
-        device_token
     }
 }

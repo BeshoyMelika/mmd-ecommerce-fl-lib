@@ -1,0 +1,8 @@
+query GetVoucherByCode($code:String!) {
+  getVoucherByCode(code: $code) {
+    id
+    code
+    discount
+    discount_type
+  }
+}

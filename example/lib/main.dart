@@ -6,8 +6,13 @@ import 'package:mmd_ecommerce_fl_lib_example/screens/main_second.dart';
 
 import 'apis/auth_apis.dart';
 import 'apis/user_apis.dart';
+import 'screens/product_screen.dart';
 
 void main() {
+  // TODO enhance example by split all APIs that related to each other in one file
+  // TODO style all buttons that call the same APIs category with the same style
+  // TODO all APIs that in the same category will be in a separated screen.
+  // TODO remove the base url from the main example. [May be not because the graphConfig file]
   runApp(MyApp());
 }
 
@@ -42,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    print("init state");
     // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
     super.initState();
   }
@@ -101,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => AddressScreen()),
               );
             },
-            child: Text("Open Address Scren"),
+            child: Text("Open Address Screen"),
           ),
           RaisedButton(
             color: Colors.blueAccent,
@@ -111,7 +115,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => GeneralScreen()),
               );
             },
-            child: Text("Open General Scren"),
+            child: Text("Open General Screen"),
+          ),
+          RaisedButton(
+            color: Colors.deepOrangeAccent,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductScreen()),
+              );
+            },
+            child: Text("Open Product Screen"),
           ),
           RaisedButton(
             color: Colors.amber,
@@ -120,25 +134,31 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Test login"),
           ),
-          RaisedButton(
-            color: Colors.brown,
-            onPressed: () {
-              callUpdateProfileApi(emailController.text, codeController.text);
-            },
-            child: Text(
-              "update Profile",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.redAccent,
-            onPressed: () {
-              callMyProfileApi();
-            },
-            child: Text(
-              "get profile",
-              style: TextStyle(color: Colors.white),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: Colors.brown,
+                onPressed: () {
+                  callUpdateProfileApi(
+                      emailController.text, codeController.text);
+                },
+                child: Text(
+                  "update Profile",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.redAccent,
+                onPressed: () {
+                  callMyProfileApi();
+                },
+                child: Text(
+                  "get profile",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
           TextField(
             controller: emailController,
@@ -152,15 +172,30 @@ class _MyHomePageState extends State<MyHomePage> {
             controller: passwordController,
             decoration: InputDecoration(hintText: "password"),
           ),
-          RaisedButton(
-            color: Colors.green,
-            onPressed: () {
-              callRegisterApi();
-            },
-            child: Text(
-              "Register User",
-              style: TextStyle(color: Colors.white),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: Colors.green,
+                onPressed: () {
+                  callRegisterApi();
+                },
+                child: Text(
+                  "Register User",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.green,
+                onPressed: () {
+                  logout();
+                },
+                child: Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -200,12 +235,6 @@ class _MyHomePageState extends State<MyHomePage> {
       MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.authPayload.access_token,
           authPayload.authPayload.token_type);
-      print("=========================================");
-      print("Success Login");
-      print("Access Token: ${authPayload.authPayload.access_token}");
-    }, (QueryResult x) {
-      print("error");
-      print(x.exception);
-    });
+    }, (QueryResult x) {});
   }
 }

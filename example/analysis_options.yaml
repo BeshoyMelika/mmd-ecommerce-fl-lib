@@ -1,0 +1,23 @@
+# include: package:effective_dart/analysis_options.yaml
+# include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    - avoid_print
+#     - directives_ordering
+#     - curly_braces_in_flow_control_structures
+#     - prefer_is_empty
+#     - annotate_overrides
+#     - empty_catches
+#     - unnecessary_new
+#     - unnecessary_const
+#     - prefer_if_null_operators
+#     - unawaited_futures
+#     - avoid_positional_boolean_parameters
+#     - type_annotate_public_apis
+#     - unnecessary_lambdas
+#     - prefer_interpolation_to_compose_strings
+#     - unnecessary_brace_in_string_interps
+
+### resources : https://dart-lang.github.io/linter/lints/index.html
+### resources : https://dart.dev/guides/language/analysis-options#enabling-linter-rules

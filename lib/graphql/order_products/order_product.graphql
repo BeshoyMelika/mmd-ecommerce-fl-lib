@@ -1,0 +1,57 @@
+query OrderProducts(
+    $first: Int!,
+    $page: Int!,
+    $productsId: ID,
+    $catId:  [ID],
+    $name: String,
+    $fieldOfOrder: ProductsOrderByColumn!,
+    $orderType: SortOrder!,
+
+   ){
+  products(first: $first, page: $page, filter: {
+    name: $name
+    id:$productsId
+    category:$catId
+    },
+    orderBy:{
+    field:$fieldOfOrder,
+    order:$orderType
+  }
+    ) {
+    paginatorInfo {
+      count
+      currentPage
+      firstItem
+      lastItem
+      hasMorePages
+      lastPage
+      perPage
+      total
+    }
+    data {
+      id
+      averageRating
+      price
+      available
+      details {
+        name
+        sku
+        description
+        cover {
+          url
+        }
+        unit {
+          id
+          name
+        }
+        media {
+          url
+        }
+        category {
+          id
+        }
+      }
+    }
+  }
+}
+

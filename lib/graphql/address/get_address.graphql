@@ -19,6 +19,7 @@ query GetAllAddress($first: Int!, $page: Int!){
             mobile
             lat
             lng
+            isDefault
         }
     }
 
