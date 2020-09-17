@@ -15,11 +15,18 @@ export './common_models/common_models.dart';
 export './generatedql/order_products/graphql_api.dart'
     hide PaginatorInfo, Category, Media, Product, Unit;
 export './generatedql/products/graphql_api.dart'
-    hide Media, Category, Product, ProductPaginator, ProductData, PagingMixin;
+    hide
+        Media,
+        Category,
+        Product,
+        ProductPaginator,
+        ProductData,
+        PagingMixin,
+        ProductMixin;
 export './generatedql/cart/graphql_api.dart'
-    hide Media, ProductData, Product, Unit;
+    hide Media, ProductData, Product, Unit, ProductMixin, Category;
 export './generatedql/related_product/graphql_api.dart'
-    hide Media, Category, ProductData, Unit, Product;
+    hide Media, Category, ProductData, Unit, Product, ProductMixin;
 export './generatedql/ratings/graphql_api.dart'
     hide PaginatorInfo, User, PagingMixin;
 export './generatedql/categories/graphql_api.dart';

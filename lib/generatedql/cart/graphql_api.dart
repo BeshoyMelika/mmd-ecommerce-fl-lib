@@ -211,6 +211,14 @@ class GetVoucherByCodeQuery
       GetVoucherByCode.fromJson(json);
 }
 
+mixin ProductMixin {
+  String id;
+  String averageRating;
+  String price;
+  bool available;
+  ProductData details;
+}
+
 @JsonSerializable(explicitToJson: true)
 class GetCart with EquatableMixin {
   GetCart();
@@ -259,22 +267,14 @@ class CartItem with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Product with EquatableMixin {
+class Product with EquatableMixin, ProductMixin {
   Product();
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
 
-  String id;
-
-  String price;
-
-  bool available;
-
-  ProductData details;
-
   @override
-  List<Object> get props => [id, price, available, details];
+  List<Object> get props => [id, averageRating, price, available, details];
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
 
@@ -287,12 +287,21 @@ class ProductData with EquatableMixin {
 
   String name;
 
+  String sku;
+
+  String description;
+
   Media cover;
 
   Unit unit;
 
+  List<Media> media;
+
+  Category category;
+
   @override
-  List<Object> get props => [name, cover, unit];
+  List<Object> get props =>
+      [name, sku, description, cover, unit, media, category];
   Map<String, dynamic> toJson() => _$ProductDataToJson(this);
 }
 
@@ -322,6 +331,20 @@ class Unit with EquatableMixin {
   @override
   List<Object> get props => [id, name];
   Map<String, dynamic> toJson() => _$UnitToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Category with EquatableMixin {
+  Category();
+
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
+
+  String id;
+
+  @override
+  List<Object> get props => [id];
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
 
 class GetCartQuery extends GraphQLQuery<GetCart, JsonSerializable> {
@@ -371,72 +394,125 @@ class GetCartQuery extends GraphQLQuery<GetCart, JsonSerializable> {
                           arguments: [],
                           directives: [],
                           selectionSet: SelectionSetNode(selections: [
-                            FieldNode(
-                                name: NameNode(value: 'id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'price'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'available'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'details'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: SelectionSetNode(selections: [
-                                  FieldNode(
-                                      name: NameNode(value: 'name'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null),
-                                  FieldNode(
-                                      name: NameNode(value: 'cover'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet:
-                                          SelectionSetNode(selections: [
-                                        FieldNode(
-                                            name: NameNode(value: 'url'),
-                                            alias: null,
-                                            arguments: [],
-                                            directives: [],
-                                            selectionSet: null)
-                                      ])),
-                                  FieldNode(
-                                      name: NameNode(value: 'unit'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet:
-                                          SelectionSetNode(selections: [
-                                        FieldNode(
-                                            name: NameNode(value: 'id'),
-                                            alias: null,
-                                            arguments: [],
-                                            directives: [],
-                                            selectionSet: null),
-                                        FieldNode(
-                                            name: NameNode(value: 'name'),
-                                            alias: null,
-                                            arguments: [],
-                                            directives: [],
-                                            selectionSet: null)
-                                      ]))
-                                ]))
+                            FragmentSpreadNode(
+                                name: NameNode(value: 'Product'),
+                                directives: [])
                           ]))
+                    ]))
+              ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'Product'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'Product'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'averageRating'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'available'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'details'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'sku'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'description'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'cover'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'unit'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'media'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'category'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
                     ]))
               ]))
         ]))

@@ -16,6 +16,13 @@ mixin PagingMixin {
   int perPage;
   int total;
 }
+mixin ProductMixin {
+  String id;
+  String averageRating;
+  String price;
+  bool available;
+  ProductData details;
+}
 
 @JsonSerializable(explicitToJson: true)
 class OrderProducts with EquatableMixin {
@@ -69,21 +76,11 @@ class PaginatorInfo with EquatableMixin, PagingMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Product with EquatableMixin {
+class Product with EquatableMixin, ProductMixin {
   Product();
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
-
-  String id;
-
-  String averageRating;
-
-  String price;
-
-  bool available;
-
-  ProductData details;
 
   @override
   List<Object> get props => [id, averageRating, price, available, details];
@@ -305,113 +302,8 @@ class OrderProductsQuery
                     arguments: [],
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
-                      FieldNode(
-                          name: NameNode(value: 'id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'averageRating'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'price'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'available'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'details'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: SelectionSetNode(selections: [
-                            FieldNode(
-                                name: NameNode(value: 'name'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'sku'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'description'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'cover'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: SelectionSetNode(selections: [
-                                  FieldNode(
-                                      name: NameNode(value: 'url'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null)
-                                ])),
-                            FieldNode(
-                                name: NameNode(value: 'unit'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: SelectionSetNode(selections: [
-                                  FieldNode(
-                                      name: NameNode(value: 'id'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null),
-                                  FieldNode(
-                                      name: NameNode(value: 'name'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null)
-                                ])),
-                            FieldNode(
-                                name: NameNode(value: 'media'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: SelectionSetNode(selections: [
-                                  FieldNode(
-                                      name: NameNode(value: 'url'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null)
-                                ])),
-                            FieldNode(
-                                name: NameNode(value: 'category'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: SelectionSetNode(selections: [
-                                  FieldNode(
-                                      name: NameNode(value: 'id'),
-                                      alias: null,
-                                      arguments: [],
-                                      directives: [],
-                                      selectionSet: null)
-                                ]))
-                          ]))
+                      FragmentSpreadNode(
+                          name: NameNode(value: 'Product'), directives: [])
                     ]))
               ]))
         ])),
@@ -470,6 +362,121 @@ class OrderProductsQuery
               arguments: [],
               directives: [],
               selectionSet: null)
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'Product'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'Product'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'averageRating'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'available'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'details'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'sku'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'description'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'cover'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'unit'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'media'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
+                FieldNode(
+                    name: NameNode(value: 'category'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ]))
+              ]))
         ]))
   ]);
 

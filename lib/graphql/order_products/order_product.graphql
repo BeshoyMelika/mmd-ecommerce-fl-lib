@@ -22,28 +22,7 @@ query OrderProducts(
       ...Paging
     }
     data {
-      id
-      averageRating
-      price
-      available
-      details {
-        name
-        sku
-        description
-        cover {
-          url
-        }
-        unit {
-          id
-          name
-        }
-        media {
-          url
-        }
-        category {
-          id
-        }
-      }
+      ...Product
     }
   }
 }
