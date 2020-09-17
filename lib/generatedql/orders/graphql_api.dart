@@ -6,6 +6,17 @@ import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
 part 'graphql_api.g.dart';
 
+mixin PagingMixin {
+  int count;
+  int currentPage;
+  int firstItem;
+  int lastItem;
+  bool hasMorePages;
+  int lastPage;
+  int perPage;
+  int total;
+}
+
 @JsonSerializable(explicitToJson: true)
 class Orders with EquatableMixin {
   Orders();
@@ -36,27 +47,11 @@ class OrderPaginator with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatorInfo with EquatableMixin {
+class PaginatorInfo with EquatableMixin, PagingMixin {
   PaginatorInfo();
 
   factory PaginatorInfo.fromJson(Map<String, dynamic> json) =>
       _$PaginatorInfoFromJson(json);
-
-  int count;
-
-  int currentPage;
-
-  int firstItem;
-
-  int lastItem;
-
-  bool hasMorePages;
-
-  int lastPage;
-
-  int perPage;
-
-  int total;
 
   @override
   List<Object> get props => [
@@ -148,54 +143,8 @@ class OrdersQuery extends GraphQLQuery<Orders, OrdersArguments> {
                     arguments: [],
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
-                      FieldNode(
-                          name: NameNode(value: 'count'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'currentPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'firstItem'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'lastItem'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'hasMorePages'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'lastPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'perPage'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'total'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null)
+                      FragmentSpreadNode(
+                          name: NameNode(value: 'Paging'), directives: [])
                     ])),
                 FieldNode(
                     name: NameNode(value: 'data'),
@@ -223,6 +172,62 @@ class OrdersQuery extends GraphQLQuery<Orders, OrdersArguments> {
                           selectionSet: null)
                     ]))
               ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'Paging'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'PaginatorInfo'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'count'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'currentPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'firstItem'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'lastItem'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'hasMorePages'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'lastPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'perPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'total'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
         ]))
   ]);
 

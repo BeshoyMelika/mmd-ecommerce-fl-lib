@@ -8,3 +8,27 @@ fragment Paging on  PaginatorInfo{
     perPage
     total
 }
+fragment Product on  Product{
+    id
+    averageRating
+    price
+    available
+    details {
+        name
+        sku
+        description
+        cover {
+            url
+        }
+        unit {
+            id
+            name
+        }
+        media {
+            url
+        }
+        category {
+            id
+        }
+    }
+}

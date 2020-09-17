@@ -110,6 +110,7 @@ Map<String, dynamic> _$CartItemToJson(CartItem instance) => <String, dynamic>{
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return Product()
     ..id = json['id'] as String
+    ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
     ..available = json['available'] as bool
     ..details = json['details'] == null
@@ -119,6 +120,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'id': instance.id,
+      'averageRating': instance.averageRating,
       'price': instance.price,
       'available': instance.available,
       'details': instance.details?.toJson(),
@@ -127,19 +129,32 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
 ProductData _$ProductDataFromJson(Map<String, dynamic> json) {
   return ProductData()
     ..name = json['name'] as String
+    ..sku = json['sku'] as String
+    ..description = json['description'] as String
     ..cover = json['cover'] == null
         ? null
         : Media.fromJson(json['cover'] as Map<String, dynamic>)
     ..unit = json['unit'] == null
         ? null
-        : Unit.fromJson(json['unit'] as Map<String, dynamic>);
+        : Unit.fromJson(json['unit'] as Map<String, dynamic>)
+    ..media = (json['media'] as List)
+        ?.map(
+            (e) => e == null ? null : Media.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..category = json['category'] == null
+        ? null
+        : Category.fromJson(json['category'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ProductDataToJson(ProductData instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'sku': instance.sku,
+      'description': instance.description,
       'cover': instance.cover?.toJson(),
       'unit': instance.unit?.toJson(),
+      'media': instance.media?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.toJson(),
     };
 
 Media _$MediaFromJson(Map<String, dynamic> json) {
@@ -159,6 +174,14 @@ Unit _$UnitFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UnitToJson(Unit instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+    };
+
+Category _$CategoryFromJson(Map<String, dynamic> json) {
+  return Category()..id = json['id'] as String;
+}
+
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      'id': instance.id,
     };
 
 ShippingFees _$ShippingFeesFromJson(Map<String, dynamic> json) {

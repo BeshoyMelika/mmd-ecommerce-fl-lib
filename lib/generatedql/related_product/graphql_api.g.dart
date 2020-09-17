@@ -23,6 +23,7 @@ Map<String, dynamic> _$RelatedProductsToJson(RelatedProducts instance) =>
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return Product()
     ..id = json['id'] as String
+    ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
     ..available = json['available'] as bool
     ..details = json['details'] == null
@@ -32,6 +33,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'id': instance.id,
+      'averageRating': instance.averageRating,
       'price': instance.price,
       'available': instance.available,
       'details': instance.details?.toJson(),
