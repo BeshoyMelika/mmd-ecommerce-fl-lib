@@ -5,7 +5,7 @@ import 'package:mmd_ecommerce_fl_lib/apis/logger/logger_client.dart';
 
 class BaseApiManager {
   static String _url;
-  static bool _isDebuggable;
+  static bool _isDebuggable = false;
   static String _tokenType;
   static String _token;
   static String _language;

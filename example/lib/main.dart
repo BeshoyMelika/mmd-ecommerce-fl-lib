@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
-    MmdECommerceFlLib.enableDebug(true);
+    //MmdECommerceFlLib.enableDebug(true);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
