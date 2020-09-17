@@ -11,7 +11,7 @@ class ProductApiManager extends BaseApiManager {
         documentNode: ProductsQuery().document,
         variables: ProductsArguments(first: first, page: page).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
@@ -25,7 +25,7 @@ class ProductApiManager extends BaseApiManager {
             ProductsArguments(first: first, page: page, catId: [categoryId])
                 .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
@@ -38,7 +38,7 @@ class ProductApiManager extends BaseApiManager {
         variables: ProductsArguments(first: 1, page: 1, productsId: productId)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ProductDetailsModel(
           ProductPaginatorModel(Products.fromJson(result.data).products)
@@ -55,7 +55,7 @@ class ProductApiManager extends BaseApiManager {
         variables:
             ProductsArguments(first: first, page: page, name: name).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ProductPaginatorModel(Products.fromJson(result.data).products));
     }
@@ -67,7 +67,7 @@ class ProductApiManager extends BaseApiManager {
         documentNode: RelatedProductsQuery().document,
         variables: RelatedProductsArguments(id: id).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(RelatedProductsModel(
           RelatedProducts.fromJson(result.data).relatedProducts));
@@ -82,7 +82,7 @@ class ProductApiManager extends BaseApiManager {
             RatingsArguments(first: first, page: page, productsId: productsId)
                 .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(RatingPaginatorModel(Ratings.fromJson(result.data).ratings));
     }
@@ -99,7 +99,7 @@ class ProductApiManager extends BaseApiManager {
           fieldOfOrder: "ID",
         ).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(NewProductsModel(OrderProducts.fromJson(result.data).products));
     }

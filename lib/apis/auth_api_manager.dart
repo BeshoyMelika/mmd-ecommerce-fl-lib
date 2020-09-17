@@ -2,6 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/auth/graphql_api.dart';
+import 'error/api_error_helper.dart';
 
 class AuthApiManager extends BaseApiManager {
   static Future<void> loginApi(String email, String password,
@@ -12,7 +13,7 @@ class AuthApiManager extends BaseApiManager {
                 email: email, password: password, deviceToken: deviceToken)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(AuthPayloadLogin(SignIn.fromJson(result.data).login));
     }
@@ -25,7 +26,7 @@ class AuthApiManager extends BaseApiManager {
         variables: SignUpArguments(name: name, email: email, password: password)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(UserRegister(SignUp.fromJson(result.data).register));
     }
@@ -37,7 +38,7 @@ class AuthApiManager extends BaseApiManager {
         documentNode: ForgetPasswordQuery().document,
         variables: ForgetPasswordArguments(email: email).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ForgetPassword.fromJson(result.data).forgetPassword);
     }
@@ -51,7 +52,7 @@ class AuthApiManager extends BaseApiManager {
                 email: email, newPassword: newPassword, token: codeOrToken)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ResetPassword.fromJson(result.data).resetPassword);
     }
@@ -61,7 +62,7 @@ class AuthApiManager extends BaseApiManager {
     var result = await BaseApiManager.mainClient()
         .mutate(MutationOptions(documentNode: LogoutQuery().document));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Logout.fromJson(result.data).logout);
     }

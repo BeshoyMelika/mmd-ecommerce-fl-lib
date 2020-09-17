@@ -3,12 +3,14 @@ import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/categories/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/general/graphql_api.dart';
 
+import 'error/api_error_helper.dart';
+
 class GeneralApiManager extends BaseApiManager {
   static Future<void> brandsApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: BrandsQuery().document));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Brands.fromJson(result.data).brands);
     }
@@ -18,7 +20,7 @@ class GeneralApiManager extends BaseApiManager {
     var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: SlidersQuery().document));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Sliders.fromJson(result.data).sliders);
     }
@@ -28,7 +30,7 @@ class GeneralApiManager extends BaseApiManager {
     var result = await BaseApiManager.mainClient()
         .query(QueryOptions(documentNode: CategoriesQuery().document));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Categories.fromJson(result.data).categories);
     }
