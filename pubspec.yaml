@@ -1,5 +1,6 @@
 name: mmd_ecommerce_fl_lib
-description: It is a backend library using GraphQl to facilitate connection to our different e-commerce backend endpoints.
+description: It is a backend library using GraphQl to facilitate connection to
+  our different e-commerce backend endpoints.
 version: 0.0.9
 homepage: https://github.com/BeshoyMelika/mmd-ecommerce-fl-lib
 
@@ -13,11 +14,11 @@ dependencies:
   json_serializable: ^3.2.3
   equatable: ^1.0.2
   gql: ^0.12.0
-  meta: '>=1.0.0 <2.0.0' # only if you have non nullable fields
+  meta: ">=1.0.0 <2.0.0" # only if you have non nullable fields
   path_provider: ^1.5.1
   graphql_flutter: ^3.1.0
   analyzer: ^0.39.2+1
-  artemis: ^2.1.4
+  artemis: ^5.1.0
   json_annotation: ^3.0.1
   http: ^0.12.0+4
 
