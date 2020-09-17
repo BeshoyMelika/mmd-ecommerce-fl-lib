@@ -17,7 +17,12 @@ productByCategoryIdApi() async {
 
 newProductApi() async {
   await ProductApiManager.newProductApi(
-      10, 1, (NewProductsModel item) {}, (QueryResult error) {});
+      10,
+      1,
+      SortOrder.DESC,
+      ProductsOrderByColumn.ID,
+      (NewProductsModel item) {},
+      (QueryResult error) {});
 }
 
 getProductDetailsApi() async {

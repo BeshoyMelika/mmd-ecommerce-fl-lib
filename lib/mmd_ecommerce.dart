@@ -29,6 +29,7 @@ export './generatedql/user/graphql_api.dart' hide AuthPayload, User;
 export './generatedql/address/graphql_api.dart' hide PaginatorInfo;
 export './mmd_ecommerce.dart';
 export './mmd_ecommerce_fl_lib.dart';
+export './common_models/custom_scalars_model.dart';
 
 /// we hide the AuthPayload from "./generatedql/user/graphql_api.dart"
 /// because we use the same name with "./generatedql/auth/graphql_api.dart"

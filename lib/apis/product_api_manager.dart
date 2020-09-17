@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/common_models/custom_scalars_model.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/order_products/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
@@ -89,14 +90,19 @@ class ProductApiManager extends BaseApiManager {
   }
 
   static Future<void> newProductApi(
-      int first, int page, Function success, Function fail) async {
+      int first,
+      int page,
+      SortOrder orderType,
+      ProductsOrderByColumn fieldOfOrder,
+      Function success,
+      Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: OrderProductsQuery().document,
         variables: OrderProductsArguments(
           first: first,
           page: page,
-          orderType: "DESC",
-          fieldOfOrder: "ID",
+          orderType: orderType.toString(),
+          fieldOfOrder: fieldOfOrder.toString(),
         ).toJson()));
     if (result.hasException) {
       fail(result);
