@@ -1,6 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.dart';
+import 'error/api_error_helper.dart';
 
 class CartApiManager extends BaseApiManager {
   static Future<void> addToCartApi(
@@ -10,7 +11,7 @@ class CartApiManager extends BaseApiManager {
         variables: AddToCartArguments(productId: productId, quantity: quantity)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(AddToCart.fromJson(result.data).addToCart);
     }
@@ -21,7 +22,7 @@ class CartApiManager extends BaseApiManager {
         documentNode: GetCartQuery().document,
         fetchPolicy: FetchPolicy.noCache));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(GetCart.fromJson(result.data).cart);
     }
@@ -33,7 +34,7 @@ class CartApiManager extends BaseApiManager {
         documentNode: GetVoucherByCodeQuery().document,
         variables: GetVoucherByCodeArguments(code: code).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(GetVoucherByCode.fromJson(result.data).getVoucherByCode);
     }
@@ -47,7 +48,7 @@ class CartApiManager extends BaseApiManager {
             ShippingFeesArguments(addressId: addressId, voucherId: voucherId)
                 .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(ShippingFees.fromJson(result.data).shippingFees);
     }

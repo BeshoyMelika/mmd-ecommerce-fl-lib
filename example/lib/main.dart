@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
-    //MmdECommerceFlLib.enableDebug(true);
+    MmdECommerceFlLib.enableDebug(true);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
       home: MyHomePage(),
@@ -229,12 +229,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   callLoginApi() async {
-    await AuthApiManager.loginApi("test@mail.com", "123456789", "123",
+    await AuthApiManager.loginApi("test@mail.com", "1234567890", "123",
         (AuthPayloadLogin authPayload) async {
       auth = authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.authPayload.access_token,
           authPayload.authPayload.token_type);
-    }, (QueryResult x) {});
+    }, (ApiErrorModel error) {});
   }
 }
