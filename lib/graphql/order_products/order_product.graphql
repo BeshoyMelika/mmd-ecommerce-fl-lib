@@ -18,15 +18,8 @@ query OrderProducts(
     order:$orderType
   }
     ) {
-    paginatorInfo {
-      count
-      currentPage
-      firstItem
-      lastItem
-      hasMorePages
-      lastPage
-      perPage
-      total
+    paginatorInfo{
+      ...Paging
     }
     data {
       id
