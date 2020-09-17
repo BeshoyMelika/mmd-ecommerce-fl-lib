@@ -4,8 +4,8 @@ query OrderProducts(
     $productsId: ID,
     $catId:  [ID],
     $name: String,
-    $fieldOfOrder: ProductsOrderByColumn!,
-    $orderType: SortOrder!,
+    $fieldOfOrder: String!,
+    $orderType: String!,
 
    ){
   products(first: $first, page: $page, filter: {

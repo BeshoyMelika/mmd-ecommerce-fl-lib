@@ -46,3 +46,8 @@ targets:
             - schema: general.schema.graphql
               queries_glob: lib/graphql/address_asset/*.graphql
               output: lib/generatedql/address_asset/graphql_api.dart
+          scalar_mapping:
+          - graphql_type: ProductsOrderByColumn
+            dart_type: String
+          - graphql_type: SortOrder
+            dart_type: String

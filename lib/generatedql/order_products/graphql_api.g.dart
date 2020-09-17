@@ -144,8 +144,8 @@ OrderProductsArguments _$OrderProductsArgumentsFromJson(
     productsId: json['productsId'] as String,
     catId: (json['catId'] as List)?.map((e) => e as String)?.toList(),
     name: json['name'] as String,
-    fieldOfOrder: json['fieldOfOrder'],
-    orderType: json['orderType'],
+    fieldOfOrder: json['fieldOfOrder'] as String,
+    orderType: json['orderType'] as String,
   );
 }
 

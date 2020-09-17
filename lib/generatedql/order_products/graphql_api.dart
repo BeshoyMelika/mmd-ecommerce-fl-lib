@@ -243,14 +243,13 @@ class OrderProductsQuery
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'fieldOfOrder')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'ProductsOrderByColumn'),
-                  isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'orderType')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'SortOrder'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
