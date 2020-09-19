@@ -38,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  AuthPayloadLogin auth;
+  SignIn$Mutation$AuthPayload auth;
   var isError = false;
 
   TextEditingController emailController = TextEditingController();
@@ -60,20 +60,20 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(child: isLoading ? getLoadingView() : getNormalView()));
   }
 
-  callApi() async {
-    setState(() {
-      isLoading = true;
-    });
-    AuthApiManager.loginApi('test@mail.com', '123456789', "123",
-        (AuthPayloadLogin auth) {
-      setState(() {
-        this.isLoading = false;
-        this.auth = auth;
-      });
-    }, () {
-      this.isError = true;
-    });
-  }
+  // callApi() async {
+  //   setState(() {
+  //     isLoading = true;
+  //   });
+  //   AuthApiManager.loginApi('test@mail.com', '123456789', "123",
+  //       (SignIn$Mutation$AuthPayload auth) {
+  //     setState(() {
+  //       this.isLoading = false;
+  //       this.auth = auth;
+  //     });
+  //   }, () {
+  //     this.isError = true;
+  //   });
+  // }
 
   Widget getLoadingView() {
     return CircularProgressIndicator();
@@ -85,14 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return Column(
         children: [
-          Text("Result Success \n${auth?.authPayload?.access_token}"),
+          Text("Result Success \n${auth?.accessToken}"),
           RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        MainSecond(auth.authPayload.refresh_token)),
+                    builder: (context) => MainSecond(auth.refreshToken)),
               );
             },
             child: Text("Open Main Second"),
@@ -230,11 +229,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   callLoginApi() async {
     await AuthApiManager.loginApi("test@mail.com", "1234567890", "123",
-        (AuthPayloadLogin authPayload) async {
+        (SignIn$Mutation$AuthPayload authPayload) async {
       auth = authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
-          authPayload.authPayload.access_token,
-          authPayload.authPayload.token_type);
-    }, (ApiErrorModel error) {});
+          authPayload.accessToken, authPayload.tokenType);
+    }, (ApiErrorModel error) {
+      print(error.errorCode);
+      print(error.errorMessage);
+      print(error.queryResult.exception);
+      print(error.queryResult.data);
+    });
   }
 }

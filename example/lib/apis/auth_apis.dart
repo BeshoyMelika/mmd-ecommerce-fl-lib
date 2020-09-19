@@ -2,7 +2,7 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 callRegisterApi() {
   AuthApiManager.registerApi("mmd10", "rovox4067sri@ka0525.com", "123456",
-      (UserRegister user) {}, (ApiErrorModel error) {});
+      (SignUp$Mutation$User register) {}, (ApiErrorModel error) {});
 }
 
 callForgetPasswordApi(String email) {

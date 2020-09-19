@@ -7,13 +7,13 @@ class CartApiManager extends BaseApiManager {
   static Future<void> addToCartApi(
       String productId, int quantity, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
-        documentNode: AddToCartQuery().document,
+        documentNode: AddToCartMutation().document,
         variables: AddToCartArguments(productId: productId, quantity: quantity)
             .toJson()));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(AddToCart.fromJson(result.data).addToCart);
+      success(AddToCart$Mutation.fromJson(result.data).addToCart);
     }
   }
 
@@ -24,7 +24,7 @@ class CartApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(GetCart.fromJson(result.data).cart);
+      success(GetCart$Query.fromJson(result.data).cart);
     }
   }
 
@@ -36,7 +36,7 @@ class CartApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(GetVoucherByCode.fromJson(result.data).getVoucherByCode);
+      success(GetVoucherByCode$Query.fromJson(result.data).getVoucherByCode);
     }
   }
 
@@ -50,7 +50,7 @@ class CartApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ShippingFees.fromJson(result.data).shippingFees);
+      success(ShippingFees$Query.fromJson(result.data).shippingFees);
     }
   }
 }
