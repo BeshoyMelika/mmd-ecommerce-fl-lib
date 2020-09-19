@@ -5,19 +5,7 @@ query GetCart {
       available
       quantity
       product {
-        id
-        price
-        available
-        details {
-          name
-          cover {
-            url
-          }
-          unit {
-            id
-            name
-          }
-        }
+        ...Product
       }
     }
   }

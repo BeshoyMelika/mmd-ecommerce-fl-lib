@@ -3,15 +3,8 @@ query Orders(
     $page: Int!,
    ){
   orders(first: $first, page: $page) {
-    paginatorInfo {
-      count
-      currentPage
-      firstItem
-      lastItem
-      hasMorePages
-      lastPage
-      perPage
-      total
+    paginatorInfo{
+      ...Paging
     }
     data {
       id

@@ -4,14 +4,7 @@ query Ratings(
     $productsId: ID!){
   ratings(first: $first, page: $page,product_id: $productsId) {
     paginatorInfo {
-      count
-      currentPage
-      firstItem
-      lastItem
-      hasMorePages
-      lastPage
-      perPage
-      total
+      ...Paging
     }
     data {
       rating

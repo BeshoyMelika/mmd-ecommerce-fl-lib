@@ -2,6 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address_asset/graphql_api.dart';
+import 'error/api_error_helper.dart';
 
 class AddressApiManager extends BaseApiManager {
   static Future<void> createAddressApi(
@@ -30,7 +31,7 @@ class AddressApiManager extends BaseApiManager {
                 isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(CreateAddress.fromJson(result.data).createAddress);
     }
@@ -64,7 +65,7 @@ class AddressApiManager extends BaseApiManager {
                 isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(UpdateAddress.fromJson(result.data).updateAddress);
     }
@@ -76,7 +77,7 @@ class AddressApiManager extends BaseApiManager {
         documentNode: DeleteAddressQuery().document,
         variables: DeleteAddressArguments(id: id).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(DeleteAddress.fromJson(result.data).deleteAddress);
     }
@@ -88,7 +89,7 @@ class AddressApiManager extends BaseApiManager {
         documentNode: GetAllAddressQuery().document,
         variables: GetAllAddressArguments(first: first, page: page).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(GetAllAddress.fromJson(result.data).addresses);
     }
@@ -98,7 +99,7 @@ class AddressApiManager extends BaseApiManager {
     var result = await BaseApiManager.mainClient()
         .mutate(MutationOptions(documentNode: CitiesQuery().document));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Cities.fromJson(result.data).cities);
     }
@@ -110,7 +111,7 @@ class AddressApiManager extends BaseApiManager {
         documentNode: AreaByIDQuery().document,
         variables: AreaByIDArguments(cityId: cityId).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(AreaByID.fromJson(result.data).areas);
     }

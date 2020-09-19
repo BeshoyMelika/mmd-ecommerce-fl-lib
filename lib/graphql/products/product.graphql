@@ -10,39 +10,11 @@ query Products(
     id:$productsId
     category:$catId
     }) {
-    paginatorInfo {
-      count
-      currentPage
-      firstItem
-      lastItem
-      hasMorePages
-      lastPage
-      perPage
-      total
+    paginatorInfo{
+      ...Paging
     }
     data {
-      id
-      averageRating
-      price
-      available
-      details {
-        name
-        sku
-        description
-        cover {
-          url
-        }
-        unit {
-          id
-          name
-        }
-        media {
-          url
-        }
-        category {
-          id
-        }
-      }
+      ...Product
     }
   }
 }

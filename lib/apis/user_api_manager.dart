@@ -12,7 +12,7 @@ class UserApiManager extends BaseApiManager {
         documentNode: RefreshTokenQuery().document,
         variables: RefreshTokenArguments(token: token).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(AuthPayloadRefreshToken(
           RefreshToken.fromJson(result.data).refreshToken));
@@ -26,7 +26,7 @@ class UserApiManager extends BaseApiManager {
         variables:
             UpdateProfileArguments(name: name, mobile: mobile).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(UpdateProfile.fromJson(result.data).updateProfile);
     }
@@ -49,7 +49,7 @@ class UserApiManager extends BaseApiManager {
         documentNode: OrdersQuery().document,
         variables: OrdersArguments(first: first, page: page).toJson()));
     if (result.hasException) {
-      fail(result);
+      fail(ApiErrorHelper.handle(result));
     } else {
       success(Orders.fromJson(result.data).orders);
     }
