@@ -228,16 +228,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   callLoginApi() async {
-    await AuthApiManager.loginApi("test@mail.com", "1234567890", "123",
+    await AuthApiManager.loginApi("test@mail.com", "123456789", "123",
         (SignIn$Mutation$AuthPayload authPayload) async {
       auth = authPayload;
       MmdECommerceFlLib.submitTokeAndTokenType(
           authPayload.accessToken, authPayload.tokenType);
-    }, (ApiErrorModel error) {
-      print(error.errorCode);
-      print(error.errorMessage);
-      print(error.queryResult.exception);
-      print(error.queryResult.data);
-    });
+    }, (ApiErrorModel error) {});
   }
 }
