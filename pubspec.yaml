@@ -15,13 +15,13 @@ dependencies:
   equatable: ^1.2.5
   gql: ">=0.7.3 <1.0.0" # update according to DOCS https://pub.dev/packages/artemis/versions/6.12.3-beta.1#installation
   meta: ">=1.0.0 <2.0.0" # only if you have non nullable fields
-  path_provider: ^1.5.1
+  path_provider: ^1.6.18
   graphql_flutter: ^3.1.0
   analyzer: ^0.39.2+1
-  artemis: ^6.12.3-beta.1
   # add beta because have a Exception: Two classes were generated with the same name
   # according to https://github.com/comigor/artemis/issues/194#issuecomment-670576452
   #  use the latest beta version
+  artemis: ^6.12.3-beta.1
   json_annotation: ^3.0.1
   http: ^0.12.0+4
 

@@ -154,7 +154,7 @@ packages:
       name: connectivity
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.9+2"
+    version: "0.4.9+3"
   connectivity_for_web:
     dependency: transitive
     description:
@@ -267,7 +267,7 @@ packages:
       name: gql
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.4-alpha+1599667008836"
+    version: "0.12.4-alpha+1600790194928"
   gql_code_gen:
     dependency: transitive
     description:
@@ -288,7 +288,7 @@ packages:
       name: gql_exec
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.5-alpha+1599667008843"
+    version: "0.2.5-alpha+1600790194941"
   gql_http_link:
     dependency: transitive
     description:
@@ -302,7 +302,7 @@ packages:
       name: gql_link
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.1-alpha+1599667008850"
+    version: "0.3.1-alpha+1600790194948"
   graphql:
     dependency: transitive
     description:
@@ -379,14 +379,14 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.0"
   json_serializable:
     dependency: "direct main"
     description:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.1"
+    version: "3.5.0"
   logging:
     dependency: transitive
     description:
@@ -449,7 +449,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.16"
+    version: "1.6.18"
   path_provider_linux:
     dependency: transitive
     description:
@@ -477,7 +477,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.4+1"
   pedantic:
     dependency: transitive
     description:
@@ -573,7 +573,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.6"
+    version: "0.9.7+1"
   source_span:
     dependency: transitive
     description:
