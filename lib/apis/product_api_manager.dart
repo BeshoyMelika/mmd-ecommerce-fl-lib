@@ -15,7 +15,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Products$Query.fromJson(result.data).products);
+      success(ProductsPaginatorModel(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -29,7 +30,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Products$Query.fromJson(result.data).products);
+      success(ProductsPaginatorModel(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -42,7 +44,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Products$Query.fromJson(result.data).products.data.first);
+      success(ProductModel(
+          Products$Query.fromJson(result.data).products.data.first));
     }
   }
 
@@ -55,7 +58,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Products$Query.fromJson(result.data).products);
+      success(ProductsPaginatorModel(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -67,7 +71,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(RelatedProducts$Query.fromJson(result.data).relatedProducts);
+      success(RelatedProductsModel(
+          RelatedProducts$Query.fromJson(result.data).relatedProducts));
     }
   }
 
@@ -81,7 +86,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Ratings$Query.fromJson(result.data).ratings);
+      success(
+          RatingPaginatorModel(Ratings$Query.fromJson(result.data).ratings));
     }
   }
 
@@ -103,7 +109,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(OrderProducts$Query.fromJson(result.data).products);
+      success(OrderProductsModel(
+          OrderProducts$Query.fromJson(result.data).products));
     }
   }
 }

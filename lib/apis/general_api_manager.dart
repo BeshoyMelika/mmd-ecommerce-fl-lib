@@ -3,6 +3,7 @@ import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/categories/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/general/graphql_api.dart';
 
+import '../mmd_ecommerce.dart';
 import 'error/api_error_helper.dart';
 
 class GeneralApiManager extends BaseApiManager {
@@ -22,7 +23,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Sliders$Query.fromJson(result.data).sliders);
+      success(SliderModel(Sliders$Query.fromJson(result.data).sliders));
     }
   }
 
@@ -32,7 +33,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Categories$Query.fromJson(result.data).categories);
+      success(CategoryModel(Categories$Query.fromJson(result.data).categories));
     }
   }
 }
