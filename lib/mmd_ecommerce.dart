@@ -41,7 +41,7 @@ export './generatedql/categories/graphql_api.dart';
 export './generatedql/orders/graphql_api.dart' hide PagingMixin;
 export './generatedql/auth/graphql_api.dart';
 export './generatedql/general/graphql_api.dart';
-export './generatedql/user/graphql_api.dart';
+export './generatedql/user/graphql_api.dart' hide UserMixin;
 export './generatedql/address_asset/graphql_api.dart';
 export './generatedql/address/graphql_api.dart' hide PagingMixin;
 export './mmd_ecommerce.dart';

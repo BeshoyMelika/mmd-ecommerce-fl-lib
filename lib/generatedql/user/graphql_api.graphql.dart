@@ -7,6 +7,13 @@ import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
+mixin UserMixin {
+  String id;
+  String name;
+  String email;
+  String mobile;
+}
+
 @JsonSerializable(explicitToJson: true)
 class RefreshToken$Mutation$AuthPayload with EquatableMixin {
   RefreshToken$Mutation$AuthPayload();
@@ -48,19 +55,11 @@ class RefreshToken$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Profile$Query$User with EquatableMixin {
+class Profile$Query$User with EquatableMixin, UserMixin {
   Profile$Query$User();
 
   factory Profile$Query$User.fromJson(Map<String, dynamic> json) =>
       _$Profile$Query$UserFromJson(json);
-
-  String id;
-
-  String name;
-
-  String email;
-
-  String mobile;
 
   @override
   List<Object> get props => [id, name, email, mobile];
@@ -198,31 +197,40 @@ class ProfileQuery extends GraphQLQuery<Profile$Query, JsonSerializable> {
               arguments: [],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'name'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'email'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'mobile'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
+                FragmentSpreadNode(
+                    name: NameNode(value: 'User'), directives: [])
               ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'User'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(name: NameNode(value: 'User'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'email'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'mobile'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
         ]))
   ]);
 
