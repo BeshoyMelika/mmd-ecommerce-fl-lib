@@ -15,7 +15,8 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(RefreshToken$Mutation.fromJson(result.data).refreshToken);
+      success(AuthPayloadRefreshTokenModel(
+          RefreshToken$Mutation.fromJson(result.data).refreshToken));
     }
   }
 
@@ -39,7 +40,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Profile$Query.fromJson(result.data).profile);
+      success(UserProfileModel(Profile$Query.fromJson(result.data).profile));
     }
   }
 
@@ -51,7 +52,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Orders$Query.fromJson(result.data).orders);
+      success(OrdersModel(Orders$Query.fromJson(result.data).orders));
     }
   }
 }

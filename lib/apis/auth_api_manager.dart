@@ -15,7 +15,8 @@ class AuthApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(SignIn$Mutation.fromJson(result.data).login);
+      success(
+          AuthPayloadLoginModel(SignIn$Mutation.fromJson(result.data).login));
     }
   }
 
@@ -28,7 +29,8 @@ class AuthApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(SignUp$Mutation.fromJson(result.data).register);
+      success(
+          UserRegisterModel(SignUp$Mutation.fromJson(result.data).register));
     }
   }
 
