@@ -13,7 +13,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Brands$Query.fromJson(result.data).brands);
+      success(BrandModel(Brands$Query.fromJson(result.data).brands));
     }
   }
 
@@ -33,7 +33,8 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(CategoryModel(Categories$Query.fromJson(result.data).categories));
+      success(
+          CategoriesModel(Categories$Query.fromJson(result.data).categories));
     }
   }
 }

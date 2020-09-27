@@ -2,10 +2,8 @@ import 'package:mmd_ecommerce_fl_lib/generatedql/auth/graphql_api.graphql.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/cart/graphql_api.graphql.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/categories/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/general/graphql_api.dart';
-// import 'package:mmd_ecommerce_fl_lib/generatedql/order_products/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/ratings/graphql_api.graphql.dart';
-// import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.graphql.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.graphql.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address_asset/graphql_api.graphql.dart';
@@ -72,9 +70,9 @@ class SliderModel {
   SliderModel(this.slider);
 }
 
-class CategoryModel {
+class CategoriesModel {
   final List<Categories$Query$Category> category;
-  CategoryModel(this.category);
+  CategoriesModel(this.category);
 }
 
 class ProductsPaginatorModel {
@@ -100,4 +98,9 @@ class RatingPaginatorModel {
 class OrderProductsModel {
   final OrderProducts$Query$ProductPaginator orderProducts;
   OrderProductsModel(this.orderProducts);
+}
+
+class BrandModel {
+  final List<Brands$Query$Brand> brand;
+  BrandModel(this.brand);
 }

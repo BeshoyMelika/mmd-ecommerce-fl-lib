@@ -35,7 +35,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  SignIn$Mutation$AuthPayload auth;
   var isError = false;
 
   TextEditingController emailController = TextEditingController();

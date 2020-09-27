@@ -2,17 +2,17 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 categoriesApi() async {
   await GeneralApiManager.categoriesApi(
-      (List<Categories$Query$Category> list) {}, (ApiErrorModel error) {});
+      (CategoriesModel categoriesModel) {}, (ApiErrorModel error) {});
 }
 
 productApi() async {
-  await ProductApiManager.productsApi(10, 1,
-      (Products$Query$ProductPaginator item) {}, (ApiErrorModel error) {});
+  await ProductApiManager.productsApi(
+      10, 1, (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
 }
 
 productByCategoryIdApi() async {
-  await ProductApiManager.productByCategoryIdApi(10, 1, "1",
-      (Products$Query$ProductPaginator item) {}, (ApiErrorModel error) {});
+  await ProductApiManager.productByCategoryIdApi(
+      10, 1, "1", (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
 }
 
 newProductApi() async {
@@ -21,20 +21,18 @@ newProductApi() async {
       1,
       SortOrder.desc,
       ProductsOrderByColumn.id,
-      (OrderProducts$Query$ProductPaginator item) {},
+      (OrderProductsModel item) {},
       (ApiErrorModel error) {});
 }
 
 getProductDetailsApi() async {
   await ProductApiManager.productDetailsApi(
-      "1",
-      (Products$Query$ProductPaginator$Product item) {},
-      (ApiErrorModel error) {});
+      "1", (ProductModel item) {}, (ApiErrorModel error) {});
 }
 
 productByNameApi() async {
-  await ProductApiManager.productsByNameApi(10, 1, "ad",
-      (Products$Query$ProductPaginator item) {}, (ApiErrorModel error) {});
+  await ProductApiManager.productsByNameApi(
+      10, 1, "ad", (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
 }
 
 relatedProductByIdApi() async {
@@ -43,6 +41,6 @@ relatedProductByIdApi() async {
 }
 
 getRatingsForProductApi() async {
-  await ProductApiManager.reviewsForProductApi(10, 1, "1",
-      (Ratings$Query$RatingPaginator item) {}, (ApiErrorModel error) {});
+  await ProductApiManager.reviewsForProductApi(
+      10, 1, "1", (RatingPaginatorModel item) {}, (ApiErrorModel error) {});
 }
