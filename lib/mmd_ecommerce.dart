@@ -13,14 +13,6 @@ export './apis/cart_api_manager.dart';
 export './apis/address_api_manager.dart';
 export './common_models/common_models.dart';
 export './generatedql/products/graphql_api.dart';
-export './generatedql/order_products/graphql_api.dart'
-    hide
-        PagingMixin,
-        ProductMixin,
-        ProductMixin$ProductData$Unit,
-        ProductMixin$ProductData$Media,
-        ProductMixin$ProductData,
-        ProductMixin$ProductData$Category;
 
 export './generatedql/cart/graphql_api.dart'
     hide
@@ -29,13 +21,7 @@ export './generatedql/cart/graphql_api.dart'
         ProductMixin$ProductData$Media,
         ProductMixin$ProductData,
         ProductMixin$ProductData$Category;
-export './generatedql/related_product/graphql_api.dart'
-    hide
-        ProductMixin,
-        ProductMixin$ProductData$Unit,
-        ProductMixin$ProductData$Media,
-        ProductMixin$ProductData,
-        ProductMixin$ProductData$Category;
+
 export './generatedql/ratings/graphql_api.dart' hide PagingMixin;
 export './generatedql/categories/graphql_api.dart';
 export './generatedql/orders/graphql_api.dart' hide PagingMixin;

@@ -38,8 +38,8 @@ productByNameApi() async {
 }
 
 relatedProductByIdApi() async {
-  await ProductApiManager.relatedProductsByIdApi("1",
-      (List<RelatedProducts$Query$Product> items) {}, (ApiErrorModel error) {});
+  await ProductApiManager.relatedProductsByIdApi(
+      "1", (RelatedProductsModel items) {}, (ApiErrorModel error) {});
 }
 
 getRatingsForProductApi() async {
