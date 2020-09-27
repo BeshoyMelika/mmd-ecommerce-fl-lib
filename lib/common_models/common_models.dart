@@ -75,10 +75,10 @@ class VoucherModel {
   VoucherModel(this.voucherByCode);
 }
 
-// class SliderModel {
-//   final Sliders$Query$Slider slider;
-//   SliderModel(this.slider);
-// }
+class SliderModel {
+  final Sliders$Query$Slider slider;
+  SliderModel(this.slider);
+}
 
 class SlidersModel {
   final List<Sliders$Query$Slider> sliders;
@@ -123,4 +123,9 @@ class OrderProductsModel {
 class BrandModel {
   final List<Brands$Query$Brand> brand;
   BrandModel(this.brand);
+}
+
+class CartItemModel {
+  final GetCart$Query$Cart$CartItem CartItem;
+  CartItemModel(this.CartItem);
 }
