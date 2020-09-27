@@ -13,6 +13,16 @@ mixin UserMixin {
   String email;
   String mobile;
 }
+mixin AuthPayloadMixin {
+  @JsonKey(name: 'access_token')
+  String accessToken;
+  @JsonKey(name: 'refresh_token')
+  String refreshToken;
+  @JsonKey(name: 'expires_in')
+  int expiresIn;
+  @JsonKey(name: 'token_type')
+  String tokenType;
+}
 
 @JsonSerializable(explicitToJson: true)
 class SignUp$Mutation$User with EquatableMixin, UserMixin {
@@ -83,23 +93,11 @@ class ForgetPassword$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class SignIn$Mutation$AuthPayload with EquatableMixin {
+class SignIn$Mutation$AuthPayload with EquatableMixin, AuthPayloadMixin {
   SignIn$Mutation$AuthPayload();
 
   factory SignIn$Mutation$AuthPayload.fromJson(Map<String, dynamic> json) =>
       _$SignIn$Mutation$AuthPayloadFromJson(json);
-
-  @JsonKey(name: 'access_token')
-  String accessToken;
-
-  @JsonKey(name: 'refresh_token')
-  String refreshToken;
-
-  @JsonKey(name: 'expires_in')
-  int expiresIn;
-
-  @JsonKey(name: 'token_type')
-  String tokenType;
 
   @override
   List<Object> get props => [accessToken, refreshToken, expiresIn, tokenType];
@@ -501,31 +499,41 @@ class SignInMutation extends GraphQLQuery<SignIn$Mutation, SignInArguments> {
               ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'access_token'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'refresh_token'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'expires_in'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'token_type'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
+                FragmentSpreadNode(
+                    name: NameNode(value: 'AuthPayload'), directives: [])
               ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'AuthPayload'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'AuthPayload'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'access_token'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'refresh_token'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'expires_in'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'token_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
         ]))
   ]);
 

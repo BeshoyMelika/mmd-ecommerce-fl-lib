@@ -38,3 +38,9 @@ fragment User on  User{
     email
     mobile
 }
+fragment AuthPayload on  AuthPayload{
+    access_token
+    refresh_token
+    expires_in
+    token_type
+}

@@ -7,6 +7,16 @@ import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
+mixin AuthPayloadMixin {
+  @JsonKey(name: 'access_token')
+  String accessToken;
+  @JsonKey(name: 'refresh_token')
+  String refreshToken;
+  @JsonKey(name: 'expires_in')
+  int expiresIn;
+  @JsonKey(name: 'token_type')
+  String tokenType;
+}
 mixin UserMixin {
   String id;
   String name;
@@ -15,24 +25,12 @@ mixin UserMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class RefreshToken$Mutation$AuthPayload with EquatableMixin {
+class RefreshToken$Mutation$AuthPayload with EquatableMixin, AuthPayloadMixin {
   RefreshToken$Mutation$AuthPayload();
 
   factory RefreshToken$Mutation$AuthPayload.fromJson(
           Map<String, dynamic> json) =>
       _$RefreshToken$Mutation$AuthPayloadFromJson(json);
-
-  @JsonKey(name: 'access_token')
-  String accessToken;
-
-  @JsonKey(name: 'refresh_token')
-  String refreshToken;
-
-  @JsonKey(name: 'expires_in')
-  int expiresIn;
-
-  @JsonKey(name: 'token_type')
-  String tokenType;
 
   @override
   List<Object> get props => [accessToken, refreshToken, expiresIn, tokenType];
@@ -139,31 +137,41 @@ class RefreshTokenMutation
               ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'access_token'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'refresh_token'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'expires_in'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'token_type'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
+                FragmentSpreadNode(
+                    name: NameNode(value: 'AuthPayload'), directives: [])
               ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'AuthPayload'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(
+                name: NameNode(value: 'AuthPayload'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'access_token'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'refresh_token'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'expires_in'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'token_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
         ]))
   ]);
 
