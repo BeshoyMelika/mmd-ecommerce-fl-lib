@@ -40,9 +40,19 @@ class AddressesModel {
   AddressesModel(this.addressPaginator);
 }
 
+class CityModel {
+  final Cities$Query$City city;
+  CityModel(this.city);
+}
+
 class CitiesModel {
   final List<Cities$Query$City> cities;
   CitiesModel(this.cities);
+}
+
+class AreaModel {
+  final AreaByID$Query$Area area;
+  AreaModel(this.area);
 }
 
 class AreasModel {
@@ -65,14 +75,24 @@ class VoucherModel {
   VoucherModel(this.voucherByCode);
 }
 
-class SliderModel {
-  final List<Sliders$Query$Slider> slider;
-  SliderModel(this.slider);
+// class SliderModel {
+//   final Sliders$Query$Slider slider;
+//   SliderModel(this.slider);
+// }
+
+class SlidersModel {
+  final List<Sliders$Query$Slider> sliders;
+  SlidersModel(this.sliders);
+}
+
+class CategoryModel {
+  final Categories$Query$Category category;
+  CategoryModel(this.category);
 }
 
 class CategoriesModel {
-  final List<Categories$Query$Category> category;
-  CategoriesModel(this.category);
+  final List<Categories$Query$Category> categories;
+  CategoriesModel(this.categories);
 }
 
 class ProductsPaginatorModel {

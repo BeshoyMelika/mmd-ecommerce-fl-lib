@@ -23,7 +23,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(SliderModel(Sliders$Query.fromJson(result.data).sliders));
+      success(SlidersModel(Sliders$Query.fromJson(result.data).sliders));
     }
   }
 
