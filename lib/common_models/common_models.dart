@@ -126,6 +126,6 @@ class BrandModel {
 }
 
 class CartItemModel {
-  final GetCart$Query$Cart$CartItem CartItem;
-  CartItemModel(this.CartItem);
+  final GetCart$Query$Cart$CartItem cartItem;
+  CartItemModel(this.cartItem);
 }
