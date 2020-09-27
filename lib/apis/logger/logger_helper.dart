@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
 class LoggerHelper {
@@ -11,20 +12,21 @@ class LoggerHelper {
   static const loggerStatusCode = "$loggerTag statusCode $loggerSeparator";
   static const loggerBody = "$loggerTag body $loggerSeparator";
 
-  static void print2Lines() => print(loggerLine + "\n" + loggerLine);
+  static void print2Lines() => debugPrint(loggerLine + "\n" + loggerLine);
 
-  static void printUrl(dynamic url) => print("$loggerUrl $url");
+  static void printUrl(dynamic url) => debugPrint("$loggerUrl $url");
 
   static void printHeaders(Map<String, String> headers) =>
-      print("$loggerHeaders $headers");
+      debugPrint("$loggerHeaders $headers");
 
-  static void printStatusCode(int code) => print("$loggerStatusCode $code");
+  static void printStatusCode(int code) =>
+      debugPrint("$loggerStatusCode $code");
 
-  static void printBody(String body) => print("$loggerBody $body");
+  static void printBody(String body) => debugPrint("$loggerBody $body");
 
   static void logRequest(dynamic url, Map<String, String> headers) {
     print2Lines();
-    print(loggerRequest);
+    debugPrint(loggerRequest);
     printUrl(url);
     printHeaders(headers);
     print2Lines();
@@ -32,7 +34,7 @@ class LoggerHelper {
 
   static void logResponse(Response response) {
     print2Lines();
-    print(loggerResponse);
+    debugPrint(loggerResponse);
     printUrl(response.request.url);
     printHeaders(response.headers);
     printStatusCode(response.statusCode);
