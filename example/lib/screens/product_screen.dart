@@ -20,83 +20,75 @@ class _ProductScreenState extends State<ProductScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RaisedButton(
-              color: Colors.blue,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await categoriesApi();
               },
               child: Text(
                 "Categories Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await productByCategoryIdApi();
               },
               child: Text(
                 "get product by category id Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await productByNameApi();
               },
               child: Text(
                 "get product by name Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await productApi();
               },
               child: Text(
                 "get product Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await newProductApi();
               },
               child: Text(
                 "get new product Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await getProductDetailsApi();
               },
               child: Text(
                 "get product details Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await relatedProductByIdApi();
               },
               child: Text(
                 "get related product Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.deepOrangeAccent,
               onPressed: () async {
                 await getRatingsForProductApi();
               },
               child: Text(
                 "get ratings Api",
-                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
