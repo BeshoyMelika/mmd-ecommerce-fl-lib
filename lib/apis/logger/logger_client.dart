@@ -16,7 +16,7 @@ class LoggerClient implements Client {
   Future<Response> delete(url, {Map<String, String> headers}) {
     LoggerHelper.logRequest(url, headers);
     return _client.delete(url, headers: headers).then((response) {
-      // add logger here ..
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
@@ -25,6 +25,7 @@ class LoggerClient implements Client {
   Future<Response> get(url, {Map<String, String> headers}) {
     LoggerHelper.logRequest(url, headers);
     return _client.get(url, headers: headers).then((response) {
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
@@ -33,6 +34,7 @@ class LoggerClient implements Client {
   Future<Response> head(url, {Map<String, String> headers}) {
     LoggerHelper.logRequest(url, headers);
     return _client.head(url, headers: headers).then((response) {
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
@@ -44,6 +46,7 @@ class LoggerClient implements Client {
     return _client
         .patch(url, headers: headers, body: body, encoding: encoding)
         .then((response) {
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
@@ -55,6 +58,7 @@ class LoggerClient implements Client {
     return _client
         .post(url, headers: headers, body: body, encoding: encoding)
         .then((response) {
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
@@ -66,6 +70,7 @@ class LoggerClient implements Client {
     return _client
         .put(url, headers: headers, body: body, encoding: encoding)
         .then((response) {
+      LoggerHelper.logResponse(response);
       return Future.value(response);
     });
   }
