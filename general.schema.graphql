@@ -176,6 +176,9 @@ type Product {
   available: Boolean
   ratings: [Rating]
   averageRating: String
+  min_quantity: String
+  max_quantity: String
+  step: String
 }
 
 type ProductData {
@@ -324,6 +327,7 @@ type Mutation {
   updateProfile(input: UpdateProfile): Boolean
   addToCart(items: [CartInput!]!): Boolean
   placeCashOnDeliveryOrder(input: OrderInput): Boolean
+  placeCreditCardOrder(input: OrderInput): Tokenization
   addReview(input: ReviewInput): Boolean
   addItemToWishlist(input: WishlistInput): Boolean
   deleteItemFromWishlist(input: WishlistInput): Boolean
@@ -375,6 +379,17 @@ input UpdateProfile {
 input CartInput {
   product_id: ID!
   quantity: Int!
+}
+
+type Tokenization {
+  merchant_identifier: String
+  access_code: String
+  currency: String
+  language: String
+  service_command: String
+  return_url: String
+  merchant_reference: String
+  signature: String
 }
 
 input ReviewInput {
