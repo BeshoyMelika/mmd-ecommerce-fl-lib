@@ -13,6 +13,9 @@ fragment Product on  Product{
     averageRating
     price
     available
+    min_quantity
+    max_quantity
+    step
     details {
         name
         sku
