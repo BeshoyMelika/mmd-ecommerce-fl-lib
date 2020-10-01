@@ -9,7 +9,8 @@ import 'apis/auth_apis.dart';
 import 'apis/user_apis.dart';
 import 'screens/product_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
