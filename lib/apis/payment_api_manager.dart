@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/payment/graphql_api.dart';
 
 import 'error/api_error_helper.dart';
@@ -15,8 +16,9 @@ class PaymentApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(PlaceCreditCardOrder$Mutation.fromJson(result.data)
-          .placeCreditCardOrder);
+      success(PlaceCreditCardOrderModel(
+          PlaceCreditCardOrder$Mutation.fromJson(result.data)
+              .placeCreditCardOrder));
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/payment_screen.dart';
 
 import 'api_keys.dart';
 import 'apis/auth_apis.dart';
@@ -184,8 +185,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             ],
-          )
+          ),
+          paymentWidget(),
+          authField(),
         ],
+      ),
+    );
+  }
+
+  Widget paymentWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: RaisedButton(
+        color: Colors.lightGreen,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PaymentScreen()),
+          );
+        },
+        child: Row(
+          children: [
+            Icon(
+              Icons.payment,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Payment Screen",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -194,14 +229,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       children: [
         TextField(
+          autofocus: false,
           controller: emailController,
           decoration: InputDecoration(hintText: "email"),
         ),
         TextField(
+          autofocus: false,
           controller: codeController,
           decoration: InputDecoration(hintText: "code"),
         ),
         TextField(
+          autofocus: false,
           controller: passwordController,
           decoration: InputDecoration(hintText: "password"),
         ),

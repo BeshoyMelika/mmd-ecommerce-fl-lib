@@ -3,6 +3,7 @@ library mmd_ecommerce_fl_lib;
 export 'package:graphql_flutter/graphql_flutter.dart';
 
 export './apis/auth_api_manager.dart';
+export './apis/payment_api_manager.dart';
 export './apis/base/api_keys.dart';
 export './apis/error/api_error_helper.dart';
 export './apis/error/api_error_model.dart';
