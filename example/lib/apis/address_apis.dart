@@ -2,7 +2,7 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getAllAddress() async {
   await AddressApiManager.addressesApi(
-      5, 1, (AddressesModel addressPaginator) {}, (ApiErrorModel error) {});
+      5, 1, (AddressesWrapper addressPaginator) {}, (ApiErrorModel error) {});
 }
 
 createAddress() async {
@@ -43,11 +43,11 @@ deleteAddress() async {
 
 getCitiesAsset() async {
   await AddressApiManager.citiesApi(
-      (CitiesModel citiesModel) {}, (ApiErrorModel error) {});
+      (CitiesList citiesModel) {}, (ApiErrorModel error) {});
 }
 
 getAreaByIdAsset(String cityId) async {
-  await AddressApiManager.areaByIdApi(cityId, (AreasModel areasModel) {
+  await AddressApiManager.areaByIdApi(cityId, (AreasList areasModel) {
     //
   }, (ApiErrorModel error) {});
 }

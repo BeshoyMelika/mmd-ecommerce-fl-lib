@@ -14,7 +14,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductsPaginatorModel(
+      success(ProductsPaginatorWrapper(
           Products$Query.fromJson(result.data).products));
     }
   }
@@ -29,7 +29,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductsPaginatorModel(
+      success(ProductsPaginatorWrapper(
           Products$Query.fromJson(result.data).products));
     }
   }
@@ -57,7 +57,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductsPaginatorModel(
+      success(ProductsPaginatorWrapper(
           Products$Query.fromJson(result.data).products));
     }
   }
@@ -70,7 +70,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(RelatedProductsModel(
+      success(RelatedProductsList(
           RelatedProducts$Query.fromJson(result.data).relatedProducts));
     }
   }
@@ -86,7 +86,7 @@ class ProductApiManager extends BaseApiManager {
       fail(ApiErrorHelper.handle(result));
     } else {
       success(
-          RatingPaginatorModel(Ratings$Query.fromJson(result.data).ratings));
+          RatingPaginatorWrapper(Ratings$Query.fromJson(result.data).ratings));
     }
   }
 
@@ -108,7 +108,7 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(OrderProductsModel(
+      success(OrderProductsWrapper(
           OrderProducts$Query.fromJson(result.data).products));
     }
   }

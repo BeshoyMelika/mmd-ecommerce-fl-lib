@@ -93,8 +93,8 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(
-          AddressesModel(GetAllAddress$Query.fromJson(result.data).addresses));
+      success(AddressesWrapper(
+          GetAllAddress$Query.fromJson(result.data).addresses));
     }
   }
 
@@ -104,7 +104,7 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(CitiesModel(Cities$Query.fromJson(result.data).cities));
+      success(CitiesList(Cities$Query.fromJson(result.data).cities));
     }
   }
 
@@ -116,7 +116,7 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(AreasModel(AreaByID$Query.fromJson(result.data).areas));
+      success(AreasList(AreaByID$Query.fromJson(result.data).areas));
     }
   }
 }

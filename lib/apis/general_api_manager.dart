@@ -13,7 +13,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(BrandModel(Brands$Query.fromJson(result.data).brands));
+      success(BrandList(Brands$Query.fromJson(result.data).brands));
     }
   }
 
@@ -23,7 +23,7 @@ class GeneralApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(SlidersModel(Sliders$Query.fromJson(result.data).sliders));
+      success(SliderList(Sliders$Query.fromJson(result.data).sliders));
     }
   }
 
@@ -34,7 +34,7 @@ class GeneralApiManager extends BaseApiManager {
       fail(ApiErrorHelper.handle(result));
     } else {
       success(
-          CategoriesModel(Categories$Query.fromJson(result.data).categories));
+          CategoriesList(Categories$Query.fromJson(result.data).categories));
     }
   }
 }

@@ -18,7 +18,7 @@ class CartApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> cartDataApi(Function success, Function fail) async {
+  static Future<void> cartApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: GetCartQuery().document,
         fetchPolicy: FetchPolicy.noCache));

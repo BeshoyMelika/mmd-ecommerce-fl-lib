@@ -52,7 +52,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(OrdersModel(Orders$Query.fromJson(result.data).orders));
+      success(OrdersWrapper(Orders$Query.fromJson(result.data).orders));
     }
   }
 }

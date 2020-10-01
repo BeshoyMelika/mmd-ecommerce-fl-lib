@@ -2,17 +2,17 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 categoriesApi() async {
   await GeneralApiManager.categoriesApi(
-      (CategoriesModel categoriesModel) {}, (ApiErrorModel error) {});
+      (CategoriesList categoriesModel) {}, (ApiErrorModel error) {});
 }
 
 productApi() async {
   await ProductApiManager.productsApi(
-      10, 1, (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
+      10, 1, (ProductsPaginatorWrapper item) {}, (ApiErrorModel error) {});
 }
 
 productByCategoryIdApi() async {
   await ProductApiManager.productByCategoryIdApi(
-      10, 1, "1", (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
+      10, 1, "1", (ProductsPaginatorWrapper item) {}, (ApiErrorModel error) {});
 }
 
 newProductApi() async {
@@ -21,7 +21,7 @@ newProductApi() async {
       1,
       SortOrder.desc,
       ProductsOrderByColumn.id,
-      (OrderProductsModel item) {},
+      (OrderProductsWrapper item) {},
       (ApiErrorModel error) {});
 }
 
@@ -31,16 +31,16 @@ getProductDetailsApi() async {
 }
 
 productByNameApi() async {
-  await ProductApiManager.productsByNameApi(
-      10, 1, "ad", (ProductsPaginatorModel item) {}, (ApiErrorModel error) {});
+  await ProductApiManager.productsByNameApi(10, 1, "ad",
+      (ProductsPaginatorWrapper item) {}, (ApiErrorModel error) {});
 }
 
 relatedProductByIdApi() async {
   await ProductApiManager.relatedProductsByIdApi(
-      "1", (RelatedProductsModel items) {}, (ApiErrorModel error) {});
+      "1", (RelatedProductsList items) {}, (ApiErrorModel error) {});
 }
 
 getRatingsForProductApi() async {
   await ProductApiManager.reviewsForProductApi(
-      10, 1, "1", (RatingPaginatorModel item) {}, (ApiErrorModel error) {});
+      10, 1, "1", (RatingPaginatorWrapper item) {}, (ApiErrorModel error) {});
 }

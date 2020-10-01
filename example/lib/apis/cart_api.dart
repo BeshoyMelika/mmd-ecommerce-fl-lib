@@ -16,6 +16,5 @@ addToCard() async {
 }
 
 getCard() async {
-  await CartApiManager.cartDataApi(
-      (CartModel cart) {}, (ApiErrorModel error) {});
+  await CartApiManager.cartApi((CartModel cart) {}, (ApiErrorModel error) {});
 }

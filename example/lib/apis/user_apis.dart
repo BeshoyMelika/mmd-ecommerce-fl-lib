@@ -27,5 +27,5 @@ callRefreshTokenApi(String refreshToken) {
 
 getAllOrdersApi() {
   UserApiManager.allOrdersApi(
-      20, 1, (OrdersModel orders) {}, (ApiErrorModel error) {});
+      20, 1, (OrdersWrapper orders) {}, (ApiErrorModel error) {});
 }

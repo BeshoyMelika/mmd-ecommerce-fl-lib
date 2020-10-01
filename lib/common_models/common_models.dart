@@ -24,20 +24,17 @@ class UserRegisterModel {
 
 class AuthPayloadLoginModel {
   final SignIn$Mutation$AuthPayload authPayload;
-
   AuthPayloadLoginModel(this.authPayload);
 }
 
 class AuthPayloadRefreshTokenModel {
   final RefreshToken$Mutation$AuthPayload authPayload;
-
   AuthPayloadRefreshTokenModel(this.authPayload);
 }
 
-class AddressesModel {
+class AddressesWrapper {
   final GetAllAddress$Query$UserAddressPaginator addressPaginator;
-
-  AddressesModel(this.addressPaginator);
+  AddressesWrapper(this.addressPaginator);
 }
 
 class CityModel {
@@ -45,9 +42,9 @@ class CityModel {
   CityModel(this.city);
 }
 
-class CitiesModel {
+class CitiesList {
   final List<Cities$Query$City> cities;
-  CitiesModel(this.cities);
+  CitiesList(this.cities);
 }
 
 class AreaModel {
@@ -55,14 +52,14 @@ class AreaModel {
   AreaModel(this.area);
 }
 
-class AreasModel {
+class AreasList {
   final List<AreaByID$Query$Area> areas;
-  AreasModel(this.areas);
+  AreasList(this.areas);
 }
 
-class OrdersModel {
+class OrdersWrapper {
   final Orders$Query$OrderPaginator orders;
-  OrdersModel(this.orders);
+  OrdersWrapper(this.orders);
 }
 
 class CartModel {
@@ -80,9 +77,9 @@ class SliderModel {
   SliderModel(this.slider);
 }
 
-class SlidersModel {
+class SliderList {
   final List<Sliders$Query$Slider> sliders;
-  SlidersModel(this.sliders);
+  SliderList(this.sliders);
 }
 
 class CategoryModel {
@@ -90,14 +87,14 @@ class CategoryModel {
   CategoryModel(this.category);
 }
 
-class CategoriesModel {
+class CategoriesList {
   final List<Categories$Query$Category> categories;
-  CategoriesModel(this.categories);
+  CategoriesList(this.categories);
 }
 
-class ProductsPaginatorModel {
+class ProductsPaginatorWrapper {
   final Products$Query$ProductPaginator productsPaginator;
-  ProductsPaginatorModel(this.productsPaginator);
+  ProductsPaginatorWrapper(this.productsPaginator);
 }
 
 class ProductModel {
@@ -105,24 +102,24 @@ class ProductModel {
   ProductModel(this.productDetails);
 }
 
-class RelatedProductsModel {
+class RelatedProductsList {
   final List<RelatedProducts$Query$Product> relatedProducts;
-  RelatedProductsModel(this.relatedProducts);
+  RelatedProductsList(this.relatedProducts);
 }
 
-class RatingPaginatorModel {
+class RatingPaginatorWrapper {
   final Ratings$Query$RatingPaginator ratingPaginator;
-  RatingPaginatorModel(this.ratingPaginator);
+  RatingPaginatorWrapper(this.ratingPaginator);
 }
 
-class OrderProductsModel {
+class OrderProductsWrapper {
   final OrderProducts$Query$ProductPaginator orderProducts;
-  OrderProductsModel(this.orderProducts);
+  OrderProductsWrapper(this.orderProducts);
 }
 
-class BrandModel {
+class BrandList {
   final List<Brands$Query$Brand> brand;
-  BrandModel(this.brand);
+  BrandList(this.brand);
 }
 
 class CartItemModel {

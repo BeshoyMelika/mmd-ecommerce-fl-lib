@@ -9,7 +9,6 @@ import 'apis/user_apis.dart';
 import 'screens/product_screen.dart';
 
 void main() {
-  // TODO remove the base url from the main example. [May be not because the graphConfig file]
   runApp(MyApp());
 }
 
