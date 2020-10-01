@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mmd_ecommerce_fl_lib_example/APIs.dart';
 import 'package:mmd_ecommerce_fl_lib_example/apis/cart_api.dart';
+import 'package:mmd_ecommerce_fl_lib_example/apis/general_api.dart';
 import 'package:mmd_ecommerce_fl_lib_example/apis/user_apis.dart';
 
 class GeneralScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RaisedButton(
-              color: Colors.blue,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await sliderApi();
               },
@@ -31,7 +31,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.blue,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await addToCard();
               },
@@ -41,7 +41,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.blueGrey,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await getCard();
               },
@@ -51,7 +51,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.blueGrey,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await getVoucherByCode();
               },
@@ -61,7 +61,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await shippingFeesApi();
               },
@@ -71,7 +71,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.deepPurpleAccent,
+              color: Colors.blueAccent,
               onPressed: () async {
                 await getAllOrdersApi();
               },

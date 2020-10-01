@@ -1,34 +1,35 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/error/api_error_helper.dart';
-import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/orders/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
+
+import '../mmd_ecommerce.dart';
 
 class UserApiManager extends BaseApiManager {
   static Future<void> refreshTokenApi(
       String token, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
-        documentNode: RefreshTokenQuery().document,
+        documentNode: RefreshTokenMutation().document,
         variables: RefreshTokenArguments(token: token).toJson()));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(AuthPayloadRefreshToken(
-          RefreshToken.fromJson(result.data).refreshToken));
+      success(AuthPayloadRefreshTokenModel(
+          RefreshToken$Mutation.fromJson(result.data).refreshToken));
     }
   }
 
   static Future<void> updateProfileApi(
       String name, String mobile, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
-        documentNode: UpdateProfileQuery().document,
+        documentNode: UpdateProfileMutation().document,
         variables:
             UpdateProfileArguments(name: name, mobile: mobile).toJson()));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(UpdateProfile.fromJson(result.data).updateProfile);
+      success(UpdateProfile$Mutation.fromJson(result.data).updateProfile);
     }
   }
 
@@ -39,7 +40,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(UserMyProfile(Profile.fromJson(result.data).profile));
+      success(UserProfileModel(Profile$Query.fromJson(result.data).profile));
     }
   }
 
@@ -51,7 +52,7 @@ class UserApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Orders.fromJson(result.data).orders);
+      success(OrdersWrapper(Orders$Query.fromJson(result.data).orders));
     }
   }
 }

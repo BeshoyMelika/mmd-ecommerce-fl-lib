@@ -2,6 +2,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/address_asset/graphql_api.dart';
+import '../generatedql/address_asset/graphql_api.dart';
+import '../mmd_ecommerce.dart';
 import 'error/api_error_helper.dart';
 
 class AddressApiManager extends BaseApiManager {
@@ -18,7 +20,7 @@ class AddressApiManager extends BaseApiManager {
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
-        documentNode: CreateAddressQuery().document,
+        documentNode: CreateAddressMutation().document,
         variables: CreateAddressArguments(
                 firstName: firstName,
                 lastName: lastName,
@@ -33,7 +35,7 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(CreateAddress.fromJson(result.data).createAddress);
+      success(CreateAddress$Mutation.fromJson(result.data).createAddress);
     }
   }
 
@@ -51,7 +53,7 @@ class AddressApiManager extends BaseApiManager {
       Function success,
       Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
-        documentNode: UpdateAddressQuery().document,
+        documentNode: UpdateAddressMutation().document,
         variables: UpdateAddressArguments(
                 id: id,
                 firstName: firstName,
@@ -67,19 +69,19 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(UpdateAddress.fromJson(result.data).updateAddress);
+      success(UpdateAddress$Mutation.fromJson(result.data).updateAddress);
     }
   }
 
   static Future<void> deleteAddressApi(
       String id, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
-        documentNode: DeleteAddressQuery().document,
+        documentNode: DeleteAddressMutation().document,
         variables: DeleteAddressArguments(id: id).toJson()));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(DeleteAddress.fromJson(result.data).deleteAddress);
+      success(DeleteAddress$Mutation.fromJson(result.data).deleteAddress);
     }
   }
 
@@ -91,7 +93,8 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(GetAllAddress.fromJson(result.data).addresses);
+      success(AddressesWrapper(
+          GetAllAddress$Query.fromJson(result.data).addresses));
     }
   }
 
@@ -101,7 +104,7 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(Cities.fromJson(result.data).cities);
+      success(CitiesList(Cities$Query.fromJson(result.data).cities));
     }
   }
 
@@ -113,7 +116,7 @@ class AddressApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(AreaByID.fromJson(result.data).areas);
+      success(AreasList(AreaByID$Query.fromJson(result.data).areas));
     }
   }
 }

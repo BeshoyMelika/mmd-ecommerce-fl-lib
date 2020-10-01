@@ -32,3 +32,15 @@ fragment Product on  Product{
         }
     }
 }
+fragment User on  User{
+    id
+    name
+    email
+    mobile
+}
+fragment AuthPayload on  AuthPayload{
+    access_token
+    refresh_token
+    expires_in
+    token_type
+}

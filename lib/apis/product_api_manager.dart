@@ -1,8 +1,9 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
-import 'package:mmd_ecommerce_fl_lib/generatedql/order_products/graphql_api.dart';
-import 'package:mmd_ecommerce_fl_lib/generatedql/related_product/graphql_api.dart';
-import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/products/graphql_api.dart';
+import 'package:mmd_ecommerce_fl_lib/generatedql/ratings/graphql_api.dart';
+
+import '../mmd_ecommerce.dart';
 
 class ProductApiManager extends BaseApiManager {
   static Future<void> productsApi(
@@ -13,7 +14,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductPaginatorModel(Products.fromJson(result.data).products));
+      success(ProductsPaginatorWrapper(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -27,7 +29,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductPaginatorModel(Products.fromJson(result.data).products));
+      success(ProductsPaginatorWrapper(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -40,11 +43,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductDetailsModel(
-          ProductPaginatorModel(Products.fromJson(result.data).products)
-              .productPaginator
-              .data
-              .first));
+      success(ProductModel(
+          Products$Query.fromJson(result.data).products.data.first));
     }
   }
 
@@ -57,7 +57,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(ProductPaginatorModel(Products.fromJson(result.data).products));
+      success(ProductsPaginatorWrapper(
+          Products$Query.fromJson(result.data).products));
     }
   }
 
@@ -69,8 +70,8 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(RelatedProductsModel(
-          RelatedProducts.fromJson(result.data).relatedProducts));
+      success(RelatedProductsList(
+          RelatedProducts$Query.fromJson(result.data).relatedProducts));
     }
   }
 
@@ -84,24 +85,31 @@ class ProductApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(RatingPaginatorModel(Ratings.fromJson(result.data).ratings));
+      success(
+          RatingPaginatorWrapper(Ratings$Query.fromJson(result.data).ratings));
     }
   }
 
   static Future<void> newProductApi(
-      int first, int page, Function success, Function fail) async {
+      int first,
+      int page,
+      SortOrder order,
+      ProductsOrderByColumn productsOrderByColumn,
+      Function success,
+      Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: OrderProductsQuery().document,
         variables: OrderProductsArguments(
           first: first,
           page: page,
-          orderType: "DESC",
-          fieldOfOrder: "ID",
+          orderType: order,
+          fieldOfOrder: productsOrderByColumn,
         ).toJson()));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(NewProductsModel(OrderProducts.fromJson(result.data).products));
+      success(OrderProductsWrapper(
+          OrderProducts$Query.fromJson(result.data).products));
     }
   }
 }

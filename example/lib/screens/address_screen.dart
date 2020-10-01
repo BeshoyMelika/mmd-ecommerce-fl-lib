@@ -29,7 +29,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.transparent,
+              color: Colors.deepPurple,
               onPressed: () async {
                 await getAreaByIdAsset("2");
               },
@@ -39,7 +39,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.blue,
+              color: Colors.deepPurple,
               onPressed: () async {
                 await getAllAddress();
               },
@@ -49,7 +49,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.green,
+              color: Colors.deepPurple,
               onPressed: () async {
                 await createAddress();
               },
@@ -59,7 +59,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.yellow,
+              color: Colors.deepPurple,
               onPressed: () async {
                 await updateAddress();
               },
@@ -69,7 +69,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             RaisedButton(
-              color: Colors.red,
+              color: Colors.deepPurple,
               onPressed: () async {
                 await deleteAddress();
               },
