@@ -82,8 +82,10 @@ class GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$City
 
   String name;
 
+  String id;
+
   @override
-  List<Object> get props => [name];
+  List<Object> get props => [name, id];
   Map<String, dynamic> toJson() =>
       _$GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$CityToJson(
           this);
@@ -100,10 +102,12 @@ class GetAllAddress$Query$UserAddressPaginator$UserAddress$Area
 
   String name;
 
+  String id;
+
   GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$City city;
 
   @override
-  List<Object> get props => [name, city];
+  List<Object> get props => [name, id, city];
   Map<String, dynamic> toJson() =>
       _$GetAllAddress$Query$UserAddressPaginator$UserAddress$AreaToJson(this);
 }
@@ -539,6 +543,12 @@ class GetAllAddressQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'city'),
                                 alias: null,
                                 arguments: [],
@@ -546,6 +556,12 @@ class GetAllAddressQuery
                                 selectionSet: SelectionSetNode(selections: [
                                   FieldNode(
                                       name: NameNode(value: 'name'),
+                                      alias: null,
+                                      arguments: [],
+                                      directives: [],
+                                      selectionSet: null),
+                                  FieldNode(
+                                      name: NameNode(value: 'id'),
                                       alias: null,
                                       arguments: [],
                                       directives: [],
