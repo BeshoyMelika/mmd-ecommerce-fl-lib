@@ -1,10 +1,9 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/error/api_error_helper.dart';
+import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/orders/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/user/graphql_api.dart';
-
-import '../mmd_ecommerce.dart';
 
 class UserApiManager extends BaseApiManager {
   static Future<void> refreshTokenApi(

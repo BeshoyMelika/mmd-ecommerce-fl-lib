@@ -6,6 +6,34 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Profile$Query$User _$Profile$Query$UserFromJson(Map<String, dynamic> json) {
+  return Profile$Query$User()
+    ..id = json['id'] as String
+    ..name = json['name'] as String
+    ..email = json['email'] as String
+    ..mobile = json['mobile'] as String;
+}
+
+Map<String, dynamic> _$Profile$Query$UserToJson(Profile$Query$User instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
+      'mobile': instance.mobile,
+    };
+
+Profile$Query _$Profile$QueryFromJson(Map<String, dynamic> json) {
+  return Profile$Query()
+    ..profile = json['profile'] == null
+        ? null
+        : Profile$Query$User.fromJson(json['profile'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$Profile$QueryToJson(Profile$Query instance) =>
+    <String, dynamic>{
+      'profile': instance.profile?.toJson(),
+    };
+
 RefreshToken$Mutation$AuthPayload _$RefreshToken$Mutation$AuthPayloadFromJson(
     Map<String, dynamic> json) {
   return RefreshToken$Mutation$AuthPayload()
@@ -37,34 +65,6 @@ Map<String, dynamic> _$RefreshToken$MutationToJson(
         RefreshToken$Mutation instance) =>
     <String, dynamic>{
       'refreshToken': instance.refreshToken?.toJson(),
-    };
-
-Profile$Query$User _$Profile$Query$UserFromJson(Map<String, dynamic> json) {
-  return Profile$Query$User()
-    ..id = json['id'] as String
-    ..name = json['name'] as String
-    ..email = json['email'] as String
-    ..mobile = json['mobile'] as String;
-}
-
-Map<String, dynamic> _$Profile$Query$UserToJson(Profile$Query$User instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'mobile': instance.mobile,
-    };
-
-Profile$Query _$Profile$QueryFromJson(Map<String, dynamic> json) {
-  return Profile$Query()
-    ..profile = json['profile'] == null
-        ? null
-        : Profile$Query$User.fromJson(json['profile'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$Profile$QueryToJson(Profile$Query instance) =>
-    <String, dynamic>{
-      'profile': instance.profile?.toJson(),
     };
 
 UpdateProfile$Mutation _$UpdateProfile$MutationFromJson(

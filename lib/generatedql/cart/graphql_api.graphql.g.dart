@@ -15,39 +15,6 @@ Map<String, dynamic> _$AddToCart$MutationToJson(AddToCart$Mutation instance) =>
       'addToCart': instance.addToCart,
     };
 
-GetVoucherByCode$Query$Voucher _$GetVoucherByCode$Query$VoucherFromJson(
-    Map<String, dynamic> json) {
-  return GetVoucherByCode$Query$Voucher()
-    ..id = json['id'] as String
-    ..code = json['code'] as String
-    ..discount = json['discount'] as int
-    ..discountType = json['discount_type'] as String;
-}
-
-Map<String, dynamic> _$GetVoucherByCode$Query$VoucherToJson(
-        GetVoucherByCode$Query$Voucher instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'code': instance.code,
-      'discount': instance.discount,
-      'discount_type': instance.discountType,
-    };
-
-GetVoucherByCode$Query _$GetVoucherByCode$QueryFromJson(
-    Map<String, dynamic> json) {
-  return GetVoucherByCode$Query()
-    ..getVoucherByCode = json['getVoucherByCode'] == null
-        ? null
-        : GetVoucherByCode$Query$Voucher.fromJson(
-            json['getVoucherByCode'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$GetVoucherByCode$QueryToJson(
-        GetVoucherByCode$Query instance) =>
-    <String, dynamic>{
-      'getVoucherByCode': instance.getVoucherByCode?.toJson(),
-    };
-
 GetCart$Query$Cart$CartItem$Product
     _$GetCart$Query$Cart$CartItem$ProductFromJson(Map<String, dynamic> json) {
   return GetCart$Query$Cart$CartItem$Product()
@@ -196,6 +163,39 @@ Map<String, dynamic> _$ProductMixin$ProductDataToJson(
       'unit': instance.unit?.toJson(),
       'media': instance.media?.map((e) => e?.toJson())?.toList(),
       'category': instance.category?.toJson(),
+    };
+
+GetVoucherByCode$Query$Voucher _$GetVoucherByCode$Query$VoucherFromJson(
+    Map<String, dynamic> json) {
+  return GetVoucherByCode$Query$Voucher()
+    ..id = json['id'] as String
+    ..code = json['code'] as String
+    ..discount = json['discount'] as int
+    ..discountType = json['discount_type'] as String;
+}
+
+Map<String, dynamic> _$GetVoucherByCode$Query$VoucherToJson(
+        GetVoucherByCode$Query$Voucher instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'code': instance.code,
+      'discount': instance.discount,
+      'discount_type': instance.discountType,
+    };
+
+GetVoucherByCode$Query _$GetVoucherByCode$QueryFromJson(
+    Map<String, dynamic> json) {
+  return GetVoucherByCode$Query()
+    ..getVoucherByCode = json['getVoucherByCode'] == null
+        ? null
+        : GetVoucherByCode$Query$Voucher.fromJson(
+            json['getVoucherByCode'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$GetVoucherByCode$QueryToJson(
+        GetVoucherByCode$Query instance) =>
+    <String, dynamic>{
+      'getVoucherByCode': instance.getVoucherByCode?.toJson(),
     };
 
 ShippingFees$Query _$ShippingFees$QueryFromJson(Map<String, dynamic> json) {

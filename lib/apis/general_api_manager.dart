@@ -1,9 +1,9 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
+import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/categories/graphql_api.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/general/graphql_api.dart';
 
-import '../mmd_ecommerce.dart';
 import 'error/api_error_helper.dart';
 
 class GeneralApiManager extends BaseApiManager {
