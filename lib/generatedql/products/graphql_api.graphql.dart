@@ -22,6 +22,11 @@ mixin ProductMixin {
   String averageRating;
   String price;
   bool available;
+  @JsonKey(name: 'min_quantity')
+  String minQuantity;
+  @JsonKey(name: 'max_quantity')
+  String maxQuantity;
+  String step;
   ProductMixin$ProductData details;
 }
 
@@ -59,7 +64,16 @@ class OrderProducts$Query$ProductPaginator$Product
       _$OrderProducts$Query$ProductPaginator$ProductFromJson(json);
 
   @override
-  List<Object> get props => [id, averageRating, price, available, details];
+  List<Object> get props => [
+        id,
+        averageRating,
+        price,
+        available,
+        minQuantity,
+        maxQuantity,
+        step,
+        details
+      ];
   Map<String, dynamic> toJson() =>
       _$OrderProducts$Query$ProductPaginator$ProductToJson(this);
 }
@@ -177,7 +191,16 @@ class RelatedProducts$Query$Product with EquatableMixin, ProductMixin {
       _$RelatedProducts$Query$ProductFromJson(json);
 
   @override
-  List<Object> get props => [id, averageRating, price, available, details];
+  List<Object> get props => [
+        id,
+        averageRating,
+        price,
+        available,
+        minQuantity,
+        maxQuantity,
+        step,
+        details
+      ];
   Map<String, dynamic> toJson() => _$RelatedProducts$Query$ProductToJson(this);
 }
 
@@ -229,7 +252,16 @@ class Products$Query$ProductPaginator$Product
       _$Products$Query$ProductPaginator$ProductFromJson(json);
 
   @override
-  List<Object> get props => [id, averageRating, price, available, details];
+  List<Object> get props => [
+        id,
+        averageRating,
+        price,
+        available,
+        minQuantity,
+        maxQuantity,
+        step,
+        details
+      ];
   Map<String, dynamic> toJson() =>
       _$Products$Query$ProductPaginator$ProductToJson(this);
 }
@@ -525,6 +557,24 @@ class OrderProductsQuery
               directives: [],
               selectionSet: null),
           FieldNode(
+              name: NameNode(value: 'min_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'max_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'step'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
               name: NameNode(value: 'details'),
               alias: null,
               arguments: [],
@@ -698,6 +748,24 @@ class RelatedProductsQuery
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'available'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'min_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'max_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'step'),
               alias: null,
               arguments: [],
               directives: [],
@@ -1004,6 +1072,24 @@ class ProductsQuery extends GraphQLQuery<Products$Query, ProductsArguments> {
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'available'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'min_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'max_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'step'),
               alias: null,
               arguments: [],
               directives: [],

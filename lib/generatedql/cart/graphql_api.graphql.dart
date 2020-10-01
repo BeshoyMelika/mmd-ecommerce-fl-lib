@@ -12,6 +12,11 @@ mixin ProductMixin {
   String averageRating;
   String price;
   bool available;
+  @JsonKey(name: 'min_quantity')
+  String minQuantity;
+  @JsonKey(name: 'max_quantity')
+  String maxQuantity;
+  String step;
   ProductMixin$ProductData details;
 }
 
@@ -73,7 +78,16 @@ class GetCart$Query$Cart$CartItem$Product with EquatableMixin, ProductMixin {
       _$GetCart$Query$Cart$CartItem$ProductFromJson(json);
 
   @override
-  List<Object> get props => [id, averageRating, price, available, details];
+  List<Object> get props => [
+        id,
+        averageRating,
+        price,
+        available,
+        minQuantity,
+        maxQuantity,
+        step,
+        details
+      ];
   Map<String, dynamic> toJson() =>
       _$GetCart$Query$Cart$CartItem$ProductToJson(this);
 }
@@ -457,6 +471,24 @@ class GetCartQuery extends GraphQLQuery<GetCart$Query, JsonSerializable> {
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'available'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'min_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'max_quantity'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'step'),
               alias: null,
               arguments: [],
               directives: [],

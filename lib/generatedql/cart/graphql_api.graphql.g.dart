@@ -55,6 +55,9 @@ GetCart$Query$Cart$CartItem$Product
     ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
     ..available = json['available'] as bool
+    ..minQuantity = json['min_quantity'] as String
+    ..maxQuantity = json['max_quantity'] as String
+    ..step = json['step'] as String
     ..details = json['details'] == null
         ? null
         : ProductMixin$ProductData.fromJson(
@@ -68,6 +71,9 @@ Map<String, dynamic> _$GetCart$Query$Cart$CartItem$ProductToJson(
       'averageRating': instance.averageRating,
       'price': instance.price,
       'available': instance.available,
+      'min_quantity': instance.minQuantity,
+      'max_quantity': instance.maxQuantity,
+      'step': instance.step,
       'details': instance.details?.toJson(),
     };
 
