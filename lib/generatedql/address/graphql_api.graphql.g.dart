@@ -62,7 +62,8 @@ GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$City
     _$GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$CityFromJson(
         Map<String, dynamic> json) {
   return GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$City()
-    ..name = json['name'] as String;
+    ..name = json['name'] as String
+    ..id = json['id'] as String;
 }
 
 Map<String, dynamic>
@@ -71,6 +72,7 @@ Map<String, dynamic>
                 instance) =>
         <String, dynamic>{
           'name': instance.name,
+          'id': instance.id,
         };
 
 GetAllAddress$Query$UserAddressPaginator$UserAddress$Area
@@ -78,6 +80,7 @@ GetAllAddress$Query$UserAddressPaginator$UserAddress$Area
         Map<String, dynamic> json) {
   return GetAllAddress$Query$UserAddressPaginator$UserAddress$Area()
     ..name = json['name'] as String
+    ..id = json['id'] as String
     ..city = json['city'] == null
         ? null
         : GetAllAddress$Query$UserAddressPaginator$UserAddress$Area$City
@@ -89,6 +92,7 @@ Map<String,
         GetAllAddress$Query$UserAddressPaginator$UserAddress$Area instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'id': instance.id,
       'city': instance.city?.toJson(),
     };
 
