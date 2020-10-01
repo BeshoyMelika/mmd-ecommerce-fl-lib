@@ -1,8 +1,8 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
-paymentApi() async {
+paymentApi(Function success) async {
   await PaymentApiManager.placeCreditCardOrderApi("50", "1",
       (PlaceCreditCardOrderModel model) {
-    model.tokenization;
+    success(model);
   }, (ApiErrorModel error) {});
 }
