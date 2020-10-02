@@ -37,7 +37,8 @@ class CartApiManager extends BaseApiManager {
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(GetVoucherByCode$Query.fromJson(result.data).getVoucherByCode);
+      success(VoucherModel(
+          GetVoucherByCode$Query.fromJson(result.data).getVoucherByCode));
     }
   }
 
