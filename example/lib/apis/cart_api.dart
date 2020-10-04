@@ -2,7 +2,7 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 getVoucherByCode() async {
   await CartApiManager.voucherByCodeApi(
-      "2121", (VoucherModel voucher) {}, (ApiErrorModel error) {});
+      "34432", (VoucherModel voucher) {}, (ApiErrorModel error) {});
 }
 
 shippingFeesApi() async {
