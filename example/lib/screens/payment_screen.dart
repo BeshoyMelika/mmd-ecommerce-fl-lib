@@ -102,16 +102,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
   void postDataToWebView(PlaceCreditCardOrderModel model) {
     var data = "service_command=${model.tokenization.serviceCommand}"
         "&access_code=${model.tokenization.accessCode}"
+        "&currency=${model.tokenization.currency}"
         "&merchant_identifier=${model.tokenization.merchantIdentifier}"
         "&merchant_reference=${model.tokenization.merchantReference}"
         "&language=${model.tokenization.language}"
         "&expiry_date=2105"
-        "&card_number=4005550000000001"
+        //"&card_number=4005550000000001"
+        "&card_number=4557012345678902"
         "&card_security_code=123"
         "&signature=${model.tokenization.signature}"
         "&card_holder_name=Mina Samir Sadik Khalil"
         "&remember_me=YES"
         "&return_url=${model.tokenization.returnUrl}";
+    //var encoded = Uri.encodeComponent(data);
     webViewController.postUrl(
         url: "https://sbcheckout.PayFort.com/FortAPI/paymentPage",
         postData: utf8.encode(data));
