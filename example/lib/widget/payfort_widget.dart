@@ -51,6 +51,20 @@ class PayfortWidget extends StatefulWidget {
       callback: callback,
     );
   }
+
+  static PayfortWidget testOTP(
+      PlaceCreditCardOrderModel detailsModel, Function callback) {
+    return PayfortWidget(
+      url: "https://sbcheckout.PayFort.com/FortAPI/paymentPage",
+      cardNum: "4557012345678902",
+      cvv: "123",
+      yearMonthDate: "2105",
+      rememberMe: true,
+      cardHolderName: "Mina Samir Sadik Khalil",
+      backendDetails: detailsModel,
+      callback: callback,
+    );
+  }
 }
 
 class _PayfortWidgetState extends State<PayfortWidget> {

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/new_payment_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/payment_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
 
 import 'api_keys.dart';
 import 'apis/auth_apis.dart';
@@ -190,7 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           paymentWidget(),
-          newPaymentWidget(),
           authField(),
         ],
       ),
@@ -203,38 +201,6 @@ class _MyHomePageState extends State<MyHomePage> {
         horizontal: 20.0,
       ),
       child: RaisedButton(
-        color: Colors.lightGreen,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PaymentScreen()),
-          );
-        },
-        child: Row(
-          children: [
-            Icon(
-              Icons.payment,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Payment Screen",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget newPaymentWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20.0,
-      ),
-      child: RaisedButton(
         color: Colors.indigo,
         onPressed: () async {
           await paymentApi((PlaceCreditCardOrderModel model) {
@@ -242,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (ctx) => NewPaymentScreen(model, (reference) {
+                  builder: (ctx) => PayfortPaymentScreen(model, (reference) {
                         // call api .. to check payment state
                         Navigator.of(context).pop();
                         debugPrint("===============$reference===============");
