@@ -207,6 +207,16 @@ Map<String, dynamic> _$ShippingFees$QueryToJson(ShippingFees$Query instance) =>
       'shippingFees': instance.shippingFees,
     };
 
+UpdateCart$Mutation _$UpdateCart$MutationFromJson(Map<String, dynamic> json) {
+  return UpdateCart$Mutation()..updateCart = json['updateCart'] as bool;
+}
+
+Map<String, dynamic> _$UpdateCart$MutationToJson(
+        UpdateCart$Mutation instance) =>
+    <String, dynamic>{
+      'updateCart': instance.updateCart,
+    };
+
 AddToCartArguments _$AddToCartArgumentsFromJson(Map<String, dynamic> json) {
   return AddToCartArguments(
     productId: json['productId'] as String,
@@ -246,4 +256,18 @@ Map<String, dynamic> _$ShippingFeesArgumentsToJson(
     <String, dynamic>{
       'addressId': instance.addressId,
       'voucherId': instance.voucherId,
+    };
+
+UpdateCartArguments _$UpdateCartArgumentsFromJson(Map<String, dynamic> json) {
+  return UpdateCartArguments(
+    productId: json['productId'] as String,
+    quantity: json['quantity'] as int,
+  );
+}
+
+Map<String, dynamic> _$UpdateCartArgumentsToJson(
+        UpdateCartArguments instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'quantity': instance.quantity,
     };
