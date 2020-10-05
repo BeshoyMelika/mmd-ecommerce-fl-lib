@@ -18,3 +18,8 @@ addToCard() async {
 getCard() async {
   await CartApiManager.cartApi((CartModel cart) {}, (ApiErrorModel error) {});
 }
+
+updateCart() async {
+  await CartApiManager.updateCartApi(
+      "110", 2, (bool success) {}, (ApiErrorModel error) {});
+}

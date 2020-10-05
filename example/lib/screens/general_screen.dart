@@ -43,6 +43,16 @@ class _GeneralScreenState extends State<GeneralScreen> {
             RaisedButton(
               color: Colors.blueAccent,
               onPressed: () async {
+                await updateCart();
+              },
+              child: Text(
+                "Update Cart",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            RaisedButton(
+              color: Colors.blueAccent,
+              onPressed: () async {
                 await getCard();
               },
               child: Text(
