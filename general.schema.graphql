@@ -33,6 +33,7 @@ type Query {
     # The offset from which elements are returned.
     page: Int
   ): OrderPaginator
+  getOrderBillingStatus(merchant_reference: String): String
   sliders: [Slider!]
   ratings(
     product_id: ID!
@@ -326,6 +327,7 @@ type Mutation {
   deleteAddress(id: ID): Boolean
   updateProfile(input: UpdateProfile): Boolean
   addToCart(items: [CartInput!]!): Boolean
+  updateCart(items: [CartInput!]!): Boolean
   placeCashOnDeliveryOrder(input: OrderInput): Boolean
   placeCreditCardOrder(input: OrderInput): Tokenization
   addReview(input: ReviewInput): Boolean
