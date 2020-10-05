@@ -55,4 +55,17 @@ class CartApiManager extends BaseApiManager {
       success(ShippingFees$Query.fromJson(result.data).shippingFees);
     }
   }
+
+  static Future<void> updateCartApi(
+      String productId, int quantity, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: UpdateCartMutation().document,
+        variables: UpdateCartArguments(productId: productId, quantity: quantity)
+            .toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(UpdateCart$Mutation.fromJson(result.data).updateCart);
+    }
+  }
 }
