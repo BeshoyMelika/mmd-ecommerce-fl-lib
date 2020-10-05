@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
 
 import 'api_keys.dart';
 import 'apis/auth_apis.dart';
+import 'apis/payment_apis.dart';
 import 'apis/user_apis.dart';
 import 'screens/product_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -184,8 +187,53 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             ],
-          )
+          ),
+          paymentWidget(),
+          authField(),
         ],
+      ),
+    );
+  }
+
+  Widget paymentWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: RaisedButton(
+        color: Colors.indigo,
+        onPressed: () async {
+          await paymentApi((PlaceCreditCardOrderModel model) {
+            // open payment screen ...
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (ctx) => PayfortPaymentScreen(model, (reference) {
+                        // call api .. to check payment state
+                        Navigator.of(context).pop();
+                        debugPrint("===============$reference===============");
+                        debugPrint("===============$reference===============");
+                        debugPrint("===============$reference===============");
+                        debugPrint("===============$reference===============");
+                      })),
+            );
+          });
+        },
+        child: Row(
+          children: [
+            Icon(
+              Icons.payment,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "New Payment Screen",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -194,14 +242,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       children: [
         TextField(
+          autofocus: false,
           controller: emailController,
           decoration: InputDecoration(hintText: "email"),
         ),
         TextField(
+          autofocus: false,
           controller: codeController,
           decoration: InputDecoration(hintText: "code"),
         ),
         TextField(
+          autofocus: false,
           controller: passwordController,
           decoration: InputDecoration(hintText: "password"),
         ),
