@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 10,
             ),
             Text(
-              "New Payment Screen",
+              "Payfort Payment Screen",
               style: TextStyle(color: Colors.white),
             ),
           ],
