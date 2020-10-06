@@ -6,3 +6,15 @@ paymentApi(Function success) async {
     success(model);
   }, (ApiErrorModel error) {});
 }
+
+cashOrderApi() async {
+  await PaymentApiManager.placeCashOrderApi(
+      "50", "1", (bool state) {}, (ApiErrorModel error) {});
+}
+
+orderStateApi(String merchantReference) async {
+  await PaymentApiManager.getOrderBillingStatus(
+      merchantReference, (String state) {}, (ApiErrorModel error) {
+    print(error.queryResult.exception);
+  });
+}
