@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/main_second.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
 
+import 'api_keys.dart';
 import 'apis/auth_apis.dart';
+import 'apis/payment_apis.dart';
 import 'apis/user_apis.dart';
 import 'screens/product_screen.dart';
 
-void main() {
-  // TODO enhance example by split all APIs that related to each other in one file
-  // TODO style all buttons that call the same APIs category with the same style
-  // TODO all APIs that in the same category will be in a separated screen.
-  // TODO remove the base url from the main example. [May be not because the graphConfig file]
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MmdECommerceFlLib.submitBaseUrl("https://egfoods.moselaymdserver.com");
+    MmdECommerceFlLib.submitBaseUrl(BASE_URL);
     MmdECommerceFlLib.enableDebug(true);
     MmdECommerceFlLib.submitLanguage(Languages.arabic);
     return MaterialApp(
@@ -38,7 +37,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var isLoading = false;
-  AuthPayloadLogin auth;
   var isError = false;
 
   TextEditingController emailController = TextEditingController();
@@ -47,7 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // Future.delayed(Duration(microseconds: 0)).then((value) => callApi());
     super.initState();
   }
 
@@ -60,52 +57,26 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(child: isLoading ? getLoadingView() : getNormalView()));
   }
 
-  callApi() async {
-    setState(() {
-      isLoading = true;
-    });
-    AuthApiManager.loginApi('test@mail.com', '123456789', "123",
-        (AuthPayloadLogin auth) {
-      setState(() {
-        this.isLoading = false;
-        this.auth = auth;
-      });
-    }, () {
-      this.isError = true;
-    });
-  }
-
   Widget getLoadingView() {
     return CircularProgressIndicator();
   }
 
   Widget getNormalView() {
-    if (isError) {
-      return Text("Result Error");
-    } else {
-      return Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
-          Text("Result Success \n${auth?.authPayload?.access_token}"),
           RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        MainSecond(auth.authPayload.refresh_token)),
-              );
-            },
-            child: Text("Open Main Second"),
-          ),
-          RaisedButton(
-            color: Colors.amber,
+            color: Colors.deepPurple,
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => AddressScreen()),
               );
             },
-            child: Text("Open Address Screen"),
+            child: Text(
+              "Open Address Screen",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           RaisedButton(
             color: Colors.blueAccent,
@@ -115,7 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => GeneralScreen()),
               );
             },
-            child: Text("Open General Screen"),
+            child: Text(
+              "Open General Screen",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           RaisedButton(
             color: Colors.deepOrangeAccent,
@@ -128,11 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text("Open Product Screen"),
           ),
           RaisedButton(
-            color: Colors.amber,
+            color: Colors.green,
             onPressed: () {
               callLoginApi();
             },
-            child: Text("Test login"),
+            child: Text(
+              "Test login",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,18 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ],
-          ),
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(hintText: "email"),
-          ),
-          TextField(
-            controller: codeController,
-            decoration: InputDecoration(hintText: "code"),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(hintText: "password"),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -222,19 +187,93 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             ],
-          )
+          ),
+          RaisedButton(
+            color: Colors.black,
+            onPressed: () {
+              // orderStateApi("100_1601986763");
+              orderStateApi("59_1601907846", this.context);
+            },
+            child: Text(
+              "Order State Api",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          paymentWidget(),
+          // authField(),
         ],
-      );
-    }
+      ),
+    );
   }
 
-  callLoginApi() async {
-    await AuthApiManager.loginApi("test@mail.com", "1234567890", "123",
-        (AuthPayloadLogin authPayload) async {
-      auth = authPayload;
-      MmdECommerceFlLib.submitTokeAndTokenType(
-          authPayload.authPayload.access_token,
-          authPayload.authPayload.token_type);
-    }, (ApiErrorModel error) {});
+  Widget paymentWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: RaisedButton(
+        color: Colors.indigo,
+        onPressed: () async {
+          await paymentApi((PlaceCreditCardOrderModel model) {
+            // open payment screen ...
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (ctx) =>
+                      PayfortPaymentScreen(model, (String merchantReference) {
+                        // call api .. to check payment state
+                        orderStateApi(merchantReference, context);
+                        Navigator.of(context).pop();
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                      })),
+            );
+          });
+        },
+        child: Row(
+          children: [
+            Icon(
+              Icons.payment,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Payfort Payment Screen",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column authField() {
+    return Column(
+      children: [
+        TextField(
+          autofocus: false,
+          controller: emailController,
+          decoration: InputDecoration(hintText: "email"),
+        ),
+        TextField(
+          autofocus: false,
+          controller: codeController,
+          decoration: InputDecoration(hintText: "code"),
+        ),
+        TextField(
+          autofocus: false,
+          controller: passwordController,
+          decoration: InputDecoration(hintText: "password"),
+        ),
+      ],
+    );
   }
 }

@@ -13,6 +13,9 @@ fragment Product on  Product{
     averageRating
     price
     available
+    min_quantity
+    max_quantity
+    step
     details {
         name
         sku
@@ -31,4 +34,16 @@ fragment Product on  Product{
             id
         }
     }
+}
+fragment User on  User{
+    id
+    name
+    email
+    mobile
+}
+fragment AuthPayload on  AuthPayload{
+    access_token
+    refresh_token
+    expires_in
+    token_type
 }

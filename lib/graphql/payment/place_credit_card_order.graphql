@@ -1,0 +1,12 @@
+mutation PlaceCreditCardOrder($addressId: ID!, $voucherId: ID!){
+    placeCreditCardOrder(input: {address_id: $addressId, voucher_id: $voucherId}){
+        service_command
+        access_code
+        merchant_identifier
+        merchant_reference
+        currency
+        language
+        signature
+        return_url
+    }
+}

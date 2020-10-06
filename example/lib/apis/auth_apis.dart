@@ -1,8 +1,17 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
+callLoginApi() async {
+  await AuthApiManager.loginApi("test@test.com", "123456", "123",
+      (AuthPayloadLoginModel userRegisterModel) async {
+    MmdECommerceFlLib.submitTokeAndTokenType(
+        userRegisterModel.authPayload.accessToken,
+        userRegisterModel.authPayload.tokenType);
+  }, (ApiErrorModel error) {});
+}
+
 callRegisterApi() {
   AuthApiManager.registerApi("mmd10", "rovox4067sri@ka0525.com", "123456",
-      (UserRegister user) {}, (ApiErrorModel error) {});
+      (UserRegisterModel register) {}, (ApiErrorModel error) {});
 }
 
 callForgetPasswordApi(String email) {

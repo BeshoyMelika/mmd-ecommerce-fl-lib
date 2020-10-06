@@ -10,8 +10,10 @@ query GetAllAddress($first: Int!, $page: Int!){
             last_name
             area{
                 name
+                id
                 city{
                     name
+                    id
                 }
             }
             info
