@@ -33,3 +33,9 @@
 * Updated .gitignore file.
 * Changed the language key.
 * Enhanced addresses APIs.
+
+## [0.1.0] - 0.1.0
+* Updates Artemis library version.
+* Added fragment support to graphal.
+* Updated graphal schema.
+* Added payment APIs and Payfort example.
