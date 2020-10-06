@@ -13,7 +13,7 @@ cashOrderApi() async {
 }
 
 orderStateApi(String merchantReference) async {
-  await PaymentApiManager.getOrderBillingStatus(
+  await PaymentApiManager.orderBillingStatusApi(
       merchantReference, (String state) {}, (ApiErrorModel error) {
     print(error.queryResult.exception);
   });

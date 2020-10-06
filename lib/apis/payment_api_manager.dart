@@ -37,7 +37,7 @@ class PaymentApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> getOrderBillingStatus(
+  static Future<void> orderBillingStatusApi(
       String merchantReference, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: GetOrderBillingStatusQuery().document,
