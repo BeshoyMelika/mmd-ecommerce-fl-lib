@@ -6,6 +6,18 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+PlaceCashOnDeliveryOrder$Mutation _$PlaceCashOnDeliveryOrder$MutationFromJson(
+    Map<String, dynamic> json) {
+  return PlaceCashOnDeliveryOrder$Mutation()
+    ..placeCashOnDeliveryOrder = json['placeCashOnDeliveryOrder'] as bool;
+}
+
+Map<String, dynamic> _$PlaceCashOnDeliveryOrder$MutationToJson(
+        PlaceCashOnDeliveryOrder$Mutation instance) =>
+    <String, dynamic>{
+      'placeCashOnDeliveryOrder': instance.placeCashOnDeliveryOrder,
+    };
+
 PlaceCreditCardOrder$Mutation$Tokenization
     _$PlaceCreditCardOrder$Mutation$TokenizationFromJson(
         Map<String, dynamic> json) {
@@ -48,6 +60,33 @@ Map<String, dynamic> _$PlaceCreditCardOrder$MutationToJson(
       'placeCreditCardOrder': instance.placeCreditCardOrder?.toJson(),
     };
 
+GetOrderBillingStatus$Query _$GetOrderBillingStatus$QueryFromJson(
+    Map<String, dynamic> json) {
+  return GetOrderBillingStatus$Query()
+    ..getOrderBillingStatus = json['getOrderBillingStatus'] as String;
+}
+
+Map<String, dynamic> _$GetOrderBillingStatus$QueryToJson(
+        GetOrderBillingStatus$Query instance) =>
+    <String, dynamic>{
+      'getOrderBillingStatus': instance.getOrderBillingStatus,
+    };
+
+PlaceCashOnDeliveryOrderArguments _$PlaceCashOnDeliveryOrderArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return PlaceCashOnDeliveryOrderArguments(
+    addressId: json['addressId'] as String,
+    voucherId: json['voucherId'] as String,
+  );
+}
+
+Map<String, dynamic> _$PlaceCashOnDeliveryOrderArgumentsToJson(
+        PlaceCashOnDeliveryOrderArguments instance) =>
+    <String, dynamic>{
+      'addressId': instance.addressId,
+      'voucherId': instance.voucherId,
+    };
+
 PlaceCreditCardOrderArguments _$PlaceCreditCardOrderArgumentsFromJson(
     Map<String, dynamic> json) {
   return PlaceCreditCardOrderArguments(
@@ -61,4 +100,17 @@ Map<String, dynamic> _$PlaceCreditCardOrderArgumentsToJson(
     <String, dynamic>{
       'addressId': instance.addressId,
       'voucherId': instance.voucherId,
+    };
+
+GetOrderBillingStatusArguments _$GetOrderBillingStatusArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return GetOrderBillingStatusArguments(
+    merchantReference: json['merchantReference'] as String,
+  );
+}
+
+Map<String, dynamic> _$GetOrderBillingStatusArgumentsToJson(
+        GetOrderBillingStatusArguments instance) =>
+    <String, dynamic>{
+      'merchantReference': instance.merchantReference,
     };

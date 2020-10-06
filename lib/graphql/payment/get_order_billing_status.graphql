@@ -1,0 +1,4 @@
+query GetOrderBillingStatus($merchantReference: String!){
+    getOrderBillingStatus(merchant_reference: $merchantReference){  
+    }
+}

@@ -1,0 +1,4 @@
+mutation PlaceCashOnDeliveryOrder($addressId: ID!, $voucherId: ID!){
+    placeCashOnDeliveryOrder(input: {address_id: $addressId, voucher_id: $voucherId}
+    )
+}

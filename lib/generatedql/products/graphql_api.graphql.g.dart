@@ -173,6 +173,52 @@ Map<String, dynamic> _$ProductMixin$ProductDataToJson(
       'category': instance.category?.toJson(),
     };
 
+RelatedProducts$Query$Product _$RelatedProducts$Query$ProductFromJson(
+    Map<String, dynamic> json) {
+  return RelatedProducts$Query$Product()
+    ..id = json['id'] as String
+    ..averageRating = json['averageRating'] as String
+    ..price = json['price'] as String
+    ..available = json['available'] as bool
+    ..minQuantity = json['min_quantity'] as String
+    ..maxQuantity = json['max_quantity'] as String
+    ..step = json['step'] as String
+    ..details = json['details'] == null
+        ? null
+        : ProductMixin$ProductData.fromJson(
+            json['details'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$RelatedProducts$Query$ProductToJson(
+        RelatedProducts$Query$Product instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'averageRating': instance.averageRating,
+      'price': instance.price,
+      'available': instance.available,
+      'min_quantity': instance.minQuantity,
+      'max_quantity': instance.maxQuantity,
+      'step': instance.step,
+      'details': instance.details?.toJson(),
+    };
+
+RelatedProducts$Query _$RelatedProducts$QueryFromJson(
+    Map<String, dynamic> json) {
+  return RelatedProducts$Query()
+    ..relatedProducts = (json['relatedProducts'] as List)
+        ?.map((e) => e == null
+            ? null
+            : RelatedProducts$Query$Product.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$RelatedProducts$QueryToJson(
+        RelatedProducts$Query instance) =>
+    <String, dynamic>{
+      'relatedProducts':
+          instance.relatedProducts?.map((e) => e?.toJson())?.toList(),
+    };
+
 Products$Query$ProductPaginator$PaginatorInfo
     _$Products$Query$ProductPaginator$PaginatorInfoFromJson(
         Map<String, dynamic> json) {
@@ -265,52 +311,6 @@ Map<String, dynamic> _$Products$QueryToJson(Products$Query instance) =>
       'products': instance.products?.toJson(),
     };
 
-RelatedProducts$Query$Product _$RelatedProducts$Query$ProductFromJson(
-    Map<String, dynamic> json) {
-  return RelatedProducts$Query$Product()
-    ..id = json['id'] as String
-    ..averageRating = json['averageRating'] as String
-    ..price = json['price'] as String
-    ..available = json['available'] as bool
-    ..minQuantity = json['min_quantity'] as String
-    ..maxQuantity = json['max_quantity'] as String
-    ..step = json['step'] as String
-    ..details = json['details'] == null
-        ? null
-        : ProductMixin$ProductData.fromJson(
-            json['details'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$RelatedProducts$Query$ProductToJson(
-        RelatedProducts$Query$Product instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'averageRating': instance.averageRating,
-      'price': instance.price,
-      'available': instance.available,
-      'min_quantity': instance.minQuantity,
-      'max_quantity': instance.maxQuantity,
-      'step': instance.step,
-      'details': instance.details?.toJson(),
-    };
-
-RelatedProducts$Query _$RelatedProducts$QueryFromJson(
-    Map<String, dynamic> json) {
-  return RelatedProducts$Query()
-    ..relatedProducts = (json['relatedProducts'] as List)
-        ?.map((e) => e == null
-            ? null
-            : RelatedProducts$Query$Product.fromJson(e as Map<String, dynamic>))
-        ?.toList();
-}
-
-Map<String, dynamic> _$RelatedProducts$QueryToJson(
-        RelatedProducts$Query instance) =>
-    <String, dynamic>{
-      'relatedProducts':
-          instance.relatedProducts?.map((e) => e?.toJson())?.toList(),
-    };
-
 OrderProductsArguments _$OrderProductsArgumentsFromJson(
     Map<String, dynamic> json) {
   return OrderProductsArguments(
@@ -383,6 +383,19 @@ const _$SortOrderEnumMap = {
   SortOrder.artemisUnknown: 'ARTEMIS_UNKNOWN',
 };
 
+RelatedProductsArguments _$RelatedProductsArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return RelatedProductsArguments(
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$RelatedProductsArgumentsToJson(
+        RelatedProductsArguments instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };
+
 ProductsArguments _$ProductsArgumentsFromJson(Map<String, dynamic> json) {
   return ProductsArguments(
     first: json['first'] as int,
@@ -400,17 +413,4 @@ Map<String, dynamic> _$ProductsArgumentsToJson(ProductsArguments instance) =>
       'productsId': instance.productsId,
       'catId': instance.catId,
       'name': instance.name,
-    };
-
-RelatedProductsArguments _$RelatedProductsArgumentsFromJson(
-    Map<String, dynamic> json) {
-  return RelatedProductsArguments(
-    id: json['id'] as String,
-  );
-}
-
-Map<String, dynamic> _$RelatedProductsArgumentsToJson(
-        RelatedProductsArguments instance) =>
-    <String, dynamic>{
-      'id': instance.id,
     };
