@@ -19,7 +19,7 @@ class _PayfortPaymentScreenState extends State<PayfortPaymentScreen> {
       appBar: AppBar(
         title: Text("Payfort Payment"),
       ),
-      body: PayfortWidget.testOTP(widget.backendDetails, widget.callback),
+      body: PayfortWidget.test(widget.backendDetails, widget.callback),
     );
   }
 }

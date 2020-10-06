@@ -188,8 +188,19 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
+          RaisedButton(
+            color: Colors.black,
+            onPressed: () {
+              // orderStateApi("100_1601986763");
+              orderStateApi("59_1601907846", this.context);
+            },
+            child: Text(
+              "Order State Api",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
           paymentWidget(),
-          authField(),
+          // authField(),
         ],
       ),
     );
@@ -208,13 +219,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (ctx) => PayfortPaymentScreen(model, (reference) {
+                  builder: (ctx) =>
+                      PayfortPaymentScreen(model, (String merchantReference) {
                         // call api .. to check payment state
+                        orderStateApi(merchantReference, context);
                         Navigator.of(context).pop();
-                        debugPrint("===============$reference===============");
-                        debugPrint("===============$reference===============");
-                        debugPrint("===============$reference===============");
-                        debugPrint("===============$reference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
+                        debugPrint(
+                            "===============$merchantReference===============");
                       })),
             );
           });

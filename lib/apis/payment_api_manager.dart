@@ -21,4 +21,34 @@ class PaymentApiManager extends BaseApiManager {
               .placeCreditCardOrder));
     }
   }
+
+  static Future<void> placeCashOrderApi(String addressId, String voucherId,
+      Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
+        documentNode: PlaceCashOnDeliveryOrderMutation().document,
+        variables: PlaceCashOnDeliveryOrderArguments(
+                addressId: addressId, voucherId: voucherId)
+            .toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(PlaceCashOnDeliveryOrder$Mutation.fromJson(result.data)
+          .placeCashOnDeliveryOrder);
+    }
+  }
+
+  static Future<void> orderBillingStatusApi(
+      String merchantReference, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: GetOrderBillingStatusQuery().document,
+        variables:
+            GetOrderBillingStatusArguments(merchantReference: merchantReference)
+                .toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(GetOrderBillingStatus$Query.fromJson(result.data)
+          .getOrderBillingStatus);
+    }
+  }
 }

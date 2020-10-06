@@ -23,9 +23,11 @@ class PayfortWidget extends StatefulWidget {
   final bool rememberMe;
   final String cardHolderName;
   final PlaceCreditCardOrderModel backendDetails;
-  final Function callback;
+  final Widget progressIndicator;
+  final bool debuggingEnabled;
+  final void Function(String reference) callback;
 
-  PayfortWidget(
+  const PayfortWidget(
       {@required this.url,
       @required this.cardNum,
       @required this.cvv,
@@ -33,7 +35,9 @@ class PayfortWidget extends StatefulWidget {
       @required this.rememberMe,
       @required this.cardHolderName,
       @required this.backendDetails,
-      @required this.callback});
+      @required this.callback,
+      this.debuggingEnabled = false,
+      this.progressIndicator});
 
   @override
   _PayfortWidgetState createState() => _PayfortWidgetState();
@@ -49,6 +53,7 @@ class PayfortWidget extends StatefulWidget {
       cardHolderName: "Mina Samir Sadik Khalil",
       backendDetails: detailsModel,
       callback: callback,
+      debuggingEnabled: true,
     );
   }
 
@@ -63,15 +68,19 @@ class PayfortWidget extends StatefulWidget {
       cardHolderName: "Mina Samir Sadik Khalil",
       backendDetails: detailsModel,
       callback: callback,
+      debuggingEnabled: true,
     );
   }
 }
 
 class _PayfortWidgetState extends State<PayfortWidget> {
-
   InAppWebViewController webViewController;
   String url = "";
+  String errorMessage = "";
+  int errorCode;
+  String errorURL = "";
   double progress = 0;
+  bool haveError = false;
 
   @override
   void initState() {
@@ -81,36 +90,101 @@ class _PayfortWidgetState extends State<PayfortWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: InAppWebView(
-      initialHeaders: {},
-      initialOptions: InAppWebViewGroupOptions(
-          crossPlatform: InAppWebViewOptions(
-        debuggingEnabled: true,
-      )),
-      onWebViewCreated: (InAppWebViewController controller) {
-        webViewController = controller;
-        postDataToWebView();
-      },
-      onLoadStart: (InAppWebViewController controller, String url) {
-        setState(() {
-          if (url.contains("billing/confirmation")) {
-            var parsedUrl = Uri.parse(url);
-            widget.callback(parsedUrl.pathSegments.last);
-          }
-          this.url = (this.url) + "\n" + url;
-        });
-      },
-      onLoadStop: (InAppWebViewController controller, String url) async {
-        setState(() {
-          this.url = url;
-        });
-      },
-      onProgressChanged: (InAppWebViewController controller, int progress) {
-        setState(() {
-          this.progress = progress / 100;
-        });
-      },
+        child: Column(
+      children: [
+        widget.debuggingEnabled
+            ? Container(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                    "CURRENT URL\n${(url.length > 50) ? url.substring(0, 50) + "..." : url}"),
+              )
+            : SizedBox(),
+        widget.debuggingEnabled
+            ? Container(
+                padding: EdgeInsets.all(10.0),
+                child: progress < 1.0
+                    ? LinearProgressIndicator(value: progress)
+                    : Container())
+            : SizedBox(),
+        haveError
+            ? Container(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(" URL Error : $errorURL"),
+                    Text(" Error Code : $errorCode"),
+                    Text(" Error Massage : $errorMessage"),
+                  ],
+                ),
+              )
+            : SizedBox(),
+        Expanded(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              InAppWebView(
+                initialHeaders: {},
+                initialOptions: InAppWebViewGroupOptions(
+                    crossPlatform: InAppWebViewOptions(
+                  debuggingEnabled: widget.debuggingEnabled,
+                )),
+                onWebViewCreated: (InAppWebViewController controller) {
+                  webViewController = controller;
+                  postDataToWebView();
+                },
+                onLoadStart: (InAppWebViewController controller, String url) {
+                  setState(() {
+                    if (url.contains("billing/confirmation")) {
+                      var parsedUrl = Uri.parse(url);
+                      widget.callback(parsedUrl.pathSegments.last);
+                    }
+                    this.url = (this.url) + "\n" + url;
+                  });
+                },
+                onLoadStop:
+                    (InAppWebViewController controller, String url) async {
+                  if (widget.debuggingEnabled)
+                    setState(() {
+                      this.url = url;
+                    });
+                },
+                onProgressChanged:
+                    (InAppWebViewController controller, int progress) {
+                  setState(() {
+                    this.progress = progress / 100;
+                  });
+                },
+                onLoadError: (InAppWebViewController appWebViewController,
+                    String url, int code, String message) {
+                  setState(() {
+                    this.haveError = true;
+                    this.errorMessage = message;
+                    this.errorCode = code;
+                    this.errorURL = url;
+                  });
+                },
+                onLoadHttpError: (InAppWebViewController appWebViewController,
+                    String url, int code, String message) {
+                  setState(() {
+                    this.haveError = true;
+                    this.errorMessage = message;
+                    this.errorCode = code;
+                    this.errorURL = url;
+                  });
+                },
+              ),
+              buildLeadWidget()
+            ],
+          ),
+        ),
+      ],
     ));
+  }
+
+  buildLeadWidget() {
+    return progress < 1.0
+        ? widget.progressIndicator ?? Center(child: CircularProgressIndicator())
+        : Container();
   }
 
   void postDataToWebView() {
