@@ -1,4 +1,3 @@
 query GetOrderBillingStatus($merchantReference: String!){
-    getOrderBillingStatus(merchant_reference: $merchantReference){  
-    }
+    getOrderBillingStatus(merchant_reference: $merchantReference)
 }

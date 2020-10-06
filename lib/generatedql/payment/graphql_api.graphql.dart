@@ -349,7 +349,7 @@ class GetOrderBillingStatusQuery extends GraphQLQuery<
                         name: NameNode(value: 'merchantReference')))
               ],
               directives: [],
-              selectionSet: SelectionSetNode(selections: []))
+              selectionSet: null)
         ]))
   ]);
 
