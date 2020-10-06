@@ -192,10 +192,10 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.black,
             onPressed: () {
               // orderStateApi("100_1601986763");
-              orderStateApi("59_1601907846");
+              orderStateApi("59_1601907846", this.context);
             },
             child: Text(
-              "orderStateApi",
+              "Order State Api",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -222,8 +222,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (ctx) =>
                       PayfortPaymentScreen(model, (String merchantReference) {
                         // call api .. to check payment state
-                        orderStateApi(merchantReference);
-                        // Navigator.of(context).pop();
+                        orderStateApi(merchantReference, context);
+                        Navigator.of(context).pop();
                         debugPrint(
                             "===============$merchantReference===============");
                         debugPrint(
