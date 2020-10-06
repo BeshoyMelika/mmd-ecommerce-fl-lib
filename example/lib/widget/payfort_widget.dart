@@ -25,7 +25,7 @@ class PayfortWidget extends StatefulWidget {
   final PlaceCreditCardOrderModel backendDetails;
   final Widget progressIndicator;
   final bool debuggingEnabled;
-  final void Function(String merchantReference) callback;
+  final void Function(String reference) callback;
 
   const PayfortWidget(
       {@required this.url,
