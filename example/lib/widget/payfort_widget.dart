@@ -53,7 +53,7 @@ class PayfortWidget extends StatefulWidget {
       cardHolderName: "Mina Samir Sadik Khalil",
       backendDetails: detailsModel,
       callback: callback,
-      // debuggingEnabled: true,
+      debuggingEnabled: true,
     );
   }
 
