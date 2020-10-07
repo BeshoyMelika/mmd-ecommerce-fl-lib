@@ -98,8 +98,7 @@ class GetOrderBillingStatus$Query with EquatableMixin {
 @JsonSerializable(explicitToJson: true)
 class PlaceCashOnDeliveryOrderArguments extends JsonSerializable
     with EquatableMixin {
-  PlaceCashOnDeliveryOrderArguments(
-      {@required this.addressId, @required this.voucherId});
+  PlaceCashOnDeliveryOrderArguments({@required this.addressId, this.voucherId});
 
   @override
   factory PlaceCashOnDeliveryOrderArguments.fromJson(
@@ -134,7 +133,8 @@ class PlaceCashOnDeliveryOrderMutation extends GraphQLQuery<
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'voucherId')),
-              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
