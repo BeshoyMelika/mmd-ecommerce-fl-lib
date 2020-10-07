@@ -178,8 +178,7 @@ class PlaceCashOnDeliveryOrderMutation extends GraphQLQuery<
 @JsonSerializable(explicitToJson: true)
 class PlaceCreditCardOrderArguments extends JsonSerializable
     with EquatableMixin {
-  PlaceCreditCardOrderArguments(
-      {@required this.addressId, @required this.voucherId});
+  PlaceCreditCardOrderArguments({@required this.addressId, this.voucherId});
 
   @override
   factory PlaceCreditCardOrderArguments.fromJson(Map<String, dynamic> json) =>
@@ -212,7 +211,8 @@ class PlaceCreditCardOrderMutation extends GraphQLQuery<
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'voucherId')),
-              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
