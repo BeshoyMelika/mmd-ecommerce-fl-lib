@@ -72,9 +72,9 @@ Map<String, dynamic> _$GetOrderBillingStatus$QueryToJson(
       'getOrderBillingStatus': instance.getOrderBillingStatus,
     };
 
-SavedCardsApi$Query$SavedCard _$SavedCardsApi$Query$SavedCardFromJson(
+SavedCards$Query$SavedCard _$SavedCards$Query$SavedCardFromJson(
     Map<String, dynamic> json) {
-  return SavedCardsApi$Query$SavedCard()
+  return SavedCards$Query$SavedCard()
     ..id = json['id'] as String
     ..cardHolderName = json['card_holder_name'] as String
     ..cardNumber = json['card_number'] as String
@@ -83,8 +83,8 @@ SavedCardsApi$Query$SavedCard _$SavedCardsApi$Query$SavedCardFromJson(
     ..tokenName = json['token_name'] as String;
 }
 
-Map<String, dynamic> _$SavedCardsApi$Query$SavedCardToJson(
-        SavedCardsApi$Query$SavedCard instance) =>
+Map<String, dynamic> _$SavedCards$Query$SavedCardToJson(
+        SavedCards$Query$SavedCard instance) =>
     <String, dynamic>{
       'id': instance.id,
       'card_holder_name': instance.cardHolderName,
@@ -94,20 +94,62 @@ Map<String, dynamic> _$SavedCardsApi$Query$SavedCardToJson(
       'token_name': instance.tokenName,
     };
 
-SavedCardsApi$Query _$SavedCardsApi$QueryFromJson(Map<String, dynamic> json) {
-  return SavedCardsApi$Query()
+SavedCards$Query _$SavedCards$QueryFromJson(Map<String, dynamic> json) {
+  return SavedCards$Query()
     ..getSavedCards = (json['getSavedCards'] as List)
         ?.map((e) => e == null
             ? null
-            : SavedCardsApi$Query$SavedCard.fromJson(e as Map<String, dynamic>))
+            : SavedCards$Query$SavedCard.fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$SavedCardsApi$QueryToJson(
-        SavedCardsApi$Query instance) =>
+Map<String, dynamic> _$SavedCards$QueryToJson(SavedCards$Query instance) =>
     <String, dynamic>{
       'getSavedCards':
           instance.getSavedCards?.map((e) => e?.toJson())?.toList(),
+    };
+
+PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
+    _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersFromJson(
+        Map<String, dynamic> json) {
+  return PlaceSavedCreditCardOrder$Mutation$PurchaseParameters()
+    ..merchantIdentifier = json['merchant_identifier'] as String
+    ..accessCode = json['access_code'] as String
+    ..currency = json['currency'] as String
+    ..language = json['language'] as String
+    ..command = json['command'] as String
+    ..returnUrl = json['return_url'] as String
+    ..customerIp = json['customer_ip'] as String
+    ..tokenName = json['token_name'] as String;
+}
+
+Map<String, dynamic>
+    _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersToJson(
+            PlaceSavedCreditCardOrder$Mutation$PurchaseParameters instance) =>
+        <String, dynamic>{
+          'merchant_identifier': instance.merchantIdentifier,
+          'access_code': instance.accessCode,
+          'currency': instance.currency,
+          'language': instance.language,
+          'command': instance.command,
+          'return_url': instance.returnUrl,
+          'customer_ip': instance.customerIp,
+          'token_name': instance.tokenName,
+        };
+
+PlaceSavedCreditCardOrder$Mutation _$PlaceSavedCreditCardOrder$MutationFromJson(
+    Map<String, dynamic> json) {
+  return PlaceSavedCreditCardOrder$Mutation()
+    ..placeSavedCreditCardOrder = json['placeSavedCreditCardOrder'] == null
+        ? null
+        : PlaceSavedCreditCardOrder$Mutation$PurchaseParameters.fromJson(
+            json['placeSavedCreditCardOrder'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$PlaceSavedCreditCardOrder$MutationToJson(
+        PlaceSavedCreditCardOrder$Mutation instance) =>
+    <String, dynamic>{
+      'placeSavedCreditCardOrder': instance.placeSavedCreditCardOrder?.toJson(),
     };
 
 PlaceCashOnDeliveryOrderArguments _$PlaceCashOnDeliveryOrderArgumentsFromJson(
@@ -151,4 +193,23 @@ Map<String, dynamic> _$GetOrderBillingStatusArgumentsToJson(
         GetOrderBillingStatusArguments instance) =>
     <String, dynamic>{
       'merchantReference': instance.merchantReference,
+    };
+
+PlaceSavedCreditCardOrderArguments _$PlaceSavedCreditCardOrderArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return PlaceSavedCreditCardOrderArguments(
+    addressId: json['addressId'] as String,
+    voucherId: json['voucherId'] as String,
+    savedCardId: json['savedCardId'] as String,
+    cardSecurityCode: json['cardSecurityCode'] as String,
+  );
+}
+
+Map<String, dynamic> _$PlaceSavedCreditCardOrderArgumentsToJson(
+        PlaceSavedCreditCardOrderArguments instance) =>
+    <String, dynamic>{
+      'addressId': instance.addressId,
+      'voucherId': instance.voucherId,
+      'savedCardId': instance.savedCardId,
+      'cardSecurityCode': instance.cardSecurityCode,
     };

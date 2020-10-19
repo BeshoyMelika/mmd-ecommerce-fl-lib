@@ -54,11 +54,36 @@ class PaymentApiManager extends BaseApiManager {
 
   static Future<void> savedCardsApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient()
-        .query(QueryOptions(documentNode: SavedCardsApiQuery().document));
+        .query(QueryOptions(documentNode: SavedCardsQuery().document));
     if (result.hasException) {
       fail(ApiErrorHelper.handle(result));
     } else {
-      success(SavedCardList(SavedCardsApi$Query.fromJson(result.data).getSavedCards));
+      success(
+          SavedCardList(SavedCards$Query.fromJson(result.data).getSavedCards));
+    }
+  }
+
+  static Future<void> placeSavedCreditCardOrderApi(
+      String addressId,
+      String voucherId,
+      String savedCardId,
+      String cvv,
+      Function success,
+      Function fail) async {
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
+        documentNode: PlaceSavedCreditCardOrderMutation().document,
+        variables: PlaceSavedCreditCardOrderArguments(
+          addressId: addressId,
+          voucherId: voucherId,
+          savedCardId: savedCardId,
+          cardSecurityCode: cvv,
+        ).toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(PlaceSavedCreditCardOrderModel(
+          PlaceSavedCreditCardOrder$Mutation.fromJson(result.data)
+              .placeSavedCreditCardOrder));
     }
   }
 }

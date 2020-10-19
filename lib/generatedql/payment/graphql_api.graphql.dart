@@ -96,11 +96,11 @@ class GetOrderBillingStatus$Query with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class SavedCardsApi$Query$SavedCard with EquatableMixin {
-  SavedCardsApi$Query$SavedCard();
+class SavedCards$Query$SavedCard with EquatableMixin {
+  SavedCards$Query$SavedCard();
 
-  factory SavedCardsApi$Query$SavedCard.fromJson(Map<String, dynamic> json) =>
-      _$SavedCardsApi$Query$SavedCardFromJson(json);
+  factory SavedCards$Query$SavedCard.fromJson(Map<String, dynamic> json) =>
+      _$SavedCards$Query$SavedCardFromJson(json);
 
   String id;
 
@@ -122,21 +122,83 @@ class SavedCardsApi$Query$SavedCard with EquatableMixin {
   @override
   List<Object> get props =>
       [id, cardHolderName, cardNumber, paymentOption, expiryDate, tokenName];
-  Map<String, dynamic> toJson() => _$SavedCardsApi$Query$SavedCardToJson(this);
+  Map<String, dynamic> toJson() => _$SavedCards$Query$SavedCardToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class SavedCardsApi$Query with EquatableMixin {
-  SavedCardsApi$Query();
+class SavedCards$Query with EquatableMixin {
+  SavedCards$Query();
 
-  factory SavedCardsApi$Query.fromJson(Map<String, dynamic> json) =>
-      _$SavedCardsApi$QueryFromJson(json);
+  factory SavedCards$Query.fromJson(Map<String, dynamic> json) =>
+      _$SavedCards$QueryFromJson(json);
 
-  List<SavedCardsApi$Query$SavedCard> getSavedCards;
+  List<SavedCards$Query$SavedCard> getSavedCards;
 
   @override
   List<Object> get props => [getSavedCards];
-  Map<String, dynamic> toJson() => _$SavedCardsApi$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$SavedCards$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
+    with EquatableMixin {
+  PlaceSavedCreditCardOrder$Mutation$PurchaseParameters();
+
+  factory PlaceSavedCreditCardOrder$Mutation$PurchaseParameters.fromJson(
+          Map<String, dynamic> json) =>
+      _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersFromJson(json);
+
+  @JsonKey(name: 'merchant_identifier')
+  String merchantIdentifier;
+
+  @JsonKey(name: 'access_code')
+  String accessCode;
+
+  String currency;
+
+  String language;
+
+  String command;
+
+  @JsonKey(name: 'return_url')
+  String returnUrl;
+
+  @JsonKey(name: 'customer_ip')
+  String customerIp;
+
+  @JsonKey(name: 'token_name')
+  String tokenName;
+
+  @override
+  List<Object> get props => [
+        merchantIdentifier,
+        accessCode,
+        currency,
+        language,
+        command,
+        returnUrl,
+        customerIp,
+        tokenName
+      ];
+  Map<String, dynamic> toJson() =>
+      _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class PlaceSavedCreditCardOrder$Mutation with EquatableMixin {
+  PlaceSavedCreditCardOrder$Mutation();
+
+  factory PlaceSavedCreditCardOrder$Mutation.fromJson(
+          Map<String, dynamic> json) =>
+      _$PlaceSavedCreditCardOrder$MutationFromJson(json);
+
+  PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
+      placeSavedCreditCardOrder;
+
+  @override
+  List<Object> get props => [placeSavedCreditCardOrder];
+  Map<String, dynamic> toJson() =>
+      _$PlaceSavedCreditCardOrder$MutationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -410,15 +472,14 @@ class GetOrderBillingStatusQuery extends GraphQLQuery<
       GetOrderBillingStatus$Query.fromJson(json);
 }
 
-class SavedCardsApiQuery
-    extends GraphQLQuery<SavedCardsApi$Query, JsonSerializable> {
-  SavedCardsApiQuery();
+class SavedCardsQuery extends GraphQLQuery<SavedCards$Query, JsonSerializable> {
+  SavedCardsQuery();
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'SavedCardsApi'),
+        name: NameNode(value: 'SavedCards'),
         variableDefinitions: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
@@ -469,11 +530,167 @@ class SavedCardsApiQuery
   ]);
 
   @override
-  final String operationName = 'SavedCardsApi';
+  final String operationName = 'SavedCards';
 
   @override
   List<Object> get props => [document, operationName];
   @override
-  SavedCardsApi$Query parse(Map<String, dynamic> json) =>
-      SavedCardsApi$Query.fromJson(json);
+  SavedCards$Query parse(Map<String, dynamic> json) =>
+      SavedCards$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class PlaceSavedCreditCardOrderArguments extends JsonSerializable
+    with EquatableMixin {
+  PlaceSavedCreditCardOrderArguments(
+      {@required this.addressId,
+      this.voucherId,
+      @required this.savedCardId,
+      @required this.cardSecurityCode});
+
+  @override
+  factory PlaceSavedCreditCardOrderArguments.fromJson(
+          Map<String, dynamic> json) =>
+      _$PlaceSavedCreditCardOrderArgumentsFromJson(json);
+
+  final String addressId;
+
+  final String voucherId;
+
+  final String savedCardId;
+
+  final String cardSecurityCode;
+
+  @override
+  List<Object> get props =>
+      [addressId, voucherId, savedCardId, cardSecurityCode];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$PlaceSavedCreditCardOrderArgumentsToJson(this);
+}
+
+class PlaceSavedCreditCardOrderMutation extends GraphQLQuery<
+    PlaceSavedCreditCardOrder$Mutation, PlaceSavedCreditCardOrderArguments> {
+  PlaceSavedCreditCardOrderMutation({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'PlaceSavedCreditCardOrder'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'addressId')),
+              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'voucherId')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'savedCardId')),
+              type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'cardSecurityCode')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'placeSavedCreditCardOrder'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'input'),
+                    value: ObjectValueNode(fields: [
+                      ObjectFieldNode(
+                          name: NameNode(value: 'address_id'),
+                          value:
+                              VariableNode(name: NameNode(value: 'addressId'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'voucher_id'),
+                          value:
+                              VariableNode(name: NameNode(value: 'voucherId')))
+                    ])),
+                ArgumentNode(
+                    name: NameNode(value: 'saved_card_id'),
+                    value: VariableNode(name: NameNode(value: 'savedCardId'))),
+                ArgumentNode(
+                    name: NameNode(value: 'card_security_code'),
+                    value:
+                        VariableNode(name: NameNode(value: 'cardSecurityCode')))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'merchant_identifier'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'access_code'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'currency'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'language'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'command'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'return_url'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'customer_ip'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'token_name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'PlaceSavedCreditCardOrder';
+
+  @override
+  final PlaceSavedCreditCardOrderArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  PlaceSavedCreditCardOrder$Mutation parse(Map<String, dynamic> json) =>
+      PlaceSavedCreditCardOrder$Mutation.fromJson(json);
 }

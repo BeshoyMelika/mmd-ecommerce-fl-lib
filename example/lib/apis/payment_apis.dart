@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
-paymentApi(Function success) async {
+placeCreditCardOrderApi(Function success) async {
   await PaymentApiManager.placeCreditCardOrderApi("50", null,
       (PlaceCreditCardOrderModel model) {
     success(model);
@@ -37,7 +37,11 @@ orderStateApi(String merchantReference, BuildContext ctx) async {
 }
 
 savedCardApi() async {
-  await PaymentApiManager.savedCardsApi((SavedCardList list) {
-    print(list.savedCards.length);
-  }, (ApiErrorModel error) {});
+  await PaymentApiManager.savedCardsApi(
+      (SavedCardList list) {}, (ApiErrorModel error) {});
+}
+
+placeSavedCreditCardOrdersApi() async {
+  await PaymentApiManager.placeSavedCreditCardOrderApi("43", null, "12", "123",
+      (PlaceSavedCreditCardOrderModel model) {}, (ApiErrorModel error) {});
 }

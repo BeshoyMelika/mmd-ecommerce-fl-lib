@@ -1,4 +1,4 @@
-query SavedCardsApi(){
+query SavedCards(){
   getSavedCards() {
     id
     card_holder_name
