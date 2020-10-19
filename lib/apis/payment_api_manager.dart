@@ -51,4 +51,14 @@ class PaymentApiManager extends BaseApiManager {
           .getOrderBillingStatus);
     }
   }
+
+  static Future<void> savedCardsApi(Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient()
+        .query(QueryOptions(documentNode: SavedCardsApiQuery().document));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(SavedCardList(SavedCardsApi$Query.fromJson(result.data).getSavedCards));
+    }
+  }
 }

@@ -1,0 +1,11 @@
+query SavedCardsApi(){
+  getSavedCards() {
+    id
+    card_holder_name
+    card_number
+    payment_option
+	  expiry_date
+    token_name
+  }
+}
+

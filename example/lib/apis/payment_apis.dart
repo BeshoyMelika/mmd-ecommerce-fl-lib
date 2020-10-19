@@ -35,3 +35,9 @@ orderStateApi(String merchantReference, BuildContext ctx) async {
     );
   }, (ApiErrorModel error) {});
 }
+
+savedCardApi() async {
+  await PaymentApiManager.savedCardsApi((SavedCardList list) {
+    print(list.savedCards.length);
+  }, (ApiErrorModel error) {});
+}

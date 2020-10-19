@@ -143,6 +143,12 @@ class BrandList {
   BrandList(this.brand);
 }
 
+class SavedCardList {
+  final List<SavedCardsApi$Query$SavedCard> savedCards;
+
+  SavedCardList(this.savedCards);
+}
+
 class CartItemModel {
   final GetCart$Query$Cart$CartItem cartItem;
 
