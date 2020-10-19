@@ -199,6 +199,26 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(color: Colors.white),
             ),
           ),
+          RaisedButton(
+            color: Colors.indigo,
+            onPressed: () {
+              savedCardApi();
+            },
+            child: Text(
+              "saved Card",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          RaisedButton(
+            color: Colors.indigo,
+            onPressed: () {
+              placeSavedCreditCardOrdersApi();
+            },
+            child: Text(
+              "place saved credit card order Api",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
           paymentWidget(),
           // authField(),
         ],
@@ -214,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: RaisedButton(
         color: Colors.indigo,
         onPressed: () async {
-          await paymentApi((PlaceCreditCardOrderModel model) {
+          await placeCreditCardOrderApi((PlaceCreditCardOrderModel model) {
             // open payment screen ...
             Navigator.push(
               context,

@@ -1,0 +1,15 @@
+mutation PlaceSavedCreditCardOrder($addressId: ID!, $voucherId: ID,$savedCardId:ID!,$cardSecurityCode:String!){
+    placeSavedCreditCardOrder(input: {address_id: $addressId, voucher_id: $voucherId},
+    saved_card_id: $savedCardId,
+    card_security_code: $cardSecurityCode
+    ){
+        merchant_identifier
+        access_code
+        currency
+        language
+        command
+        return_url
+        customer_ip
+        token_name
+    }
+}

@@ -143,6 +143,12 @@ class BrandList {
   BrandList(this.brand);
 }
 
+class SavedCardList {
+  final List<SavedCards$Query$SavedCard> savedCards;
+
+  SavedCardList(this.savedCards);
+}
+
 class CartItemModel {
   final GetCart$Query$Cart$CartItem cartItem;
 
@@ -153,4 +159,11 @@ class PlaceCreditCardOrderModel {
   final PlaceCreditCardOrder$Mutation$Tokenization tokenization;
 
   PlaceCreditCardOrderModel(this.tokenization);
+}
+
+class PlaceSavedCreditCardOrderModel {
+  final PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
+      placeSavedCreditCardOrder;
+
+  PlaceSavedCreditCardOrderModel(this.placeSavedCreditCardOrder);
 }
