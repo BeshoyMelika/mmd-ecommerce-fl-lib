@@ -8,6 +8,20 @@ import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class GetOrderBillingStatus$Query with EquatableMixin {
+  GetOrderBillingStatus$Query();
+
+  factory GetOrderBillingStatus$Query.fromJson(Map<String, dynamic> json) =>
+      _$GetOrderBillingStatus$QueryFromJson(json);
+
+  String getOrderBillingStatus;
+
+  @override
+  List<Object> get props => [getOrderBillingStatus];
+  Map<String, dynamic> toJson() => _$GetOrderBillingStatus$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class PlaceCashOnDeliveryOrder$Mutation with EquatableMixin {
   PlaceCashOnDeliveryOrder$Mutation();
 
@@ -82,17 +96,67 @@ class PlaceCreditCardOrder$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class GetOrderBillingStatus$Query with EquatableMixin {
-  GetOrderBillingStatus$Query();
-
-  factory GetOrderBillingStatus$Query.fromJson(Map<String, dynamic> json) =>
-      _$GetOrderBillingStatus$QueryFromJson(json);
-
-  String getOrderBillingStatus;
+class GetOrderBillingStatusArguments extends JsonSerializable
+    with EquatableMixin {
+  GetOrderBillingStatusArguments({@required this.merchantReference});
 
   @override
-  List<Object> get props => [getOrderBillingStatus];
-  Map<String, dynamic> toJson() => _$GetOrderBillingStatus$QueryToJson(this);
+  factory GetOrderBillingStatusArguments.fromJson(Map<String, dynamic> json) =>
+      _$GetOrderBillingStatusArgumentsFromJson(json);
+
+  final String merchantReference;
+
+  @override
+  List<Object> get props => [merchantReference];
+  @override
+  Map<String, dynamic> toJson() => _$GetOrderBillingStatusArgumentsToJson(this);
+}
+
+class GetOrderBillingStatusQuery extends GraphQLQuery<
+    GetOrderBillingStatus$Query, GetOrderBillingStatusArguments> {
+  GetOrderBillingStatusQuery({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'GetOrderBillingStatus'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable:
+                  VariableNode(name: NameNode(value: 'merchantReference')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'getOrderBillingStatus'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'merchant_reference'),
+                    value: VariableNode(
+                        name: NameNode(value: 'merchantReference')))
+              ],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'GetOrderBillingStatus';
+
+  @override
+  final GetOrderBillingStatusArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  GetOrderBillingStatus$Query parse(Map<String, dynamic> json) =>
+      GetOrderBillingStatus$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -300,68 +364,4 @@ class PlaceCreditCardOrderMutation extends GraphQLQuery<
   @override
   PlaceCreditCardOrder$Mutation parse(Map<String, dynamic> json) =>
       PlaceCreditCardOrder$Mutation.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class GetOrderBillingStatusArguments extends JsonSerializable
-    with EquatableMixin {
-  GetOrderBillingStatusArguments({@required this.merchantReference});
-
-  @override
-  factory GetOrderBillingStatusArguments.fromJson(Map<String, dynamic> json) =>
-      _$GetOrderBillingStatusArgumentsFromJson(json);
-
-  final String merchantReference;
-
-  @override
-  List<Object> get props => [merchantReference];
-  @override
-  Map<String, dynamic> toJson() => _$GetOrderBillingStatusArgumentsToJson(this);
-}
-
-class GetOrderBillingStatusQuery extends GraphQLQuery<
-    GetOrderBillingStatus$Query, GetOrderBillingStatusArguments> {
-  GetOrderBillingStatusQuery({this.variables});
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.query,
-        name: NameNode(value: 'GetOrderBillingStatus'),
-        variableDefinitions: [
-          VariableDefinitionNode(
-              variable:
-                  VariableNode(name: NameNode(value: 'merchantReference')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
-              defaultValue: DefaultValueNode(value: null),
-              directives: [])
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'getOrderBillingStatus'),
-              alias: null,
-              arguments: [
-                ArgumentNode(
-                    name: NameNode(value: 'merchant_reference'),
-                    value: VariableNode(
-                        name: NameNode(value: 'merchantReference')))
-              ],
-              directives: [],
-              selectionSet: null)
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'GetOrderBillingStatus';
-
-  @override
-  final GetOrderBillingStatusArguments variables;
-
-  @override
-  List<Object> get props => [document, operationName, variables];
-  @override
-  GetOrderBillingStatus$Query parse(Map<String, dynamic> json) =>
-      GetOrderBillingStatus$Query.fromJson(json);
 }

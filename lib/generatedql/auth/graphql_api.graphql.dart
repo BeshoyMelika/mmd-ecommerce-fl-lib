@@ -7,12 +7,6 @@ import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
-mixin UserMixin {
-  String id;
-  String name;
-  String email;
-  String mobile;
-}
 mixin AuthPayloadMixin {
   @JsonKey(name: 'access_token')
   String accessToken;
@@ -23,45 +17,25 @@ mixin AuthPayloadMixin {
   @JsonKey(name: 'token_type')
   String tokenType;
 }
-
-@JsonSerializable(explicitToJson: true)
-class SignUp$Mutation$User with EquatableMixin, UserMixin {
-  SignUp$Mutation$User();
-
-  factory SignUp$Mutation$User.fromJson(Map<String, dynamic> json) =>
-      _$SignUp$Mutation$UserFromJson(json);
-
-  @override
-  List<Object> get props => [id, name, email, mobile];
-  Map<String, dynamic> toJson() => _$SignUp$Mutation$UserToJson(this);
+mixin UserMixin {
+  String id;
+  String name;
+  String email;
+  String mobile;
 }
 
 @JsonSerializable(explicitToJson: true)
-class SignUp$Mutation with EquatableMixin {
-  SignUp$Mutation();
+class ForgetPassword$Mutation with EquatableMixin {
+  ForgetPassword$Mutation();
 
-  factory SignUp$Mutation.fromJson(Map<String, dynamic> json) =>
-      _$SignUp$MutationFromJson(json);
+  factory ForgetPassword$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$ForgetPassword$MutationFromJson(json);
 
-  SignUp$Mutation$User register;
-
-  @override
-  List<Object> get props => [register];
-  Map<String, dynamic> toJson() => _$SignUp$MutationToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class ResetPassword$Mutation with EquatableMixin {
-  ResetPassword$Mutation();
-
-  factory ResetPassword$Mutation.fromJson(Map<String, dynamic> json) =>
-      _$ResetPassword$MutationFromJson(json);
-
-  bool resetPassword;
+  bool forgetPassword;
 
   @override
-  List<Object> get props => [resetPassword];
-  Map<String, dynamic> toJson() => _$ResetPassword$MutationToJson(this);
+  List<Object> get props => [forgetPassword];
+  Map<String, dynamic> toJson() => _$ForgetPassword$MutationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -79,17 +53,17 @@ class Logout$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ForgetPassword$Mutation with EquatableMixin {
-  ForgetPassword$Mutation();
+class ResetPassword$Mutation with EquatableMixin {
+  ResetPassword$Mutation();
 
-  factory ForgetPassword$Mutation.fromJson(Map<String, dynamic> json) =>
-      _$ForgetPassword$MutationFromJson(json);
+  factory ResetPassword$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$ResetPassword$MutationFromJson(json);
 
-  bool forgetPassword;
+  bool resetPassword;
 
   @override
-  List<Object> get props => [forgetPassword];
-  Map<String, dynamic> toJson() => _$ForgetPassword$MutationToJson(this);
+  List<Object> get props => [resetPassword];
+  Map<String, dynamic> toJson() => _$ResetPassword$MutationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -119,49 +93,59 @@ class SignIn$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class SignUpArguments extends JsonSerializable with EquatableMixin {
-  SignUpArguments(
-      {@required this.name, @required this.email, @required this.password});
+class SignUp$Mutation$User with EquatableMixin, UserMixin {
+  SignUp$Mutation$User();
+
+  factory SignUp$Mutation$User.fromJson(Map<String, dynamic> json) =>
+      _$SignUp$Mutation$UserFromJson(json);
 
   @override
-  factory SignUpArguments.fromJson(Map<String, dynamic> json) =>
-      _$SignUpArgumentsFromJson(json);
+  List<Object> get props => [id, name, email, mobile];
+  Map<String, dynamic> toJson() => _$SignUp$Mutation$UserToJson(this);
+}
 
-  final String name;
+@JsonSerializable(explicitToJson: true)
+class SignUp$Mutation with EquatableMixin {
+  SignUp$Mutation();
+
+  factory SignUp$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$SignUp$MutationFromJson(json);
+
+  SignUp$Mutation$User register;
+
+  @override
+  List<Object> get props => [register];
+  Map<String, dynamic> toJson() => _$SignUp$MutationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class ForgetPasswordArguments extends JsonSerializable with EquatableMixin {
+  ForgetPasswordArguments({@required this.email});
+
+  @override
+  factory ForgetPasswordArguments.fromJson(Map<String, dynamic> json) =>
+      _$ForgetPasswordArgumentsFromJson(json);
 
   final String email;
 
-  final String password;
-
   @override
-  List<Object> get props => [name, email, password];
+  List<Object> get props => [email];
   @override
-  Map<String, dynamic> toJson() => _$SignUpArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$ForgetPasswordArgumentsToJson(this);
 }
 
-class SignUpMutation extends GraphQLQuery<SignUp$Mutation, SignUpArguments> {
-  SignUpMutation({this.variables});
+class ForgetPasswordMutation
+    extends GraphQLQuery<ForgetPassword$Mutation, ForgetPasswordArguments> {
+  ForgetPasswordMutation({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.mutation,
-        name: NameNode(value: 'SignUp'),
+        name: NameNode(value: 'ForgetPassword'),
         variableDefinitions: [
           VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'name')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
-              defaultValue: DefaultValueNode(value: null),
-              directives: []),
-          VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'email')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
-              defaultValue: DefaultValueNode(value: null),
-              directives: []),
-          VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'password')),
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
@@ -170,60 +154,44 @@ class SignUpMutation extends GraphQLQuery<SignUp$Mutation, SignUpArguments> {
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-              name: NameNode(value: 'register'),
+              name: NameNode(value: 'forgetPassword'),
               alias: null,
               arguments: [
                 ArgumentNode(
-                    name: NameNode(value: 'input'),
-                    value: ObjectValueNode(fields: [
-                      ObjectFieldNode(
-                          name: NameNode(value: 'name'),
-                          value: VariableNode(name: NameNode(value: 'name'))),
-                      ObjectFieldNode(
-                          name: NameNode(value: 'email'),
-                          value: VariableNode(name: NameNode(value: 'email'))),
-                      ObjectFieldNode(
-                          name: NameNode(value: 'password'),
-                          value:
-                              VariableNode(name: NameNode(value: 'password'))),
-                      ObjectFieldNode(
-                          name: NameNode(value: 'password_confirmation'),
-                          value:
-                              VariableNode(name: NameNode(value: 'password')))
-                    ]))
+                    name: NameNode(value: 'email'),
+                    value: VariableNode(name: NameNode(value: 'email')))
               ],
               directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FragmentSpreadNode(
-                    name: NameNode(value: 'User'), directives: [])
-              ]))
-        ])),
-    FragmentDefinitionNode(
-        name: NameNode(value: 'User'),
-        typeCondition: TypeConditionNode(
-            on: NamedTypeNode(name: NameNode(value: 'User'), isNonNull: false)),
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'ForgetPassword';
+
+  @override
+  final ForgetPasswordArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  ForgetPassword$Mutation parse(Map<String, dynamic> json) =>
+      ForgetPassword$Mutation.fromJson(json);
+}
+
+class LogoutMutation extends GraphQLQuery<Logout$Mutation, JsonSerializable> {
+  LogoutMutation();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'Logout'),
+        variableDefinitions: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-              name: NameNode(value: 'id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null),
-          FieldNode(
-              name: NameNode(value: 'name'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null),
-          FieldNode(
-              name: NameNode(value: 'email'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null),
-          FieldNode(
-              name: NameNode(value: 'mobile'),
+              name: NameNode(value: 'logout'),
               alias: null,
               arguments: [],
               directives: [],
@@ -232,16 +200,13 @@ class SignUpMutation extends GraphQLQuery<SignUp$Mutation, SignUpArguments> {
   ]);
 
   @override
-  final String operationName = 'SignUp';
+  final String operationName = 'Logout';
 
   @override
-  final SignUpArguments variables;
-
+  List<Object> get props => [document, operationName];
   @override
-  List<Object> get props => [document, operationName, variables];
-  @override
-  SignUp$Mutation parse(Map<String, dynamic> json) =>
-      SignUp$Mutation.fromJson(json);
+  Logout$Mutation parse(Map<String, dynamic> json) =>
+      Logout$Mutation.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -331,97 +296,6 @@ class ResetPasswordMutation
   @override
   ResetPassword$Mutation parse(Map<String, dynamic> json) =>
       ResetPassword$Mutation.fromJson(json);
-}
-
-class LogoutMutation extends GraphQLQuery<Logout$Mutation, JsonSerializable> {
-  LogoutMutation();
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.mutation,
-        name: NameNode(value: 'Logout'),
-        variableDefinitions: [],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'logout'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null)
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'Logout';
-
-  @override
-  List<Object> get props => [document, operationName];
-  @override
-  Logout$Mutation parse(Map<String, dynamic> json) =>
-      Logout$Mutation.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class ForgetPasswordArguments extends JsonSerializable with EquatableMixin {
-  ForgetPasswordArguments({@required this.email});
-
-  @override
-  factory ForgetPasswordArguments.fromJson(Map<String, dynamic> json) =>
-      _$ForgetPasswordArgumentsFromJson(json);
-
-  final String email;
-
-  @override
-  List<Object> get props => [email];
-  @override
-  Map<String, dynamic> toJson() => _$ForgetPasswordArgumentsToJson(this);
-}
-
-class ForgetPasswordMutation
-    extends GraphQLQuery<ForgetPassword$Mutation, ForgetPasswordArguments> {
-  ForgetPasswordMutation({this.variables});
-
-  @override
-  final DocumentNode document = DocumentNode(definitions: [
-    OperationDefinitionNode(
-        type: OperationType.mutation,
-        name: NameNode(value: 'ForgetPassword'),
-        variableDefinitions: [
-          VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'email')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
-              defaultValue: DefaultValueNode(value: null),
-              directives: [])
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'forgetPassword'),
-              alias: null,
-              arguments: [
-                ArgumentNode(
-                    name: NameNode(value: 'email'),
-                    value: VariableNode(name: NameNode(value: 'email')))
-              ],
-              directives: [],
-              selectionSet: null)
-        ]))
-  ]);
-
-  @override
-  final String operationName = 'ForgetPassword';
-
-  @override
-  final ForgetPasswordArguments variables;
-
-  @override
-  List<Object> get props => [document, operationName, variables];
-  @override
-  ForgetPassword$Mutation parse(Map<String, dynamic> json) =>
-      ForgetPassword$Mutation.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -548,4 +422,130 @@ class SignInMutation extends GraphQLQuery<SignIn$Mutation, SignInArguments> {
   @override
   SignIn$Mutation parse(Map<String, dynamic> json) =>
       SignIn$Mutation.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SignUpArguments extends JsonSerializable with EquatableMixin {
+  SignUpArguments(
+      {@required this.name, @required this.email, @required this.password});
+
+  @override
+  factory SignUpArguments.fromJson(Map<String, dynamic> json) =>
+      _$SignUpArgumentsFromJson(json);
+
+  final String name;
+
+  final String email;
+
+  final String password;
+
+  @override
+  List<Object> get props => [name, email, password];
+  @override
+  Map<String, dynamic> toJson() => _$SignUpArgumentsToJson(this);
+}
+
+class SignUpMutation extends GraphQLQuery<SignUp$Mutation, SignUpArguments> {
+  SignUpMutation({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'SignUp'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'name')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'email')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'password')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'register'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'input'),
+                    value: ObjectValueNode(fields: [
+                      ObjectFieldNode(
+                          name: NameNode(value: 'name'),
+                          value: VariableNode(name: NameNode(value: 'name'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'email'),
+                          value: VariableNode(name: NameNode(value: 'email'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'password'),
+                          value:
+                              VariableNode(name: NameNode(value: 'password'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'password_confirmation'),
+                          value:
+                              VariableNode(name: NameNode(value: 'password')))
+                    ]))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                    name: NameNode(value: 'User'), directives: [])
+              ]))
+        ])),
+    FragmentDefinitionNode(
+        name: NameNode(value: 'User'),
+        typeCondition: TypeConditionNode(
+            on: NamedTypeNode(name: NameNode(value: 'User'), isNonNull: false)),
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'email'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'mobile'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'SignUp';
+
+  @override
+  final SignUpArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  SignUp$Mutation parse(Map<String, dynamic> json) =>
+      SignUp$Mutation.fromJson(json);
 }

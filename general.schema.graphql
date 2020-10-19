@@ -34,6 +34,7 @@ type Query {
     page: Int
   ): OrderPaginator
   getOrderBillingStatus(merchant_reference: String): String
+  getSavedCards: [SavedCard]
   sliders: [Slider!]
   ratings(
     product_id: ID!
@@ -278,6 +279,15 @@ type OrderItem {
   product: Product
 }
 
+type SavedCard {
+  id: ID
+  card_holder_name: String
+  card_number: String
+  payment_option: String
+  expiry_date: String
+  token_name: String
+}
+
 type Slider {
   id: ID
   title: String
@@ -330,6 +340,11 @@ type Mutation {
   updateCart(items: [CartInput!]!): Boolean
   placeCashOnDeliveryOrder(input: OrderInput): Boolean
   placeCreditCardOrder(input: OrderInput): Tokenization
+  placeSavedCreditCardOrder(
+    input: OrderInput
+    saved_card_id: ID!
+    card_security_code: String!
+  ): PurchaseParameters
   addReview(input: ReviewInput): Boolean
   addItemToWishlist(input: WishlistInput): Boolean
   deleteItemFromWishlist(input: WishlistInput): Boolean
@@ -392,6 +407,22 @@ type Tokenization {
   return_url: String
   merchant_reference: String
   signature: String
+}
+
+type PurchaseParameters {
+  merchant_identifier: String
+  access_code: String
+  currency: String
+  language: String
+  command: String
+  return_url: String
+  customer_ip: String
+  token_name: String
+  merchant_reference: String
+  customer_email: String
+  remember_me: String
+  amount: String
+  card_security_code: String
 }
 
 input ReviewInput {

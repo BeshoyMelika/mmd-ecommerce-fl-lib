@@ -6,16 +6,6 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UpdateCart$Mutation _$UpdateCart$MutationFromJson(Map<String, dynamic> json) {
-  return UpdateCart$Mutation()..updateCart = json['updateCart'] as bool;
-}
-
-Map<String, dynamic> _$UpdateCart$MutationToJson(
-        UpdateCart$Mutation instance) =>
-    <String, dynamic>{
-      'updateCart': instance.updateCart,
-    };
-
 AddToCart$Mutation _$AddToCart$MutationFromJson(Map<String, dynamic> json) {
   return AddToCart$Mutation()..addToCart = json['addToCart'] as bool;
 }
@@ -23,39 +13,6 @@ AddToCart$Mutation _$AddToCart$MutationFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AddToCart$MutationToJson(AddToCart$Mutation instance) =>
     <String, dynamic>{
       'addToCart': instance.addToCart,
-    };
-
-GetVoucherByCode$Query$Voucher _$GetVoucherByCode$Query$VoucherFromJson(
-    Map<String, dynamic> json) {
-  return GetVoucherByCode$Query$Voucher()
-    ..id = json['id'] as String
-    ..code = json['code'] as String
-    ..discount = json['discount'] as int
-    ..discountType = json['discount_type'] as String;
-}
-
-Map<String, dynamic> _$GetVoucherByCode$Query$VoucherToJson(
-        GetVoucherByCode$Query$Voucher instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'code': instance.code,
-      'discount': instance.discount,
-      'discount_type': instance.discountType,
-    };
-
-GetVoucherByCode$Query _$GetVoucherByCode$QueryFromJson(
-    Map<String, dynamic> json) {
-  return GetVoucherByCode$Query()
-    ..getVoucherByCode = json['getVoucherByCode'] == null
-        ? null
-        : GetVoucherByCode$Query$Voucher.fromJson(
-            json['getVoucherByCode'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$GetVoucherByCode$QueryToJson(
-        GetVoucherByCode$Query instance) =>
-    <String, dynamic>{
-      'getVoucherByCode': instance.getVoucherByCode?.toJson(),
     };
 
 GetCart$Query$Cart$CartItem$Product
@@ -208,6 +165,39 @@ Map<String, dynamic> _$ProductMixin$ProductDataToJson(
       'category': instance.category?.toJson(),
     };
 
+GetVoucherByCode$Query$Voucher _$GetVoucherByCode$Query$VoucherFromJson(
+    Map<String, dynamic> json) {
+  return GetVoucherByCode$Query$Voucher()
+    ..id = json['id'] as String
+    ..code = json['code'] as String
+    ..discount = json['discount'] as int
+    ..discountType = json['discount_type'] as String;
+}
+
+Map<String, dynamic> _$GetVoucherByCode$Query$VoucherToJson(
+        GetVoucherByCode$Query$Voucher instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'code': instance.code,
+      'discount': instance.discount,
+      'discount_type': instance.discountType,
+    };
+
+GetVoucherByCode$Query _$GetVoucherByCode$QueryFromJson(
+    Map<String, dynamic> json) {
+  return GetVoucherByCode$Query()
+    ..getVoucherByCode = json['getVoucherByCode'] == null
+        ? null
+        : GetVoucherByCode$Query$Voucher.fromJson(
+            json['getVoucherByCode'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$GetVoucherByCode$QueryToJson(
+        GetVoucherByCode$Query instance) =>
+    <String, dynamic>{
+      'getVoucherByCode': instance.getVoucherByCode?.toJson(),
+    };
+
 ShippingFees$Query _$ShippingFees$QueryFromJson(Map<String, dynamic> json) {
   return ShippingFees$Query()..shippingFees = json['shippingFees'] as String;
 }
@@ -217,18 +207,14 @@ Map<String, dynamic> _$ShippingFees$QueryToJson(ShippingFees$Query instance) =>
       'shippingFees': instance.shippingFees,
     };
 
-UpdateCartArguments _$UpdateCartArgumentsFromJson(Map<String, dynamic> json) {
-  return UpdateCartArguments(
-    productId: json['productId'] as String,
-    quantity: json['quantity'] as int,
-  );
+UpdateCart$Mutation _$UpdateCart$MutationFromJson(Map<String, dynamic> json) {
+  return UpdateCart$Mutation()..updateCart = json['updateCart'] as bool;
 }
 
-Map<String, dynamic> _$UpdateCartArgumentsToJson(
-        UpdateCartArguments instance) =>
+Map<String, dynamic> _$UpdateCart$MutationToJson(
+        UpdateCart$Mutation instance) =>
     <String, dynamic>{
-      'productId': instance.productId,
-      'quantity': instance.quantity,
+      'updateCart': instance.updateCart,
     };
 
 AddToCartArguments _$AddToCartArgumentsFromJson(Map<String, dynamic> json) {
@@ -270,4 +256,18 @@ Map<String, dynamic> _$ShippingFeesArgumentsToJson(
     <String, dynamic>{
       'addressId': instance.addressId,
       'voucherId': instance.voucherId,
+    };
+
+UpdateCartArguments _$UpdateCartArgumentsFromJson(Map<String, dynamic> json) {
+  return UpdateCartArguments(
+    productId: json['productId'] as String,
+    quantity: json['quantity'] as int,
+  );
+}
+
+Map<String, dynamic> _$UpdateCartArgumentsToJson(
+        UpdateCartArguments instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'quantity': instance.quantity,
     };
