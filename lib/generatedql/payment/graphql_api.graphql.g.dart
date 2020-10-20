@@ -120,7 +120,12 @@ PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
     ..command = json['command'] as String
     ..returnUrl = json['return_url'] as String
     ..customerIp = json['customer_ip'] as String
-    ..tokenName = json['token_name'] as String;
+    ..tokenName = json['token_name'] as String
+    ..merchantReference = json['merchant_reference'] as String
+    ..customerEmail = json['customer_email'] as String
+    ..rememberMe = json['remember_me'] as String
+    ..amount = json['amount'] as String
+    ..cardSecurityCode = json['card_security_code'] as String;
 }
 
 Map<String, dynamic>
@@ -135,6 +140,11 @@ Map<String, dynamic>
           'return_url': instance.returnUrl,
           'customer_ip': instance.customerIp,
           'token_name': instance.tokenName,
+          'merchant_reference': instance.merchantReference,
+          'customer_email': instance.customerEmail,
+          'remember_me': instance.rememberMe,
+          'amount': instance.amount,
+          'card_security_code': instance.cardSecurityCode,
         };
 
 PlaceSavedCreditCardOrder$Mutation _$PlaceSavedCreditCardOrder$MutationFromJson(

@@ -11,5 +11,10 @@ mutation PlaceSavedCreditCardOrder($addressId: ID!, $voucherId: ID,$savedCardId:
         return_url
         customer_ip
         token_name
+        merchant_reference
+        customer_email
+        remember_me
+        amount
+        card_security_code
     }
 }
