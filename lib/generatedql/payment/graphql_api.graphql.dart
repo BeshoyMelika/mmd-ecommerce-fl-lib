@@ -169,6 +169,20 @@ class PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
   @JsonKey(name: 'token_name')
   String tokenName;
 
+  @JsonKey(name: 'merchant_reference')
+  String merchantReference;
+
+  @JsonKey(name: 'customer_email')
+  String customerEmail;
+
+  @JsonKey(name: 'remember_me')
+  String rememberMe;
+
+  String amount;
+
+  @JsonKey(name: 'card_security_code')
+  String cardSecurityCode;
+
   @override
   List<Object> get props => [
         merchantIdentifier,
@@ -178,7 +192,12 @@ class PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
         command,
         returnUrl,
         customerIp,
-        tokenName
+        tokenName,
+        merchantReference,
+        customerEmail,
+        rememberMe,
+        amount,
+        cardSecurityCode
       ];
   Map<String, dynamic> toJson() =>
       _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersToJson(this);
@@ -674,6 +693,36 @@ class PlaceSavedCreditCardOrderMutation extends GraphQLQuery<
                     selectionSet: null),
                 FieldNode(
                     name: NameNode(value: 'token_name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'merchant_reference'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'customer_email'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'remember_me'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'amount'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'card_security_code'),
                     alias: null,
                     arguments: [],
                     directives: [],
