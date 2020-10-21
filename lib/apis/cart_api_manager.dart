@@ -7,7 +7,7 @@ import 'error/api_error_helper.dart';
 class CartApiManager extends BaseApiManager {
   static Future<void> addToCartApi(
       String productId, int quantity, Function success, Function fail) async {
-    var result = await BaseApiManager.mainClient().query(QueryOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: AddToCartMutation().document,
         variables: AddToCartArguments(productId: productId, quantity: quantity)
             .toJson()));
@@ -58,7 +58,7 @@ class CartApiManager extends BaseApiManager {
 
   static Future<void> updateCartApi(
       String productId, int quantity, Function success, Function fail) async {
-    var result = await BaseApiManager.mainClient().query(QueryOptions(
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateCartMutation().document,
         variables: UpdateCartArguments(productId: productId, quantity: quantity)
             .toJson()));

@@ -41,6 +41,7 @@ class PaymentApiManager extends BaseApiManager {
       String merchantReference, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: GetOrderBillingStatusQuery().document,
+        fetchPolicy: FetchPolicy.noCache,
         variables:
             GetOrderBillingStatusArguments(merchantReference: merchantReference)
                 .toJson()));
