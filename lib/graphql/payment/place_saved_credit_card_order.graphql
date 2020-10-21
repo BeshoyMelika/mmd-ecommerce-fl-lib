@@ -16,5 +16,6 @@ mutation PlaceSavedCreditCardOrder($addressId: ID!, $voucherId: ID,$savedCardId:
         remember_me
         amount
         card_security_code
+        signature
     }
 }
