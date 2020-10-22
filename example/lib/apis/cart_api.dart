@@ -12,7 +12,7 @@ shippingFeesApi() async {
 
 addToCard() async {
   await CartApiManager.addToCartApi(
-      "2", 2, (bool success) {}, (ApiErrorModel error) {});
+      "110", 2, (bool success) {}, (ApiErrorModel error) {});
 }
 
 getCard() async {

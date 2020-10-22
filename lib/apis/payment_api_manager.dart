@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mmd_ecommerce_fl_lib/apis/base/base_api_manager.dart';
 import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 import 'package:mmd_ecommerce_fl_lib/generatedql/payment/graphql_api.dart';
 
+import 'base/api_keys.dart';
 import 'error/api_error_helper.dart';
+import 'package:http/http.dart' as http; // to avoid crashing with names ..
 
 class PaymentApiManager extends BaseApiManager {
   static Future<void> placeCreditCardOrderApi(String addressId,
@@ -86,5 +90,32 @@ class PaymentApiManager extends BaseApiManager {
           PlaceSavedCreditCardOrder$Mutation.fromJson(result.data)
               .placeSavedCreditCardOrder));
     }
+  }
+
+  static Future<void> payFortOperationsApi(Map<String, dynamic> data,
+      Function(Map) success, Function(String, String) fail) async {
+    List<String> codeSuccess = ["14", "20"];
+
+    await http
+        .post(OPERATION_URL,
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+            },
+            body: json.encode(data))
+        .then((response) {
+      Map extractedData = json.decode(response.body);
+      if (response.statusCode == 200) {
+        if (codeSuccess.contains(extractedData["status"])) {
+          success(extractedData);
+        } else {
+          fail(extractedData["response_message"], extractedData["status"]);
+        }
+      } else {
+        fail(response.body, response.statusCode.toString());
+      }
+    }).catchError((onError) {
+      fail(onError.toString(), "500");
+    });
   }
 }

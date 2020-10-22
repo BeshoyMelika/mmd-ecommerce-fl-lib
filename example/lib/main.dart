@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/operation_payfort_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
 
 import 'api_keys.dart';
@@ -42,6 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController codeController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  Map map = {};
+  String url;
+  String merchantReference;
 
   @override
   void initState() {
@@ -192,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.black,
             onPressed: () {
               // orderStateApi("100_1601986763");
-              orderStateApi("59_1601907846", this.context);
+              orderStateApi(merchantReference, this.context);
             },
             child: Text(
               "Order State Api",
@@ -212,14 +217,33 @@ class _MyHomePageState extends State<MyHomePage> {
           RaisedButton(
             color: Colors.indigo,
             onPressed: () {
-              placeSavedCreditCardOrdersApi();
+              placeSavedCreditCardOrdersApi((m) {
+                map = m;
+                print(m);
+                merchantReference = m["merchant_reference"];
+              });
             },
             child: Text(
               "place saved credit card order Api",
               style: TextStyle(color: Colors.white),
             ),
           ),
+          RaisedButton(
+            color: Colors.indigo,
+            onPressed: () {
+              operationsPaymentApi(map, (m) {
+                print(m);
+                url = m["3ds_url"];
+              });
+            },
+            child: Text(
+              "operationsApi",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
           paymentWidget(),
+          operationPaymentWidget(),
+
           // authField(),
         ],
       ),
@@ -267,6 +291,44 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               "Payfort Payment Screen",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget operationPaymentWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: RaisedButton(
+        color: Colors.indigo,
+        onPressed: () async {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (ctx) => OperationPayfortScreen(
+                      url: url,
+                      callBack: () {
+                        Navigator.of(context).pop();
+                      },
+                    )),
+          );
+        },
+        child: Row(
+          children: [
+            Icon(
+              Icons.payment,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Operation Payfort Payment Screen",
               style: TextStyle(color: Colors.white),
             ),
           ],
