@@ -125,7 +125,8 @@ PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
     ..customerEmail = json['customer_email'] as String
     ..rememberMe = json['remember_me'] as String
     ..amount = json['amount'] as String
-    ..cardSecurityCode = json['card_security_code'] as String;
+    ..cardSecurityCode = json['card_security_code'] as String
+    ..signature = json['signature'] as String;
 }
 
 Map<String, dynamic>
@@ -145,6 +146,7 @@ Map<String, dynamic>
           'remember_me': instance.rememberMe,
           'amount': instance.amount,
           'card_security_code': instance.cardSecurityCode,
+          'signature': instance.signature,
         };
 
 PlaceSavedCreditCardOrder$Mutation _$PlaceSavedCreditCardOrder$MutationFromJson(

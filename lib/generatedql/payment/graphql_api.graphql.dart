@@ -183,6 +183,8 @@ class PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
   @JsonKey(name: 'card_security_code')
   String cardSecurityCode;
 
+  String signature;
+
   @override
   List<Object> get props => [
         merchantIdentifier,
@@ -197,7 +199,8 @@ class PlaceSavedCreditCardOrder$Mutation$PurchaseParameters
         customerEmail,
         rememberMe,
         amount,
-        cardSecurityCode
+        cardSecurityCode,
+        signature
       ];
   Map<String, dynamic> toJson() =>
       _$PlaceSavedCreditCardOrder$Mutation$PurchaseParametersToJson(this);
@@ -723,6 +726,12 @@ class PlaceSavedCreditCardOrderMutation extends GraphQLQuery<
                     selectionSet: null),
                 FieldNode(
                     name: NameNode(value: 'card_security_code'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'signature'),
                     alias: null,
                     arguments: [],
                     directives: [],
