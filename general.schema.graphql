@@ -423,6 +423,7 @@ type PurchaseParameters {
   remember_me: String
   amount: String
   card_security_code: String
+  signature: String
 }
 
 input ReviewInput {

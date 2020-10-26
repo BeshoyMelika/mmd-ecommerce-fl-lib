@@ -1,10 +1,8 @@
 Our GraphQl needs code generation and update schema to work perfectly.
 
 # Step 1 update schema
-    --> open the library with Android Studio and Install .graphql plugin
-    --> open .graphqlconfig you will find a play icon next to the url of graphql
-    --> click the play icon to update the schema you will find new file generated called general.schema.json
-    --> rename general.schema.json to general.schema.graphql (delete the old one if exist)
+    --> Download schema from playground as "SDL" 
+    --> add this file to the library with name "general.schema.graphql" (delete the old one if exist)
 
 # Step 2
     --> add your query, mutation and handle cases you want.
