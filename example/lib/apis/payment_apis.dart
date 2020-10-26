@@ -49,10 +49,10 @@ placeSavedCreditCardOrdersApi(Function(Map) suc) async {
 }
 
 operationsPaymentApi(Map data, Function suc) async {
-  await PaymentApiManager.payFortOperationsApi(data, (model) {
+  await PayFortApiManager.payFortOperationsApi(data, (model) {
     suc(model);
   }, (errorMassage, errorCode) {
-    print(errorMassage);
-    print(errorCode);
+    debugPrint(errorMassage);
+    debugPrint(errorCode);
   });
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 
 // TODO https://github.com/pichillilorenzo/flutter_inappwebview
 
@@ -13,23 +12,24 @@ import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 // card holder name = Mina Samir Sadik Khalil
 // remember me = YES or NO
 
-class OperationPayfortWidget extends StatefulWidget {
+class PayfortPaymentUrlWidget extends StatefulWidget {
   final String url;
   final Widget progressIndicator;
   final bool debuggingEnabled;
   final Function callback;
 
-  const OperationPayfortWidget(
+  const PayfortPaymentUrlWidget(
       {@required this.url,
       @required this.callback,
       this.debuggingEnabled = false,
       this.progressIndicator});
 
   @override
-  _OperationPayfortWidgetState createState() => _OperationPayfortWidgetState();
+  _PayfortPaymentUrlWidgetState createState() =>
+      _PayfortPaymentUrlWidgetState();
 }
 
-class _OperationPayfortWidgetState extends State<OperationPayfortWidget> {
+class _PayfortPaymentUrlWidgetState extends State<PayfortPaymentUrlWidget> {
   InAppWebViewController webViewController;
   String url = "";
   String errorMessage = "";

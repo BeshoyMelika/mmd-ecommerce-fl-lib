@@ -19,7 +19,7 @@ class _OperationPayfortScreenState extends State<OperationPayfortScreen> {
       appBar: AppBar(
         title: Text("Operation Payfort Payment"),
       ),
-      body: OperationPayfortWidget(
+      body: PayfortPaymentUrlWidget(
         url: widget.url,
         callback: widget.callBack,
         debuggingEnabled: true,

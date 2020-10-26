@@ -36,8 +36,7 @@ class BaseApiManager {
   static void createClient() {
     _mainClient = GraphQLClient(
       cache: InMemoryCache(),
-      link:
-          HttpLink(uri: _url, httpClient: _getClient(), headers: getHeaders()),
+      link: HttpLink(uri: _url, httpClient: getClient(), headers: getHeaders()),
     );
   }
 
@@ -45,7 +44,7 @@ class BaseApiManager {
     _mainClient = GraphQLClient(
       cache: InMemoryCache(),
       link: HttpLink(
-          uri: _url, httpClient: _getClient(), headers: getAuthHeaders()),
+          uri: _url, httpClient: getClient(), headers: getAuthHeaders()),
     );
   }
 
@@ -56,7 +55,7 @@ class BaseApiManager {
     return _mainClient;
   }
 
-  static Client _getClient() {
+  static Client getClient() {
     return _isDebuggable ? LoggerClient(Client()) : Client();
   }
 }

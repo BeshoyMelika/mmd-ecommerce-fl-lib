@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/operation_payfort_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_url_screen.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
 
 import 'api_keys.dart';
@@ -219,7 +219,6 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               placeSavedCreditCardOrdersApi((m) {
                 map = m;
-                print(m);
                 merchantReference = m["merchant_reference"];
               });
             },
@@ -232,7 +231,6 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.indigo,
             onPressed: () {
               operationsPaymentApi(map, (m) {
-                print(m);
                 url = m["3ds_url"];
               });
             },

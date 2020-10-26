@@ -15,7 +15,7 @@ import 'package:mmd_ecommerce_fl_lib/common_models/common_models.dart';
 // card holder name = Mina Samir Sadik Khalil
 // remember me = YES or NO
 
-class PayfortWidget extends StatefulWidget {
+class PayfortPaymentWidget extends StatefulWidget {
   final String url;
   final String cardNum;
   final String cvv;
@@ -27,7 +27,7 @@ class PayfortWidget extends StatefulWidget {
   final bool debuggingEnabled;
   final void Function(String reference) callback;
 
-  const PayfortWidget(
+  const PayfortPaymentWidget(
       {@required this.url,
       @required this.cardNum,
       @required this.cvv,
@@ -40,11 +40,11 @@ class PayfortWidget extends StatefulWidget {
       this.progressIndicator});
 
   @override
-  _PayfortWidgetState createState() => _PayfortWidgetState();
+  _PayfortPaymentWidgetState createState() => _PayfortPaymentWidgetState();
 
-  static PayfortWidget test(
+  static PayfortPaymentWidget test(
       PlaceCreditCardOrderModel detailsModel, Function callback) {
-    return PayfortWidget(
+    return PayfortPaymentWidget(
       url: "https://sbcheckout.PayFort.com/FortAPI/paymentPage",
       cardNum: "4005550000000001",
       cvv: "123",
@@ -57,9 +57,9 @@ class PayfortWidget extends StatefulWidget {
     );
   }
 
-  static PayfortWidget testOTP(
+  static PayfortPaymentWidget testOTP(
       PlaceCreditCardOrderModel detailsModel, Function callback) {
-    return PayfortWidget(
+    return PayfortPaymentWidget(
       url: "https://sbcheckout.PayFort.com/FortAPI/paymentPage",
       cardNum: "4557012345678902",
       cvv: "123",
@@ -73,7 +73,7 @@ class PayfortWidget extends StatefulWidget {
   }
 }
 
-class _PayfortWidgetState extends State<PayfortWidget> {
+class _PayfortPaymentWidgetState extends State<PayfortPaymentWidget> {
   InAppWebViewController webViewController;
   String url = "";
   String errorMessage = "";
