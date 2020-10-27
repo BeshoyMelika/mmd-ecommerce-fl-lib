@@ -3,17 +3,17 @@ import 'package:mmd_ecommerce_fl_lib_example/apis/cart_api.dart';
 import 'package:mmd_ecommerce_fl_lib_example/apis/general_api.dart';
 import 'package:mmd_ecommerce_fl_lib_example/apis/user_apis.dart';
 
-class GeneralScreen extends StatefulWidget {
+class CartScreen extends StatefulWidget {
   @override
-  _GeneralScreenState createState() => _GeneralScreenState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _GeneralScreenState extends State<GeneralScreen> {
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("General"),
+        title: Text("Cart"),
       ),
       body: Center(
         child: Column(
