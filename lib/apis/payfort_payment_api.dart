@@ -8,7 +8,7 @@ class PayFortApiManager {
       Function(Map) success, Function(String, String) fail) async {
     const String OPERATION_URL =
         "https://sbpaymentservices.payfort.com/FortAPI/paymentApi";
-    const Map header = {
+    const header = {
       "Accept": "application/json",
       "Content-Type": "application/json",
     };
