@@ -41,7 +41,18 @@ savedCardApi() async {
       (SavedCardList list) {}, (ApiErrorModel error) {});
 }
 
-placeSavedCreditCardOrdersApi() async {
+placeSavedCreditCardOrdersApi(Function(Map) suc) async {
   await PaymentApiManager.placeSavedCreditCardOrderApi("43", null, "12", "123",
-      (PlaceSavedCreditCardOrderModel model) {}, (ApiErrorModel error) {});
+      (PlaceSavedCreditCardOrderModel model) {
+    suc(model.placeSavedCreditCardOrder.toJson());
+  }, (ApiErrorModel error) {});
+}
+
+operationsPaymentApi(Map data, Function suc) async {
+  await PayFortApiManager.payFortOperationsApi(data, (model) {
+    suc(model);
+  }, (errorMassage, errorCode) {
+    debugPrint(errorMassage);
+    debugPrint(errorCode);
+  });
 }

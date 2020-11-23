@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 import 'package:mmd_ecommerce_fl_lib_example/screens/address_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/general_screen.dart';
-import 'package:mmd_ecommerce_fl_lib_example/screens/payfort_payment_screen.dart';
+import 'package:mmd_ecommerce_fl_lib_example/screens/cart_screen.dart';
 
 import 'api_keys.dart';
 import 'apis/auth_apis.dart';
-import 'apis/payment_apis.dart';
 import 'apis/user_apis.dart';
+import 'screens/payment_screen.dart';
 import 'screens/product_screen.dart';
 
 void main() async {
@@ -83,11 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GeneralScreen()),
+                MaterialPageRoute(builder: (context) => CartScreen()),
               );
             },
             child: Text(
-              "Open General Screen",
+              "Open Cart Screen",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -188,89 +187,23 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
+
           RaisedButton(
-            color: Colors.black,
+            color: Colors.red,
             onPressed: () {
-              // orderStateApi("100_1601986763");
-              orderStateApi("59_1601907846", this.context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CheckoutScreen()),
+              );
             },
             child: Text(
-              "Order State Api",
+              "Open Checkout Screen",
               style: TextStyle(color: Colors.white),
             ),
           ),
-          RaisedButton(
-            color: Colors.indigo,
-            onPressed: () {
-              savedCardApi();
-            },
-            child: Text(
-              "saved Card",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.indigo,
-            onPressed: () {
-              placeSavedCreditCardOrdersApi();
-            },
-            child: Text(
-              "place saved credit card order Api",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          paymentWidget(),
+
           // authField(),
         ],
-      ),
-    );
-  }
-
-  Widget paymentWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20.0,
-      ),
-      child: RaisedButton(
-        color: Colors.indigo,
-        onPressed: () async {
-          await placeCreditCardOrderApi((PlaceCreditCardOrderModel model) {
-            // open payment screen ...
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (ctx) =>
-                      PayfortPaymentScreen(model, (String merchantReference) {
-                        // call api .. to check payment state
-                        orderStateApi(merchantReference, context);
-                        Navigator.of(context).pop();
-                        debugPrint(
-                            "===============$merchantReference===============");
-                        debugPrint(
-                            "===============$merchantReference===============");
-                        debugPrint(
-                            "===============$merchantReference===============");
-                        debugPrint(
-                            "===============$merchantReference===============");
-                      })),
-            );
-          });
-        },
-        child: Row(
-          children: [
-            Icon(
-              Icons.payment,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Payfort Payment Screen",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
       ),
     );
   }

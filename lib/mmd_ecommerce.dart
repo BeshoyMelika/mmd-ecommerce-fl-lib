@@ -12,6 +12,7 @@ export './apis/user_api_manager.dart';
 export './apis/product_api_manager.dart';
 export './apis/cart_api_manager.dart';
 export './apis/address_api_manager.dart';
+export './apis/payfort_payment_api.dart';
 export './common_models/common_models.dart';
 export './generatedql/products/graphql_api.dart'
     show SortOrder, ProductsOrderByColumn;
