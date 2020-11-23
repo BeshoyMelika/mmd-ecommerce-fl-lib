@@ -1,4 +1,4 @@
-mutation PlaceCreditCardOrder($addressId: ID!, $voucherId: ID!){
+mutation PlaceCreditCardOrder($addressId: ID!, $voucherId: ID){
     placeCreditCardOrder(input: {address_id: $addressId, voucher_id: $voucherId}){
         service_command
         access_code

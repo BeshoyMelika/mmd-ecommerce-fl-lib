@@ -39,3 +39,9 @@
 * Added fragment support to graphal.
 * Updated graphal schema.
 * Added payment APIs and Payfort example.
+
+## [0.1.1] - 0.1.1
+* Updated graphal schema.
+* Added payment with saved cards APIs and Payfort example.
+* Added logger to http.
+* Solve some issue.

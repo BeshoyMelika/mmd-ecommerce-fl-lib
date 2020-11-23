@@ -1,7 +1,7 @@
 import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 callLoginApi() async {
-  await AuthApiManager.loginApi("test@test.com", "123456", "123",
+  await AuthApiManager.loginApi("test_android@test.com", "123456", "123",
       (AuthPayloadLoginModel userRegisterModel) async {
     MmdECommerceFlLib.submitTokeAndTokenType(
         userRegisterModel.authPayload.accessToken,
