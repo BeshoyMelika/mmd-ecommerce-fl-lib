@@ -95,6 +95,22 @@ class UpdateProfile$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class UpdateNotificationSetting$Mutation with EquatableMixin {
+  UpdateNotificationSetting$Mutation();
+
+  factory UpdateNotificationSetting$Mutation.fromJson(
+          Map<String, dynamic> json) =>
+      _$UpdateNotificationSetting$MutationFromJson(json);
+
+  bool updateProfile;
+
+  @override
+  List<Object> get props => [updateProfile];
+  Map<String, dynamic> toJson() =>
+      _$UpdateNotificationSetting$MutationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class RefreshTokenArguments extends JsonSerializable with EquatableMixin {
   RefreshTokenArguments({@required this.token});
 
@@ -262,7 +278,7 @@ class ProfileQuery extends GraphQLQuery<Profile$Query, JsonSerializable> {
 
 @JsonSerializable(explicitToJson: true)
 class UpdateProfileArguments extends JsonSerializable with EquatableMixin {
-  UpdateProfileArguments({this.name, this.mobile, this.isNotifiable});
+  UpdateProfileArguments({this.name, this.mobile});
 
   @override
   factory UpdateProfileArguments.fromJson(Map<String, dynamic> json) =>
@@ -272,10 +288,8 @@ class UpdateProfileArguments extends JsonSerializable with EquatableMixin {
 
   final String mobile;
 
-  final bool isNotifiable;
-
   @override
-  List<Object> get props => [name, mobile, isNotifiable];
+  List<Object> get props => [name, mobile];
   @override
   Map<String, dynamic> toJson() => _$UpdateProfileArgumentsToJson(this);
 }
@@ -301,12 +315,6 @@ class UpdateProfileMutation
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
-              directives: []),
-          VariableDefinitionNode(
-              variable: VariableNode(name: NameNode(value: 'isNotifiable')),
-              type: NamedTypeNode(
-                  name: NameNode(value: 'Boolean'), isNonNull: false),
-              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -323,11 +331,7 @@ class UpdateProfileMutation
                           value: VariableNode(name: NameNode(value: 'name'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'mobile'),
-                          value: VariableNode(name: NameNode(value: 'mobile'))),
-                      ObjectFieldNode(
-                          name: NameNode(value: 'is_notifiable'),
-                          value: VariableNode(
-                              name: NameNode(value: 'isNotifiable')))
+                          value: VariableNode(name: NameNode(value: 'mobile')))
                     ]))
               ],
               directives: [],
@@ -346,4 +350,73 @@ class UpdateProfileMutation
   @override
   UpdateProfile$Mutation parse(Map<String, dynamic> json) =>
       UpdateProfile$Mutation.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateNotificationSettingArguments extends JsonSerializable
+    with EquatableMixin {
+  UpdateNotificationSettingArguments({this.isNotifiable});
+
+  @override
+  factory UpdateNotificationSettingArguments.fromJson(
+          Map<String, dynamic> json) =>
+      _$UpdateNotificationSettingArgumentsFromJson(json);
+
+  final bool isNotifiable;
+
+  @override
+  List<Object> get props => [isNotifiable];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$UpdateNotificationSettingArgumentsToJson(this);
+}
+
+class UpdateNotificationSettingMutation extends GraphQLQuery<
+    UpdateNotificationSetting$Mutation, UpdateNotificationSettingArguments> {
+  UpdateNotificationSettingMutation({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'UpdateNotificationSetting'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'isNotifiable')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'updateProfile'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'input'),
+                    value: ObjectValueNode(fields: [
+                      ObjectFieldNode(
+                          name: NameNode(value: 'is_notifiable'),
+                          value: VariableNode(
+                              name: NameNode(value: 'isNotifiable')))
+                    ]))
+              ],
+              directives: [],
+              selectionSet: null)
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'UpdateNotificationSetting';
+
+  @override
+  final UpdateNotificationSettingArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  UpdateNotificationSetting$Mutation parse(Map<String, dynamic> json) =>
+      UpdateNotificationSetting$Mutation.fromJson(json);
 }

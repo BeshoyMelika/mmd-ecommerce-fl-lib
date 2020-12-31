@@ -2,7 +2,12 @@ import 'package:mmd_ecommerce_fl_lib/mmd_ecommerce.dart';
 
 callUpdateProfileApi(String name, String mobile) {
   UserApiManager.updateProfileApi(
-      name, mobile, false, (bool isUpdated) {}, (ApiErrorModel error) {});
+      name, mobile, (bool isUpdated) {}, (ApiErrorModel error) {});
+}
+
+updateNotificationSettingApi(bool notification) {
+  UserApiManager.updateNotificationSettingApi(
+      notification, (bool isUpdated) {}, (ApiErrorModel error) {});
 }
 
 callMyProfileApi() {

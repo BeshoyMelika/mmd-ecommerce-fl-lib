@@ -81,6 +81,18 @@ Map<String, dynamic> _$UpdateProfile$MutationToJson(
       'updateProfile': instance.updateProfile,
     };
 
+UpdateNotificationSetting$Mutation _$UpdateNotificationSetting$MutationFromJson(
+    Map<String, dynamic> json) {
+  return UpdateNotificationSetting$Mutation()
+    ..updateProfile = json['updateProfile'] as bool;
+}
+
+Map<String, dynamic> _$UpdateNotificationSetting$MutationToJson(
+        UpdateNotificationSetting$Mutation instance) =>
+    <String, dynamic>{
+      'updateProfile': instance.updateProfile,
+    };
+
 RefreshTokenArguments _$RefreshTokenArgumentsFromJson(
     Map<String, dynamic> json) {
   return RefreshTokenArguments(
@@ -99,7 +111,6 @@ UpdateProfileArguments _$UpdateProfileArgumentsFromJson(
   return UpdateProfileArguments(
     name: json['name'] as String,
     mobile: json['mobile'] as String,
-    isNotifiable: json['isNotifiable'] as bool,
   );
 }
 
@@ -108,5 +119,17 @@ Map<String, dynamic> _$UpdateProfileArgumentsToJson(
     <String, dynamic>{
       'name': instance.name,
       'mobile': instance.mobile,
+    };
+
+UpdateNotificationSettingArguments _$UpdateNotificationSettingArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return UpdateNotificationSettingArguments(
+    isNotifiable: json['isNotifiable'] as bool,
+  );
+}
+
+Map<String, dynamic> _$UpdateNotificationSettingArgumentsToJson(
+        UpdateNotificationSettingArguments instance) =>
+    <String, dynamic>{
       'isNotifiable': instance.isNotifiable,
     };

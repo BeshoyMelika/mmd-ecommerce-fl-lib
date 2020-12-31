@@ -1,0 +1,7 @@
+mutation UpdateNotificationSetting(
+    $isNotifiable: Boolean
+){
+    updateProfile(input: {
+        is_notifiable:$isNotifiable
+    })
+}
