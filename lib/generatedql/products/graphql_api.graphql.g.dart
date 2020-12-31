@@ -40,6 +40,8 @@ OrderProducts$Query$ProductPaginator$Product
     ..id = json['id'] as String
     ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
+    ..hasPromotion = json['hasPromotion'] as bool
+    ..oldPrice = json['old_price'] as String
     ..available = json['available'] as bool
     ..minQuantity = json['min_quantity'] as String
     ..maxQuantity = json['max_quantity'] as String
@@ -56,6 +58,8 @@ Map<String, dynamic> _$OrderProducts$Query$ProductPaginator$ProductToJson(
       'id': instance.id,
       'averageRating': instance.averageRating,
       'price': instance.price,
+      'hasPromotion': instance.hasPromotion,
+      'old_price': instance.oldPrice,
       'available': instance.available,
       'min_quantity': instance.minQuantity,
       'max_quantity': instance.maxQuantity,
@@ -179,6 +183,8 @@ RelatedProducts$Query$Product _$RelatedProducts$Query$ProductFromJson(
     ..id = json['id'] as String
     ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
+    ..hasPromotion = json['hasPromotion'] as bool
+    ..oldPrice = json['old_price'] as String
     ..available = json['available'] as bool
     ..minQuantity = json['min_quantity'] as String
     ..maxQuantity = json['max_quantity'] as String
@@ -195,6 +201,8 @@ Map<String, dynamic> _$RelatedProducts$Query$ProductToJson(
       'id': instance.id,
       'averageRating': instance.averageRating,
       'price': instance.price,
+      'hasPromotion': instance.hasPromotion,
+      'old_price': instance.oldPrice,
       'available': instance.available,
       'min_quantity': instance.minQuantity,
       'max_quantity': instance.maxQuantity,
@@ -253,6 +261,8 @@ Products$Query$ProductPaginator$Product
     ..id = json['id'] as String
     ..averageRating = json['averageRating'] as String
     ..price = json['price'] as String
+    ..hasPromotion = json['hasPromotion'] as bool
+    ..oldPrice = json['old_price'] as String
     ..available = json['available'] as bool
     ..minQuantity = json['min_quantity'] as String
     ..maxQuantity = json['max_quantity'] as String
@@ -269,6 +279,8 @@ Map<String, dynamic> _$Products$Query$ProductPaginator$ProductToJson(
       'id': instance.id,
       'averageRating': instance.averageRating,
       'price': instance.price,
+      'hasPromotion': instance.hasPromotion,
+      'old_price': instance.oldPrice,
       'available': instance.available,
       'min_quantity': instance.minQuantity,
       'max_quantity': instance.maxQuantity,
@@ -403,6 +415,7 @@ ProductsArguments _$ProductsArgumentsFromJson(Map<String, dynamic> json) {
     productsId: json['productsId'] as String,
     catId: (json['catId'] as List)?.map((e) => e as String)?.toList(),
     name: json['name'] as String,
+    offer: json['offer'] as bool,
   );
 }
 
@@ -413,4 +426,5 @@ Map<String, dynamic> _$ProductsArgumentsToJson(ProductsArguments instance) =>
       'productsId': instance.productsId,
       'catId': instance.catId,
       'name': instance.name,
+      'offer': instance.offer,
     };

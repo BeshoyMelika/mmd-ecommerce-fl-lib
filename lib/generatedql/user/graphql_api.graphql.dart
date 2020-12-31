@@ -22,6 +22,8 @@ mixin UserMixin {
   String name;
   String email;
   String mobile;
+  @JsonKey(name: 'is_notifiable')
+  bool isNotifiable;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -60,7 +62,7 @@ class Profile$Query$User with EquatableMixin, UserMixin {
       _$Profile$Query$UserFromJson(json);
 
   @override
-  List<Object> get props => [id, name, email, mobile];
+  List<Object> get props => [id, name, email, mobile, isNotifiable];
   Map<String, dynamic> toJson() => _$Profile$Query$UserToJson(this);
 }
 
@@ -238,6 +240,12 @@ class ProfileQuery extends GraphQLQuery<Profile$Query, JsonSerializable> {
               alias: null,
               arguments: [],
               directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'is_notifiable'),
+              alias: null,
+              arguments: [],
+              directives: [],
               selectionSet: null)
         ]))
   ]);
@@ -254,7 +262,7 @@ class ProfileQuery extends GraphQLQuery<Profile$Query, JsonSerializable> {
 
 @JsonSerializable(explicitToJson: true)
 class UpdateProfileArguments extends JsonSerializable with EquatableMixin {
-  UpdateProfileArguments({@required this.name, @required this.mobile});
+  UpdateProfileArguments({this.name, this.mobile, this.isNotifiable});
 
   @override
   factory UpdateProfileArguments.fromJson(Map<String, dynamic> json) =>
@@ -264,8 +272,10 @@ class UpdateProfileArguments extends JsonSerializable with EquatableMixin {
 
   final String mobile;
 
+  final bool isNotifiable;
+
   @override
-  List<Object> get props => [name, mobile];
+  List<Object> get props => [name, mobile, isNotifiable];
   @override
   Map<String, dynamic> toJson() => _$UpdateProfileArgumentsToJson(this);
 }
@@ -283,13 +293,19 @@ class UpdateProfileMutation
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'name')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'mobile')),
               type: NamedTypeNode(
-                  name: NameNode(value: 'String'), isNonNull: true),
+                  name: NameNode(value: 'String'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'isNotifiable')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
@@ -307,7 +323,11 @@ class UpdateProfileMutation
                           value: VariableNode(name: NameNode(value: 'name'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'mobile'),
-                          value: VariableNode(name: NameNode(value: 'mobile')))
+                          value: VariableNode(name: NameNode(value: 'mobile'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'is_notifiable'),
+                          value: VariableNode(
+                              name: NameNode(value: 'isNotifiable')))
                     ]))
               ],
               directives: [],

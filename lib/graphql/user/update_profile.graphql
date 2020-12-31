@@ -1,3 +1,11 @@
-mutation UpdateProfile($name: String!, $mobile: String!){
-    updateProfile(input: {name: $name, mobile:$mobile})
+mutation UpdateProfile(
+    $name: String,
+    $mobile: String, 
+    $isNotifiable: Boolean
+){
+    updateProfile(input: {
+        name: $name, 
+        mobile:$mobile,
+        is_notifiable:$isNotifiable
+    })
 }

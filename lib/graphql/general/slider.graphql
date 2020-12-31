@@ -3,7 +3,8 @@ query Sliders{
     id
     title
     description
-    link
+    link_type
+    link_id
     cover{
       url
     }
