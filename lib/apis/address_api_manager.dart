@@ -16,6 +16,8 @@ class AddressApiManager extends BaseApiManager {
       String mobile,
       String lat,
       String lng,
+      String apartmentNum,
+      String floorNum,
       bool isDefault,
       Function success,
       Function fail) async {
@@ -30,6 +32,8 @@ class AddressApiManager extends BaseApiManager {
                 mobile: mobile,
                 lat: lat,
                 lng: lng,
+                apartmentNum: apartmentNum,
+                floorNum: floorNum,
                 isDefault: isDefault)
             .toJson()));
     if (result.hasException) {
