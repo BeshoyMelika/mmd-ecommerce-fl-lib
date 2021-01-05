@@ -1,5 +1,5 @@
 ## [0.1.2] - 0.1.2
-* Updated graphal schema.
+* Update graphql schema.
 * Update create address query.
 * Update slider query.
 * Update product query.
@@ -7,16 +7,16 @@
 * Add offers API.
 
 ## [0.1.1] - 0.1.1
-* Updated graphal schema.
-* Added payment with saved cards APIs and Payfort example.
-* Added logger to HTTP.
+* Update graphql schema.
+* Add payment with saved cards APIs and Payfort example.
+* Add logger to HTTP.
 * Solve some issue.
 
 ## [0.1.0] - 0.1.0
 * Updates Artemis library version.
-* Added fragment support to graphal.
-* Updated graphal schema.
-* Added payment APIs and Payfort example.
+* Add fragment support to graphql.
+* Update graphql schema.
+* Add payment APIs and Payfort example.
 
 ## [0.0.9] - 0.0.9
 * Added library logger for HTTP.
