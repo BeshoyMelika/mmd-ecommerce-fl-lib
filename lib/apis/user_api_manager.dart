@@ -32,7 +32,7 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
-  static Future<void> updateNotificationSettingApi(
+  static Future<void> shouldEnableNotification(
       bool notificationSetting, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().mutate(MutationOptions(
         documentNode: UpdateNotificationSettingMutation().document,
