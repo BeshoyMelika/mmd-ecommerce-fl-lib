@@ -45,3 +45,10 @@
 * Added payment with saved cards APIs and Payfort example.
 * Added logger to http.
 * Solve some issue.
+## [0.1.1] - 0.1.2
+* Updated graphal schema.
+* update create address query.
+* update slider query.
+* update product query.
+* add notification setting api.
+* add offers api.
