@@ -12,6 +12,8 @@ fragment Product on  Product{
     id
     averageRating
     price
+    hasPromotion
+    old_price
     available
     min_quantity
     max_quantity
@@ -40,6 +42,7 @@ fragment User on  User{
     name
     email
     mobile
+    is_notifiable
 }
 fragment AuthPayload on  AuthPayload{
     access_token

@@ -33,12 +33,16 @@ class Sliders$Query$Slider with EquatableMixin {
 
   String description;
 
-  String link;
+  @JsonKey(name: 'link_type')
+  String linkType;
+
+  @JsonKey(name: 'link_id')
+  String linkId;
 
   Sliders$Query$Slider$Media cover;
 
   @override
-  List<Object> get props => [id, title, description, link, cover];
+  List<Object> get props => [id, title, description, linkType, linkId, cover];
   Map<String, dynamic> toJson() => _$Sliders$Query$SliderToJson(this);
 }
 
@@ -154,7 +158,13 @@ class SlidersQuery extends GraphQLQuery<Sliders$Query, JsonSerializable> {
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'link'),
+                    name: NameNode(value: 'link_type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'link_id'),
                     alias: null,
                     arguments: [],
                     directives: [],

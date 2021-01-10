@@ -136,6 +136,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+          RaisedButton(
+            color: Colors.brown,
+            onPressed: () {
+              enableNotification(false);
+            },
+            child: Text(
+              "update Notification",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

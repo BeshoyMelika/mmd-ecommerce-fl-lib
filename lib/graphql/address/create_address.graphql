@@ -6,6 +6,8 @@ mutation CreateAddress($firstName: String!,
     $mobile: String!,
     $lat: String!,
     $lng: String!,
+    $floorNum: String!,
+    $apartmentNum: String!,
     $isDefault: Boolean!){
     createAddress(input:{
         first_name:$firstName
@@ -16,6 +18,9 @@ mutation CreateAddress($firstName: String!,
         mobile:$mobile
         lat:$lat
         lng:$lng
+        apartment_number:$apartmentNum
+        floor_number:$floorNum
+        
         isDefault: $isDefault
     })
 

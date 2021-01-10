@@ -32,6 +32,21 @@ class UserApiManager extends BaseApiManager {
     }
   }
 
+  static Future<void> shouldEnableNotification(
+      bool shouldEnableNotification, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().mutate(MutationOptions(
+        documentNode: ShouldEnableNotificationMutation().document,
+        variables: ShouldEnableNotificationArguments(
+                isNotifiable: shouldEnableNotification)
+            .toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(ShouldEnableNotification$Mutation.fromJson(result.data)
+          .updateProfile);
+    }
+  }
+
   static Future<void> myProfileApi(Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(
         documentNode: ProfileQuery().document,

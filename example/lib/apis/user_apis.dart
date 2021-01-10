@@ -5,6 +5,11 @@ callUpdateProfileApi(String name, String mobile) {
       name, mobile, (bool isUpdated) {}, (ApiErrorModel error) {});
 }
 
+enableNotification(bool shouldEnableNotification) {
+  UserApiManager.shouldEnableNotification(
+      shouldEnableNotification, (bool isEnabled) {}, (ApiErrorModel error) {});
+}
+
 callMyProfileApi() {
   UserApiManager.myProfileApi((UserProfileModel user) {
     //

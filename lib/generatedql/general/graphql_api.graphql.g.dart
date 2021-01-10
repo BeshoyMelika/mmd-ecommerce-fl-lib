@@ -22,7 +22,8 @@ Sliders$Query$Slider _$Sliders$Query$SliderFromJson(Map<String, dynamic> json) {
     ..id = json['id'] as String
     ..title = json['title'] as String
     ..description = json['description'] as String
-    ..link = json['link'] as String
+    ..linkType = json['link_type'] as String
+    ..linkId = json['link_id'] as String
     ..cover = json['cover'] == null
         ? null
         : Sliders$Query$Slider$Media.fromJson(
@@ -35,7 +36,8 @@ Map<String, dynamic> _$Sliders$Query$SliderToJson(
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
-      'link': instance.link,
+      'link_type': instance.linkType,
+      'link_id': instance.linkId,
       'cover': instance.cover?.toJson(),
     };
 

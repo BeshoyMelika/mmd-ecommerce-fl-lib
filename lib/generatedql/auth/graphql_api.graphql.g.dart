@@ -11,7 +11,8 @@ SignUp$Mutation$User _$SignUp$Mutation$UserFromJson(Map<String, dynamic> json) {
     ..id = json['id'] as String
     ..name = json['name'] as String
     ..email = json['email'] as String
-    ..mobile = json['mobile'] as String;
+    ..mobile = json['mobile'] as String
+    ..isNotifiable = json['is_notifiable'] as bool;
 }
 
 Map<String, dynamic> _$SignUp$Mutation$UserToJson(
@@ -21,6 +22,7 @@ Map<String, dynamic> _$SignUp$Mutation$UserToJson(
       'name': instance.name,
       'email': instance.email,
       'mobile': instance.mobile,
+      'is_notifiable': instance.isNotifiable,
     };
 
 SignUp$Mutation _$SignUp$MutationFromJson(Map<String, dynamic> json) {

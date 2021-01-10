@@ -217,6 +217,8 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
       @required this.mobile,
       @required this.lat,
       @required this.lng,
+      @required this.floorNum,
+      @required this.apartmentNum,
       @required this.isDefault});
 
   @override
@@ -239,6 +241,10 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
 
   final String lng;
 
+  final String floorNum;
+
+  final String apartmentNum;
+
   final bool isDefault;
 
   @override
@@ -251,6 +257,8 @@ class CreateAddressArguments extends JsonSerializable with EquatableMixin {
         mobile,
         lat,
         lng,
+        floorNum,
+        apartmentNum,
         isDefault
       ];
   @override
@@ -315,6 +323,18 @@ class CreateAddressMutation
               defaultValue: DefaultValueNode(value: null),
               directives: []),
           VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'floorNum')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'apartmentNum')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'String'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'isDefault')),
               type: NamedTypeNode(
                   name: NameNode(value: 'Boolean'), isNonNull: true),
@@ -357,6 +377,14 @@ class CreateAddressMutation
                       ObjectFieldNode(
                           name: NameNode(value: 'lng'),
                           value: VariableNode(name: NameNode(value: 'lng'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'apartment_number'),
+                          value: VariableNode(
+                              name: NameNode(value: 'apartmentNum'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'floor_number'),
+                          value:
+                              VariableNode(name: NameNode(value: 'floorNum'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'isDefault'),
                           value:

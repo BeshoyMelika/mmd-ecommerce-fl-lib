@@ -21,6 +21,9 @@ mixin ProductMixin {
   String id;
   String averageRating;
   String price;
+  bool hasPromotion;
+  @JsonKey(name: 'old_price')
+  String oldPrice;
   bool available;
   @JsonKey(name: 'min_quantity')
   String minQuantity;
@@ -68,6 +71,8 @@ class OrderProducts$Query$ProductPaginator$Product
         id,
         averageRating,
         price,
+        hasPromotion,
+        oldPrice,
         available,
         minQuantity,
         maxQuantity,
@@ -195,6 +200,8 @@ class RelatedProducts$Query$Product with EquatableMixin, ProductMixin {
         id,
         averageRating,
         price,
+        hasPromotion,
+        oldPrice,
         available,
         minQuantity,
         maxQuantity,
@@ -256,6 +263,8 @@ class Products$Query$ProductPaginator$Product
         id,
         averageRating,
         price,
+        hasPromotion,
+        oldPrice,
         available,
         minQuantity,
         maxQuantity,
@@ -551,6 +560,18 @@ class OrderProductsQuery
               directives: [],
               selectionSet: null),
           FieldNode(
+              name: NameNode(value: 'hasPromotion'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'old_price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
               name: NameNode(value: 'available'),
               alias: null,
               arguments: [],
@@ -747,6 +768,18 @@ class RelatedProductsQuery
               directives: [],
               selectionSet: null),
           FieldNode(
+              name: NameNode(value: 'hasPromotion'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'old_price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
               name: NameNode(value: 'available'),
               alias: null,
               arguments: [],
@@ -876,7 +909,8 @@ class ProductsArguments extends JsonSerializable with EquatableMixin {
       @required this.page,
       this.productsId,
       this.catId,
-      this.name});
+      this.name,
+      this.offer});
 
   @override
   factory ProductsArguments.fromJson(Map<String, dynamic> json) =>
@@ -892,8 +926,10 @@ class ProductsArguments extends JsonSerializable with EquatableMixin {
 
   final String name;
 
+  final bool offer;
+
   @override
-  List<Object> get props => [first, page, productsId, catId, name];
+  List<Object> get props => [first, page, productsId, catId, name, offer];
   @override
   Map<String, dynamic> toJson() => _$ProductsArgumentsToJson(this);
 }
@@ -938,6 +974,12 @@ class ProductsQuery extends GraphQLQuery<Products$Query, ProductsArguments> {
               type: NamedTypeNode(
                   name: NameNode(value: 'String'), isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'offer')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'Boolean'), isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
               directives: [])
         ],
         directives: [],
@@ -964,7 +1006,10 @@ class ProductsQuery extends GraphQLQuery<Products$Query, ProductsArguments> {
                               name: NameNode(value: 'productsId'))),
                       ObjectFieldNode(
                           name: NameNode(value: 'category'),
-                          value: VariableNode(name: NameNode(value: 'catId')))
+                          value: VariableNode(name: NameNode(value: 'catId'))),
+                      ObjectFieldNode(
+                          name: NameNode(value: 'offer'),
+                          value: VariableNode(name: NameNode(value: 'offer')))
                     ]))
               ],
               directives: [],
@@ -1066,6 +1111,18 @@ class ProductsQuery extends GraphQLQuery<Products$Query, ProductsArguments> {
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'hasPromotion'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'old_price'),
               alias: null,
               arguments: [],
               directives: [],

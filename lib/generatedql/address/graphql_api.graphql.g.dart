@@ -191,6 +191,8 @@ CreateAddressArguments _$CreateAddressArgumentsFromJson(
     mobile: json['mobile'] as String,
     lat: json['lat'] as String,
     lng: json['lng'] as String,
+    floorNum: json['floorNum'] as String,
+    apartmentNum: json['apartmentNum'] as String,
     isDefault: json['isDefault'] as bool,
   );
 }
@@ -206,6 +208,8 @@ Map<String, dynamic> _$CreateAddressArgumentsToJson(
       'mobile': instance.mobile,
       'lat': instance.lat,
       'lng': instance.lng,
+      'floorNum': instance.floorNum,
+      'apartmentNum': instance.apartmentNum,
       'isDefault': instance.isDefault,
     };
 
