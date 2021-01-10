@@ -81,14 +81,14 @@ Map<String, dynamic> _$UpdateProfile$MutationToJson(
       'updateProfile': instance.updateProfile,
     };
 
-UpdateNotificationSetting$Mutation _$UpdateNotificationSetting$MutationFromJson(
+ShouldEnableNotification$Mutation _$ShouldEnableNotification$MutationFromJson(
     Map<String, dynamic> json) {
-  return UpdateNotificationSetting$Mutation()
+  return ShouldEnableNotification$Mutation()
     ..updateProfile = json['updateProfile'] as bool;
 }
 
-Map<String, dynamic> _$UpdateNotificationSetting$MutationToJson(
-        UpdateNotificationSetting$Mutation instance) =>
+Map<String, dynamic> _$ShouldEnableNotification$MutationToJson(
+        ShouldEnableNotification$Mutation instance) =>
     <String, dynamic>{
       'updateProfile': instance.updateProfile,
     };
@@ -121,15 +121,15 @@ Map<String, dynamic> _$UpdateProfileArgumentsToJson(
       'mobile': instance.mobile,
     };
 
-UpdateNotificationSettingArguments _$UpdateNotificationSettingArgumentsFromJson(
+ShouldEnableNotificationArguments _$ShouldEnableNotificationArgumentsFromJson(
     Map<String, dynamic> json) {
-  return UpdateNotificationSettingArguments(
+  return ShouldEnableNotificationArguments(
     isNotifiable: json['isNotifiable'] as bool,
   );
 }
 
-Map<String, dynamic> _$UpdateNotificationSettingArgumentsToJson(
-        UpdateNotificationSettingArguments instance) =>
+Map<String, dynamic> _$ShouldEnableNotificationArgumentsToJson(
+        ShouldEnableNotificationArguments instance) =>
     <String, dynamic>{
       'isNotifiable': instance.isNotifiable,
     };

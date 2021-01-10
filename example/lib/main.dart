@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
           RaisedButton(
             color: Colors.brown,
             onPressed: () {
-              shouldEnableNotification(false);
+              enableNotification(false);
             },
             child: Text(
               "update Notification",

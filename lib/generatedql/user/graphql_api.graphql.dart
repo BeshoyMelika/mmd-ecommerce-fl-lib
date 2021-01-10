@@ -95,19 +95,19 @@ class UpdateProfile$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class UpdateNotificationSetting$Mutation with EquatableMixin {
-  UpdateNotificationSetting$Mutation();
+class ShouldEnableNotification$Mutation with EquatableMixin {
+  ShouldEnableNotification$Mutation();
 
-  factory UpdateNotificationSetting$Mutation.fromJson(
+  factory ShouldEnableNotification$Mutation.fromJson(
           Map<String, dynamic> json) =>
-      _$UpdateNotificationSetting$MutationFromJson(json);
+      _$ShouldEnableNotification$MutationFromJson(json);
 
   bool updateProfile;
 
   @override
   List<Object> get props => [updateProfile];
   Map<String, dynamic> toJson() =>
-      _$UpdateNotificationSetting$MutationToJson(this);
+      _$ShouldEnableNotification$MutationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -353,14 +353,14 @@ class UpdateProfileMutation
 }
 
 @JsonSerializable(explicitToJson: true)
-class UpdateNotificationSettingArguments extends JsonSerializable
+class ShouldEnableNotificationArguments extends JsonSerializable
     with EquatableMixin {
-  UpdateNotificationSettingArguments({this.isNotifiable});
+  ShouldEnableNotificationArguments({this.isNotifiable});
 
   @override
-  factory UpdateNotificationSettingArguments.fromJson(
+  factory ShouldEnableNotificationArguments.fromJson(
           Map<String, dynamic> json) =>
-      _$UpdateNotificationSettingArgumentsFromJson(json);
+      _$ShouldEnableNotificationArgumentsFromJson(json);
 
   final bool isNotifiable;
 
@@ -368,18 +368,18 @@ class UpdateNotificationSettingArguments extends JsonSerializable
   List<Object> get props => [isNotifiable];
   @override
   Map<String, dynamic> toJson() =>
-      _$UpdateNotificationSettingArgumentsToJson(this);
+      _$ShouldEnableNotificationArgumentsToJson(this);
 }
 
-class UpdateNotificationSettingMutation extends GraphQLQuery<
-    UpdateNotificationSetting$Mutation, UpdateNotificationSettingArguments> {
-  UpdateNotificationSettingMutation({this.variables});
+class ShouldEnableNotificationMutation extends GraphQLQuery<
+    ShouldEnableNotification$Mutation, ShouldEnableNotificationArguments> {
+  ShouldEnableNotificationMutation({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.mutation,
-        name: NameNode(value: 'UpdateNotificationSetting'),
+        name: NameNode(value: 'ShouldEnableNotification'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'isNotifiable')),
@@ -409,14 +409,14 @@ class UpdateNotificationSettingMutation extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'UpdateNotificationSetting';
+  final String operationName = 'ShouldEnableNotification';
 
   @override
-  final UpdateNotificationSettingArguments variables;
+  final ShouldEnableNotificationArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  UpdateNotificationSetting$Mutation parse(Map<String, dynamic> json) =>
-      UpdateNotificationSetting$Mutation.fromJson(json);
+  ShouldEnableNotification$Mutation parse(Map<String, dynamic> json) =>
+      ShouldEnableNotification$Mutation.fromJson(json);
 }

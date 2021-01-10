@@ -5,9 +5,9 @@ callUpdateProfileApi(String name, String mobile) {
       name, mobile, (bool isUpdated) {}, (ApiErrorModel error) {});
 }
 
-shouldEnableNotification(bool notification) {
+enableNotification(bool shouldEnableNotification) {
   UserApiManager.shouldEnableNotification(
-      notification, (bool isUpdated) {}, (ApiErrorModel error) {});
+      shouldEnableNotification, (bool isEnabled) {}, (ApiErrorModel error) {});
 }
 
 callMyProfileApi() {

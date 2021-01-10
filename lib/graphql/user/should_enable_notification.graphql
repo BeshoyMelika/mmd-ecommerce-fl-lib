@@ -1,4 +1,4 @@
-mutation UpdateNotificationSetting(
+mutation ShouldEnableNotification(
     $isNotifiable: Boolean
 ){
     updateProfile(input: {
