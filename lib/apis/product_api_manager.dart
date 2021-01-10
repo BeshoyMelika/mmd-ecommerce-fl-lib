@@ -63,6 +63,20 @@ class ProductApiManager extends BaseApiManager {
     }
   }
 
+  static Future<void> productsByOfferApi(
+      int first, int page, Function success, Function fail) async {
+    var result = await BaseApiManager.mainClient().query(QueryOptions(
+        documentNode: ProductsQuery().document,
+        variables:
+            ProductsArguments(first: first, page: page, offer: true).toJson()));
+    if (result.hasException) {
+      fail(ApiErrorHelper.handle(result));
+    } else {
+      success(ProductsPaginatorWrapper(
+          Products$Query.fromJson(result.data).products));
+    }
+  }
+
   static Future<void> relatedProductsByIdApi(
       String id, Function success, Function fail) async {
     var result = await BaseApiManager.mainClient().query(QueryOptions(

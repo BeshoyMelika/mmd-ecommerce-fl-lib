@@ -71,6 +71,7 @@ type User {
   name: String
   email: String
   mobile: String
+  is_notifiable: Boolean
 }
 
 # A paginated list of UserAddress items.
@@ -119,6 +120,8 @@ type UserAddress {
   mobile: String
   lat: String
   lng: String
+  apartment_number: String
+  floor_number: String
   isDefault: Boolean
 }
 
@@ -159,6 +162,7 @@ input ProductFilter {
   category: [ID]
   brand: [ID]
   store: [ID]
+  offer: Boolean
 }
 
 # A paginated list of Product items.
@@ -175,6 +179,8 @@ type Product {
   details: ProductData
   store: Store
   price: String
+  old_price: String
+  hasPromotion: Boolean
   available: Boolean
   ratings: [Rating]
   averageRating: String
@@ -292,7 +298,8 @@ type Slider {
   id: ID
   title: String
   description: String
-  link: String
+  link_type: String
+  link_id: String
   cover: Media
 }
 
@@ -385,12 +392,15 @@ input AddressInput {
   mobile: String
   lat: String
   lng: String
+  apartment_number: String
+  floor_number: String
   isDefault: Boolean
 }
 
 input UpdateProfile {
   name: String
   mobile: String
+  is_notifiable: Boolean
 }
 
 input CartInput {

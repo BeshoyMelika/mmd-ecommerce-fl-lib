@@ -35,6 +35,11 @@ productByNameApi() async {
       (ProductsPaginatorWrapper item) {}, (ApiErrorModel error) {});
 }
 
+productOfferApi() async {
+  await ProductApiManager.productsByOfferApi(
+      10, 1, (ProductsPaginatorWrapper item) {}, (ApiErrorModel error) {});
+}
+
 relatedProductByIdApi() async {
   await ProductApiManager.relatedProductsByIdApi(
       "1", (RelatedProductsList items) {}, (ApiErrorModel error) {});

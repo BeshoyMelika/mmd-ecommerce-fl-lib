@@ -44,7 +44,8 @@ Profile$Query$User _$Profile$Query$UserFromJson(Map<String, dynamic> json) {
     ..id = json['id'] as String
     ..name = json['name'] as String
     ..email = json['email'] as String
-    ..mobile = json['mobile'] as String;
+    ..mobile = json['mobile'] as String
+    ..isNotifiable = json['is_notifiable'] as bool;
 }
 
 Map<String, dynamic> _$Profile$Query$UserToJson(Profile$Query$User instance) =>
@@ -53,6 +54,7 @@ Map<String, dynamic> _$Profile$Query$UserToJson(Profile$Query$User instance) =>
       'name': instance.name,
       'email': instance.email,
       'mobile': instance.mobile,
+      'is_notifiable': instance.isNotifiable,
     };
 
 Profile$Query _$Profile$QueryFromJson(Map<String, dynamic> json) {
@@ -75,6 +77,18 @@ UpdateProfile$Mutation _$UpdateProfile$MutationFromJson(
 
 Map<String, dynamic> _$UpdateProfile$MutationToJson(
         UpdateProfile$Mutation instance) =>
+    <String, dynamic>{
+      'updateProfile': instance.updateProfile,
+    };
+
+ShouldEnableNotification$Mutation _$ShouldEnableNotification$MutationFromJson(
+    Map<String, dynamic> json) {
+  return ShouldEnableNotification$Mutation()
+    ..updateProfile = json['updateProfile'] as bool;
+}
+
+Map<String, dynamic> _$ShouldEnableNotification$MutationToJson(
+        ShouldEnableNotification$Mutation instance) =>
     <String, dynamic>{
       'updateProfile': instance.updateProfile,
     };
@@ -105,4 +119,17 @@ Map<String, dynamic> _$UpdateProfileArgumentsToJson(
     <String, dynamic>{
       'name': instance.name,
       'mobile': instance.mobile,
+    };
+
+ShouldEnableNotificationArguments _$ShouldEnableNotificationArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return ShouldEnableNotificationArguments(
+    isNotifiable: json['isNotifiable'] as bool,
+  );
+}
+
+Map<String, dynamic> _$ShouldEnableNotificationArgumentsToJson(
+        ShouldEnableNotificationArguments instance) =>
+    <String, dynamic>{
+      'isNotifiable': instance.isNotifiable,
     };

@@ -1,3 +1,9 @@
-mutation UpdateProfile($name: String!, $mobile: String!){
-    updateProfile(input: {name: $name, mobile:$mobile})
+mutation UpdateProfile(
+    $name: String,
+    $mobile: String, 
+){
+    updateProfile(input: {
+        name: $name, 
+        mobile:$mobile,
+    })
 }

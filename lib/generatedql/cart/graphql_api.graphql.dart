@@ -11,6 +11,9 @@ mixin ProductMixin {
   String id;
   String averageRating;
   String price;
+  bool hasPromotion;
+  @JsonKey(name: 'old_price')
+  String oldPrice;
   bool available;
   @JsonKey(name: 'min_quantity')
   String minQuantity;
@@ -96,6 +99,8 @@ class GetCart$Query$Cart$CartItem$Product with EquatableMixin, ProductMixin {
         id,
         averageRating,
         price,
+        hasPromotion,
+        oldPrice,
         available,
         minQuantity,
         maxQuantity,
@@ -556,6 +561,18 @@ class GetCartQuery extends GraphQLQuery<GetCart$Query, JsonSerializable> {
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'price'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'hasPromotion'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'old_price'),
               alias: null,
               arguments: [],
               directives: [],

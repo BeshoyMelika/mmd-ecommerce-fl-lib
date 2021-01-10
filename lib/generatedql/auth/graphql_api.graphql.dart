@@ -12,6 +12,8 @@ mixin UserMixin {
   String name;
   String email;
   String mobile;
+  @JsonKey(name: 'is_notifiable')
+  bool isNotifiable;
 }
 mixin AuthPayloadMixin {
   @JsonKey(name: 'access_token')
@@ -32,7 +34,7 @@ class SignUp$Mutation$User with EquatableMixin, UserMixin {
       _$SignUp$Mutation$UserFromJson(json);
 
   @override
-  List<Object> get props => [id, name, email, mobile];
+  List<Object> get props => [id, name, email, mobile, isNotifiable];
   Map<String, dynamic> toJson() => _$SignUp$Mutation$UserToJson(this);
 }
 
@@ -224,6 +226,12 @@ class SignUpMutation extends GraphQLQuery<SignUp$Mutation, SignUpArguments> {
               selectionSet: null),
           FieldNode(
               name: NameNode(value: 'mobile'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null),
+          FieldNode(
+              name: NameNode(value: 'is_notifiable'),
               alias: null,
               arguments: [],
               directives: [],

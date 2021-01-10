@@ -67,6 +67,15 @@ class _ProductScreenState extends State<ProductScreen> {
             RaisedButton(
               color: Colors.deepOrangeAccent,
               onPressed: () async {
+                await productOfferApi();
+              },
+              child: Text(
+                "get offer product Api",
+              ),
+            ),
+            RaisedButton(
+              color: Colors.deepOrangeAccent,
+              onPressed: () async {
                 await getProductDetailsApi();
               },
               child: Text(

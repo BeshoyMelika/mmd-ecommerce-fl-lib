@@ -4,11 +4,14 @@ query Products(
     $productsId: ID,
     $catId:  [ID],
     $name: String,
+    $offer: Boolean,
    ){
   products(first: $first, page: $page, filter: {
     name: $name
     id:$productsId
     category:$catId
+    offer:$offer
+
     }) {
     paginatorInfo{
       ...Paging
